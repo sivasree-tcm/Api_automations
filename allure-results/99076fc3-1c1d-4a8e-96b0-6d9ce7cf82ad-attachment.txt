@@ -1,0 +1,6 @@
+{
+    "status": "success",
+    "message": "Project created successfully",
+    "project_id": 129,
+    "isActive": 1
+}

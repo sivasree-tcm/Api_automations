@@ -23,7 +23,11 @@
     <testng.version>7.9.0</testng.version>
     <allure.version>2.24.0</allure.version>
     <jackson.version>2.17.1</jackson.version>
+    <allure.results.directory>target/allure-results</allure.results.directory>
+
   </properties>
+
+
 
   <!-- ===================== -->
   <!-- Dependencies -->

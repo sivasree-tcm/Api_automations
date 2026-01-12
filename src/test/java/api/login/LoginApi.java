@@ -8,14 +8,15 @@ public class LoginApi {
 
     public static Response login(String email, String password) {
 
-        String payload = "{\n" +
-                "  \"userEmail\": \"" + email + "\",\n" +
-                "  \"userPassword\": \"" + password + "\"\n" +
-                "}";
+        String payload = "{"
+                + "\"userEmail\":\"" + email + "\","
+                + "\"userPassword\":\"" + password + "\""
+                + "}";
 
         return given()
                 .contentType("application/json")
                 .body(payload)
+                .when()
                 .post("/api/login");
     }
 }

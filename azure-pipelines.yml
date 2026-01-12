@@ -1,0 +1,38 @@
+trigger:
+  branches:
+    include:
+      - main
+      - test
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  MAVEN_OPTS: "-Xmx1024m"
+
+steps:
+  # 1️⃣ Checkout code
+  - checkout: self
+
+  # 2️⃣ Install Java 17
+  - task: UseJava@1
+    inputs:
+      version: '17'
+      architecture: 'x64'
+
+  # 3️⃣ Run Maven Tests
+  - task: Maven@4
+    inputs:
+      mavenPomFile: 'pom.xml'
+      goals: 'clean test'
+      options: '-DskipTests=false'
+    env:
+      LOGIN_EMAIL: $(LOGIN_EMAIL)
+      LOGIN_PASSWORD: $(LOGIN_PASSWORD)
+
+  # 4️⃣ Publish Allure Results
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: 'allure-results'
+      artifact: 'allure-results'
+      publishLocation: 'pipeline'

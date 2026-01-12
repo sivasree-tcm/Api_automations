@@ -7,20 +7,26 @@ import models.project.ProjectRequest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.AllureUtil;
+import utils.TokenUtil;
+
+import java.util.List;
 
 public class ProjectTest extends BaseTest {
 
     @Test
-    public void createProjectTest() {
+    public void createAndVerifyProjectTest() {
 
+        int userId = TokenUtil.getUserId();
+
+        // -------- CREATE PROJECT --------
         ProjectRequest request = new ProjectRequest();
-        request.setUserId("33");
+        request.setUserId(String.valueOf(userId));
+        request.setProjectCreatedBy(String.valueOf(userId));
         request.setProjectName("Automation_" + System.currentTimeMillis());
         request.setProjectDescription("Automation project");
         request.setProjectSummary(null);
         request.setProjectStartDate("2026-01-08");
         request.setProjectEndDate("2026-01-14");
-        request.setProjectCreatedBy("33");
         request.setWebFramework("Playwright_Java");
         request.setMobileFrameworks("Appium_Java");
         request.setAutonomous(0);
@@ -30,22 +36,38 @@ public class ProjectTest extends BaseTest {
         request.setRefOrgId("1");
         request.setStorageType("S3");
         request.setConnections("TickingMinds");
-        request.setDevopsProjectName("f3c9e398-fa65-4695-bc19-b5172acd23a6");
+        request.setDevopsProjectName("0a4a3da6-6779-4f7c-8d76-4d7e88811ae4");
         request.setTeams("Insurance Team");
 
-        Response response = ProjectApi.createProject(request);
+        Response createResponse = ProjectApi.createProject(request);
 
-        // ✅ Attach evidence to Allure
-        AllureUtil.attachText("Request URL", "/api/createProject");
+        AllureUtil.attachText("Create Project URL", "/api/createProject");
         AllureUtil.attachJson("Create Project Request", request.toString());
-        AllureUtil.attachJson("Create Project Response", response.asPrettyString());
+        AllureUtil.attachJson("Create Project Response", createResponse.asPrettyString());
 
-        // ✅ Assertions
-        Assert.assertEquals(response.getStatusCode(), 200);
+        Assert.assertEquals(createResponse.getStatusCode(), 200);
 
-        Integer projectId = response.jsonPath().getInt("project_id");
-        Assert.assertTrue(projectId > 0, "Project ID should be greater than 0");
+        int projectId = createResponse.jsonPath().getInt("project_id");
+        Assert.assertTrue(projectId > 0);
 
         System.out.println("Project created successfully with ID: " + projectId);
+
+        // -------- VERIFY VIA GET MY PROJECTS --------
+        Response listResponse = ProjectApi.getMyProjects();
+
+        AllureUtil.attachText("Get My Projects URL", "/api/getMyProjects");
+        AllureUtil.attachJson("Get My Projects Response", listResponse.asPrettyString());
+
+        Assert.assertEquals(listResponse.getStatusCode(), 200);
+
+        List<Integer> projectIds =
+                listResponse.jsonPath().getList("projects.projectId");
+
+        Assert.assertTrue(
+                projectIds.contains(projectId),
+                "Created project should appear in My Projects list"
+        );
+
+        System.out.println("Verified project exists in project list");
     }
 }

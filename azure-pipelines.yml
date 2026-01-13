@@ -1,11 +1,18 @@
 trigger:
   - main
 
+schedules:
+  - cron: "30 4 * * *"
+    displayName: "Daily API Automation - 10 AM IST"
+    branches:
+      include:
+        - main
+    always: true
+
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  # 1️⃣ Run Maven Tests (Extent report generated during test execution)
   - task: Maven@4
     inputs:
       mavenPomFile: 'pom.xml'
@@ -13,13 +20,11 @@ steps:
       options: '-Dmaven.test.failure.ignore=true'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    displayName: 'Run API Automation Tests'
+    displayName: 'Run API Tests'
 
-  # 2️⃣ Publish Extent Report as Pipeline Artifact
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: 'target/extent-report'
       artifact: 'ExtentReport'
-      publishLocation: 'pipeline'
-    displayName: 'Publish Extent HTML Report'
+    displayName: 'Publish Extent Report'
     condition: succeededOrFailed()

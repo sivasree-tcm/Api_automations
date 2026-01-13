@@ -5,36 +5,28 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  # 1. Run Maven Tests
+  # 1️⃣ Run Maven Tests
   - task: Maven@4
     inputs:
       mavenPomFile: 'pom.xml'
       goals: 'clean test'
-      options: '-Dmaven.test.failure.ignore=true' # Continue to report generation even if tests fail
+      options: '-Dmaven.test.failure.ignore=true'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
     displayName: 'Execute API Tests'
 
-  # 2. Generate Allure Report (Command Line)
+  # 2️⃣ Install Allure CLI & Generate HTML Report
   - script: |
-      sudo npm install -g allure-commandline --save-dev
-      allure generate $(Build.SourcesDirectory)/target/allure-results --clean -o $(Build.SourcesDirectory)/allure-report
+      npm install -g allure-commandline
+      allure generate target/allure-results --clean -o target/allure-report
     displayName: 'Generate Allure HTML Report'
     condition: succeededOrFailed()
 
-  # 3. Publish to Azure DevOps Extension Tab
-  - task: allure-report-post-deployment@2
-    inputs:
-      allureResults: 'target/allure-results'
-      allureReport: 'allure-report'
-    displayName: 'Publish Allure Report to UI'
-    condition: succeededOrFailed()
-
-  # 4. Store Report as a Downloadable Artifact
+  # 3️⃣ Publish Allure Report as Pipeline Artifact
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: '$(Build.SourcesDirectory)/allure-report'
+      targetPath: 'target/allure-report'
       artifact: 'AllureReport'
       publishLocation: 'pipeline'
-    displayName: 'Archive Allure Report'
+    displayName: 'Publish Allure Report Artifact'
     condition: succeededOrFailed()

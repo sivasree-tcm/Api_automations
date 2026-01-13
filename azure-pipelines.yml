@@ -8,21 +8,18 @@ steps:
   - task: Maven@4
     inputs:
       mavenPomFile: 'pom.xml'
-      goals: 'clean test'
+      # We add allure:report here to ensure the data is processed
+      goals: 'clean test allure:report'
       options: '-Dmaven.test.failure.ignore=true'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    displayName: 'Run API Tests'
+    displayName: 'Run API Tests and Generate Data'
 
-  - script: |
-      npm install -g allure-commandline
-      allure generate target/allure-results --clean -o allure-report
-    displayName: 'Generate Allure Report'
-    condition: succeededOrFailed()
-
-  - task: PublishPipelineArtifact@1
-    inputs:
-      targetPath: 'allure-report'
-      artifact: 'AllureReport'
+  # This task replaces 'allure generate' and 'PublishPipelineArtifact'
+  # It automatically handles the "loading" issue in the Azure UI
+  - task: PublishAllureReport@1
     displayName: 'Publish Allure Report'
+    inputs:
+      allureVersion: '2.24.0'
+      testResultsDir: 'target/allure-results'
     condition: succeededOrFailed()

@@ -6,7 +6,7 @@ import io.restassured.response.Response;
 import models.project.ProjectRequest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.AllureUtil;
+import utils.ExtentTestListener;
 import utils.JsonUtils;
 import utils.TokenUtil;
 
@@ -26,34 +26,43 @@ public class ProjectTest extends BaseTest {
                         ProjectRequest.class
                 );
 
-        // 🔹 Override dynamic fields
+        // 🔹 Dynamic overrides
         request.setUserId(String.valueOf(userId));
         request.setProjectCreatedBy(String.valueOf(userId));
         request.setProjectName("Automation_" + System.currentTimeMillis());
 
-        // -------- CREATE PROJECT --------
+        // ================= CREATE PROJECT =================
         Response createResponse = ProjectApi.createProject(request);
 
-        AllureUtil.attachText("Create Project URL", "/api/createProject");
-        AllureUtil.attachJson(
-                "Create Project Request",
-                JsonUtils.toJson(request)
+        // 🔹 Extent logging
+        ExtentTestListener.getTest().info("HTTP Method: POST");
+        ExtentTestListener.getTest().info("Endpoint: /api/createProject");
+
+        ExtentTestListener.getTest().info(
+                "<b>Request Payload:</b><pre>" +
+                        JsonUtils.toJson(request) + "</pre>"
         );
 
-        AllureUtil.attachJson("Create Project Response", createResponse.asPrettyString());
+        ExtentTestListener.getTest().info(
+                "<b>Expected Status Code:</b> 200"
+        );
 
+        ExtentTestListener.getTest().info(
+                "<b>Actual Response:</b><pre>" +
+                        createResponse.asPrettyString() + "</pre>"
+        );
+
+        // 🔹 Assertions
         Assert.assertEquals(createResponse.getStatusCode(), 200);
 
         int projectId = createResponse.jsonPath().getInt("project_id");
         Assert.assertTrue(projectId > 0);
 
-        System.out.println("Project created successfully with ID: " + projectId);
+        ExtentTestListener.getTest()
+                .pass("Project created successfully with ID: " + projectId);
 
-        // -------- VERIFY VIA GET MY PROJECTS --------
+        // ================= VERIFY PROJECT =================
         Response listResponse = ProjectApi.getMyProjects();
-
-        AllureUtil.attachText("Get My Projects URL", "/api/getMyProjects");
-        AllureUtil.attachJson("Get My Projects Response", listResponse.asPrettyString());
 
         Assert.assertEquals(listResponse.getStatusCode(), 200);
 
@@ -65,6 +74,7 @@ public class ProjectTest extends BaseTest {
                 "Created project should appear in My Projects list"
         );
 
-        System.out.println("Verified project exists in My Projects list");
+        ExtentTestListener.getTest()
+                .pass("Verified project exists in My Projects list");
     }
 }

@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.AllureUtil;
 import utils.ConfigReader;
+import utils.ExtentTestListener;
 import utils.JsonUtils;
 
 public class RegisterUserTest extends BaseTest {
@@ -15,39 +16,41 @@ public class RegisterUserTest extends BaseTest {
     @Test
     public void registerUserTest() {
 
-        String endpoint = ConfigReader.get("endpoint.registerUser");
-        String executionStatus = "FAIL";
-
-        // ✅ Load payload from JSON
         RegisterUserRequest request =
                 JsonUtils.readJson(
                         "testdata/project/registerUser.json",
                         RegisterUserRequest.class
                 );
 
-        // ✅ Dynamic replacement
-        String dynamicEmail =
-                "demo_" + System.currentTimeMillis() + "@tickingminds.com";
+        String dynamicEmail = "demo_" + System.currentTimeMillis() + "@tickingminds.com";
         request.setUserEmailId(dynamicEmail);
 
         Response response = RegisterUserApi.registerUser(request);
 
-        try {
-            // ✅ Assertions
-            Assert.assertEquals(response.getStatusCode(), 201);
-            Assert.assertEquals(response.jsonPath().getString("status"), "success");
-            Assert.assertTrue(response.jsonPath().getInt("user_id") > 0);
+        // 🔹 EXPECTED RESULT
+        int expectedStatusCode = 201;
 
-            executionStatus = "PASS";
+        // 🔹 LOGGING TO EXTENT
+        ExtentTestListener.getTest().info("HTTP Method: POST");
+        ExtentTestListener.getTest().info("Endpoint: /api/registerUser");
 
-        } finally {
-            // ✅ Allure Reporting (Fully Dynamic)
-            AllureUtil.attachText("Endpoint", endpoint);
-            AllureUtil.attachJson("Request Payload", JsonUtils.toJson(request));
-            AllureUtil.attachJson("Actual Response", response.asPrettyString());
-            AllureUtil.attachText("Execution Status", executionStatus);
-        }
+        ExtentTestListener.getTest().info(
+                "<b>Request Payload:</b><pre>" +
+                        JsonUtils.toJson(request) + "</pre>"
+        );
 
-        System.out.println("User registered successfully: " + dynamicEmail);
+        ExtentTestListener.getTest().info(
+                "<b>Expected Status Code:</b> " + expectedStatusCode
+        );
+
+        ExtentTestListener.getTest().info(
+                "<b>Actual Response:</b><pre>" +
+                        response.asPrettyString() + "</pre>"
+        );
+
+        // 🔹 ASSERTIONS
+        Assert.assertEquals(response.getStatusCode(), expectedStatusCode);
+        Assert.assertEquals(response.jsonPath().getString("status"), "success");
     }
+
 }

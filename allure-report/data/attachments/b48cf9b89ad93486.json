@@ -1,0 +1,27 @@
+{
+    "results": [
+        {
+            "projectId": 128,
+            "projectName": "Automation_1768208382614",
+            "projectDescription": "Automation project",
+            "projectSummary": null,
+            "projectDomain": "Agriculture",
+            "storageType": "S3",
+            "frameworkStatus": "completed",
+            "projectStartDate": "08-Jan-2026",
+            "projectEndDate": "14-Jan-2026",
+            "insightsBasedOnExistingAssets": 0,
+            "isAzure": 1,
+            "isJira": 0,
+            "isGitlab": 0,
+            "platform": "azure",
+            "connectionName": "TickingMinds",
+            "devopsProjectName": "0a4a3da6-6779-4f7c-8d76-4d7e88811ae4",
+            "teams": null,
+            "connectionActive": 1,
+            "userId": 33,
+            "rights": "W",
+            "activeStatus": 1
+        }
+    ]
+}

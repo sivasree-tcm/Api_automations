@@ -1,0 +1,9 @@
+{
+  "userFirstName" : "Demo",
+  "userLastName" : "D",
+  "userEmailId" : "demo_1768297415957@tickingminds.com",
+  "userPassword" : "demo@172",
+  "userPhoneNumber" : "9876543213",
+  "userPhoneCountryCode" : "91",
+  "organizationId" : 1
+}

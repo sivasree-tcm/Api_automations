@@ -5,28 +5,28 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  # 1️⃣ Run Maven Tests
+  # 1️⃣ Run API Automation Tests
   - task: Maven@4
+    displayName: 'Run API Automation Tests'
     inputs:
       mavenPomFile: 'pom.xml'
       goals: 'clean test'
       options: '-Dmaven.test.failure.ignore=true'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    displayName: 'Execute API Tests'
 
-  # 2️⃣ Install Allure CLI & Generate HTML Report
+  # 2️⃣ Install Allure & Generate HTML Report
   - script: |
       npm install -g allure-commandline
       allure generate target/allure-results --clean -o target/allure-report
     displayName: 'Generate Allure HTML Report'
     condition: succeededOrFailed()
 
-  # 3️⃣ Publish Allure Report as Pipeline Artifact
+  # 3️⃣ Publish Allure Report as Artifact
   - task: PublishPipelineArtifact@1
+    displayName: 'Publish Allure Report Artifact'
     inputs:
       targetPath: 'target/allure-report'
       artifact: 'AllureReport'
       publishLocation: 'pipeline'
-    displayName: 'Publish Allure Report Artifact'
     condition: succeededOrFailed()

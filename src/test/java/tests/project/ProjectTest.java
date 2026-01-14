@@ -17,53 +17,33 @@ public class ProjectTest extends BaseTest {
     @Test
     public void createAndVerifyProjectTest() {
 
+        ExtentTestListener.getTest()
+                .info("Starting Create & Verify Project test");
+
         int userId = TokenUtil.getUserId();
 
-        // 🔹 Load JSON → POJO
-        ProjectRequest request =
-                JsonUtils.readJson(
-                        "testdata/project/createProject.json",
-                        ProjectRequest.class
-                );
+        ProjectRequest request = JsonUtils.readJson(
+                "testdata/project/createProject.json",
+                ProjectRequest.class
+        );
 
-        // 🔹 Dynamic overrides
         request.setUserId(String.valueOf(userId));
         request.setProjectCreatedBy(String.valueOf(userId));
         request.setProjectName("Automation_" + System.currentTimeMillis());
 
-        // ================= CREATE PROJECT =================
+        // 🔹 CREATE PROJECT
         Response createResponse = ProjectApi.createProject(request);
 
-        // 🔹 Extent logging
-        ExtentTestListener.getTest().info("HTTP Method: POST");
-        ExtentTestListener.getTest().info("Endpoint: /api/createProject");
-
-        ExtentTestListener.getTest().info(
-                "<b>Request Payload:</b><pre>" +
-                        JsonUtils.toJson(request) + "</pre>"
-        );
-
-        ExtentTestListener.getTest().info(
-                "<b>Expected Status Code:</b> 200"
-        );
-
-        ExtentTestListener.getTest().info(
-                "<b>Actual Response:</b><pre>" +
-                        createResponse.asPrettyString() + "</pre>"
-        );
-
-        // 🔹 Assertions
         Assert.assertEquals(createResponse.getStatusCode(), 200);
 
         int projectId = createResponse.jsonPath().getInt("project_id");
-        Assert.assertTrue(projectId > 0);
+        Assert.assertTrue(projectId > 0, "Project ID should be generated");
 
         ExtentTestListener.getTest()
                 .pass("Project created successfully with ID: " + projectId);
 
-        // ================= VERIFY PROJECT =================
+        // 🔹 VERIFY PROJECT IN MY PROJECTS
         Response listResponse = ProjectApi.getMyProjects();
-
         Assert.assertEquals(listResponse.getStatusCode(), 200);
 
         List<Integer> projectIds =

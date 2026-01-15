@@ -2,36 +2,38 @@ package utils;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import org.testng.*;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-public class ExtentTestListener implements ITestListener {
+public class ExtentTestListener {
 
-    private static ExtentReports extent = ExtentManager.getExtent();
+    private static ExtentReports extent;
     private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
+
+    // Initialize report ONCE
+    public static void initReport() {
+        if (extent == null) {
+            ExtentSparkReporter reporter =
+                    new ExtentSparkReporter("target/extent-report/ExtentReport.html");
+
+            extent = new ExtentReports();
+            extent.attachReporter(reporter);
+        }
+    }
+
+    // Create test BEFORE each @Test
+    public static void createTest(String testName) {
+        ExtentTest extentTest = extent.createTest(testName);
+        test.set(extentTest);
+    }
 
     public static ExtentTest getTest() {
         return test.get();
     }
 
-    @Override
-    public void onTestStart(ITestResult result) {
-        ExtentTest extentTest =
-                extent.createTest(result.getMethod().getMethodName());
-        test.set(extentTest);
-    }
-
-    @Override
-    public void onTestSuccess(ITestResult result) {
-        test.get().pass("Test Passed");
-    }
-
-    @Override
-    public void onTestFailure(ITestResult result) {
-        test.get().fail(result.getThrowable());
-    }
-
-    @Override
-    public void onFinish(ITestContext context) {
-        extent.flush();
+    // Flush AFTER suite
+    public static void flushReport() {
+        if (extent != null) {
+            extent.flush();
+        }
     }
 }

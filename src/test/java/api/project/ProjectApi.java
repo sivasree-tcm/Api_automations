@@ -1,5 +1,6 @@
 package api.project;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import utils.TokenUtil;
 
@@ -9,10 +10,11 @@ public class ProjectApi {
 
     // CREATE PROJECT
     public static Response createProject(Object request) {
+
         return given()
-                .contentType("application/json")
-                .header("Authorization", TokenUtil.getToken())
-                .body(request)
+                .contentType(ContentType.JSON)
+                .header("Authorization", TokenUtil.getToken())// ✅ REQUIRED
+                .body(request)                   // ✅ REQUIRED
                 .when()
                 .post("/api/createProject");
     }

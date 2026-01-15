@@ -6,9 +6,10 @@ import io.restassured.response.Response;
 import models.user.RegisterUserRequest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.AllureUtil;
-import utils.ConfigReader;
-import utils.ExtentTestListener;
+import report.CustomReportManager;
+import report.ReportContext;
+import report.ReportStep;
+import report.ReportTest;
 import utils.JsonUtils;
 
 public class RegisterUserTest extends BaseTest {
@@ -16,41 +17,68 @@ public class RegisterUserTest extends BaseTest {
     @Test
     public void registerUserTest() {
 
-        RegisterUserRequest request =
-                JsonUtils.readJson(
-                        "testdata/project/registerUser.json",
-                        RegisterUserRequest.class
-                );
+        // 🔹 Start custom report test
+        ReportTest reportTest =
+                ReportContext.startTest("registerUserTest");
 
-        String dynamicEmail = "demo_" + System.currentTimeMillis() + "@tickingminds.com";
-        request.setUserEmailId(dynamicEmail);
+        try {
+            // 🔹 LOAD REQUEST
+            RegisterUserRequest request =
+                    JsonUtils.readJson(
+                            "testdata/project/registerUser.json",
+                            RegisterUserRequest.class
+                    );
 
-        Response response = RegisterUserApi.registerUser(request);
+            // 🔹 DYNAMIC DATA
+            String dynamicEmail =
+                    "demo_" + System.currentTimeMillis() + "@tickingminds.com";
+            request.setUserEmailId(dynamicEmail);
 
-        // 🔹 EXPECTED RESULT
-        int expectedStatusCode = 201;
+            // 🔹 LOG STEPS
+            reportTest.addStep(new ReportStep(
+                    "Info", "HTTP Method", "POST"
+            ));
+            reportTest.addStep(new ReportStep(
+                    "Info", "Endpoint", "/api/registerUser"
+            ));
+            reportTest.addStep(new ReportStep(
+                    "Info", "Request Payload",
+                    JsonUtils.toJson(request)
+            ));
 
-        // 🔹 LOGGING TO EXTENT
-        ExtentTestListener.getTest().info("HTTP Method: POST");
-        ExtentTestListener.getTest().info("Endpoint: /api/registerUser");
+            // 🔹 API CALL
+            Response response =
+                    RegisterUserApi.registerUser(request);
 
-        ExtentTestListener.getTest().info(
-                "<b>Request Payload:</b><pre>" +
-                        JsonUtils.toJson(request) + "</pre>"
-        );
+            reportTest.addStep(new ReportStep(
+                    "Info", "Actual Status Code",
+                    String.valueOf(response.getStatusCode())
+            ));
+            reportTest.addStep(new ReportStep(
+                    "Info", "Response",
+                    response.asPrettyString()
+            ));
 
-        ExtentTestListener.getTest().info(
-                "<b>Expected Status Code:</b> " + expectedStatusCode
-        );
+            // 🔹 ASSERTIONS
+            Assert.assertEquals(response.getStatusCode(), 201);
+            Assert.assertEquals(
+                    response.jsonPath().getString("status"),
+                    "success"
+            );
 
-        ExtentTestListener.getTest().info(
-                "<b>Actual Response:</b><pre>" +
-                        response.asPrettyString() + "</pre>"
-        );
+            // 🔹 PASS
+            reportTest.markPassed("User registered successfully");
 
-        // 🔹 ASSERTIONS
-        Assert.assertEquals(response.getStatusCode(), expectedStatusCode);
-        Assert.assertEquals(response.jsonPath().getString("status"), "success");
+        } catch (AssertionError | Exception e) {
+
+            // 🔹 FAIL
+            reportTest.markFailed(e.getMessage());
+            throw e;
+
+        } finally {
+
+            // 🔥 VERY IMPORTANT
+            CustomReportManager.addTest(reportTest);
+        }
     }
-
 }

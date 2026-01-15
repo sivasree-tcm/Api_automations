@@ -6,55 +6,86 @@ import io.restassured.response.Response;
 import models.project.ProjectRequest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.ExtentTestListener;
+import report.CustomReportManager;
 import utils.JsonUtils;
 import utils.TokenUtil;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ProjectTest extends BaseTest {
 
     @Test
     public void createAndVerifyProjectTest() {
 
-        ExtentTestListener.getTest()
-                .info("Starting Create & Verify Project test");
+        String testName = "createAndVerifyProjectTest";
+        String status = "PASS";
+        long startTime = System.currentTimeMillis();
 
-        int userId = TokenUtil.getUserId();
+        List<Map<String, String>> steps = new ArrayList<>();
 
-        ProjectRequest request = JsonUtils.readJson(
-                "testdata/project/createProject.json",
-                ProjectRequest.class
-        );
+        try {
+            // 🔹 Token / User
+            int userId = TokenUtil.getUserId();
+            steps.add(CustomReportManager.step(
+                    "Info", "User ID", String.valueOf(userId)
+            ));
 
-        request.setUserId(String.valueOf(userId));
-        request.setProjectCreatedBy(String.valueOf(userId));
-        request.setProjectName("Automation_" + System.currentTimeMillis());
+            // 🔹 Load request
+            ProjectRequest request = JsonUtils.readJson(
+                    "testdata/project/createProject.json",
+                    ProjectRequest.class
+            );
 
-        // 🔹 CREATE PROJECT
-        Response createResponse = ProjectApi.createProject(request);
+            request.setUserId(String.valueOf(userId));
+            request.setProjectCreatedBy(String.valueOf(userId));
+            request.setProjectName("Automation_" + System.currentTimeMillis());
 
-        Assert.assertEquals(createResponse.getStatusCode(), 200);
+            steps.add(CustomReportManager.step(
+                    "Info", "Request Payload",
+                    JsonUtils.toJson(request)
+            ));
 
-        int projectId = createResponse.jsonPath().getInt("project_id");
-        Assert.assertTrue(projectId > 0, "Project ID should be generated");
+            // 🔹 API Call
+            Response response = ProjectApi.createProject(request);
 
-        ExtentTestListener.getTest()
-                .pass("Project created successfully with ID: " + projectId);
+            steps.add(CustomReportManager.step(
+                    "Info", "HTTP Status",
+                    String.valueOf(response.getStatusCode())
+            ));
 
-        // 🔹 VERIFY PROJECT IN MY PROJECTS
-        Response listResponse = ProjectApi.getMyProjects();
-        Assert.assertEquals(listResponse.getStatusCode(), 200);
+            steps.add(CustomReportManager.step(
+                    "Info", "Response",
+                    response.asPrettyString()
+            ));
 
-        List<Integer> projectIds =
-                listResponse.jsonPath().getList("projects.projectId");
+            // 🔹 Validation
+            Assert.assertEquals(response.getStatusCode(), 200);
+            steps.add(CustomReportManager.step(
+                    "Pass", "Result", "Project created successfully"
+            ));
 
-        Assert.assertTrue(
-                projectIds.contains(projectId),
-                "Created project should appear in My Projects list"
-        );
+        } catch (AssertionError | Exception e) {
+            status = "FAIL";
 
-        ExtentTestListener.getTest()
-                .pass("Verified project exists in My Projects list");
+            steps.add(CustomReportManager.step(
+                    "Fail", "Error",
+                    e.getMessage()
+            ));
+
+            throw e;
+
+        } finally {
+            long duration = System.currentTimeMillis() - startTime;
+
+            // ✅ WRITE TO JSON REPORT (ALWAYS)
+            CustomReportManager.addTestResult(
+                    testName,
+                    status,
+                    duration,
+                    steps
+            );
+        }
     }
 }

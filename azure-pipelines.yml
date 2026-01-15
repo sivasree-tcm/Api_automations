@@ -2,7 +2,7 @@ trigger:
   - main
 
 schedules:
-  - cron: "30 4 * * *"
+  - cron: "30 4 * * *"   # 10:00 AM IST
     displayName: "Daily API Automation - 10 AM IST"
     branches:
       include:
@@ -13,18 +13,21 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+  # 🔹 Run Maven Tests
   - task: Maven@4
+    displayName: 'Run API Automation Tests'
     inputs:
       mavenPomFile: 'pom.xml'
       goals: 'clean test'
       options: '-Dmaven.test.failure.ignore=true'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    displayName: 'Run API Tests'
 
+  # 🔹 Publish Custom HTML + JSON Report
   - task: PublishPipelineArtifact@1
-    inputs:
-      targetPath: 'target/extent-report'
-      artifact: 'ExtentReport'
-    displayName: 'Publish Extent Report'
+    displayName: 'Publish Custom API HTML Report'
     condition: succeededOrFailed()
+    inputs:
+      targetPath: 'target/report'
+      artifact: 'API-Test-Report'

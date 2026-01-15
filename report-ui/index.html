@@ -515,215 +515,154 @@
     let currentPage = 1;
     const pageSize = 10;
 
+    // -----------------------------
+    // ✅ EMBEDDED FALLBACK JSON
+    // -----------------------------
+    const EMBEDDED_REPORT = {
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": "0%"
+      },
+      "tests": []
+    };
 
+    // -----------------------------
+    // ✅ SAFE LOAD (fetch OR fallback)
+    // -----------------------------
+    async function loadReport() {
+      try {
+        const res = await fetch('test-results.json?ts=' + Date.now());
+        if (!res.ok) throw new Error("Fetch failed");
+        const data = await res.json();
+        console.log("Loaded JSON via fetch()");
+        initUI(data);
+      } catch (e) {
+        console.warn("Fetch blocked (file://). Using embedded data.");
+        initUI(EMBEDDED_REPORT);
+      }
+    }
 
-    fetch('test-results.json?ts=' + new Date().getTime())
-  .then(res => {
-    if (!res.ok) throw new Error("JSON not found");
-    return res.json();
-  })
-  .then(data => {
-    console.log("Loaded fresh JSON:", data);
-
-    loadSummary(data.summary);
-    allTests = data.tests || [];
-    filteredTests = [...allTests];
-
-    drawChart(data.summary);
-    renderTable();
-    renderPagination();
-  })
-  .catch(err => {
-    console.error("Failed to load JSON:", err);
-    alert("❌ test-results.json not loaded");
-  });
-
-
-    function initializeData(data) {
-        loadSummary(data.summary);
-        allTests = data.tests;
-        filteredTests = [...allTests];
-        drawChart(data.summary);
-        renderTable();
-        renderPagination();
+    // -----------------------------
+    // INIT UI
+    // -----------------------------
+    function initUI(data) {
+      loadSummary(data.summary);
+      allTests = data.tests || [];
+      filteredTests = [...allTests];
+      drawChart(data.summary);
+      renderTable();
+      renderPagination();
     }
 
     function loadSummary(s) {
-        document.getElementById('total').innerText = s.total;
-        document.getElementById('passed').innerText = s.passed;
-        document.getElementById('failed').innerText = s.failed;
-        document.getElementById('passRate').innerText = s.passRate;
+      total.innerText = s.total;
+      passed.innerText = s.passed;
+      failed.innerText = s.failed;
+      passRate.innerText = s.passRate;
     }
 
     function drawChart(summary) {
-        const ctx = document.getElementById('pieChart');
-        new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Passed', 'Failed'],
-                datasets: [{
-                    data: [summary.passed, summary.failed],
-                    backgroundColor: ['#06ffa5', '#ff006e'],
-                    borderColor: ['#06ffa5', '#ff006e'],
-                    borderWidth: 2,
-                    hoverOffset: 8
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            color: '#a0a0b8',
-                            font: {
-                                size: 14,
-                                family: "'Manrope', sans-serif",
-                                weight: '600'
-                            },
-                            padding: 20,
-                            usePointStyle: true,
-                            pointStyle: 'circle'
-                        }
-                    },
-                    tooltip: {
-                        backgroundColor: '#1a1a2e',
-                        titleColor: '#ffffff',
-                        bodyColor: '#a0a0b8',
-                        borderColor: '#2a2a3e',
-                        borderWidth: 1,
-                        padding: 12,
-                        displayColors: true,
-                        callbacks: {
-                            label: function(context) {
-                                const label = context.label || '';
-                                const value = context.parsed;
-                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                const percentage = ((value / total) * 100).toFixed(1);
-                                return `${label}: ${value} (${percentage}%)`;
-                            }
-                        }
-                    }
-                }
-            }
-        });
+      const ctx = document.getElementById('pieChart');
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Passed', 'Failed'],
+          datasets: [{
+            data: [summary.passed, summary.failed],
+            backgroundColor: ['#06ffa5', '#ff006e'],
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { position: 'bottom' } }
+        }
+      });
     }
 
     function renderTable() {
-        const body = document.getElementById('tableBody');
-        body.innerHTML = '';
+      const body = tableBody;
+      body.innerHTML = '';
 
-        const start = (currentPage - 1) * pageSize;
-        const pageData = filteredTests.slice(start, start + pageSize);
+      const start = (currentPage - 1) * pageSize;
+      const pageData = filteredTests.slice(start, start + pageSize);
 
-        pageData.forEach(test => {
-            const statusClass = test.status.toLowerCase();
-
-            const mainRow = document.createElement('tr');
-            mainRow.innerHTML = `
-                <td class="test-name" onclick="toggleDetails(${test.id})">${test.name}</td>
-                <td><span class="status-badge ${statusClass}">${test.status}</span></td>
-                <td><span class="duration">${test.duration}</span></td>
-            `;
-            body.appendChild(mainRow);
-
-            const detailsRow = document.createElement('tr');
-            detailsRow.id = `details-${test.id}`;
-            detailsRow.className = 'details-row';
-            detailsRow.innerHTML = `
-                <td colspan="3">
-                    <div class="details-content">
-                        <table class="details-table">
-                            <thead>
-                                <tr>
-                                    <th>Status</th>
-                                    <th>Label</th>
-                                    <th>Value</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${test.steps.map(step => `
-                                    <tr>
-                                        <td><span class="step-badge ${step.type.toLowerCase()}">${step.type}</span></td>
-                                        <td>${step.label}</td>
-                                        <td><span class="step-value">${step.value}</span></td>
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
-                    </div>
-                </td>
-            `;
-            body.appendChild(detailsRow);
-        });
+      pageData.forEach(test => {
+        body.innerHTML += `
+          <tr>
+            <td class="test-name" onclick="toggleDetails(${test.id})">${test.name}</td>
+            <td><span class="status-badge ${test.status.toLowerCase()}">${test.status}</span></td>
+            <td class="duration">${test.duration}</td>
+          </tr>
+          <tr id="details-${test.id}" class="details-row">
+            <td colspan="3">
+              <div class="details-content">
+                <table class="details-table">
+                  <tbody>
+                    ${test.steps.map(s => `
+                      <tr>
+                        <td><span class="step-badge ${s.type.toLowerCase()}">${s.type}</span></td>
+                        <td>${s.label}</td>
+                        <td class="step-value">${s.value}</td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </td>
+          </tr>
+        `;
+      });
     }
 
     function toggleDetails(id) {
-        const row = document.getElementById(`details-${id}`);
-        row.classList.toggle('active');
+      document.getElementById(`details-${id}`).classList.toggle('active');
     }
 
     function renderPagination() {
-        const pages = Math.ceil(filteredTests.length / pageSize);
-        const pagination = document.getElementById('pagination');
-        pagination.innerHTML = '';
-
-        for (let i = 1; i <= pages; i++) {
-            const btn = document.createElement('button');
-            btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
-            btn.textContent = i;
-            btn.onclick = () => goPage(i);
-            pagination.appendChild(btn);
-        }
+      pagination.innerHTML = '';
+      const pages = Math.ceil(filteredTests.length / pageSize);
+      for (let i = 1; i <= pages; i++) {
+        pagination.innerHTML += `
+          <button class="page-btn ${i === currentPage ? 'active' : ''}"
+                  onclick="goPage(${i})">${i}</button>`;
+      }
     }
 
     function goPage(p) {
-        currentPage = p;
-        renderTable();
-        renderPagination();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      currentPage = p;
+      renderTable();
+      renderPagination();
     }
 
+    search.oninput = statusFilter.onchange = sort.onchange = applyFilters;
+
     function applyFilters() {
-        const q = document.getElementById('search').value.toLowerCase();
-        const status = document.getElementById('statusFilter').value;
-
-        filteredTests = allTests.filter(t =>
-            t.name.toLowerCase().includes(q) &&
-            (status === 'all' || t.status === status)
-        );
-
-        const sortValue = document.getElementById('sort').value;
-        if (sortValue === 'pass') {
-            filteredTests.sort((a, b) => b.status.localeCompare(a.status));
-        }
-        if (sortValue === 'fail') {
-            filteredTests.sort((a, b) => a.status.localeCompare(b.status));
-        }
-
-        currentPage = 1;
-        renderTable();
-        renderPagination();
+      const q = search.value.toLowerCase();
+      const status = statusFilter.value;
+      filteredTests = allTests.filter(t =>
+        t.name.toLowerCase().includes(q) &&
+        (status === 'all' || t.status === status)
+      );
+      currentPage = 1;
+      renderTable();
+      renderPagination();
     }
 
     function downloadReport() {
-        const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'API-Test-Report.html';
-        a.click();
-        URL.revokeObjectURL(url);
+      const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'API-Test-Report.html';
+      a.click();
     }
 
-    // Event listeners
-    document.getElementById('search').oninput = applyFilters;
-    document.getElementById('statusFilter').onchange = applyFilters;
-    document.getElementById('sort').onchange = applyFilters;
-
-    // Initialize
-    loadData();
+    // -----------------------------
+    // 🚀 START
+    // -----------------------------
+    loadReport();
 </script>
 
 </body>

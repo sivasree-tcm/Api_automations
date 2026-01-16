@@ -1,21 +1,31 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
 steps:
-  - task: Maven@4
+  - task: Maven@3
+    displayName: 'Run API Tests'
     inputs:
       mavenPomFile: 'pom.xml'
       goals: 'clean test'
-      options: '-Dmaven.test.failure.ignore=true'
-    displayName: 'Run API Tests'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
 
-  # Copy HTML UI next to JSON
-  - script: |
-      mkdir -p target/report
-      cp report-ui/index.html target/report/
-    displayName: 'Copy HTML report UI'
-
-  # Publish combined report
-  - task: PublishPipelineArtifact@1
+  # Fix: Use the correct path 'target/report' as shown in your IntelliJ screenshot
+  - task: CopyFiles@2
+    displayName: 'Stage Custom Report'
     inputs:
-      targetPath: 'target/report'
-      artifact: 'API-Test-Report'
-    displayName: 'Publish Custom HTML Report'
-    condition: succeededOrFailed()
+      SourceFolder: '$(Build.SourcesDirectory)/target/report'
+      Contents: |
+        index.html
+        test-results.json
+      TargetFolder: '$(Build.ArtifactStagingDirectory)/API_Automation_Report'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Report Artifact'
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/API_Automation_Report'
+      ArtifactName: 'AutomationIntelligenceReport'
+      publishLocation: 'Container'

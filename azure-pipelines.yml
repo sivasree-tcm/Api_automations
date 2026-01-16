@@ -14,7 +14,7 @@ steps:
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
 
-  # 2️⃣ Copy files to Staging (Using a consistent folder name)
+  # 2️⃣ Copy files to Staging
   - task: CopyFiles@2
     displayName: 'Stage Report Files'
     inputs:
@@ -22,29 +22,27 @@ steps:
       Contents: '**'
       TargetFolder: '$(Build.ArtifactStagingDirectory)/AutomationReport'
 
-  # 3️⃣ Publish the Artifact (So the link in the email works)
+  # 3️⃣ Publish the Artifact
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifacts'
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)/AutomationReport'
       ArtifactName: 'CustomApiDashboard'
 
-  # 4️⃣ Inject Summary into Azure Email (Fixed logic)
+  # 4️⃣ INJECT EXTRA DETAILS INTO THE DEFAULT EMAIL
   - task: PowerShell@2
-    displayName: 'Inject Summary into Azure Email'
+    displayName: 'Inject Extra Details into Email'
     condition: always()
     inputs:
       targetType: 'inline'
       script: |
-        # 1. Define Paths
         $jsonPath = "$(Build.ArtifactStagingDirectory)/AutomationReport/test-results.json"
         $summaryFilePath = "$(Agent.TempDirectory)/summary.md"
         
         if (Test-Path $jsonPath) {
-            # Load JSON data
             $data = Get-Content $jsonPath | ConvertFrom-Json
         
-            # 2. Create the Markdown Content
+            # Create Markdown for the Email Summary
             $markdown = "## 📊 API Test Intelligence Summary `n"
             $markdown += "| Metric | Value | `n"
             $markdown += "|---|---| `n"
@@ -53,15 +51,14 @@ steps:
             $markdown += "| **Passed** | ✅ $($data.summary.passed) | `n"
             $markdown += "| **Failed** | ❌ $($data.summary.failed) | `n"
             $markdown += " `n --- `n"
-            $markdown += "### [📂 View Full Interactive Dashboard]($(System.TeamFoundationCollectionUri)$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=artifacts) "
+            $markdown += "### [📂 View Full Interactive Dashboard]($(System.TeamFoundationCollectionUri)$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=artifacts)"
 
-            # 3. Save to a physical file (Required by Azure DevOps)
-            $markdown | Out-File -FilePath $summaryFilePath -Encoding utf8
+            # Force UTF8 encoding so Azure reads it correctly
+            $markdown | Out-File -FilePath $summaryFilePath -Encoding UTF8
 
-            # 4. Upload the file to the Build Summary
+            # This command tells Azure: "Add this text to the default email notification"
             Write-Host "##vso[task.addattachment type=Distributedtask.Core.Summary;name=API Test Results;]$summaryFilePath"
-        
-            Write-Host "Summary successfully generated and attached to the build."
+            Write-Host "Extra details successfully sent to Azure Summary."
         } else {
-            Write-Host "##vso[task.logissue type=warning]JSON results not found at $jsonPath. Skipping summary injection."
+            Write-Warning "JSON path not found. Check if Step 2 folder name matches Step 4."
         }

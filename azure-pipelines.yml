@@ -29,7 +29,7 @@ steps:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)/AutomationReport'
       ArtifactName: 'CustomApiDashboard'
 
-  # 4️⃣ INJECT TEST SUMMARY INTO BUILD AND FORCE EMAIL CONTENT
+  # 4️⃣ INJECT CUSTOM TEST SUMMARY INTO EMAIL
   - task: PowerShell@2
     displayName: 'Inject Test Summary into Email'
     condition: always()
@@ -82,55 +82,60 @@ steps:
         
         "@
         
-                # Save markdown summary
+                # Save markdown summary for build page
                 $markdown | Out-File -FilePath $summaryFilePath -Encoding UTF8
         
-                # Attach to build summary
+                # Attach to build summary (shows on build page)
                 Write-Host "##vso[task.addattachment type=Distributedtask.Core.Summary;name=API Test Results;]$summaryFilePath"
         
-                # CRITICAL: Update build number with status (appears in email subject)
+                # Update build number to show status
                 Write-Host "##vso[build.updatebuildnumber]$buildNumber - $statusEmoji"
         
-                # Set variable for use in other tasks
-                $emailMessage = "Build $buildStatus | Pass Rate: $($data.summary.passRate) | Passed: $($data.summary.passed)/$($data.summary.total) | Failed: $($data.summary.failed)"
-                Write-Host "##vso[task.setvariable variable=TestSummaryMessage]$emailMessage"
-        
-                # Log formatted summary to console (appears in email body)
+                # CRITICAL: Use special logging that appears in EMAIL
                 Write-Host ""
-                Write-Host "=========================================="
-                Write-Host "       API TEST EXECUTION SUMMARY"
-                Write-Host "=========================================="
+                Write-Host "##[section]============================================================"
+                Write-Host "##[section]           API TEST INTELLIGENCE SUMMARY"
+                Write-Host "##[section]============================================================"
                 Write-Host ""
-                Write-Host "  Build Status    : $buildStatus"
-                Write-Host "  Pass Rate       : $($data.summary.passRate)"
-                Write-Host "  Total Tests     : $($data.summary.total)"
-                Write-Host "  Passed          : $($data.summary.passed)"
-                Write-Host "  Failed          : $($data.summary.failed)"
-                Write-Host "  Build ID        : $buildNumber"
-                Write-Host "  Triggered By    : $triggeredBy"
+                Write-Host "##[group]Test Execution Details"
+                Write-Host "Build Status      : $buildStatus"
+                Write-Host "Pass Rate         : $($data.summary.passRate)"
+                Write-Host "Total Tests       : $($data.summary.total)"
+                Write-Host "Tests Passed      : $($data.summary.passed)"
+                Write-Host "Tests Failed      : $($data.summary.failed)"
+                Write-Host "Build ID          : $buildNumber"
+                Write-Host "Triggered By      : $triggeredBy"
+                Write-Host "##[endgroup]"
                 Write-Host ""
-                Write-Host "=========================================="
-                Write-Host "  VIEW FULL DASHBOARD:"
-                Write-Host "  $collectionUri$teamProject/_build/results?buildId=$buildId&view=artifacts&artifactName=CustomApiDashboard"
-                Write-Host "=========================================="
+                Write-Host "##[section]============================================================"
+                Write-Host "##[command]VIEW FULL INTERACTIVE DASHBOARD:"
+                Write-Host "$collectionUri$teamProject/_build/results?buildId=$buildId&view=artifacts&artifactName=CustomApiDashboard"
+                Write-Host "##[section]============================================================"
                 Write-Host ""
         
-                Write-Host "Test summary successfully injected into build report"
+                # Add warning or error for failed tests (these ALWAYS appear in email)
+                if ($passRate -lt 100) {
+                    Write-Host "##vso[task.logissue type=warning]TEST ALERT: $($data.summary.failed) test(s) failed with pass rate of $($data.summary.passRate)"
+                } else {
+                    Write-Host "##vso[task.logissue type=warning]SUCCESS: All $($data.summary.total) tests passed with 100% pass rate"
+                }
+        
+                Write-Host "Test summary successfully injected into build report and email"
         
             } catch {
                 Write-Error "Failed to process test results: $_"
-                Write-Host "##vso[task.logissue type=error]Failed to process test-results.json"
+                Write-Host "##vso[task.logissue type=error]Failed to process test-results.json: $_"
             }
         
         } else {
             Write-Warning "test-results.json not found at: $jsonPath"
-            Write-Host "##vso[task.logissue type=warning]Test results JSON file not found"
+            Write-Host "##vso[task.logissue type=warning]Test results JSON file not found. Check that Maven tests generated the report."
         
             $reportDir = "$(Build.ArtifactStagingDirectory)/AutomationReport"
             if (Test-Path $reportDir) {
-                Write-Host "Files found in AutomationReport directory:"
+                Write-Host "##[section]Files found in AutomationReport directory:"
                 Get-ChildItem $reportDir -Recurse | ForEach-Object { Write-Host "  - $($_.FullName)" }
             } else {
-                Write-Host "AutomationReport directory does not exist"
+                Write-Host "##[error]AutomationReport directory does not exist"
             }
         }

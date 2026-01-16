@@ -5,24 +5,33 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+  # 1️⃣ Run API automation tests
   - task: Maven@3
-    displayName: 'Run API Tests'
+    displayName: 'Run API Automation Tests'
     inputs:
       mavenPomFile: 'pom.xml'
       goals: 'clean test'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
 
+  # 2️⃣ Debug – know exactly what is generated
+  - script: |
+      echo "===== TARGET FOLDER STRUCTURE ====="
+      ls -R target || true
+    displayName: 'Debug: List target folder'
+
+  # 3️⃣ Copy full custom report (JSON + STATIC HTML)
   - task: CopyFiles@2
-    displayName: 'Stage Automation Report for Artifacts'
+    displayName: 'Stage Custom Report'
     inputs:
       SourceFolder: '$(Build.SourcesDirectory)/target/report'
       Contents: '**'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)/API_Automation_Report'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)/Custom_API_Report'
 
+  # 4️⃣ Publish report as artifact
   - task: PublishBuildArtifacts@1
-    displayName: 'Publish Final Report'
+    displayName: 'Publish Custom API Report'
     inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)/API_Automation_Report'
-      ArtifactName: 'AutomationIntelligenceReport'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/Custom_API_Report'
+      ArtifactName: 'CustomApiAutomationReport'
       publishLocation: 'Container'

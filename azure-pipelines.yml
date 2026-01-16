@@ -29,7 +29,7 @@ steps:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)/AutomationReport'
       ArtifactName: 'CustomApiDashboard'
 
-  # 4️⃣ INJECT ENHANCED TEST SUMMARY INTO EMAIL
+  # 4️⃣ INJECT TEST SUMMARY INTO BUILD AND FORCE EMAIL CONTENT
   - task: PowerShell@2
     displayName: 'Inject Test Summary into Email'
     condition: always()
@@ -50,7 +50,7 @@ steps:
                 $passRateString = $data.summary.passRate
                 $passRate = [int]($passRateString -replace '%', '')
         
-                $statusEmoji = if ($passRate -ge 95) { "Pass" } elseif ($passRate -ge 80) { "Warning" } else { "Fail" }
+                $statusEmoji = if ($passRate -ge 95) { "PASS" } elseif ($passRate -ge 80) { "WARNING" } else { "FAIL" }
                 $buildStatus = if ($passRate -eq 100) { "All Tests Passed" } else { "$($data.summary.failed) Test(s) Failed" }
         
                 $buildNumber = "$(Build.BuildNumber)"
@@ -59,6 +59,7 @@ steps:
                 $teamProject = "$(System.TeamProject)"
                 $buildId = "$(Build.BuildId)"
         
+                # Create markdown for build summary page
                 $markdown = @"
         ## API Test Execution Report - $statusEmoji
         
@@ -81,9 +82,38 @@ steps:
         
         "@
         
+                # Save markdown summary
                 $markdown | Out-File -FilePath $summaryFilePath -Encoding UTF8
         
+                # Attach to build summary
                 Write-Host "##vso[task.addattachment type=Distributedtask.Core.Summary;name=API Test Results;]$summaryFilePath"
+        
+                # CRITICAL: Update build number with status (appears in email subject)
+                Write-Host "##vso[build.updatebuildnumber]$buildNumber - $statusEmoji"
+        
+                # Set variable for use in other tasks
+                $emailMessage = "Build $buildStatus | Pass Rate: $($data.summary.passRate) | Passed: $($data.summary.passed)/$($data.summary.total) | Failed: $($data.summary.failed)"
+                Write-Host "##vso[task.setvariable variable=TestSummaryMessage]$emailMessage"
+        
+                # Log formatted summary to console (appears in email body)
+                Write-Host ""
+                Write-Host "=========================================="
+                Write-Host "       API TEST EXECUTION SUMMARY"
+                Write-Host "=========================================="
+                Write-Host ""
+                Write-Host "  Build Status    : $buildStatus"
+                Write-Host "  Pass Rate       : $($data.summary.passRate)"
+                Write-Host "  Total Tests     : $($data.summary.total)"
+                Write-Host "  Passed          : $($data.summary.passed)"
+                Write-Host "  Failed          : $($data.summary.failed)"
+                Write-Host "  Build ID        : $buildNumber"
+                Write-Host "  Triggered By    : $triggeredBy"
+                Write-Host ""
+                Write-Host "=========================================="
+                Write-Host "  VIEW FULL DASHBOARD:"
+                Write-Host "  $collectionUri$teamProject/_build/results?buildId=$buildId&view=artifacts&artifactName=CustomApiDashboard"
+                Write-Host "=========================================="
+                Write-Host ""
         
                 Write-Host "Test summary successfully injected into build report"
         

@@ -1,9 +1,34 @@
 {
-  "userFirstName": "Demo",
-  "userLastName": "D",
-  "userEmailId": "DYNAMIC",
-  "userPassword": "demo@172",
-  "userPhoneNumber": "9876543213",
-  "userPhoneCountryCode": "91",
-  "organizationId": 1
+  "positiveTestCases": [
+    {
+      "name": "Valid user registration",
+      "expectedStatusCode": 201,
+      "expectedStatus": "success",
+      "request": {
+        "userFirstName": "Demo",
+        "userLastName": "D",
+        "userEmailId": "DYNAMIC",
+        "userPassword": "demo@172",
+        "userPhoneNumber": "9876543213",
+        "userPhoneCountryCode": "91",
+        "organizationId": 1
+      }
+    }
+  ],
+  "negativeTestCases": [
+    {
+      "name": "Missing email",
+      "expectedStatusCode": 400,
+      "expectedStatus": "error",
+      "request": {
+        "userFirstName": "Demo",
+        "userLastName": "D",
+        "userEmailId": "",
+        "userPassword": "demo@172",
+        "userPhoneNumber": "9876543213",
+        "userPhoneCountryCode": "91",
+        "organizationId": 1
+      }
+    }
+  ]
 }

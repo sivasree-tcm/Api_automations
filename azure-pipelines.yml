@@ -6,13 +6,13 @@ steps:
       options: '-Dmaven.test.failure.ignore=true'
     displayName: 'Run API Tests'
 
-  # 🔥 COPY REPORT UI FILES
+  # Copy HTML UI next to JSON
   - script: |
       mkdir -p target/report
-      cp -r report-ui/* target/report/
+      cp report-ui/index.html target/report/
     displayName: 'Copy HTML report UI'
 
-  # 📦 PUBLISH FINAL REPORT
+  # Publish combined report
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: 'target/report'

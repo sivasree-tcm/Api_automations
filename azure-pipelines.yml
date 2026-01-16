@@ -12,14 +12,12 @@ steps:
       goals: 'clean test'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
-  # Fix: SourceFolder must match your 'target/report' folder seen in IntelliJ
+
   - task: CopyFiles@2
     displayName: 'Stage Automation Report for Artifacts'
     inputs:
       SourceFolder: '$(Build.SourcesDirectory)/target/report'
-      Contents: |
-        index.html
-        test-results.json
+      Contents: '**'
       TargetFolder: '$(Build.ArtifactStagingDirectory)/API_Automation_Report'
 
   - task: PublishBuildArtifacts@1

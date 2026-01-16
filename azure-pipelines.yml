@@ -20,18 +20,13 @@ steps:
       ls -R target || true
     displayName: 'Debug: List target folder'
 
-  # 3️⃣ Copy full custom report (JSON + STATIC HTML)
   - task: CopyFiles@2
-    displayName: 'Stage Custom Report'
     inputs:
       SourceFolder: '$(Build.SourcesDirectory)/target/report'
       Contents: '**'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)/Custom_API_Report'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)/Custom_Report'
 
-  # 4️⃣ Publish report as artifact
   - task: PublishBuildArtifacts@1
-    displayName: 'Publish Custom API Report'
     inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)/Custom_API_Report'
-      ArtifactName: 'CustomApiAutomationReport'
-      publishLocation: 'Container'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/Custom_Report'
+      ArtifactName: 'CustomApiDashboard'

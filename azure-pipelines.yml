@@ -29,36 +29,78 @@ steps:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)/AutomationReport'
       ArtifactName: 'CustomApiDashboard'
 
-  # 4️⃣ INJECT EXTRA DETAILS INTO THE DEFAULT EMAIL
+  # 4️⃣ INJECT ENHANCED TEST SUMMARY INTO EMAIL
   - task: PowerShell@2
-    displayName: 'Inject Extra Details into Email'
+    displayName: 'Inject Test Summary into Email'
     condition: always()
     inputs:
       targetType: 'inline'
       script: |
         $jsonPath = "$(Build.ArtifactStagingDirectory)/AutomationReport/test-results.json"
-        $summaryFilePath = "$(Agent.TempDirectory)/summary.md"
+        $summaryFilePath = "$(Agent.TempDirectory)/test-summary.md"
+        
+        Write-Host "Checking for test results at: $jsonPath"
         
         if (Test-Path $jsonPath) {
-            $data = Get-Content $jsonPath | ConvertFrom-Json
+            Write-Host "Test results file found. Processing..."
         
-            # Create Markdown for the Email Summary
-            $markdown = "## 📊 API Test Intelligence Summary `n"
-            $markdown += "| Metric | Value | `n"
-            $markdown += "|---|---| `n"
-            $markdown += "| **Stability** | $($data.summary.passRate) | `n"
-            $markdown += "| **Total Tests** | $($data.summary.total) | `n"
-            $markdown += "| **Passed** | ✅ $($data.summary.passed) | `n"
-            $markdown += "| **Failed** | ❌ $($data.summary.failed) | `n"
-            $markdown += " `n --- `n"
-            $markdown += "### [📂 View Full Interactive Dashboard]($(System.TeamFoundationCollectionUri)$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)&view=artifacts)"
-
-            # Force UTF8 encoding so Azure reads it correctly
-            $markdown | Out-File -FilePath $summaryFilePath -Encoding UTF8
-
-            # This command tells Azure: "Add this text to the default email notification"
-            Write-Host "##vso[task.addattachment type=Distributedtask.Core.Summary;name=API Test Results;]$summaryFilePath"
-            Write-Host "Extra details successfully sent to Azure Summary."
+            try {
+                $data = Get-Content $jsonPath -Raw | ConvertFrom-Json
+        
+                $passRateString = $data.summary.passRate
+                $passRate = [int]($passRateString -replace '%', '')
+        
+                $statusEmoji = if ($passRate -ge 95) { "Pass" } elseif ($passRate -ge 80) { "Warning" } else { "Fail" }
+                $buildStatus = if ($passRate -eq 100) { "All Tests Passed" } else { "$($data.summary.failed) Test(s) Failed" }
+        
+                $buildNumber = "$(Build.BuildNumber)"
+                $triggeredBy = "$(Build.RequestedFor)"
+                $collectionUri = "$(System.TeamFoundationCollectionUri)"
+                $teamProject = "$(System.TeamProject)"
+                $buildId = "$(Build.BuildId)"
+        
+                $markdown = @"
+        ## API Test Execution Report - $statusEmoji
+        
+        | Metric | Value |
+        |--------|-------|
+        | Build Status | $buildStatus |
+        | Pass Rate | $($data.summary.passRate) |
+        | Total Tests | $($data.summary.total) |
+        | Passed | $($data.summary.passed) |
+        | Failed | $($data.summary.failed) |
+        | Build ID | $buildNumber |
+        | Triggered By | $triggeredBy |
+        
+        ---
+        
+        ### Quick Actions
+        - [View Full Dashboard]($collectionUri$teamProject/_build/results?buildId=$buildId&view=artifacts&artifactName=CustomApiDashboard)
+        - [Download Artifacts]($collectionUri$teamProject/_build/results?buildId=$buildId&view=artifacts)
+        - [View Build Logs]($collectionUri$teamProject/_build/results?buildId=$buildId&view=logs)
+        
+        "@
+        
+                $markdown | Out-File -FilePath $summaryFilePath -Encoding UTF8
+        
+                Write-Host "##vso[task.addattachment type=Distributedtask.Core.Summary;name=API Test Results;]$summaryFilePath"
+        
+                Write-Host "Test summary successfully injected into build report"
+        
+            } catch {
+                Write-Error "Failed to process test results: $_"
+                Write-Host "##vso[task.logissue type=error]Failed to process test-results.json"
+            }
+        
         } else {
-            Write-Warning "JSON path not found. Check if Step 2 folder name matches Step 4."
+            Write-Warning "test-results.json not found at: $jsonPath"
+            Write-Host "##vso[task.logissue type=warning]Test results JSON file not found"
+        
+            $reportDir = "$(Build.ArtifactStagingDirectory)/AutomationReport"
+            if (Test-Path $reportDir) {
+                Write-Host "Files found in AutomationReport directory:"
+                Get-ChildItem $reportDir -Recurse | ForEach-Object { Write-Host "  - $($_.FullName)" }
+            } else {
+                Write-Host "AutomationReport directory does not exist"
+            }
         }

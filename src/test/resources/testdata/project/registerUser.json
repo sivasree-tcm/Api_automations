@@ -22,7 +22,7 @@
       "expectedStatus": "error",
       "request": {
         "userFirstName": "Demo",
-        "userLastName": "D",
+        "userLastName": "d",
         "userEmailId": "",
         "userPassword": "demo@172",
         "userPhoneNumber": "9876543213",

@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static org.apache.commons.lang3.time.DurationFormatUtils.formatDuration;
+
 public class CustomReportManager {
 
     private static final String REPORT_JSON =
@@ -37,7 +39,7 @@ public class CustomReportManager {
         test.put("id", ID.getAndIncrement());
         test.put("name", testName);
         test.put("status", status);
-        test.put("duration", formatDuration(durationMillis));
+//        test.put("duration", formatDuration(durationMillis));
         test.put("steps", steps);
 
         tests.add(test);
@@ -101,13 +103,16 @@ public class CustomReportManager {
         List<Map<String, Object>> tests =
                 (List<Map<String, Object>>) report.get("tests");
 
-        StringBuilder rows = new StringBuilder();
+        long total = (long) summary.get("total");
+        long passed = (long) summary.get("passed");
+        long failed = (long) summary.get("failed");
 
+        int passPercent = total == 0 ? 0 : (int) (passed * 100 / total);
+
+        StringBuilder rows = new StringBuilder();
         for (Map<String, Object> test : tests) {
             String status = test.get("status").toString();
-
             rows.append("<tr>")
-                    .append("<td>").append(test.get("id")).append("</td>")
                     .append("<td>").append(test.get("name")).append("</td>")
                     .append("<td class='").append(status.toLowerCase()).append("'>")
                     .append(status)
@@ -117,70 +122,50 @@ public class CustomReportManager {
         }
 
         String html =
-                "<!DOCTYPE html>" +
-                        "<html><head>" +
-                        "<meta charset='UTF-8'>" +
-                        "<title>Custom API Automation Report</title>" +
-                        "<style>" +
-                        "body{font-family:Arial;background:#f4f6f8;padding:20px}" +
-                        ".card{background:#fff;padding:20px;border-radius:8px}" +
-                        "table{width:100%;border-collapse:collapse;margin-top:15px}" +
-                        "th,td{border:1px solid #ddd;padding:8px;text-align:left}" +
-                        "th{background:#f0f0f0}" +
-                        ".pass{color:green;font-weight:bold}" +
-                        ".fail{color:red;font-weight:bold}" +
-                        "</style>" +
-                        "</head><body>" +
+                "<!DOCTYPE html><html><head><meta charset='UTF-8'>" +
+                        "<title>API Intelligence</title>" +
 
-                        "<div class='card'>" +
-                        "<h2>API Automation Execution Report</h2>" +
-                        "<p><b>Total:</b> " + summary.get("total") + "</p>" +
-                        "<p class='pass'><b>Passed:</b> " + summary.get("passed") + "</p>" +
-                        "<p class='fail'><b>Failed:</b> " + summary.get("failed") + "</p>" +
-                        "<p><b>Pass Rate:</b> " + summary.get("passRate") + "</p>" +
+                        // ---------- DARK THEME CSS ----------
+                        "<style>" +
+                        "body{margin:0;font-family:Segoe UI;background:#0b0f1a;color:#fff}" +
+                        ".container{padding:30px}" +
+                        ".header{font-size:22px;color:#00e5ff;margin-bottom:20px}" +
+                        ".cards{display:flex;gap:20px;margin-bottom:30px}" +
+                        ".card{flex:1;background:#12182b;padding:20px;border-radius:12px}" +
+                        ".card h2{margin:0;font-size:28px}" +
+                        ".pass{color:#00ff9c;font-weight:bold}" +
+                        ".fail{color:#ff3366;font-weight:bold}" +
+                        ".chart{width:180px;height:180px;border-radius:50%;" +
+                        "background:conic-gradient(#00ff9c " + passPercent +
+                        "%, #ff3366 0)}" +
+                        "table{width:100%;border-collapse:collapse;background:#12182b}" +
+                        "th,td{padding:12px;border-bottom:1px solid #1e253f}" +
+                        "th{text-align:left;color:#9aa4ff}" +
+                        "</style></head>" +
+
+                        "<body><div class='container'>" +
+
+                        "<div class='header'>API INTELLIGENCE</div>" +
+
+                        "<div class='cards'>" +
+                        "<div class='card'><p>Total</p><h2>" + total + "</h2></div>" +
+                        "<div class='card'><p>Passed</p><h2 class='pass'>" + passed + "</h2></div>" +
+                        "<div class='card'><p>Failed</p><h2 class='fail'>" + failed + "</h2></div>" +
+                        "<div class='card'><p>Stability</p><h2>" + passPercent + "%</h2></div>" +
+                        "</div>" +
+
+                        "<div style='display:flex;gap:40px'>" +
+                        "<div class='chart'></div>" +
 
                         "<table>" +
-                        "<tr><th>ID</th><th>Test Name</th><th>Status</th><th>Duration</th></tr>" +
+                        "<tr><th>Test Name</th><th>Status</th><th>Duration</th></tr>" +
                         rows +
                         "</table>" +
-
                         "</div>" +
-                        "</body></html>";
 
-        Files.writeString(Path.of(REPORT_HTML), html);
+                        "</div></body></html>";
+
+        Files.writeString(Path.of("target/report/index.html"), html);
     }
 
-    /* ---------------- UTIL METHODS ---------------- */
-
-    public static Map<String, String> step(
-            String type,
-            String label,
-            String value
-    ) {
-        Map<String, String> s = new LinkedHashMap<>();
-        s.put("type", type);
-        s.put("label", label);
-        s.put("value", value);
-        return s;
-    }
-
-    private static String formatDuration(long millis) {
-        long sec = millis / 1000;
-        long ms = millis % 1000;
-        return sec + "." + ms + "s";
-    }
-
-    public static synchronized void addTest(ReportTest reportTest) {
-
-        if (reportTest == null) return;
-
-        Map<String, Object> test = new LinkedHashMap<>();
-        test.put("id", ID.getAndIncrement());
-        test.put("name", reportTest.getName());
-        test.put("status", reportTest.getStatus());
-        test.put("duration", reportTest.getDuration());
-        test.put("steps", reportTest.getSteps());
-
-        tests.add(test);
-    }
 }

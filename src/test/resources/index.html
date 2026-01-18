@@ -6,6 +6,7 @@
 
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
+
         :root{
          --bg:#08080c;--card:#12121e;--panel:#1a1a2b;
          --pass:#00ff95;--fail:#ff0055;
@@ -54,8 +55,11 @@
         .b-fail{background:#ff005520;color:var(--fail)}
 
         .scenario-row{cursor:pointer}
+
+        /* 🔥 CRITICAL FIX */
         .details{display:none;background:#050508}
-        .details.active{display:table-row}
+        tr.details.active{display:table-row}
+        div.details.active{display:block}
 
         /* TEST CASE */
         .testcase-card{
@@ -93,7 +97,6 @@
 
 <div class="container">
 
-    <!-- SUMMARY -->
     <div class="cards">
         <div class="card">TOTAL<h2 id="tot">0</h2></div>
         <div class="card">PASSED<h2 class="pass" id="pas">0</h2></div>
@@ -102,7 +105,6 @@
         <div class="card"><div class="donut"></div></div>
     </div>
 
-    <!-- TOOLBAR -->
     <div class="toolbar">
         <input id="search" placeholder="Search scenario or test case">
         <select id="status">
@@ -117,7 +119,6 @@
         </select>
     </div>
 
-    <!-- TABLE -->
     <div class="table">
         <table>
             <thead>
@@ -131,25 +132,13 @@
 </div>
 
 <script>
-    /* DATA */
     const DATA = __REPORT_DATA__;
 
-    /* ELEMENTS */
-    const tot=document.getElementById("tot");
-    const pas=document.getElementById("pas");
-    const fai=document.getElementById("fai");
-    const rate=document.getElementById("rate");
-    const search=document.getElementById("search");
-    const status=document.getElementById("status");
-    const sort=document.getElementById("sort");
-    const rows=document.getElementById("rows");
-    const pagination=document.getElementById("pagination");
-
     /* SUMMARY */
-    tot.innerText=DATA.summary.total;
-    pas.innerText=DATA.summary.passed;
-    fai.innerText=DATA.summary.failed;
-    rate.innerText=DATA.summary.passRate;
+    tot.innerText = DATA.summary.total;
+    pas.innerText = DATA.summary.passed;
+    fai.innerText = DATA.summary.failed;
+    rate.innerText = DATA.summary.passRate;
 
     /* HELPERS */
     function scenarioStatus(s){
@@ -159,7 +148,7 @@
      return s.testCases.reduce((a,b)=>a+parseInt(b.duration),0)+" ms";
     }
 
-    /* FILTER + SORT + PAGINATION */
+    /* FILTER / SORT / PAGINATION */
     let filtered=[...DATA.scenarios];
     let page=1;
     const size=5;
@@ -167,7 +156,6 @@
     function applyFilters(){
      const q=search.value.toLowerCase();
      const st=status.value;
-
      filtered=DATA.scenarios.filter(s=>{
       const scenarioMatch=s.name.toLowerCase().includes(q);
       const testMatch=s.testCases.some(tc=>tc.name.toLowerCase().includes(q));
@@ -179,10 +167,9 @@
     }
 
     function applySort(){
-     const s=sort.value;
-     if(s==="FAIL_FIRST"){
+     if(sort.value==="FAIL_FIRST"){
       filtered.sort((a,b)=>scenarioStatus(a)==="FAIL"?-1:1);
-     }else if(s==="NAME"){
+     }else if(sort.value==="NAME"){
       filtered.sort((a,b)=>a.name.localeCompare(b.name));
      }
      render();
@@ -192,30 +179,28 @@
     function render(){
      rows.innerHTML="";
      const start=(page-1)*size;
-     const data=filtered.slice(start,start+size);
-
-     data.forEach((s,i)=>{
+     filtered.slice(start,start+size).forEach((s,i)=>{
       const idx=start+i;
       const st=scenarioStatus(s);
 
       rows.innerHTML+=`
-      <tr class="scenario-row" onclick="toggle('sc${idx}')">
+      <tr class="scenario-row" onclick="toggleScenario('sc_${idx}')">
        <td><b>${s.name}</b></td>
        <td><span class="badge ${st==='PASS'?'b-pass':'b-fail'}">${st}</span></td>
        <td>${scenarioDuration(s)}</td>
       </tr>
 
-      <tr id="sc${idx}" class="details">
+      <tr id="sc_${idx}" class="details">
        <td colspan="3">
         ${s.testCases.map((tc,j)=>`
-         <div class="testcase-card" onclick="toggle(event,'tc${idx}_${j}')">
+         <div class="testcase-card" onclick="toggleCase(event,'tc_${idx}_${j}')">
           <span class="tc-name">${tc.name}</span>
           <div class="tc-right">
            <span class="badge ${tc.status==='PASS'?'b-pass':'b-fail'}">${tc.status}</span>
-           <span class="tc-time">${tc.duration}</span>
+           <span class="tc-time">${tc.duration} ms</span>
           </div>
          </div>
-         <div id="tc${idx}_${j}" class="details">
+         <div id="tc_${idx}_${j}" class="details">
           ${tc.steps.map(st=>`
            <b>[${st.type}] ${st.label}</b>
            <pre>${st.value}</pre>
@@ -228,8 +213,11 @@
      renderPagination();
     }
 
-    function toggle(e,id){
-     if(e) e.stopPropagation();
+    function toggleScenario(id){
+     document.getElementById(id).classList.toggle("active");
+    }
+    function toggleCase(e,id){
+     e.stopPropagation();
      document.getElementById(id).classList.toggle("active");
     }
 
@@ -237,10 +225,9 @@
     function renderPagination(){
      const total=Math.ceil(filtered.length/size)||1;
      pagination.innerHTML=`
-      <button onclick="page--;render()" ${page===1?'disabled':''}>Prev</button>
-      <span>${page}/${total}</span>
-      <button onclick="page++;render()" ${page===total?'disabled':''}>Next</button>
-     `;
+     <button onclick="page--;render()" ${page===1?'disabled':''}>Prev</button>
+     <span>${page}/${total}</span>
+     <button onclick="page++;render()" ${page===total?'disabled':''}>Next</button>`;
     }
 
     /* EVENTS */

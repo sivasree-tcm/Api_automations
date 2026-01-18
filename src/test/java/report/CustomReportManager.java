@@ -2,6 +2,7 @@ package report;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import tests.user.ReportScenario;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -10,72 +11,73 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class CustomReportManager {
+    static {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try {
+                System.out.println("🧾 JVM shutdown → Writing custom report");
+                writeReport();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }));
+    }
 
-    private static final AtomicInteger ID = new AtomicInteger(1);
-    private static final List<Map<String, Object>> tests =
-            Collections.synchronizedList(new ArrayList<>());
+
+
 
     /* -------- ADD TEST RESULT -------- */
+    private static final Map<String, ReportScenario> SCENARIOS =
+            new LinkedHashMap<>();
 
-    public static void addTestResult(
-            String name,
-            String status,
-            long duration,
-            List<Map<String, String>> steps
+
+    public static synchronized void addTest(
+            String scenarioName,
+            ReportTest test
     ) {
-        if (duration < 0) duration = 0;
+        String scenario =
+                (scenarioName == null || scenarioName.isEmpty())
+                        ? "Unnamed Scenario"
+                        : scenarioName;
 
-        Map<String, Object> test = new LinkedHashMap<>();
-        test.put("id", ID.getAndIncrement());
-        test.put("name", name);
-        test.put("status", status);
-        test.put("duration", duration + " ms");
-        test.put("steps", steps);
-
-        tests.add(test);
+        SCENARIOS
+                .computeIfAbsent(scenario, ReportScenario::new)
+                .addTestCase(test);
     }
-    public static synchronized void addTest(ReportTest reportTest) {
 
-        if (reportTest == null) return;
 
-        Map<String, Object> test = new LinkedHashMap<>();
-//        test.put("id", reportTest.getId());
-        test.put("name", reportTest.getName());
-        test.put("status", reportTest.getStatus());
-        test.put("duration", reportTest.getDuration());
-        test.put("steps", reportTest.getSteps());
-
-        tests.add(test);
-    }
 
     /* -------- WRITE REPORT -------- */
 
     public static void writeReport() {
         try {
-            long passed = tests.stream()
-                    .filter(t -> "PASS".equals(t.get("status")))
+            long total = SCENARIOS.size();
+
+            long passed = SCENARIOS.values().stream()
+                    .filter(s -> "PASS".equals(s.getStatus()))
                     .count();
 
-            long failed = tests.size() - passed;
+            long failed = total - passed;
 
             Map<String, Object> summary = new LinkedHashMap<>();
-            summary.put("total", tests.size());
+            summary.put("total", total);
             summary.put("passed", passed);
             summary.put("failed", failed);
-            summary.put("passRate",
-                    tests.isEmpty() ? "0%" : (passed * 100 / tests.size()) + "%");
+            summary.put(
+                    "passRate",
+                    total == 0 ? "0%" : (passed * 100 / total) + "%"
+            );
 
             Map<String, Object> report = new LinkedHashMap<>();
             report.put("summary", summary);
-            report.put("tests", tests);
+            report.put("scenarios", SCENARIOS.values());
 
             new File("target/report").mkdirs();
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String json = gson.toJson(report);
 
-            int passPercent = tests.isEmpty() ? 0 :
-                    (int)(passed * 100 / tests.size());
+            int passPercent =
+                    total == 0 ? 0 : (int) (passed * 100 / total);
 
             String html = Files.readString(
                     Path.of("src/test/resources/index.html")
@@ -94,7 +96,7 @@ public class CustomReportManager {
                     json
             );
 
-            System.out.println("✅ Custom STATIC report generated");
+            System.out.println("✅ Custom Scenario Report Generated");
 
         } catch (Exception e) {
             e.printStackTrace();

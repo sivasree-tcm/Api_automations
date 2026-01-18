@@ -2,41 +2,29 @@ package tests.project;
 
 import api.project.ProjectApi;
 import base.BaseTest;
-import io.restassured.response.Response;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.ExtentTestListener;
-import utils.TokenUtil;
-
-import java.util.List;
+import tests.user.ApiTestExecutor;
+import utils.JsonUtils;
 
 public class GetMyProjectsTest extends BaseTest {
 
     @Test
-    public void getAndVerifyMyProjectsTest() {
+    public void getMyProjectsTest() {
 
-        ExtentTestListener.getTest()
-                .info("Starting Get My Projects test");
+        GetMyProjectsTestData testData =
+                JsonUtils.readJson(
+                        "testdata/project/getMyProjects.json",
+                        GetMyProjectsTestData.class
+                );
 
-        int userId = TokenUtil.getUserId();
+        for (GetMyProjectsTestData.TestCase tc
+                : testData.getTestCases()) {
 
-        Response response = ProjectApi.getMyProjects();
-
-        Assert.assertEquals(response.getStatusCode(), 200);
-
-        List<Integer> projectIds =
-                response.jsonPath().getList("projects.projectId");
-
-        Assert.assertNotNull(projectIds,
-                "Project list should not be null");
-
-        Assert.assertTrue(
-                projectIds.size() > 0,
-                "User should have at least one project"
-        );
-
-        ExtentTestListener.getTest()
-                .pass("User " + userId +
-                        " has " + projectIds.size() + " projects");
+            ApiTestExecutor.execute(
+                    testData.getScenario(),
+                    tc,
+                    ProjectApi::getMyProjects
+            );
+        }
     }
 }

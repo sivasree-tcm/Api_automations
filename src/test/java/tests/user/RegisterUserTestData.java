@@ -1,13 +1,20 @@
 package tests.user;
 
 import models.user.RegisterUserRequest;
-
 import java.util.List;
 
 public class RegisterUserTestData {
 
+    // ✅ NEW (SCENARIO NAME)
+    private String scenario;
+
     private List<TestCase> positiveTestCases;
     private List<TestCase> negativeTestCases;
+
+    // ✅ GETTERS
+    public String getScenario() {
+        return scenario;
+    }
 
     public List<TestCase> getPositiveTestCases() {
         return positiveTestCases;
@@ -17,6 +24,7 @@ public class RegisterUserTestData {
         return negativeTestCases;
     }
 
+    // ================= INNER CLASS =================
     public static class TestCase {
 
         private String name;

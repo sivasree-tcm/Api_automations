@@ -1,4 +1,6 @@
 {
+  "scenario": "Register User",
+
   "positiveTestCases": [
     {
       "name": "Valid user registration",
@@ -13,8 +15,23 @@
         "userPhoneCountryCode": "91",
         "organizationId": 1
       }
+    },
+    {
+      "name": "Valid user registration with different phone",
+      "expectedStatusCode": 201,
+      "expectedStatus": "success",
+      "request": {
+        "userFirstName": "Test",
+        "userLastName": "User",
+        "userEmailId": "DYNAMIC",
+        "userPassword": "test@123",
+        "userPhoneNumber": "9999999999",
+        "userPhoneCountryCode": "91",
+        "organizationId": 1
+      }
     }
   ],
+
   "negativeTestCases": [
     {
       "name": "Missing email",
@@ -22,9 +39,23 @@
       "expectedStatus": "error",
       "request": {
         "userFirstName": "Demo",
-        "userLastName": "d",
+        "userLastName": "D",
         "userEmailId": "",
         "userPassword": "demo@172",
+        "userPhoneNumber": "9876543213",
+        "userPhoneCountryCode": "91",
+        "organizationId": 1
+      }
+    },
+    {
+      "name": "Missing password",
+      "expectedStatusCode": 200,
+      "expectedStatus": "error",
+      "request": {
+        "userFirstName": "Demo",
+        "userLastName": "D",
+        "userEmailId": "demo@mail.com",
+        "userPassword": "",
         "userPhoneNumber": "9876543213",
         "userPhoneCountryCode": "91",
         "organizationId": 1

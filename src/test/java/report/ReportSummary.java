@@ -13,11 +13,11 @@ public class ReportSummary {
         ReportSummary s = new ReportSummary();
         s.total = tests.size();
         s.passed = (int) tests.stream()
-                .filter(t -> "PASS".equals(t.getStatus())).count();
+                .filter(t -> "PASS".equals(t.getStatus()))
+                .count();
         s.failed = s.total - s.passed;
-        s.passRate = s.total == 0
-                ? "0%"
-                : (s.passed * 100 / s.total) + "%";
+        s.passRate = s.total == 0 ? "0%" :
+                (s.passed * 100 / s.total) + "%";
         return s;
     }
 }

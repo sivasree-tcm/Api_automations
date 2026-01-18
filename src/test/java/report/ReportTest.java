@@ -7,13 +7,12 @@ import java.util.Map;
 public class ReportTest {
 
     private final String name;
-    private String status = "FAIL";
-    private long startTime;
-    private long endTime;
-
+    private String status = "PASS";
+    private long duration;
     private final List<Map<String, String>> steps = new ArrayList<>();
 
-    // ✅ REQUIRED CONSTRUCTOR
+    private long startTime;
+
     public ReportTest(String name) {
         this.name = name;
         this.startTime = System.currentTimeMillis();
@@ -27,19 +26,22 @@ public class ReportTest {
         ));
     }
 
-    public void markPassed(String message) {
+    public void markPassed(String msg) {
         this.status = "PASS";
-        addStep(new ReportStep("Pass", "Result", message));
-        this.endTime = System.currentTimeMillis();
+        finish();
     }
 
-    public void markFailed(String message) {
+    public void markFailed(String msg) {
         this.status = "FAIL";
-        addStep(new ReportStep("Fail", "Result", message));
-        this.endTime = System.currentTimeMillis();
+        addStep(new ReportStep("Fail", "Failure Reason", msg));
+        finish();
     }
 
-    // ---- getters ----
+    private void finish() {
+        this.duration = System.currentTimeMillis() - startTime;
+    }
+
+    // ===== GETTERS (USED BY JSON) =====
     public String getName() {
         return name;
     }
@@ -49,7 +51,7 @@ public class ReportTest {
     }
 
     public String getDuration() {
-        return (endTime - startTime) + " ms";
+        return duration + " ms";
     }
 
     public List<Map<String, String>> getSteps() {

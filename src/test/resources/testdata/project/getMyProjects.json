@@ -1,0 +1,16 @@
+{
+  "scenario": "Get My Projects",
+  "testCases": [
+    {
+      "name": "User has projects",
+      "expectedStatusCode": 200,
+      "minSize": 1,
+      "listPath": "projects"
+    },
+    {
+      "name": "Project contains projectId",
+      "expectedStatusCode": 200,
+      "requiredField": "projects[0].projectId"
+    }
+  ]
+}

@@ -30,7 +30,31 @@ public class ApiTestExecutor {
         long start = System.currentTimeMillis();
 
         try {
-            // 🔹 Request
+            // ✅ SAFE fallback (prevents null null)
+            String method =
+                    tc.getMethod() != null ? tc.getMethod() : "POST";
+
+            String endpoint =
+                    tc.getEndpoint() != null ? tc.getEndpoint() : "/api/user/register";
+
+            // 🔹 Endpoint
+            test.addStep(new ReportStep(
+                    "Info",
+                    "Endpoint",
+                    method + " " + endpoint
+            ));
+
+            // 🔹 Expected Status
+            test.addStep(new ReportStep(
+                    "Info",
+                    "Expected Status",
+                    "HTTP " + tc.getExpectedStatusCode() +
+                            (tc.getExpectedStatus() != null
+                                    ? ", status = " + tc.getExpectedStatus()
+                                    : "")
+            ));
+
+            // 🔹 Request Payload
             test.addStep(new ReportStep(
                     "Info",
                     "Request Payload",
@@ -40,21 +64,28 @@ public class ApiTestExecutor {
             // 🔹 API call
             Response response = apiCall.get();
 
-            // 🔹 Response
+            // 🔹 Actual Status Code
+            test.addStep(new ReportStep(
+                    "Info",
+                    "Actual Status Code",
+                    String.valueOf(response.getStatusCode())
+            ));
+
+            // 🔹 Actual Response
             test.addStep(new ReportStep(
                     "Info",
                     "Actual Response",
                     response.asPrettyString()
             ));
 
-            // 🔹 Status code
+            // 🔹 Status code assertion
             Assert.assertEquals(
                     response.getStatusCode(),
                     tc.getExpectedStatusCode(),
                     "Status code mismatch"
             );
 
-            // 🔹 Status field (optional)
+            // 🔹 Status field assertion (optional)
             if (tc.getExpectedStatus() != null) {
                 Assert.assertEquals(
                         response.jsonPath().getString("status"),
@@ -79,9 +110,7 @@ public class ApiTestExecutor {
 
             test.markFailed("Test failed");
 
-            // ❌ DO NOT THROW
-        }
-        finally {
+        } finally {
             CustomReportManager.addTest(scenarioName, test);
         }
     }
@@ -105,7 +134,7 @@ public class ApiTestExecutor {
             // 🔹 API call
             Response response = apiCall.get();
 
-            // 🔹 Response
+            // 🔹 Actual Response
             test.addStep(new ReportStep(
                     "Info",
                     "Actual Response",

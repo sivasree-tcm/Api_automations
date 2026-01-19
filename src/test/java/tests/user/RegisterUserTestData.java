@@ -5,13 +5,10 @@ import java.util.List;
 
 public class RegisterUserTestData {
 
-    // ✅ NEW (SCENARIO NAME)
     private String scenario;
-
     private List<TestCase> positiveTestCases;
     private List<TestCase> negativeTestCases;
 
-    // ✅ GETTERS
     public String getScenario() {
         return scenario;
     }
@@ -28,12 +25,25 @@ public class RegisterUserTestData {
     public static class TestCase {
 
         private String name;
+
+        // ✅ NEW
+        private String method;
+        private String endpoint;
+
         private int expectedStatusCode;
         private String expectedStatus;
         private RegisterUserRequest request;
 
         public String getName() {
             return name;
+        }
+
+        public String getMethod() {
+            return method;
+        }
+
+        public String getEndpoint() {
+            return endpoint;
         }
 
         public int getExpectedStatusCode() {

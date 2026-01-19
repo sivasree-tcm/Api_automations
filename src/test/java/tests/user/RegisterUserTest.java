@@ -39,7 +39,7 @@ public class RegisterUserTest extends BaseTest {
             }
 
             ApiTestExecutor.execute(
-                    testData.getScenario(),   // ✅ FIX
+                    testData.getScenario(),
                     tc,
                     () -> RegisterUserApi.registerUser(tc.getRequest())
             );

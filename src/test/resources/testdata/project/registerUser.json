@@ -4,6 +4,8 @@
   "positiveTestCases": [
     {
       "name": "Valid user registration",
+      "method": "POST",
+      "endpoint": "/api/user/register",
       "expectedStatusCode": 201,
       "expectedStatus": "success",
       "request": {
@@ -17,7 +19,9 @@
       }
     },
     {
-      "name": "Valid user registration with different phone",
+      "name": "Valid registration with different phone number",
+      "method": "POST",
+      "endpoint": "/api/user/register",
       "expectedStatusCode": 201,
       "expectedStatus": "success",
       "request": {
@@ -29,12 +33,30 @@
         "userPhoneCountryCode": "91",
         "organizationId": 1
       }
+    },
+    {
+      "name": "Valid registration with long but valid names",
+      "method": "POST",
+      "endpoint": "/api/user/register",
+      "expectedStatusCode": 201,
+      "expectedStatus": "success",
+      "request": {
+        "userFirstName": "ChristopherJonathan",
+        "userLastName": "AndersonWilliams",
+        "userEmailId": "DYNAMIC",
+        "userPassword": "Strong@123",
+        "userPhoneNumber": "9123456789",
+        "userPhoneCountryCode": "91",
+        "organizationId": 1
+      }
     }
   ],
 
   "negativeTestCases": [
     {
       "name": "Missing email",
+      "method": "POST",
+      "endpoint": "/api/user/register",
       "expectedStatusCode": 400,
       "expectedStatus": "error",
       "request": {
@@ -49,7 +71,9 @@
     },
     {
       "name": "Missing password",
-      "expectedStatusCode": 200,
+      "method": "POST",
+      "endpoint": "/api/user/register",
+      "expectedStatusCode": 400,
       "expectedStatus": "error",
       "request": {
         "userFirstName": "Demo",
@@ -59,6 +83,105 @@
         "userPhoneNumber": "9876543213",
         "userPhoneCountryCode": "91",
         "organizationId": 1
+      }
+    },
+    {
+      "name": "Missing first name",
+      "method": "POST",
+      "endpoint": "/api/user/register",
+      "expectedStatusCode": 400,
+      "expectedStatus": "error",
+      "request": {
+        "userFirstName": "",
+        "userLastName": "D",
+        "userEmailId": "demo@mail.com",
+        "userPassword": "demo@172",
+        "userPhoneNumber": "9876543213",
+        "userPhoneCountryCode": "91",
+        "organizationId": 1
+      }
+    },
+    {
+      "name": "Invalid email format",
+      "method": "POST",
+      "endpoint": "/api/user/register",
+      "expectedStatusCode": 400,
+      "expectedStatus": "error",
+      "request": {
+        "userFirstName": "Demo",
+        "userLastName": "D",
+        "userEmailId": "invalid-email",
+        "userPassword": "demo@172",
+        "userPhoneNumber": "9876543213",
+        "userPhoneCountryCode": "91",
+        "organizationId": 1
+      }
+    }
+  ],
+
+  "edgeTestCases": [
+    {
+      "name": "Password below minimum length",
+      "method": "POST",
+      "endpoint": "/api/user/register",
+      "expectedStatusCode": 400,
+      "expectedStatus": "error",
+      "request": {
+        "userFirstName": "Edge",
+        "userLastName": "Case",
+        "userEmailId": "edge@mail.com",
+        "userPassword": "123",
+        "userPhoneNumber": "9876543213",
+        "userPhoneCountryCode": "91",
+        "organizationId": 1
+      }
+    },
+    {
+      "name": "Phone number with less digits",
+      "method": "POST",
+      "endpoint": "/api/user/register",
+      "expectedStatusCode": 400,
+      "expectedStatus": "error",
+      "request": {
+        "userFirstName": "Edge",
+        "userLastName": "Case",
+        "userEmailId": "edge2@mail.com",
+        "userPassword": "Edge@123",
+        "userPhoneNumber": "12345",
+        "userPhoneCountryCode": "91",
+        "organizationId": 1
+      }
+    },
+    {
+      "name": "Phone number with non-numeric characters",
+      "method": "POST",
+      "endpoint": "/api/user/register",
+      "expectedStatusCode": 400,
+      "expectedStatus": "error",
+      "request": {
+        "userFirstName": "Edge",
+        "userLastName": "Case",
+        "userEmailId": "edge3@mail.com",
+        "userPassword": "Edge@123",
+        "userPhoneNumber": "98ABCD321",
+        "userPhoneCountryCode": "91",
+        "organizationId": 1
+      }
+    },
+    {
+      "name": "Organization ID as zero",
+      "method": "POST",
+      "endpoint": "/api/user/register",
+      "expectedStatusCode": 400,
+      "expectedStatus": "error",
+      "request": {
+        "userFirstName": "Edge",
+        "userLastName": "Case",
+        "userEmailId": "edge4@mail.com",
+        "userPassword": "Edge@123",
+        "userPhoneNumber": "9876543213",
+        "userPhoneCountryCode": "91",
+        "organizationId": 0
       }
     }
   ]

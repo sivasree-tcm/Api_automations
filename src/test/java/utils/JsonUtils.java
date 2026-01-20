@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.InputStream;
+import java.util.Map;
 
 public class JsonUtils {
 
@@ -24,6 +25,22 @@ public class JsonUtils {
             }
 
             return mapper.readValue(is, clazz);
+
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to read JSON: " + path, e);
+        }
+    }
+    public static Map<String, Object> readJsonAsMap(String path) {
+        try {
+            InputStream is = Thread.currentThread()
+                    .getContextClassLoader()
+                    .getResourceAsStream(path);
+
+            if (is == null) {
+                throw new RuntimeException("JSON file not found: " + path);
+            }
+
+            return mapper.readValue(is, Map.class);
 
         } catch (Exception e) {
             throw new RuntimeException("Failed to read JSON: " + path, e);

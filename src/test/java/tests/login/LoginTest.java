@@ -15,8 +15,8 @@ public class LoginTest extends BaseTest {
     public void loginTest() {
 
         Response response = LoginApi.login(
-                ConfigReader.get("login.email"),
-                ConfigReader.get("login.password")
+                ConfigReader.get("superadmin.email"),
+                ConfigReader.get("superadmin.password")
         );
 
         // ✅ Status Code Validation

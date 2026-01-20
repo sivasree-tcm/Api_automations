@@ -9,16 +9,17 @@ import static io.restassured.RestAssured.given;
 public class ProjectApi {
 
     // CREATE PROJECT
-    public static Response createProject(
-            Object request
-    ) {
+    public static Response createProject(Object request, String role) {
+
+        System.out.println("Executing as role: " + role);
+
         return given()
                 .contentType(ContentType.JSON)
-                .header("Authorization", TokenUtil.getToken(role))
+                .header("Authorization", TokenUtil.getToken())
                 .body(request)
-                .when()
                 .post("/api/createProject");
     }
+
 
 
     // ✅ GET MY PROJECTS (CONFIRMED CONTRACT)
@@ -60,6 +61,23 @@ public class ProjectApi {
                 .body(payload)
                 .when()
                 .post("/api/getProjects");
+    }
+    public static Response getMyProjects(Object request, String role) {
+
+        var req = given()
+                .baseUri("https://test.cognitest.ai")
+                .contentType(ContentType.JSON);
+
+        // ✅ Authorization handling
+        if (!"NO_AUTH".equalsIgnoreCase(role)) {
+            req.header("Authorization", TokenUtil.getToken());
+        }
+
+        if (request != null) {
+            req.body(request);
+        }
+
+        return req.post("/api/getMyProjects");
     }
 
 }

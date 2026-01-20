@@ -4,6 +4,7 @@ import java.util.List;
 
 public class GetMyProjectsTestData {
 
+
     private String scenario;
     private List<TestCase> testCases;
 
@@ -17,30 +18,29 @@ public class GetMyProjectsTestData {
 
     public static class TestCase {
 
+        private String tcId;
         private String name;
+        private String role;
         private int expectedStatusCode;
+        private Object request;
         private Integer minSize;
         private String listPath;
         private String requiredField;
 
-        public String getName() {
-            return name;
-        }
+        public Integer getMinSize() { return minSize; }
+        public String getListPath() { return listPath; }
+        public String getRequiredField() { return requiredField; }
 
-        public int getExpectedStatusCode() {
-            return expectedStatusCode;
-        }
 
-        public Integer getMinSize() {
-            return minSize;
-        }
+        public String getTcId() { return tcId; }
+        public String getName() { return name; }
+        public String getRole() { return role; }
+        public int getExpectedStatusCode() { return expectedStatusCode; }
+        public Object getRequest() { return request; }
 
-        public String getListPath() {
-            return listPath;
-        }
-
-        public String getRequiredField() {
-            return requiredField;
+        @Override
+        public String toString() {
+            return tcId + " - " + name;
         }
     }
 }

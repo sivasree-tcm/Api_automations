@@ -17,6 +17,15 @@ public class ApiTestExecutor {
     /* ======================================================
        POST / PUT (GENERIC – Register, Project, etc.)
        ====================================================== */
+    private static boolean hasMethod(Object obj, String methodName) {
+        try {
+            obj.getClass().getMethod(methodName);
+            return true;
+        } catch (NoSuchMethodException e) {
+            return false;
+        }
+    }
+
     public static <T> void execute(
             String scenarioName,
             T tc,
@@ -146,7 +155,9 @@ public class ApiTestExecutor {
                     "Status code mismatch"
             );
 
-            if (tc.getMinSize() != null) {
+            // ===== OPTIONAL LIST VALIDATION =====
+            if (hasMethod(tc, "getMinSize") && tc.getMinSize() != null) {
+
                 List<?> list =
                         response.jsonPath().getList(tc.getListPath());
 
@@ -156,6 +167,7 @@ public class ApiTestExecutor {
                         "Expected minimum size: " + tc.getMinSize()
                 );
             }
+
 
             if (tc.getRequiredField() != null) {
                 Object field =

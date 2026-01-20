@@ -1,38 +1,39 @@
-package tests.project;
+package tests.connection;
 
-import api.project.ProjectApi;
+import api.connection.ConnectionApi;
 import base.BaseTest;
+import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 
 import java.util.List;
 
-public class GetMyProjectsTest extends BaseTest {
+public class ConnectionTest extends BaseTest {
 
     @Test
-    public void getMyProjectsApiTest() {
+    public void getConnectionsTest() {
 
-        GetMyProjectsTestData testData =
+        ConnectionReport testData =
                 JsonUtils.readJson(
-                        "testdata/project/getMyProjects.json",
-                        GetMyProjectsTestData.class
+                        "testdata/connectionsData/getConnection.json",
+                        ConnectionReport.class
                 );
 
         execute(testData, testData.getTestCases());
     }
 
     private void execute(
-            GetMyProjectsTestData testData,
-            List<GetMyProjectsTestData.TestCase> cases
+            ConnectionReport testData,
+            List<ConnectionReport.TestCase> cases
     ) {
 
-        for (GetMyProjectsTestData.TestCase tc : cases) {
+        for (ConnectionReport.TestCase tc : cases) {
 
             ApiTestExecutor.execute(
                     testData.getScenario(),
                     tc,
-                    () -> ProjectApi.getMyProjects(
+                    () -> ConnectionApi.getConnections(
                             tc.getRequest(),
                             tc.getRole()
                     )

@@ -1,9 +1,8 @@
-package tests.project;
+package tests.connection;
 
-import models.project.ProjectRequest;
 import java.util.List;
 
-public class ProjectTestData {
+public class ConnectionReport {
 
     private String scenario;
     private List<TestCase> testCases;
@@ -17,12 +16,12 @@ public class ProjectTestData {
     }
 
     public static class TestCase {
-        private String role; // ✅ ADD THIS
 
         private String tcId;
         private String name;
+        private String role;                  // ✅ ROLE SUPPORT
         private int expectedStatusCode;
-        private ProjectRequest request;
+        private Object request;               // ✅ GET API → Object / null
 
         public String getTcId() {
             return tcId;
@@ -32,13 +31,15 @@ public class ProjectTestData {
             return name;
         }
 
+        public String getRole() {
+            return role;
+        }
+
         public int getExpectedStatusCode() {
             return expectedStatusCode;
         }
-        public String getRole() { return role; }   // ✅ REQUIRED
 
-
-        public ProjectRequest getRequest() {
+        public Object getRequest() {
             return request;
         }
 

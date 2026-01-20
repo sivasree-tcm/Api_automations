@@ -33,21 +33,29 @@ public class ProjectTest extends BaseTest {
 
             ProjectRequest request = tc.getRequest();
 
-            // 🔹 Apply dynamic values (same style as RegisterUserTest)
-            if ("DYNAMIC".equalsIgnoreCase(request.getProjectName())) {
-                request.setProjectName(
-                        "Automation_" + System.currentTimeMillis()
-                );
+            // ✅ Handle null request (for auth test cases)
+            if (request != null) {
+
+                // 🔹 Dynamic project name
+                if ("DYNAMIC".equalsIgnoreCase(request.getProjectName())) {
+                    request.setProjectName(
+                            "Automation_" + System.currentTimeMillis()
+                    );
+                }
+
+                int userId = TokenUtil.getUserId();
+                request.setUserId(String.valueOf(userId));
+                request.setProjectCreatedBy(String.valueOf(userId));
             }
 
-            int userId = TokenUtil.getUserId();
-            request.setUserId(String.valueOf(userId));
-            request.setProjectCreatedBy(String.valueOf(userId));
-
+            // ✅ Execute ONE test case
             ApiTestExecutor.execute(
-                    testData.getScenario(),
+                    testData.getScenario(),   // ✔ scenario fixed
                     tc,
-                    () -> ProjectApi.createProject(tc.getRequest())
+                    () -> ProjectApi.createProject(
+                            tc.getRequest(),
+                            tc.getRole()          // ✔ role comes from JSON
+                    )
             );
         }
     }

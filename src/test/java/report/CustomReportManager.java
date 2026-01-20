@@ -114,4 +114,7 @@ public class CustomReportManager {
         s.put("value", value);
         return s;
     }
+
+    public static void addTestResult(String testName, String status, long duration, List<Map<String, String>> steps) {
+    }
 }

@@ -19,9 +19,26 @@ public class LoginTest extends BaseTest {
                 ConfigReader.get("login.password")
         );
 
-        response.then().statusCode(200);
 
+        // ✅ Status Code Validation
+        Assert.assertEquals(response.getStatusCode(), 200);
+
+        // ✅ Header Validation (ADD HERE)
+        Assert.assertNotNull(
+                response.getHeader("Content-Type"),
+                "Content-Type header should not be null"
+        );
+
+        Assert.assertTrue(
+                response.getHeader("Content-Type").contains("application/json"),
+                "Content-Type should be application/json"
+        );
+
+        // ✅ Auth Token Validation
         authToken = response.getHeader("Authorization");
-        Assert.assertNotNull(authToken, "Auth token should not be null");
+        Assert.assertNotNull(
+                authToken,
+                "Authorization token should not be null"
+        );
     }
 }

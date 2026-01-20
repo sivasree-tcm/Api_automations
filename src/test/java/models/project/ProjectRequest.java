@@ -79,4 +79,13 @@ public class ProjectRequest {
 
     public String getTeams() { return teams; }
     public void setTeams(String teams) { this.teams = teams; }
+    @Override
+    public String toString() {
+        return "{\n" +
+                "  \"userId\": \"" + userId + "\",\n" +
+                "  \"projectName\": \"" + projectName + "\",\n" +
+                "  \"projectDescription\": \"" + projectDescription + "\",\n" +
+                "  \"projectDomain\": \"" + projectDomain + "\"\n" +
+                "}";
+    }
 }

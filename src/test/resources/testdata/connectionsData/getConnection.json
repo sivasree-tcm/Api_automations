@@ -1,0 +1,151 @@
+{
+  "positiveTestCases": [
+    {
+      "name": "Valid userId and orgId",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": "32",
+        "orgId": "1"
+      }
+    },
+    {
+      "name": "Valid userId with different orgId",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": "32",
+        "orgId": "2"
+      }
+    }
+  ],
+
+  "negativeTestCases": [
+    {
+      "name": "Missing orgId",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "32"
+      }
+    },
+    {
+      "name": "Missing userId",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 400,
+      "request": {
+        "orgId": "1"
+      }
+    },
+    {
+      "name": "Empty request body",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 400,
+      "request": {}
+    },
+    {
+      "name": "Null userId",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": null,
+        "orgId": "1"
+      }
+    },
+    {
+      "name": "Null orgId",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "32",
+        "orgId": null
+      }
+    }
+  ],
+
+  "boundaryTestCases": [
+    {
+      "name": "UserId as zero",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "0",
+        "orgId": "1"
+      }
+    },
+    {
+      "name": "OrgId as zero",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "32",
+        "orgId": "0"
+      }
+    },
+    {
+      "name": "Very large userId",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "999999999999",
+        "orgId": "1"
+      }
+    }
+  ],
+
+  "securityTestCases": [
+    {
+      "name": "SQL injection in userId",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "32 OR 1=1",
+        "orgId": "1"
+      }
+    },
+    {
+      "name": "Special characters in orgId",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "32",
+        "orgId": "@@@"
+      }
+    }
+  ],
+
+  "authorizationTestCases": [
+    {
+      "name": "Missing Authorization token",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 401,
+      "request": {
+        "userId": "32",
+        "orgId": "1"
+      }
+    },
+    {
+      "name": "Invalid Authorization token",
+      "method": "POST",
+      "endpoint": "/api/getConnections",
+      "expectedStatusCode": 401,
+      "request": {
+        "userId": "32",
+        "orgId": "1"
+      }
+    }
+  ]
+}

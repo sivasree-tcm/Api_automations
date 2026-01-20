@@ -19,7 +19,6 @@ public class LoginTest extends BaseTest {
                 ConfigReader.get("login.password")
         );
 
-
         // ✅ Status Code Validation
         Assert.assertEquals(response.getStatusCode(), 200);
 

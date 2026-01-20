@@ -1,0 +1,6 @@
+{
+  "userId": "33",
+  "projectName": "Automation_1768218841445",
+  "projectDescription": "Automation project",
+  "projectDomain": "Agriculture"
+}

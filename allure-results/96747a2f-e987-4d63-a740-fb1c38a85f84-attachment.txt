@@ -1,0 +1,20 @@
+{
+  "userId" : "33",
+  "projectName" : "Automation_1768299875984",
+  "projectDescription" : "Automation project",
+  "projectSummary" : null,
+  "projectStartDate" : "2026-01-08",
+  "projectEndDate" : "2026-01-14",
+  "projectCreatedBy" : "33",
+  "webFramework" : "Playwright_Java",
+  "mobileFrameworks" : "Appium_Java",
+  "autonomous" : 0,
+  "projectDomain" : "Agriculture",
+  "testType" : null,
+  "refOrgId" : "1",
+  "storageType" : "S3",
+  "connections" : "TickingMinds",
+  "devopsProjectName" : "0a4a3da6-6779-4f7c-8d76-4d7e88811ae4",
+  "teams" : "Insurance Team",
+  "insightsBasedOnExistingAssets" : "no"
+}

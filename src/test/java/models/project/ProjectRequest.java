@@ -1,5 +1,7 @@
 package models.project;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ProjectRequest {
 
     private String userId;
@@ -14,14 +16,25 @@ public class ProjectRequest {
     private int autonomous;
     private String projectDomain;
     private String testType;
-    private String InsightsBasedOnExistingAssets;
+
+    // ✅ FIXED naming with annotation
+    @JsonProperty("InsightsBasedOnExistingAssets")
+    private String insightsBasedOnExistingAssets;
+
     private String refOrgId;
     private String storageType;
-    private String connections;
+
+    // ✅ REQUIRED by backend
+    private String connectionId;
+
+    // ✅ REQUIRED by backend
+    private String platform;
+
     private String devopsProjectName;
     private String teams;
 
-    // Getters & Setters
+    // ================= GETTERS & SETTERS =================
+
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }
 
@@ -58,9 +71,12 @@ public class ProjectRequest {
     public String getTestType() { return testType; }
     public void setTestType(String testType) { this.testType = testType; }
 
-    public String getInsightsBasedOnExistingAssets() { return InsightsBasedOnExistingAssets; }
-    public void setInsightsBasedOnExistingAssets(String insights) {
-        InsightsBasedOnExistingAssets = insights;
+    public String getInsightsBasedOnExistingAssets() {
+        return insightsBasedOnExistingAssets;
+    }
+
+    public void setInsightsBasedOnExistingAssets(String insightsBasedOnExistingAssets) {
+        this.insightsBasedOnExistingAssets = insightsBasedOnExistingAssets;
     }
 
     public String getRefOrgId() { return refOrgId; }
@@ -69,8 +85,11 @@ public class ProjectRequest {
     public String getStorageType() { return storageType; }
     public void setStorageType(String storageType) { this.storageType = storageType; }
 
-    public String getConnections() { return connections; }
-    public void setConnections(String connections) { this.connections = connections; }
+    public String getConnectionId() { return connectionId; }
+    public void setConnectionId(String connectionId) { this.connectionId = connectionId; }
+
+    public String getPlatform() { return platform; }
+    public void setPlatform(String platform) { this.platform = platform; }
 
     public String getDevopsProjectName() { return devopsProjectName; }
     public void setDevopsProjectName(String devopsProjectName) {
@@ -79,13 +98,16 @@ public class ProjectRequest {
 
     public String getTeams() { return teams; }
     public void setTeams(String teams) { this.teams = teams; }
+
     @Override
     public String toString() {
         return "{\n" +
                 "  \"userId\": \"" + userId + "\",\n" +
                 "  \"projectName\": \"" + projectName + "\",\n" +
                 "  \"projectDescription\": \"" + projectDescription + "\",\n" +
-                "  \"projectDomain\": \"" + projectDomain + "\"\n" +
+                "  \"projectDomain\": \"" + projectDomain + "\",\n" +
+                "  \"connectionId\": \"" + connectionId + "\",\n" +
+                "  \"platform\": \"" + platform + "\"\n" +
                 "}";
     }
 }

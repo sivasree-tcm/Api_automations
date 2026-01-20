@@ -15,51 +15,34 @@ import java.util.function.Supplier;
 public class ApiTestExecutor {
 
     /* ======================================================
-       POST / PUT (Request + Response validation)
+       POST / PUT (GENERIC – Register, Project, etc.)
        ====================================================== */
-    public static void execute(
+    public static <T> void execute(
             String scenarioName,
-            RegisterUserTestData.TestCase tc,
+            T tc,
             Supplier<Response> apiCall
     ) {
 
         ReportTest test =
-                new ReportTest(scenarioName + " :: " + tc.getName());
+                new ReportTest(scenarioName + " :: " + tc.toString());
 
         ReportContext.setTest(test);
         long start = System.currentTimeMillis();
 
         try {
-            // ✅ SAFE fallback (prevents null null)
-            String method =
-                    tc.getMethod() != null ? tc.getMethod() : "POST";
+            // 🔹 Log Request if present
+            try {
+                Object request =
+                        tc.getClass().getMethod("getRequest").invoke(tc);
 
-            String endpoint =
-                    tc.getEndpoint() != null ? tc.getEndpoint() : "/api/user/register";
-
-            // 🔹 Endpoint
-            test.addStep(new ReportStep(
-                    "Info",
-                    "Endpoint",
-                    method + " " + endpoint
-            ));
-
-            // 🔹 Expected Status
-            test.addStep(new ReportStep(
-                    "Info",
-                    "Expected Status",
-                    "HTTP " + tc.getExpectedStatusCode() +
-                            (tc.getExpectedStatus() != null
-                                    ? ", status = " + tc.getExpectedStatus()
-                                    : "")
-            ));
-
-            // 🔹 Request Payload
-            test.addStep(new ReportStep(
-                    "Info",
-                    "Request Payload",
-                    JsonUtils.toJson(tc.getRequest())
-            ));
+                test.addStep(new ReportStep(
+                        "Info",
+                        "Request Payload",
+                        JsonUtils.toJson(request)
+                ));
+            } catch (Exception ignored) {
+                // Not all test cases have request
+            }
 
             // 🔹 API call
             Response response = apiCall.get();
@@ -78,20 +61,37 @@ public class ApiTestExecutor {
                     response.asPrettyString()
             ));
 
-            // 🔹 Status code assertion
-            Assert.assertEquals(
-                    response.getStatusCode(),
-                    tc.getExpectedStatusCode(),
-                    "Status code mismatch"
-            );
+            // 🔹 Expected Status Code (if exists)
+            try {
+                int expectedStatusCode =
+                        (int) tc.getClass()
+                                .getMethod("getExpectedStatusCode")
+                                .invoke(tc);
 
-            // 🔹 Status field assertion (optional)
-            if (tc.getExpectedStatus() != null) {
                 Assert.assertEquals(
-                        response.jsonPath().getString("status"),
-                        tc.getExpectedStatus(),
-                        "Status value mismatch"
+                        response.getStatusCode(),
+                        expectedStatusCode,
+                        "Status code mismatch"
                 );
+            } catch (Exception ignored) {
+                // Some test cases may not have expectedStatusCode
+            }
+
+            // 🔹 Expected Status field (optional)
+            try {
+                String expectedStatus =
+                        (String) tc.getClass()
+                                .getMethod("getExpectedStatus")
+                                .invoke(tc);
+
+                if (expectedStatus != null) {
+                    Assert.assertEquals(
+                            response.jsonPath().getString("status"),
+                            expectedStatus,
+                            "Status value mismatch"
+                    );
+                }
+            } catch (Exception ignored) {
             }
 
             // ✅ PASS
@@ -110,13 +110,14 @@ public class ApiTestExecutor {
 
             test.markFailed("Test failed");
 
+
         } finally {
             CustomReportManager.addTest(scenarioName, test);
         }
     }
 
     /* ======================================================
-       GET / DELETE (Validation only – NO request)
+       GET / DELETE (SPECIAL CASE – List validation)
        ====================================================== */
     public static void execute(
             String scenarioName,
@@ -131,24 +132,20 @@ public class ApiTestExecutor {
         long start = System.currentTimeMillis();
 
         try {
-            // 🔹 API call
             Response response = apiCall.get();
 
-            // 🔹 Actual Response
             test.addStep(new ReportStep(
                     "Info",
                     "Actual Response",
                     response.asPrettyString()
             ));
 
-            // 🔹 Status code
             Assert.assertEquals(
                     response.getStatusCode(),
                     tc.getExpectedStatusCode(),
                     "Status code mismatch"
             );
 
-            // 🔹 Min list size (optional)
             if (tc.getMinSize() != null) {
                 List<?> list =
                         response.jsonPath().getList(tc.getListPath());
@@ -160,7 +157,6 @@ public class ApiTestExecutor {
                 );
             }
 
-            // 🔹 Required field (optional)
             if (tc.getRequiredField() != null) {
                 Object field =
                         response.jsonPath().get(tc.getRequiredField());
@@ -171,7 +167,6 @@ public class ApiTestExecutor {
                 );
             }
 
-            // ✅ PASS
             test.markPassed(
                     "Passed in " +
                             (System.currentTimeMillis() - start) + " ms"

@@ -9,15 +9,17 @@ import static io.restassured.RestAssured.given;
 public class ProjectApi {
 
     // CREATE PROJECT
-    public static Response createProject(Object request) {
-
+    public static Response createProject(
+            Object request
+    ) {
         return given()
                 .contentType(ContentType.JSON)
-                .header("Authorization", TokenUtil.getToken())// ✅ REQUIRED
-                .body(request)                   // ✅ REQUIRED
+                .header("Authorization", TokenUtil.getToken(role))
+                .body(request)
                 .when()
                 .post("/api/createProject");
     }
+
 
     // ✅ GET MY PROJECTS (CONFIRMED CONTRACT)
     public static Response getMyProjects() {

@@ -8,31 +8,31 @@ import utils.JsonUtils;
 
 import java.util.List;
 
-public class GetMyProjectsTest extends BaseTest {
+public class GetProjectById extends BaseTest {
 
     @Test
-    public void getMyProjectsApiTest() {
+    public void getProjectByIdApiTest() {
 
-        GetMyProjectsTestData testData =
+        GetProjectByIdTestData testData =
                 JsonUtils.readJson(
-                        "testdata/project/getMyProjects.json",
-                        GetMyProjectsTestData.class
+                        "testdata/project/getProjectById.json",
+                        GetProjectByIdTestData.class
                 );
 
         execute(testData, testData.getTestCases());
     }
 
     private void execute(
-            GetMyProjectsTestData testData,
-            List<GetMyProjectsTestData.TestCase> cases
+            GetProjectByIdTestData testData,
+            List<GetProjectByIdTestData.TestCase> cases
     ) {
 
-        for (GetMyProjectsTestData.TestCase tc : cases) {
+        for (GetProjectByIdTestData.TestCase tc : cases) {
 
             ApiTestExecutor.execute(
                     testData.getScenario(),
                     tc,
-                    () -> ProjectApi.getMyProjects(
+                    () -> ProjectApi.getProjectById(
                             tc.getRequest(),
                             tc.getRole()
                     )

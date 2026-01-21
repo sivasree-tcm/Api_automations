@@ -1,8 +1,8 @@
 {
   "scenario": "Create Project API Validation - All Roles",
   "basePayload": {
-    "userId": "33",
-    "projectName": "Automation162",
+    "userId": "{{userId}}",
+    "projectName": "{{projectName}}",
     "projectDescription": "Demo Project",
     "projectSummary": null,
     "projectStartDate": "2026-01-07",
@@ -31,8 +31,8 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK, project created",
       "request": {
-        "userId": "33",
-        "projectName": "Automation162",
+        "userId": "{{userId}}",
+        "projectName": "{{projectName}}",
         "projectDescription": "Demo Project",
         "projectSummary": null,
         "projectStartDate": "2026-01-07",
@@ -61,7 +61,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "userId": null,
+        "userId": "",
         "projectName": "Automation162",
         "projectDescription": "Demo Project",
         "projectSummary": null,
@@ -121,7 +121,7 @@
       "expectedStatusCode": 500,
       "expectedResult": "500 Internal Server Error",
       "request": {
-        "userId": "33",
+        "userId": "{{userId}}",
         "projectName": null,
         "projectDescription": "Demo Project",
         "projectSummary": null,
@@ -151,7 +151,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "Validation error/400 Bad Request",
       "request": {
-        "userId": "33",
+        "userId": "{{userId}}",
         "projectName": "",
         "projectDescription": "Demo Project",
         "projectSummary": null,
@@ -182,8 +182,8 @@
       "expectedResult": "Duplicate handling message/409 Conflict",
       "note": "Send base payload twice",
       "request": {
-        "userId": "33",
-        "projectName": "Automation162",
+        "userId": "{{userId}}",
+        "projectName": "{{projectName}}",
         "projectDescription": "Demo Project",
         "projectSummary": null,
         "projectStartDate": "2026-01-07",
@@ -212,8 +212,8 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "userId": "33",
-        "projectName": "Automation162",
+        "userId": "{{userId}}",
+        "projectName": "{{projectName}}",
         "projectDescription": null,
         "projectSummary": null,
         "projectStartDate": "2026-01-07",
@@ -241,8 +241,8 @@
       "expectedStatusCode": 400,
       "expectedResult": "Validation error",
       "request": {
-        "userId": "33",
-        "projectName": "Automation162",
+        "userId": "{{userId}}",
+        "projectName": "{{projectName}}",
         "projectDescription": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "projectSummary": null,
         "projectStartDate": "2026-01-07",
@@ -271,8 +271,8 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "userId": "33",
-        "projectName": "Automation162",
+        "userId": "{{userId}}",
+        "projectName": "{{projectName}}",
         "projectDescription": "Demo Project",
         "projectSummary": null,
         "projectStartDate": null,
@@ -301,8 +301,8 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "userId": "33",
-        "projectName": "Automation162",
+        "userId": "{{userId}}",
+        "projectName": "{{projectName}}",
         "projectDescription": "Demo Project",
         "projectSummary": null,
         "projectStartDate": "2026-01-07",
@@ -331,8 +331,8 @@
       "expectedStatusCode": 400,
       "expectedResult": "Validation error",
       "request": {
-        "userId": "33",
-        "projectName": "Automation162",
+        "userId": "{{userId}}",
+        "projectName": "{{projectName}}",
         "projectDescription": "Demo Project",
         "projectSummary": null,
         "projectStartDate": "2026-01-30",
@@ -361,8 +361,8 @@
       "expectedStatusCode": 400,
       "expectedResult": "Validation error",
       "request": {
-        "userId": "33",
-        "projectName": "Automation162",
+        "userId": "{{userId}}",
+        "projectName": "{{projectName}}",
         "projectDescription": "Demo Project",
         "projectSummary": null,
         "projectStartDate": "2026/01/30",

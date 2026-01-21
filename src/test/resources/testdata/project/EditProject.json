@@ -1,0 +1,200 @@
+{
+  "scenario": "Edit Project API Validation – SUPER_ADMIN",
+  "testCases": [
+
+    {
+      "tcId": "TC_EP_01",
+      "name": "Edit project with valid data",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": "239",
+        "userId": "33",
+        "projectCreatedBy": "33",
+        "projectName": "APIS",
+        "projectDescription": "project related to automation",
+        "projectDomain": "Automation",
+        "insightsBasedOnExistingAssets": 1,
+        "knowledgeBase": null,
+        "projectStartDate": "2026-02-17",
+        "projectEndDate": "2026-10-28",
+        "storageType": "S3",
+        "webFramework": "Playwright_Java",
+        "mobileFrameworks": "Appium_Java"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_02",
+      "name": "Edit project name only",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": "239",
+        "userId": "33",
+        "projectName": "APIS_UPDATED"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_03",
+      "name": "Edit project description only",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": "239",
+        "userId": "33",
+        "projectDescription": "Updated description"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_04",
+      "name": "Update domain & frameworks (invalid accepted)",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": "239",
+        "userId": "33",
+        "projectDomain": "123@",
+        "webFramework": "INVALID_FW",
+        "mobileFrameworks": "INVALID_MOBILE"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_05",
+      "name": "Update dates – valid range",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": "239",
+        "userId": "33",
+        "projectStartDate": "2026-03-01",
+        "projectEndDate": "2026-12-31"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_06",
+      "name": "Optional fields null",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": "239",
+        "userId": "33",
+        "knowledgeBase": null
+      }
+    },
+
+    {
+      "tcId": "TC_EP_07",
+      "name": "Extra fields in payload",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": "239",
+        "userId": "33",
+        "randomField": "ignored"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_08",
+      "name": "Missing projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "33"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_09",
+      "name": "Invalid projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 404,
+      "request": {
+        "projectId": "99999",
+        "userId": "33"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_10",
+      "name": "Missing userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "projectId": "239"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_11",
+      "name": "userId mismatch",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 403,
+      "request": {
+        "projectId": "239",
+        "userId": "44",
+        "projectCreatedBy": "33"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_16",
+      "name": "End date before start date",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "projectId": "239",
+        "userId": "33",
+        "projectStartDate": "2026-12-01",
+        "projectEndDate": "2025-01-01"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_17",
+      "name": "Invalid date format",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "projectId": "239",
+        "userId": "33",
+        "projectStartDate": "2026/01/16"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_22",
+      "name": "Unauthorized request",
+      "role": "NO_AUTH",
+      "expectedStatusCode": 401,
+      "request": {
+        "projectId": "239",
+        "userId": "33"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_23",
+      "name": "Invalid token",
+      "role": "INVALID_TOKEN",
+      "expectedStatusCode": 401,
+      "request": {
+        "projectId": "239",
+        "userId": "33"
+      }
+    },
+
+    {
+      "tcId": "TC_EP_31",
+      "name": "Empty payload",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {}
+    }
+  ]
+}

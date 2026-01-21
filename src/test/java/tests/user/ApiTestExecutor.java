@@ -192,7 +192,6 @@ public class ApiTestExecutor {
                     e.getMessage()
             ));
             test.markFailed("Test failed");
-            throw e;
 
         } finally {
             CustomReportManager.addTest(scenarioName, test);

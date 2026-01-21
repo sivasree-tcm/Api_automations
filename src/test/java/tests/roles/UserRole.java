@@ -3,5 +3,5 @@ package tests.roles;
 public enum UserRole {
     SUPER_ADMIN,
     ADMIN,
-    USER
+    END_USER
 }

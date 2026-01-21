@@ -1,0 +1,81 @@
+{
+  "scenario": "Get Project By ID – All Roles",
+  "testCases": [
+
+    {
+      "tcId": "TC_GPD_01",
+      "name": "SUPER_ADMIN – valid projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": "33",
+        "projectId": "230"
+      }
+    },
+
+    {
+      "tcId": "TC_GPD_02",
+      "name": "ADMIN – valid projectId",
+      "role": "ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": "44",
+        "projectId": "230"
+      }
+    },
+
+    {
+      "tcId": "TC_GPD_03",
+      "name": "END_USER – access denied",
+      "role": "END_USER",
+      "expectedStatusCode": 403,
+      "request": {
+        "userId": "55",
+        "projectId": "230"
+      }
+    },
+
+    {
+      "tcId": "TC_GPD_04",
+      "name": "Missing userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "projectId": "230"
+      }
+    },
+
+    {
+      "tcId": "TC_GPD_05",
+      "name": "Invalid projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 404,
+      "request": {
+        "userId": "33",
+        "projectId": "99999"
+      }
+    },
+
+    {
+      "tcId": "TC_GPD_06",
+      "name": "Unauthorized – no token",
+      "role": "NO_AUTH",
+      "expectedStatusCode": 401,
+      "request": {
+        "userId": "33",
+        "projectId": "230"
+      }
+    },
+
+    {
+      "tcId": "TC_GPD_07",
+      "name": "Token-user mismatch",
+      "role": "ADMIN",
+      "expectedStatusCode": 403,
+      "request": {
+        "userId": "33",
+        "projectId": "230"
+      }
+    }
+  ]
+}

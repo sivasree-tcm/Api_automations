@@ -1,0 +1,194 @@
+{
+  "scenario": "Get User Management Details for Project ID",
+  "testCases": [
+    {
+      "tcId": "TC_GUMD_01",
+      "name": "Valid projectId and userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": 230,
+        "userId": 33
+      }
+    },
+    {
+      "tcId": "TC_GUMD_02",
+      "name": "Validate response structure on success",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": 230,
+        "userId": 33
+      }
+    },
+    {
+      "tcId": "TC_GUMD_03",
+      "name": "userId as string",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": 103,
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_GUMD_04",
+      "name": "projectId as string",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": "230",
+        "userId": 33
+      }
+    },
+    {
+      "tcId": "TC_GUMD_05",
+      "name": "Missing userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "expectedMessage": "userId",
+      "request": {
+        "projectId": 230
+      }
+    },
+    {
+      "tcId": "TC_GUMD_06",
+      "name": "Missing projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "expectedMessage": "projectId",
+      "request": {
+        "userId": 33
+      }
+    },
+    {
+      "tcId": "TC_GUMD_07",
+      "name": "Invalid userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 403,
+      "expectedMessage": "unauthorized",
+      "request": {
+        "projectId": 230,
+        "userId": 99999
+      }
+    },
+    {
+      "tcId": "TC_GUMD_08",
+      "name": "Invalid projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 404,
+      "expectedMessage": "project not found",
+      "request": {
+        "projectId": 99999,
+        "userId": 33
+      }
+    },
+    {
+      "tcId": "TC_GUMD_09",
+      "name": "Null userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "expectedMessage": "userId",
+      "request": {
+        "projectId": 230,
+        "userId": null
+      }
+    },
+    {
+      "tcId": "TC_GUMD_10",
+      "name": "Null projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "expectedMessage": "projectId",
+      "request": {
+        "projectId": null,
+        "userId": 33
+      }
+    },
+    {
+      "tcId": "TC_GUMD_11",
+      "name": "Empty request body",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "expectedMessage": "userId",
+      "request": {}
+    },
+    {
+      "tcId": "TC_GUMD_12",
+      "name": "Negative userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "expectedMessage": "invalid userId",
+      "request": {
+        "projectId": 230,
+        "userId": -1
+      }
+    },
+    {
+      "tcId": "TC_GUMD_13",
+      "name": "Negative projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "expectedMessage": "invalid projectId",
+      "request": {
+        "projectId": -1,
+        "userId": 33
+      }
+    },
+    {
+      "tcId": "TC_GUMD_14",
+      "name": "Zero userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "expectedMessage": "invalid userId",
+      "request": {
+        "projectId": 230,
+        "userId": 0
+      }
+    },
+    {
+      "tcId": "TC_GUMD_15",
+      "name": "Zero projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "expectedMessage": "invalid projectId",
+      "request": {
+        "projectId": 0,
+        "userId": 33
+      }
+    },
+    {
+      "tcId": "TC_GUMD_16",
+      "name": "Extra unexpected fields",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": 230,
+        "userId": 33,
+        "extraField": "test"
+      }
+    },
+    {
+      "tcId": "TC_GUMD_17",
+      "name": "User without access to project",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 403,
+      "expectedMessage": "access",
+      "request": {
+        "projectId": 230,
+        "userId": 50
+      }
+    },
+    {
+      "tcId": "TC_GUMD_18",
+      "name": "Response time validation",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "maxResponseTimeMs": 2000,
+      "request": {
+        "projectId": 230,
+        "userId": 33
+      }
+    }
+  ]
+}

@@ -213,5 +213,24 @@ public class ProjectApi {
 
         return req.put("/api/editProject");
     }
+    // ✅ GET USER MANAGEMENT DETAILS FOR PROJECT ID
+    public static Response getUserManagementDetailsForProjectId(Object request, String role) {
+
+        var req = given()
+                .baseUri("https://test.cognitest.ai")
+                .contentType(ContentType.JSON);
+
+        // Auth handling
+        if (!"NO_AUTH".equalsIgnoreCase(role)) {
+            req.header("Authorization", TokenUtil.getToken(role));
+        }
+
+        if (request != null) {
+            req.body(request);
+        }
+
+        return req.post("/api/getUserManagementDetailsForProjectId");
+    }
+
 
 }

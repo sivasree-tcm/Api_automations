@@ -1,6 +1,6 @@
 package utils;
-
 import tests.roles.UserRole;
+
 import api.login.LoginApi;
 import io.restassured.response.Response;
 

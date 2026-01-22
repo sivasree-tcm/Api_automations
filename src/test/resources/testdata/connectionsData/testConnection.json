@@ -1,0 +1,747 @@
+{
+  "scenario": "Test Connection API",
+  "testCases": [
+    {
+      "tcId": "TC_TEST_01",
+      "name": "Azure test connection",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "azure",
+          "endDate": "2026-01-31",
+          "orgName": "TickingMinds",
+          "source": "direct",
+          "token": "1DFi7yCzOWzlH38VDYBI4sLwkvtwxYee7Vs9sR1wjlBW3W3I59cKJQQJ99BLACAAAAAmcDqcAAASAZDO3a8D"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_02",
+      "name": "Jira test connection",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "jira",
+          "endDate": "2026-01-31",
+          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "email": "cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_03",
+      "name": "GitLab test connection",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "gitlab",
+          "endDate":"2026-01-31",
+          "spaceName":"Dharshini-TM-group",
+          "source": "direct",
+          "token": "glpat-IF7UZ6PTB1MI8vxKR4v8rG86MQp1Oml3dHpoCw.01.1210ebzd5"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_04",
+      "name": "Confluence test connection",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_05",
+      "name": "Missing token",
+      "role": "SUPER_ADMIN",
+      "authType": "MISSING",
+      "expectedStatusCode": 401,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_06",
+      "name": "Invalid token",
+      "role": "SUPER_ADMIN",
+      "authType": "INVALID",
+      "expectedStatusCode": 401,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_07",
+      "name": "Azure test connection Invalid PAT",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "azure",
+          "endDate": "2026-01-31",
+          "orgName": "TickingMinds",
+          "source": "direct",
+          "token": "1DFi7yCzOWzlH38VDYBI4SAZDO3a8D"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_08",
+      "name": "Jira test connection Invalid PAT",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "jira",
+          "endDate": "2026-01-31",
+          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "email": "cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_09",
+      "name": "GitLab test connection Invalid PAT",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "gitlab",
+          "endDate":"2026-01-31",
+          "spaceName":"Dharshini-TM-group",
+          "source": "direct",
+          "token": "glpat-IF7UZ6P1Cw.01.1210ebzd5"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_10",
+      "name": "Confluence test connection Invalid PAT",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlCFG18zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_11",
+      "name": "Azure test connection Missing PAT",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "azure",
+          "endDate": "2026-01-31",
+          "orgName": "TickingMinds",
+          "source": "direct"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_12",
+      "name": "Jira test connection Missing PAT",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "jira",
+          "endDate": "2026-01-31",
+          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "email": "cognidemo2023@gmail.com",
+          "source": "direct"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_13",
+      "name": "GitLab test connection Missing PAT",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "gitlab",
+          "endDate":"2026-01-31",
+          "spaceName":"Dharshini-TM-group",
+          "source": "direct"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_14",
+      "name": "Confluence test connection Missing PAT",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_15",
+      "name": "Azure test connection Invalid userId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "abc",
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "azure",
+          "endDate": "2026-01-31",
+          "orgName": "TickingMinds",
+          "source": "direct",
+          "token": "1DFi7yCzOWzlH38VDYBI4sLwkvtwxYee7Vs9sR1wjlBW3W3I59cKJQQJ99BLACAAAAAmcDqcAAASAZDO3a8D"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_16",
+      "name": "Jira test connection Invalid userId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "bns",
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "jira",
+          "endDate": "2026-01-31",
+          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "email": "cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_17",
+      "name": "GitLab test connection Invalid userId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "",
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "gitlab",
+          "endDate":"2026-01-31",
+          "spaceName":"Dharshini-TM-group",
+          "source": "direct",
+          "token": "glpat-IF7UZ6PTB1MI8vxKR4v8rG86MQp1Oml3dHpoCw.01.1210ebzd5"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_18",
+      "name": "Confluence test connection Invalid userId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "anc",
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_19",
+      "name": "Azure test connection Missing userId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "azure",
+          "endDate": "2026-01-31",
+          "orgName": "TickingMinds",
+          "source": "direct",
+          "token": "1DFi7yCzOWzlH38VDYBI4sLwkvtwxYee7Vs9sR1wjlBW3W3I59cKJQQJ99BLACAAAAAmcDqcAAASAZDO3a8D"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_20",
+      "name": "Jira test connection Missing userId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "jira",
+          "endDate": "2026-01-31",
+          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "email": "cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_21",
+      "name": "GitLab test connection Missing userId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "gitlab",
+          "endDate":"2026-01-31",
+          "spaceName":"Dharshini-TM-group",
+          "source": "direct",
+          "token": "glpat-IF7UZ6PTB1MI8vxKR4v8rG86MQp1Oml3dHpoCw.01.1210ebzd5"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_22",
+      "name": "Confluence test connection Missing userId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_23",
+      "name": "Azure test connection Invalid orgId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": "sss",
+        "connection": {
+          "id": null,
+          "type": "azure",
+          "endDate": "2026-01-31",
+          "orgName": "TickingMinds",
+          "source": "direct",
+          "token": "1DFi7yCzOWzlH38VDYBI4sLwkvtwxYee7Vs9sR1wjlBW3W3I59cKJQQJ99BLACAAAAAmcDqcAAASAZDO3a8D"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_24",
+      "name": "Jira test connection Invalid orgId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": "ee",
+        "connection": {
+          "id": null,
+          "type": "jira",
+          "endDate": "2026-01-31",
+          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "email": "cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_25",
+      "name": "GitLab test connection Invalid orgId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": "dd",
+        "connection": {
+          "id": null,
+          "type": "gitlab",
+          "endDate":"2026-01-31",
+          "spaceName":"Dharshini-TM-group",
+          "source": "direct",
+          "token": "glpat-IF7UZ6PTB1MI8vxKR4v8rG86MQp1Oml3dHpoCw.01.1210ebzd5"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_26",
+      "name": "Confluence test connection Invalid orgId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": "ss",
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_27",
+      "name": "Azure test connection Missing orgId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "connection": {
+          "id": null,
+          "type": "azure",
+          "endDate": "2026-01-31",
+          "orgName": "TickingMinds",
+          "source": "direct",
+          "token": "1DFi7yCzOWzlH38VDYBI4sLwkvtwxYee7Vs9sR1wjlBW3W3I59cKJQQJ99BLACAAAAAmcDqcAAASAZDO3a8D"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_28",
+      "name": "Jira test connection Missing orgId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "connection": {
+          "id": null,
+          "type": "jira",
+          "endDate": "2026-01-31",
+          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "email": "cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_29",
+      "name": "GitLab test connection Missing orgId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "connection": {
+          "id": null,
+          "type": "gitlab",
+          "endDate":"2026-01-31",
+          "spaceName":"Dharshini-TM-group",
+          "source": "direct",
+          "token": "glpat-IF7UZ6PTB1MI8vxKR4v8rG86MQp1Oml3dHpoCw.01.1210ebzd5"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_30",
+      "name": "Confluence test connection Missing orgId",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_31",
+      "name": "Missing Connection Object",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1
+      }
+    },
+    {
+      "tcId": "TC_TEST_32",
+      "name": "Invalid Connection Type",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "github",
+          "endDate":"2026-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_33",
+      "name": "Invalid Site url",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "siteUrl":"atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_34",
+      "name": "Missing Site URL",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_35",
+      "name": "Invalid Email",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"0283tickingminds",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_36",
+      "name": "Missing Email",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_37",
+      "name": "Past End Date",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2000-01-31",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_38",
+      "name": "Missing End Date",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    },
+    {
+      "tcId": "TC_TEST_39",
+      "name": "Improper End Date",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "confluence",
+          "endDate":"2026-300-391",
+          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "email":"cognidemo2023@gmail.com",
+          "source": "direct",
+          "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
+        }
+      }
+    }
+  ]
+}

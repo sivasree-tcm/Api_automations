@@ -12,25 +12,25 @@ public class BaseTest {
         RestAssured.baseURI = "https://test.cognitest.ai";
     }
 
-//    @BeforeSuite(alwaysRun = true)
-//    public void generateAuthToken() {
-//        if (LoginTest.authToken == null) {
-//            LoginTest loginTest = new LoginTest();
-//            loginTest.loginTest();
-//        }
-//    }
-//
-//    @AfterSuite
-//    public void showFailures() {
-//
-//        if (FailureTracker.hasFailures()) {
-//            System.out.println("\n========= FAILED TEST SUMMARY =========");
-//
-//            FailureTracker.getFailures().forEach(System.out::println);
-//
-//            System.out.println("======================================");
-//        } else {
-//            System.out.println("\n✅ All test cases passed successfully!");
-//        }
-//    }
+    @BeforeSuite(alwaysRun = true)
+    public void generateAuthToken() {
+        if (LoginTest.authToken == null) {
+            LoginTest loginTest = new LoginTest();
+            loginTest.loginTest();
+        }
+    }
+
+    @AfterSuite
+    public void showFailures() {
+
+        if (FailureTracker.hasFailures()) {
+            System.out.println("\n========= FAILED TEST SUMMARY =========");
+
+            FailureTracker.getFailures().forEach(System.out::println);
+
+            System.out.println("======================================");
+        } else {
+            System.out.println("\n✅ All test cases passed successfully!");
+        }
+    }
 }

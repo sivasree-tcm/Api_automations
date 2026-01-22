@@ -1,0 +1,38 @@
+{
+  "scenario": "Delete Connection API",
+  "testCases": [
+    {
+      "tcId": "TC_DEL_01",
+      "name": "Delete all existing connections",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": 32,
+        "orgId": 1
+      }
+    },
+    {
+      "tcId": "TC_DEL_02",
+      "name": "Delete connection with missing token",
+      "role": "SUPER_ADMIN",
+      "authType": "MISSING",
+      "expectedStatusCode": 401,
+      "request": {
+        "userId": 32,
+        "orgId": 1
+      }
+    },
+    {
+      "tcId": "TC_DEL_03",
+      "name": "Delete connection with invalid token",
+      "role": "SUPER_ADMIN",
+      "authType": "INVALID",
+      "expectedStatusCode": 401,
+      "request": {
+        "userId": 32,
+        "orgId": 1
+      }
+    }
+  ]
+}

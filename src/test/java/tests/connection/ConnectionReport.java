@@ -22,7 +22,7 @@ public class ConnectionReport {
         private String role;                  // ✅ ROLE SUPPORT
         private int expectedStatusCode;
         private Object request;               // ✅ GET API → Object / null
-
+        private String authType;
         public String getTcId() {
             return tcId;
         }
@@ -41,6 +41,10 @@ public class ConnectionReport {
 
         public Object getRequest() {
             return request;
+        }
+
+        public String getAuthType() {
+            return authType;
         }
 
         @Override

@@ -8,8 +8,8 @@
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 200,
       "request": {
-        "userId": "33",
-        "orgId": "1"
+        "userId": 32,
+        "orgId": 1
       }
     },
 
@@ -19,8 +19,8 @@
       "role": "ADMIN",
       "expectedStatusCode": 200,
       "request": {
-        "userId": "33",
-        "orgId": "1"
+        "userId": 37,
+        "orgId": 1
       }
     },
 
@@ -28,10 +28,10 @@
       "tcId": "TC_CONN_03",
       "name": "Unauthorized user",
       "role": "END_USER",
-      "expectedStatusCode": 403,
+      "expectedStatusCode": 401,
       "request": {
-        "userId": "33",
-        "orgId": "1"
+        "userId": 40,
+        "orgId": 1
       }
     },
 
@@ -41,7 +41,7 @@
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 400,
       "request": {
-        "userId": "33",
+        "userId": 32,
         "orgId": null
       }
     },
@@ -49,11 +49,73 @@
     {
       "tcId": "TC_CONN_05",
       "name": "Invalid token",
-      "role": "INVALID",
+      "role": "SUPER_ADMIN",
+      "authType": "INVALID",
       "expectedStatusCode": 401,
       "request": {
-        "userId": "33",
+        "userId": 32,
+        "orgId": 1
+      }
+    },
+    {
+      "tcId": "TC_CONN_06",
+      "name": "Missing userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "",
+        "orgId": 1
+      }
+    },
+    {
+      "tcId": "TC_CONN_07",
+      "name": "Invalid userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "abc",
+        "orgId": 1
+      }
+    },
+    {
+      "tcId": "TC_CONN_08",
+      "name": "Invalid orgId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": 32,
+        "orgId": "abc"
+      }
+    },
+    {
+      "tcId": "TC_CONN_09",
+      "name": "Pass userId as string",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "32",
+        "orgId": 1
+      }
+    },
+    {
+      "tcId": "TC_CONN_10",
+      "name": "Pass orgId as string",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "32",
         "orgId": "1"
+      }
+    },
+    {
+      "tcId": "TC_CONN_11",
+      "name": "Missing token",
+      "role": "SUPER_ADMIN",
+      "authType": "MISSING",
+      "expectedStatusCode": 401,
+      "request": {
+        "userId": 32,
+        "orgId": 1
       }
     }
   ]

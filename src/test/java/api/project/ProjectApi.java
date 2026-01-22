@@ -9,12 +9,38 @@ import static io.restassured.RestAssured.given;
 
 public class ProjectApi {
 
-    // ✅ CREATE PROJECT - WITH STRING ROLE
+    // ✅ CREATE PROJECT - WITH STRING ROLE (HANDLES SPECIAL CASES)
     public static Response createProject(Object request, String role) {
 
         System.out.println("Executing as role: " + role);
 
-        // Convert String role to UserRole enum
+        // ✅ Handle NO_AUTH
+        if ("NO_AUTH".equalsIgnoreCase(role)) {
+            return given()
+                    .contentType(ContentType.JSON)
+                    .body(request)
+                    .post("/api/createProject");
+        }
+
+        // ✅ Handle INVALID_TOKEN
+        if ("INVALID_TOKEN".equalsIgnoreCase(role)) {
+            return given()
+                    .contentType(ContentType.JSON)
+                    .header("Authorization", "Bearer invalid_token_12345")
+                    .body(request)
+                    .post("/api/createProject");
+        }
+
+        // ✅ Handle INVALID_CONTENT_TYPE
+        if ("INVALID_CONTENT_TYPE".equalsIgnoreCase(role)) {
+            return given()
+                    .contentType(ContentType.TEXT)  // Send as text/plain instead of JSON
+                    .header("Authorization", TokenUtil.getToken(UserRole.SUPER_ADMIN))
+                    .body(request)
+                    .post("/api/createProject");
+        }
+
+        // ✅ Normal flow - Convert String role to UserRole enum
         UserRole userRole = UserRole.valueOf(role.toUpperCase().replace("-", "_").replace(" ", "_"));
 
         return given()
@@ -60,6 +86,18 @@ public class ProjectApi {
         return given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer invalid_token_12345")
+                .body(request)
+                .post("/api/createProject");
+    }
+
+    // ✅ CREATE PROJECT - INVALID CONTENT TYPE (for testing 415 error)
+    public static Response createProjectInvalidContentType(Object request) {
+
+        System.out.println("Executing with INVALID content-type");
+
+        return given()
+                .contentType(ContentType.TEXT)  // text/plain
+                .header("Authorization", TokenUtil.getToken(UserRole.SUPER_ADMIN))
                 .body(request)
                 .post("/api/createProject");
     }
@@ -156,6 +194,7 @@ public class ProjectApi {
     public static Response getProjects() {
         return getProjects(UserRole.SUPER_ADMIN);
     }
+
     // ✅ EDIT PROJECT - WITH ROLE SUPPORT
     public static Response editProject(Object request, String role) {
 

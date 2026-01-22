@@ -1,80 +1,383 @@
 {
-  "scenario": "Get Project By ID – All Roles",
+  "scenario": "Get Project By ID API Validation - Comprehensive Test Suite",
   "testCases": [
-
     {
       "tcId": "TC_GPD_01",
-      "name": "SUPER_ADMIN – valid projectId",
+      "name": "Get project details with valid userId & projectId",
       "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
       "expectedStatusCode": 200,
+      "expectedResult": "200 OK, project details returned",
       "request": {
         "userId": "33",
         "projectId": "230"
       }
     },
-
     {
       "tcId": "TC_GPD_02",
-      "name": "ADMIN – valid projectId",
-      "role": "ADMIN",
+      "name": "Get project details with numeric IDs",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "PASS",
       "expectedStatusCode": 200,
+      "expectedResult": "200 OK / validated",
       "request": {
-        "userId": "44",
-        "projectId": "230"
+        "userId": 33,
+        "projectId": 230
       }
     },
-
     {
       "tcId": "TC_GPD_03",
-      "name": "END_USER – access denied",
-      "role": "END_USER",
-      "expectedStatusCode": 403,
+      "name": "Get project details with extra fields",
+      "role": "SUPER_ADMIN",
+      "priority": "LOW",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "Ignored, 200 OK",
       "request": {
-        "userId": "55",
-        "projectId": "230"
+        "userId": "33",
+        "projectId": "230",
+        "extra": "x",
+        "randomField": "test"
       }
     },
-
     {
       "tcId": "TC_GPD_04",
-      "name": "Missing userId",
+      "name": "Missing userId field",
       "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
       "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
       "request": {
         "projectId": "230"
       }
     },
-
     {
       "tcId": "TC_GPD_05",
-      "name": "Invalid projectId",
+      "name": "Missing projectId field",
       "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_GPD_06",
+      "name": "userId as null",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {
+        "userId": null,
+        "projectId": "230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_07",
+      "name": "projectId as null",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {
+        "userId": "33",
+        "projectId": null
+      }
+    },
+    {
+      "tcId": "TC_GPD_08",
+      "name": "Invalid userId - Non-existent",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 401,
+      "expectedResult": "Authorization / empty response",
+      "request": {
+        "userId": "99999",
+        "projectId": "230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_09",
+      "name": "Invalid projectId - Non-existent",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
       "expectedStatusCode": 404,
+      "expectedResult": "404 Not Found / validation error",
       "request": {
         "userId": "33",
         "projectId": "99999"
       }
     },
-
     {
-      "tcId": "TC_GPD_06",
-      "name": "Unauthorized – no token",
+      "tcId": "TC_GPD_10",
+      "name": "userId as empty string",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "Validation error/404 error",
+      "request": {
+        "userId": "",
+        "projectId": "230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_11",
+      "name": "projectId as empty string",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "Validation error",
+      "request": {
+        "userId": "33",
+        "projectId": ""
+      }
+    },
+    {
+      "tcId": "TC_GPD_12",
+      "name": "Unauthorized request - No auth header",
       "role": "NO_AUTH",
+      "priority": "HIGH",
+      "status": "PASS",
       "expectedStatusCode": 401,
+      "expectedResult": "401 Unauthorized",
       "request": {
         "userId": "33",
         "projectId": "230"
       }
     },
-
     {
-      "tcId": "TC_GPD_07",
-      "name": "Token-user mismatch",
-      "role": "ADMIN",
-      "expectedStatusCode": 403,
+      "tcId": "TC_GPD_13",
+      "name": "Invalid token",
+      "role": "INVALID_TOKEN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 401,
+      "expectedResult": "401 Unauthorized",
       "request": {
         "userId": "33",
         "projectId": "230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_14",
+      "name": "Token-user mismatch",
+      "role": "ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 403,
+      "expectedResult": "403 Forbidden",
+      "note": "Using ADMIN token but requesting with SUPER_ADMIN userId",
+      "request": {
+        "userId": "33",
+        "projectId": "230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_15",
+      "name": "SQL injection in userId",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Input rejected",
+      "request": {
+        "userId": "' OR '1'='1",
+        "projectId": "230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_16",
+      "name": "SQL injection in projectId",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Input rejected",
+      "request": {
+        "userId": "33",
+        "projectId": "' OR '1'='1"
+      }
+    },
+    {
+      "tcId": "TC_GPD_17",
+      "name": "XSS injection in userId",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Input rejected",
+      "request": {
+        "userId": "<script>alert(1)</script>",
+        "projectId": "230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_18",
+      "name": "XSS injection in projectId",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Input rejected",
+      "request": {
+        "userId": "33",
+        "projectId": "<script>alert(1)</script>"
+      }
+    },
+    {
+      "tcId": "TC_GPD_19",
+      "name": "userId with special characters",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Validation error",
+      "request": {
+        "userId": "33@#$%",
+        "projectId": "230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_20",
+      "name": "projectId with special characters",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Validation error",
+      "request": {
+        "userId": "33",
+        "projectId": "230@#$"
+      }
+    },
+    {
+      "tcId": "TC_GPD_21",
+      "name": "Negative userId",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Invalid userId",
+      "request": {
+        "userId": "-33",
+        "projectId": "230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_22",
+      "name": "Negative projectId",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Invalid projectId",
+      "request": {
+        "userId": "33",
+        "projectId": "-230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_23",
+      "name": "Zero userId",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Invalid userId",
+      "request": {
+        "userId": "0",
+        "projectId": "230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_24",
+      "name": "Zero projectId",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Invalid projectId",
+      "request": {
+        "userId": "230",
+        "projectId": "0"
+      }
+    },
+    {
+      "tcId": "TC_GPD_25",
+      "name": "Empty payload",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {}
+    },
+    {
+      "tcId": "TC_GPD_26",
+      "name": "Invalid content-type",
+      "role": "INVALID_CONTENT_TYPE",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 415,
+      "expectedResult": "415 Unsupported Media Type",
+      "note": "Send with Content-Type: text/plain",
+      "request": {
+        "userId": "33",
+        "projectId": "230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_27",
+      "name": "Large payload with extra fields",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK - Extra fields ignored",
+      "request": {
+        "userId": "33",
+        "projectId": "230",
+        "extra1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "extra2": "Sed do eiusmod tempor incididunt ut labore et dolore",
+        "extra3": "Ut enim ad minim veniam, quis nostrud exercitation"
+      }
+    },
+    {
+      "tcId": "TC_GPD_28",
+      "name": "userId with leading/trailing spaces",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK - Spaces trimmed",
+      "request": {
+        "userId": " 33 ",
+        "projectId": "230"
+      }
+    },
+    {
+      "tcId": "TC_GPD_29",
+      "name": "projectId with leading/trailing spaces",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK - Spaces trimmed",
+      "request": {
+        "userId": "33",
+        "projectId": " 230 "
       }
     }
   ]

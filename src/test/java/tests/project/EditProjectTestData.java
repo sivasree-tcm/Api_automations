@@ -1,5 +1,7 @@
 package tests.project;
 
+import models.project.ProjectRequest;
+
 import java.util.List;
 
 public class EditProjectTestData {
@@ -27,7 +29,10 @@ public class EditProjectTestData {
         public String getName() { return name; }
         public String getRole() { return role; }
         public int getExpectedStatusCode() { return expectedStatusCode; }
-        public Object getRequest() { return request; }
+
+        public Object getRequest() {
+            return request;
+        }
 
         @Override
         public String toString() {

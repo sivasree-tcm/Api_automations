@@ -1,11 +1,274 @@
 {
-  "scenario": "Get My Projects API Validation",
+  "scenario": "Get My Projects API Validation - Comprehensive Test Suite",
   "testCases": [
-
     {
       "tcId": "TC_GMP_01",
       "name": "Get projects with valid userId",
       "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
       "expectedStatusCode": 200,
-      "request": { "userId": "33" }
-    }]}
+      "expectedResult": "200 OK, project list returned",
+      "request": {
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_GMP_02",
+      "name": "Missing userId field",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {}
+    },
+    {
+      "tcId": "TC_GMP_03",
+      "name": "userId as null",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {
+        "userId": null
+      }
+    },
+    {
+      "tcId": "TC_GMP_04",
+      "name": "Invalid userId - Non-existent",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "Empty list / validation error",
+      "request": {
+        "userId": "99999788"
+      }
+    },
+    {
+      "tcId": "TC_GMP_05",
+      "name": "userId as number",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "Accepted or validation error",
+      "request": {
+        "userId": 33
+      }
+    },
+    {
+      "tcId": "TC_GMP_06",
+      "name": "userId as empty string",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "Validation error",
+      "request": {
+        "userId": ""
+      }
+    },
+    {
+      "tcId": "TC_GMP_07",
+      "name": "userId with spaces",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "Trimmed / validation error",
+      "request": {
+        "userId": " 33 "
+      }
+    },
+    {
+      "tcId": "TC_GMP_08",
+      "name": "Unauthorized request - No auth header",
+      "role": "NO_AUTH",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 401,
+      "expectedResult": "401 Unauthorized",
+      "request": {
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_GMP_09",
+      "name": "Invalid token",
+      "role": "INVALID_TOKEN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 401,
+      "expectedResult": "401 Unauthorized",
+      "request": {
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_GMP_10",
+      "name": "Token-user mismatch",
+      "role": "ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 403,
+      "expectedResult": "403 Forbidden",
+      "note": "Using ADMIN token but requesting SUPER_ADMIN's projects",
+      "request": {
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_GMP_11",
+      "name": "SQL injection in userId",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "Input rejected",
+      "request": {
+        "userId": "' OR '1'='1"
+      }
+    },
+    {
+      "tcId": "TC_GMP_12",
+      "name": "XSS injection in userId",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "Input rejected",
+      "request": {
+        "userId": "<script>alert(1)</script>"
+      }
+    },
+    {
+      "tcId": "TC_GMP_13",
+      "name": "Extra fields in payload",
+      "role": "SUPER_ADMIN",
+      "priority": "LOW",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "Ignored, 200 OK",
+      "request": {
+        "userId": "33",
+        "extra": "test",
+        "randomField": "value"
+      }
+    },
+    {
+      "tcId": "TC_GMP_14",
+      "name": "Large payload",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK / ignored",
+      "request": {
+        "userId": "33",
+        "f1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "f2": "Sed do eiusmod tempor incididunt ut labore et dolore",
+        "f3": "Ut enim ad minim veniam, quis nostrud exercitation"
+      }
+    },
+    {
+      "tcId": "TC_GMP_15",
+      "name": "Empty payload",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {}
+    },
+    {
+      "tcId": "TC_GMP_16",
+      "name": "Invalid content-type",
+      "role": "INVALID_CONTENT_TYPE",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 415,
+      "expectedResult": "415 Unsupported Media Type",
+      "note": "Send with Content-Type: text/plain",
+      "request": {
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_GMP_17",
+      "name": "Multiple rapid requests",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK / rate limit handled",
+      "note": "Same payload sent repeatedly - execute 5 times",
+      "request": {
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_GMP_18",
+      "name": "User with no projects",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, empty list",
+      "request": {
+        "userId": "9999"
+      }
+    },
+    {
+      "tcId": "TC_GMP_19",
+      "name": "API stability check - Malformed JSON",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "4xx error, no 500",
+      "note": "This requires special handling to send malformed JSON",
+      "request": {
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_GMP_20",
+      "name": "userId with special characters",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Validation error",
+      "request": {
+        "userId": "33@#$%"
+      }
+    },
+    {
+      "tcId": "TC_GMP_21",
+      "name": "userId as negative number",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Invalid userId",
+      "request": {
+        "userId": "-33"
+      }
+    },
+    {
+      "tcId": "TC_GMP_22",
+      "name": "userId as zero",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Invalid userId",
+      "request": {
+        "userId": "0"
+      }
+    }
+  ]
+}

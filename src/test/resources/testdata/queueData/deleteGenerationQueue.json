@@ -1,0 +1,20 @@
+{
+  "scenario": "Delete Generation Queue",
+  "testCases": [
+    {
+      "tcId": "TC_DEL_QUEUE_01",
+      "name": "Delete generation queue",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userIdFromAPI": 33,
+        "userId": "32",
+        "projectId": "1167",
+        "queueIds": [1938, 1940],
+        "userName": "Suhapriyan U",
+        "projectName": "Build 34 - Test project 2201"
+      }
+    }
+  ]
+}

@@ -1,0 +1,502 @@
+{
+  "scenario": "Add / Update Project User API – Full Validation",
+  "testCases": [
+
+    {
+      "tcId": "TC_AUP_01",
+      "name": "Add new user with valid payload",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "targetUserId": 33,
+        "userId": "33",
+        "projectId": 1179,
+        "refRoleId": 191,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_02",
+      "name": "Validate response message on successful add",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "targetUserId": 32,
+        "userId": "33",
+        "projectId": 1179,
+        "refRoleId": 191,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_03",
+      "name": "Update existing user role",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "targetUserId": 32,
+        "userId": "33",
+        "projectId": 1179,
+        "refRoleId": 190,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_04",
+      "name": "userId as number",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "targetUserId": 35,
+        "userId": 33,
+        "projectId": 1179,
+        "refRoleId": 191,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_05",
+      "name": "targetUserId as string",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "targetUserId": "32",
+        "userId": "33",
+        "projectId": 1179,
+        "refRoleId": 191,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_06",
+      "name": "Missing targetUserId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_07",
+      "name": "Missing userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 37,
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_08",
+      "name": "Missing projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 38,
+        "userId": "33",
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_09",
+      "name": "Missing refRoleId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 39,
+        "userId": "33",
+        "projectId": 103,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_10",
+      "name": "Null targetUserId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": null,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_11",
+      "name": "Null userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 40,
+        "userId": null,
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_12",
+      "name": "Null projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 41,
+        "userId": "33",
+        "projectId": null,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_13",
+      "name": "Null refRoleId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 42,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": null,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_14",
+      "name": "Invalid targetUserId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 404,
+      "request": {
+        "targetUserId": 99999,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_15",
+      "name": "Invalid userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 403,
+      "request": {
+        "targetUserId": 43,
+        "userId": "99999",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_16",
+      "name": "Invalid projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 404,
+      "request": {
+        "targetUserId": 44,
+        "userId": "33",
+        "projectId": 99999,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_17",
+      "name": "Invalid refRoleId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 45,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 99999,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_18",
+      "name": "Negative targetUserId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": -1,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_19",
+      "name": "Negative projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 46,
+        "userId": "33",
+        "projectId": -1,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_20",
+      "name": "Negative refRoleId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 47,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": -1,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_21",
+      "name": "Zero targetUserId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 0,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_22",
+      "name": "Zero projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 48,
+        "userId": "33",
+        "projectId": 0,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_23",
+      "name": "Zero refRoleId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 49,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 0,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_24",
+      "name": "Empty payload",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {}
+    },
+
+    {
+      "tcId": "TC_AUP_25",
+      "name": "Unauthorized user adding project user",
+      "role": "END_USER",
+      "expectedStatusCode": 403,
+      "request": {
+        "targetUserId": 50,
+        "userId": "50",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_26",
+      "name": "User adding themselves",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 403,
+      "request": {
+        "targetUserId": 33,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_27",
+      "name": "Duplicate user with same role",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 409,
+      "request": {
+        "targetUserId": 37,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_28",
+      "name": "Add same user to multiple projects",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "targetUserId": 33,
+        "userId": "33",
+        "projectId": 104,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_29",
+      "name": "Role change admin to viewer",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "targetUserId": 34,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_30",
+      "name": "Role change viewer to admin",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "targetUserId": 34,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 90,
+        "isAdmin": 1
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_31",
+      "name": "Extra unexpected fields",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "targetUserId": 51,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0,
+        "extraField": "test",
+        "notes": "new user"
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_32",
+      "name": "Response time validation",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "targetUserId": 52,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_33",
+      "name": "User persistence after add",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "targetUserId": 53,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_34",
+      "name": "Add inactive user to project",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 45,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_35",
+      "name": "Concurrent add requests",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 409,
+      "request": {
+        "targetUserId": 37,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 94,
+        "isAdmin": 0
+      }
+    },
+
+    {
+      "tcId": "TC_AUP_36",
+      "name": "Role not applicable to project",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "targetUserId": 33,
+        "userId": "33",
+        "projectId": 103,
+        "refRoleId": 99,
+        "isAdmin": 0
+      }
+    }
+
+  ]
+}

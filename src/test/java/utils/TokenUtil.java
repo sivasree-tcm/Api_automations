@@ -1,6 +1,6 @@
 package utils;
-import tests.roles.UserRole;
 
+import tests.roles.UserRole;
 import api.login.LoginApi;
 import io.restassured.response.Response;
 
@@ -11,12 +11,11 @@ public class TokenUtil {
 
     private static final long TOKEN_VALIDITY = 10 * 60 * 1000; // 10 minutes
 
-    // Cache per role
     private static final Map<UserRole, String> tokenMap = new EnumMap<>(UserRole.class);
     private static final Map<UserRole, Integer> userIdMap = new EnumMap<>(UserRole.class);
     private static final Map<UserRole, Long> expiryMap = new EnumMap<>(UserRole.class);
 
-    // ================== PUBLIC - ENUM VERSION ==================
+    /* ================= PUBLIC ================= */
 
     public static String getToken(UserRole role) {
         if (!tokenMap.containsKey(role) || isExpired(role)) {
@@ -32,27 +31,13 @@ public class TokenUtil {
         return userIdMap.get(role);
     }
 
-    // ================== PUBLIC - STRING VERSION (FOR FLEXIBILITY) ==================
-
-    /**
-     * Get token by role name (String)
-     * @param roleString - "SUPER_ADMIN", "ADMIN", or "END_USER"
-     */
     public static String getToken(String roleString) {
-        UserRole role = parseRole(roleString);
-        return getToken(role);
+        return getToken(parseRole(roleString));
     }
 
-    /**
-     * Get userId by role name (String)
-     * @param roleString - "SUPER_ADMIN", "ADMIN", or "END_USER"
-     */
     public static int getUserId(String roleString) {
-        UserRole role = parseRole(roleString);
-        return getUserId(role);
+        return getUserId(parseRole(roleString));
     }
-
-    // ================== BACKWARD COMPATIBILITY (SUPER_ADMIN DEFAULT) ==================
 
     public static String getToken() {
         return getToken(UserRole.SUPER_ADMIN);
@@ -62,38 +47,7 @@ public class TokenUtil {
         return getUserId(UserRole.SUPER_ADMIN);
     }
 
-    // ================== HELPER - PARSE STRING TO ENUM ==================
-
-    private static UserRole parseRole(String roleString) {
-        if (roleString == null || roleString.trim().isEmpty()) {
-            return UserRole.SUPER_ADMIN; // Default
-        }
-
-        try {
-            // Handle common variations
-            String normalized = roleString.trim().toUpperCase().replace(" ", "_");
-
-            // Map common variations to enum values
-            switch (normalized) {
-                case "SUPERADMIN":
-                case "SUPER-ADMIN":
-                    return UserRole.SUPER_ADMIN;
-
-                case "ENDUSER":
-                case "END-USER":
-                case "USER":  // Map "USER" to END_USER
-                    return UserRole.END_USER;
-
-                default:
-                    return UserRole.valueOf(normalized);
-            }
-        } catch (IllegalArgumentException e) {
-            System.err.println("Invalid role: " + roleString + ". Defaulting to SUPER_ADMIN");
-            return UserRole.SUPER_ADMIN;
-        }
-    }
-
-    // ================== INTERNAL ==================
+    /* ================= INTERNAL ================= */
 
     private static boolean isExpired(UserRole role) {
         return System.currentTimeMillis() > expiryMap.getOrDefault(role, 0L);
@@ -109,12 +63,10 @@ public class TokenUtil {
                 email = ConfigReader.get("admin.email");
                 password = ConfigReader.get("admin.password");
                 break;
-
             case END_USER:
                 email = ConfigReader.get("user.email");
                 password = ConfigReader.get("user.password");
                 break;
-
             case SUPER_ADMIN:
             default:
                 email = ConfigReader.get("superadmin.email");
@@ -123,28 +75,62 @@ public class TokenUtil {
 
         Response response = LoginApi.login(email, password);
 
-        tokenMap.put(role, response.getHeader("Authorization"));
-        userIdMap.put(role, response.jsonPath().getInt("userId"));
+        /* 🔴 HARD STOP IF LOGIN FAILS */
+        if (response.getStatusCode() != 200) {
+            throw new RuntimeException(
+                    "❌ LOGIN FAILED for role=" + role +
+                            " | Status=" + response.getStatusCode() +
+                            " | Response=" + response.asPrettyString()
+            );
+        }
+
+        /* ✅ Extract token safely */
+        String token =
+                response.getHeader("Authorization") != null
+                        ? response.getHeader("Authorization")
+                        : response.jsonPath().getString("token");
+
+        if (token == null || token.isBlank()) {
+            throw new RuntimeException("❌ Token missing in login response for role=" + role);
+        }
+
+        int userId = response.jsonPath().getInt("userId");
+
+        tokenMap.put(role, token);
+        userIdMap.put(role, userId);
         expiryMap.put(role, System.currentTimeMillis() + TOKEN_VALIDITY);
 
-        System.out.println("✅ Logged in as " + role + " | userId = " + userIdMap.get(role));
+        System.out.println("✅ Logged in successfully as " + role + " | userId=" + userId);
     }
 
-    // ================== UTILITY - CLEAR CACHE (FOR TESTING) ==================
+    /* ================= ROLE PARSER ================= */
 
-    /**
-     * Clear cached token for a specific role (useful for testing token expiry)
-     */
-    public static void clearToken(UserRole role) {
-        tokenMap.remove(role);
-        userIdMap.remove(role);
-        expiryMap.remove(role);
-        System.out.println("🔄 Cleared token cache for " + role);
+    private static UserRole parseRole(String roleString) {
+        if (roleString == null || roleString.trim().isEmpty()) {
+            return UserRole.SUPER_ADMIN;
+        }
+
+        try {
+            String normalized = roleString.trim().toUpperCase().replace(" ", "_");
+            switch (normalized) {
+                case "SUPERADMIN":
+                case "SUPER-ADMIN":
+                    return UserRole.SUPER_ADMIN;
+                case "ENDUSER":
+                case "END-USER":
+                case "USER":
+                    return UserRole.END_USER;
+                default:
+                    return UserRole.valueOf(normalized);
+            }
+        } catch (Exception e) {
+            System.err.println("⚠ Invalid role: " + roleString + ", defaulting to SUPER_ADMIN");
+            return UserRole.SUPER_ADMIN;
+        }
     }
 
-    /**
-     * Clear all cached tokens
-     */
+    /* ================= UTIL ================= */
+
     public static void clearAllTokens() {
         tokenMap.clear();
         userIdMap.clear();
@@ -152,23 +138,10 @@ public class TokenUtil {
         System.out.println("🔄 Cleared all token caches");
     }
 
-    // ================== FORCE REFRESH TOKEN ==================
-
-    public static void refreshToken() {
-        System.out.println("🔄 Forcing token refresh...");
-
-        // Default to SUPER_ADMIN
-        refreshToken(UserRole.SUPER_ADMIN);
-    }
-
     public static void refreshToken(UserRole role) {
         tokenMap.remove(role);
         userIdMap.remove(role);
         expiryMap.remove(role);
-
         initLogin(role);
-
-        System.out.println("✅ Token refreshed successfully for " + role);
     }
-
 }

@@ -28,4 +28,20 @@ public class UserManagementApi {
 
         return req.post("/addUpdateProjectUser");
     }
+    public static Response toggleUserStatus(Object request, String role) {
+
+        var req = given()
+                .contentType(ContentType.JSON);
+
+        if (!"NO_AUTH".equalsIgnoreCase(role)) {
+            req.header("Authorization", TokenUtil.getToken(role));
+        }
+
+        if (request != null) {
+            req.body(request);
+        }
+
+        return req.post("/toggleUserStatus");
+    }
+
 }

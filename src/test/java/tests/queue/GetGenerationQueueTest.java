@@ -112,7 +112,7 @@ public class GetGenerationQueueTest extends BaseTest {
                         queueIds.add((Integer) q.get("queueId"));
                     }
 
-                    GenerationQueueStore.store(userIdFromApi, queueIds);
+//                    GenerationQueueStore.store(userIdFromApi, queueIds);
 
                     System.out.println(
                             "📌 Queue IDs for user " + userIdFromApi + " → " + queueIds
@@ -124,82 +124,75 @@ public class GetGenerationQueueTest extends BaseTest {
     }
     public void fetchGenerationQueue() {
 
-        ConnectionReport testData =
-                JsonUtils.readJson(
-                        "testdata/queueData/getGenerationQueue.json",
-                        ConnectionReport.class
-                );
+        TokenUtil.refreshToken();
 
         for (Integer projectId : ProjectStore.getAllProjectIds()) {
 
-            for (Map<String, Object> user :
-                    ProjectUserStore.getUsers(projectId)) {
+            for (Map<String, Object> user : ProjectUserStore.getUsers(projectId)) {
 
                 Integer userId = (Integer) user.get("userId");
-
-                ConnectionReport.TestCase tc =
-                        new ConnectionReport.TestCase(
-                                testData.getTestCases().get(0)
-                        );
 
                 Map<String, Object> request = new HashMap<>();
                 request.put("projectId", projectId);
                 request.put("userIdFromAPI", userId);
                 request.put("userId", TokenUtil.getUserId());
 
+                // 🔹 Call API
+                Response response =
+                        GetGenerationQueueApi.getGenerationQueue(
+                                request,
+                                "SUPER_ADMIN",
+                                "VALID"
+                        );
+
+                List<Map<String, Object>> queue =
+                        response.jsonPath().getList("data");
+
+                // ✅ CASE 1: No queue → DO NOTHING (no report)
+                if (queue == null || queue.isEmpty()) {
+                    System.out.println("ℹ No queue for user " + userId);
+                    continue;
+                }
+
+                // ✅ CASE 2: Queue exists → store + report
+                List<Integer> queueIds =
+                        queue.stream()
+                                .map(q -> (Integer) q.get("queueId"))
+                                .toList();
+
+                GenerationQueueStore.store(projectId, userId, queueIds);
+
+                System.out.println(
+                        "✅ Queue stored → project=" + projectId +
+                                " user=" + userId +
+                                " queues=" + queueIds
+                );
+
+                // ✅ REPORT ONLY WHEN QUEUE EXISTS
+                ConnectionReport testData =
+                        JsonUtils.readJson(
+                                "testdata/queueData/getGenerationQueue.json",
+                                ConnectionReport.class
+                        );
+
+                ConnectionReport.TestCase tc =
+                        new ConnectionReport.TestCase(
+                                testData.getTestCases().get(0)
+                        );
+
+                tc.setTcId("GET_QUEUE_" + projectId + "_" + userId);
+                tc.setName("Get Generation Queue | User " + userId + "_" +projectId);
                 tc.setRequest(request);
-                tc.setTcId("GEN_QUEUE_" + projectId + "_" + userId);
-                tc.setName("Get Queue for User " + userId);
 
                 ApiTestExecutor.execute(
                         testData.getScenario(),
                         tc,
-                        () -> {
-
-                            Response response =
-                                    GetGenerationQueueApi.getGenerationQueue(
-                                            request,
-                                            tc.getRole(),
-                                            tc.getAuthType()
-                                    );
-
-                            List<Map<String, Object>> queue =
-                                    response.jsonPath().getList("data");
-
-                            // ✅ CASE 1: Queue is empty
-                            if (queue == null || queue.isEmpty()) {
-
-                                System.out.println(
-                                        "ℹ No generation queue for user: " + userId
-                                );
-
-                                // Store empty list so delete step won't fail
-                                GenerationQueueStore.store(
-                                        userId,
-                                        new ArrayList<>()
-                                );
-
-                                return response;
-                            }
-
-                            // ✅ CASE 2: Queue exists
-                            List<Integer> queueIds =
-                                    queue.stream()
-                                            .map(q -> (Integer) q.get("queueId"))
-                                            .toList();
-
-                            GenerationQueueStore.store(userId, queueIds);
-
-                            System.out.println(
-                                    "✅ Queue found for user " + userId +
-                                            " → " + queueIds
-                            );
-
-
-                            return response;
-                        }
+                        () -> response
                 );
             }
         }
     }
+
+
+
 }

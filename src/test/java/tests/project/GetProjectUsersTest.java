@@ -103,6 +103,8 @@ public class GetProjectUsersTest extends BaseTest {
 
     public void fetchProjectUsers() {
 
+        TokenUtil.refreshToken();
+
         ConnectionReport testData =
                 JsonUtils.readJson(
                         "testdata/project/getProjectUsers.json",

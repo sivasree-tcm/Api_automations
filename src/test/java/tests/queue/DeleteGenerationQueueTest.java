@@ -21,6 +21,8 @@ public class DeleteGenerationQueueTest {
 
     public void deleteGenerationQueue() {
 
+        TokenUtil.refreshToken();
+
         ConnectionReport testData =
                 JsonUtils.readJson(
                         "testdata/queueData/deleteGenerationQueue.json",
@@ -52,7 +54,7 @@ public class DeleteGenerationQueueTest {
                         tc,
                         () -> {
 
-                            TokenUtil.refreshToken();
+
                             Response response =
                                     DeleteGenerationQueueApi.deleteQueue(
                                             request,

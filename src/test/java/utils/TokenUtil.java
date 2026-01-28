@@ -154,21 +154,21 @@ public class TokenUtil {
 
     // ================== FORCE REFRESH TOKEN ==================
 
-    public static void refreshToken() {
-        System.out.println("🔄 Forcing token refresh...");
-
-        // Default to SUPER_ADMIN
+    public static synchronized void refreshToken() {
         refreshToken(UserRole.SUPER_ADMIN);
     }
 
-    public static void refreshToken(UserRole role) {
+    public static synchronized void refreshToken(UserRole role) {
+        System.out.println("🔄 Forcing token refresh...");
+
+        // Clear only token (not userId)
         tokenMap.remove(role);
-        userIdMap.remove(role);
         expiryMap.remove(role);
 
         initLogin(role);
 
         System.out.println("✅ Token refreshed successfully for " + role);
     }
+
 
 }

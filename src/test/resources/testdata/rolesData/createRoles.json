@@ -1,0 +1,18 @@
+{
+  "scenario": "Create Role API",
+  "testCases": [
+    {
+      "tcId": "TC_ROLE_01",
+      "name": "Create QA role",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "refProjectId": "182",
+        "roleName": "",
+        "roleDescription": "",
+        "userId": 32
+      }
+    }
+  ]
+}

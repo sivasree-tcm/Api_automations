@@ -3,6 +3,7 @@ package base;
 import io.restassured.RestAssured;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import report.CustomReportManager;
 import tests.login.LoginTest;
 import utils.FailureTracker;
 
@@ -10,6 +11,7 @@ public class BaseTest {
 
     static {
         RestAssured.baseURI = "https://test.cognitest.ai";
+        RestAssured.useRelaxedHTTPSValidation();
     }
 
     @BeforeSuite(alwaysRun = true)

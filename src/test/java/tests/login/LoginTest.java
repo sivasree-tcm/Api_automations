@@ -4,13 +4,13 @@ import api.login.LoginApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import utils.ConfigReader;
 
 public class LoginTest extends BaseTest {
 
     public static String authToken;
-
     @Test
     public void loginTest() {
 
@@ -40,5 +40,7 @@ public class LoginTest extends BaseTest {
                 authToken,
                 "Authorization token should not be null"
         );
+
+        System.out.println("Auth token: " + authToken);
     }
 }

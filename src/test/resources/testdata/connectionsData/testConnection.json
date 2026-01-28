@@ -317,7 +317,7 @@
       "authType": "VALID",
       "expectedStatusCode": 400,
       "request": {
-        "userId": "",
+        "userId": "ddd",
         "orgId": 1,
         "connection": {
           "id": null,
@@ -583,7 +583,9 @@
       "expectedStatusCode": 400,
       "request": {
         "userId": 32,
-        "orgId": 1
+        "orgId": 1,
+        "connection": {
+        }
       }
     },
     {

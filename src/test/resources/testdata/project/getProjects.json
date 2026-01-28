@@ -1,0 +1,15 @@
+{
+  "scenario": "Get Projects API",
+  "testCases": [
+    {
+      "tcId": "TC_GET_PROJECT_01",
+      "name": "Get all projects for valid user",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": 32
+      }
+    }
+  ]
+}

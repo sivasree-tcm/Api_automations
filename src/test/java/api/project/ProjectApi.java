@@ -231,6 +231,4 @@ public class ProjectApi {
 
         return req.post("/api/getUserManagementDetailsForProjectId");
     }
-
-
 }

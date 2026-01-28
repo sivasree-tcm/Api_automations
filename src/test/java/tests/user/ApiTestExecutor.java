@@ -9,7 +9,9 @@ import report.ReportTest;
 import tests.project.GetMyProjectsTestData;
 import utils.JsonUtils;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public class ApiTestExecutor {
@@ -110,6 +112,8 @@ public class ApiTestExecutor {
             );
 
         } catch (AssertionError | Exception e) {
+
+            e.printStackTrace();
 
             test.addStep(new ReportStep(
                     "Fail",

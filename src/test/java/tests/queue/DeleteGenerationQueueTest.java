@@ -2,9 +2,11 @@ package tests.queue;
 
 import api.queue.DeleteGenerationQueueApi;
 import base.BaseTest;
+import groovyjarjarantlr.Token;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import tests.connection.ConnectionReport;
+import tests.login.LoginTest;
 import tests.user.ApiTestExecutor;
 import utils.GenerationQueueStore;
 import utils.JsonUtils;
@@ -49,6 +51,8 @@ public class DeleteGenerationQueueTest {
                         testData.getScenario(),
                         tc,
                         () -> {
+
+                            TokenUtil.refreshToken();
                             Response response =
                                     DeleteGenerationQueueApi.deleteQueue(
                                             request,
@@ -75,7 +79,7 @@ public class DeleteGenerationQueueTest {
                             tc.setExpectedStatusCode(200);
 
                             System.out.println(
-                                    "🗑 Queue delete attempted for user " + userId + "--->" + projectId
+                                    "🗑 Queue delete attempted for user " + userId + "--->" + projectId +"--->"+ queueIds
                             );
 
                             return response;

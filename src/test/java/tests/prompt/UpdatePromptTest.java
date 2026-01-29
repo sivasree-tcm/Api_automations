@@ -16,7 +16,7 @@ public class UpdatePromptTest extends BaseTest {
 
         CreatePromptTestData testData =
                 JsonUtils.readJson(
-                        "testdata/Prompt/updatePrompt.json",
+                        "testdata/Prompt/UpdatePrompt.json",
                         CreatePromptTestData.class
                 );
 

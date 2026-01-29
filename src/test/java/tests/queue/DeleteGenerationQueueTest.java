@@ -19,7 +19,7 @@ import static io.restassured.RestAssured.given;
 public class DeleteGenerationQueueTest {
 
     public void deleteGenerationQueue() {
-
+        TokenUtil.refreshToken();
         ConnectionReport testData =
                 JsonUtils.readJson(
                         "testdata/queueData/deleteGenerationQueue.json",

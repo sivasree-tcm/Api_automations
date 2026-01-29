@@ -124,7 +124,7 @@ public class GetGenerationQueueTest extends BaseTest {
     }
     public void fetchGenerationQueue() {
 
-        TokenUtil.refreshToken();
+//        TokenUtil.refreshToken();
 
         for (Integer projectId : ProjectStore.getAllProjectIds()) {
 

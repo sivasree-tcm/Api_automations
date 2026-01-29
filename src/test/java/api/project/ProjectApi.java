@@ -200,6 +200,7 @@ public class ProjectApi {
 
         var req = given()
                 .baseUri("https://test.cognitest.ai")
+
                 .contentType(ContentType.JSON);
 
         // Authorization handling

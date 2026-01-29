@@ -1,0 +1,192 @@
+{
+  "scenario": "Update Prompt API Validation - Comprehensive Test Suite",
+  "testCases": [
+
+    {
+      "tcId": "TC_UP_01",
+      "name": "Update prompt with valid data",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Updated Quality Engineering Governance Prompt",
+        "promptDescription": "Updated description for governance prompt",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+
+    {
+      "tcId": "TC_UP_02",
+      "name": "Validate response message on successful update",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Updated Prompt Text - Validation",
+        "promptDescription": "Validate update response message",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+
+    {
+      "tcId": "TC_UP_03",
+      "name": "Update prompt with multiline promptText",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Line 1\nLine 2\nLine 3\nUpdated multiline prompt",
+        "promptDescription": "Multiline prompt update",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+
+    {
+      "tcId": "TC_UP_04",
+      "name": "Update prompt with special characters",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "@#$%^&*() Updated Prompt !",
+        "promptDescription": "Special chars !@#$%",
+        "promptSource": "BR",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+
+    {
+      "tcId": "TC_UP_05",
+      "name": "Deactivate existing prompt",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Deactivated Prompt",
+        "promptDescription": "Prompt marked as inactive",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": false
+      }
+    },
+
+    {
+      "tcId": "TC_UP_06",
+      "name": "Missing promptId",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptText": "Missing promptId",
+        "promptDescription": "Validation test",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+
+    {
+      "tcId": "TC_UP_07",
+      "name": "Invalid promptId",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 404,
+      "request": {
+        "promptId": 999999,
+        "promptText": "Invalid promptId update",
+        "promptDescription": "Non-existent promptId",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+
+    {
+      "tcId": "TC_UP_08",
+      "name": "Missing promptText",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptDescription": "Missing promptText",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+
+    {
+      "tcId": "TC_UP_09",
+      "name": "Missing promptDescription",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Missing description",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+
+    {
+      "tcId": "TC_UP_10",
+      "name": "Unauthorized user updating prompt",
+      "role": "NO_AUTH",
+      "priority": "HIGH",
+      "expectedStatusCode": 401,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Unauthorized update attempt",
+        "promptDescription": "No auth header",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+
+    {
+      "tcId": "TC_UP_11",
+      "name": "Extra unexpected fields",
+      "role": "SUPER_ADMIN",
+      "priority": "LOW",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Extra fields update",
+        "promptDescription": "Extra fields ignored",
+        "promptSource": "BR",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true,
+        "extraField": "test",
+        "randomKey": "value"
+      }
+    }
+
+  ]
+}

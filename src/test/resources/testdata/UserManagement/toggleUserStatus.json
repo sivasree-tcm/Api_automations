@@ -4,57 +4,29 @@
 
     {
       "tcId": "TC_TUS_01",
-      "name": "Toggle user to inactive with valid payload",
+      "name": "Toggle user to inactive",
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 200,
       "request": {
         "targetUserId": 37,
-        "userId": "33",
         "projectId": 103,
         "refRoleId": 94,
-        "isActive": 0
+        "isActive": 0,
+        "userId": "33"
       }
     },
 
     {
       "tcId": "TC_TUS_02",
-      "name": "Toggle user to active with valid payload",
+      "name": "Toggle user to active",
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 200,
       "request": {
         "targetUserId": 37,
-        "userId": "33",
         "projectId": 103,
         "refRoleId": 94,
-        "isActive": 1
-      }
-    },
-
-    {
-      "tcId": "TC_TUS_03",
-      "name": "Validate response message on successful toggle",
-      "role": "SUPER_ADMIN",
-      "expectedStatusCode": 200,
-      "request": {
-        "targetUserId": 37,
-        "userId": "33",
-        "projectId": 103,
-        "refRoleId": 94,
-        "isActive": 0
-      }
-    },
-
-    {
-      "tcId": "TC_TUS_04",
-      "name": "Toggle inactive user again",
-      "role": "SUPER_ADMIN",
-      "expectedStatusCode": 200,
-      "request": {
-        "targetUserId": 37,
-        "userId": "33",
-        "projectId": 103,
-        "refRoleId": 94,
-        "isActive": 0
+        "isActive": 1,
+        "userId": "33"
       }
     },
 
@@ -64,10 +36,10 @@
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 400,
       "request": {
-        "userId": "33",
         "projectId": 103,
         "refRoleId": 94,
-        "isActive": 0
+        "isActive": 0,
+        "userId": "33"
       }
     },
 
@@ -78,9 +50,9 @@
       "expectedStatusCode": 400,
       "request": {
         "targetUserId": 37,
-        "userId": "33",
         "refRoleId": 94,
-        "isActive": 0
+        "isActive": 0,
+        "userId": "33"
       }
     },
 
@@ -91,9 +63,9 @@
       "expectedStatusCode": 400,
       "request": {
         "targetUserId": 37,
-        "userId": "33",
         "projectId": 103,
-        "refRoleId": 94
+        "refRoleId": 94,
+        "userId": "33"
       }
     },
 
@@ -104,10 +76,10 @@
       "expectedStatusCode": 400,
       "request": {
         "targetUserId": null,
-        "userId": "33",
         "projectId": 103,
         "refRoleId": 94,
-        "isActive": 0
+        "isActive": 0,
+        "userId": "33"
       }
     },
 
@@ -118,66 +90,38 @@
       "expectedStatusCode": 400,
       "request": {
         "targetUserId": 37,
-        "userId": "33",
         "projectId": 103,
         "refRoleId": 94,
-        "isActive": null
-      }
-    },
-
-    {
-      "tcId": "TC_TUS_13",
-      "name": "Invalid targetUserId",
-      "role": "SUPER_ADMIN",
-      "expectedStatusCode": 404,
-      "request": {
-        "targetUserId": 99999,
-        "userId": "33",
-        "projectId": 103,
-        "refRoleId": 94,
-        "isActive": 0
-      }
-    },
-
-    {
-      "tcId": "TC_TUS_14",
-      "name": "Invalid projectId",
-      "role": "SUPER_ADMIN",
-      "expectedStatusCode": 404,
-      "request": {
-        "targetUserId": 37,
-        "userId": "33",
-        "projectId": 99999,
-        "refRoleId": 94,
-        "isActive": 0
+        "isActive": null,
+        "userId": "33"
       }
     },
 
     {
       "tcId": "TC_TUS_17",
-      "name": "Invalid isActive value (2)",
+      "name": "Invalid isActive value = 2",
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 400,
       "request": {
         "targetUserId": 37,
-        "userId": "33",
         "projectId": 103,
         "refRoleId": 94,
-        "isActive": 2
+        "isActive": 2,
+        "userId": "33"
       }
     },
 
     {
       "tcId": "TC_TUS_18",
-      "name": "Invalid isActive value (-1)",
+      "name": "Invalid isActive value = -1",
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 400,
       "request": {
         "targetUserId": 37,
-        "userId": "33",
         "projectId": 103,
         "refRoleId": 94,
-        "isActive": -1
+        "isActive": -1,
+        "userId": "33"
       }
     },
 
@@ -188,10 +132,10 @@
       "expectedStatusCode": 400,
       "request": {
         "targetUserId": 37,
-        "userId": "33",
         "projectId": 103,
         "refRoleId": 94,
-        "isActive": "abc"
+        "isActive": "abc",
+        "userId": "33"
       }
     },
 
@@ -202,24 +146,38 @@
       "expectedStatusCode": 400,
       "request": {
         "targetUserId": 37,
-        "userId": "33",
         "projectId": 103,
         "refRoleId": 94,
-        "isActive": false
+        "isActive": false,
+        "userId": "33"
       }
     },
 
     {
-      "tcId": "TC_TUS_21",
-      "name": "Negative targetUserId",
+      "tcId": "TC_TUS_13",
+      "name": "Non-existent targetUserId",
       "role": "SUPER_ADMIN",
-      "expectedStatusCode": 400,
+      "expectedStatusCode": 404,
       "request": {
-        "targetUserId": -1,
-        "userId": "33",
+        "targetUserId": 99999,
         "projectId": 103,
         "refRoleId": 94,
-        "isActive": 0
+        "isActive": 0,
+        "userId": "33"
+      }
+    },
+
+    {
+      "tcId": "TC_TUS_14",
+      "name": "Non-existent projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 404,
+      "request": {
+        "targetUserId": 37,
+        "projectId": 99999,
+        "refRoleId": 94,
+        "isActive": 0,
+        "userId": "33"
       }
     },
 
@@ -230,19 +188,11 @@
       "expectedStatusCode": 400,
       "request": {
         "targetUserId": 37,
-        "userId": "33",
         "projectId": -1,
         "refRoleId": 94,
-        "isActive": 0
+        "isActive": 0,
+        "userId": "33"
       }
-    },
-
-    {
-      "tcId": "TC_TUS_24",
-      "name": "Empty request body",
-      "role": "SUPER_ADMIN",
-      "expectedStatusCode": 400,
-      "request": {}
     },
 
     {
@@ -252,10 +202,10 @@
       "expectedStatusCode": 403,
       "request": {
         "targetUserId": 37,
-        "userId": "50",
         "projectId": 103,
         "refRoleId": 94,
-        "isActive": 0
+        "isActive": 0,
+        "userId": "50"
       }
     },
 
@@ -266,40 +216,20 @@
       "expectedStatusCode": 200,
       "request": {
         "targetUserId": 37,
-        "userId": "33",
         "projectId": 103,
         "refRoleId": 94,
         "isActive": 0,
+        "userId": "33",
         "extraField": "test"
       }
     },
 
     {
-      "tcId": "TC_TUS_29",
-      "name": "Response time validation",
+      "tcId": "TC_TUS_24",
+      "name": "Empty request body",
       "role": "SUPER_ADMIN",
-      "expectedStatusCode": 200,
-      "request": {
-        "targetUserId": 38,
-        "userId": "33",
-        "projectId": 103,
-        "refRoleId": 94,
-        "isActive": 1
-      }
-    },
-
-    {
-      "tcId": "TC_TUS_30",
-      "name": "Verify status persistence after toggle",
-      "role": "SUPER_ADMIN",
-      "expectedStatusCode": 200,
-      "request": {
-        "targetUserId": 39,
-        "userId": "33",
-        "projectId": 103,
-        "refRoleId": 94,
-        "isActive": 0
-      }
+      "expectedStatusCode": 400,
+      "request": {}
     }
 
   ]

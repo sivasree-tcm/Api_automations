@@ -1,0 +1,643 @@
+{
+  "scenario": "Create Prompt API Validation Test Suite",
+  "testCases": [
+    {
+      "tcId": "TC_CP_01",
+      "name": "Create prompt with valid payload - BR to TS",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "You are a **Quality Engineering Subject Matter Expert (SME)** specializing in **Requirement Engineering, Test Strategy Design, Test Case Generation, Traceability, Impact Analysis, and Compliance Validation** across the SDLC. You have deep expertise in **Agile/Waterfall delivery models, functional coverage, auditability, and regulatory compliance (SOC2, ISO 27001, SOX, GDPR/CCPA, WCAG)**.",
+        "promptDescription": "T-Sigma.ai Quality Engineering Test Insight Framework Prompt - BR to TS",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_02",
+      "name": "Create prompt with valid payload - TS to TC",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Translate a noisy Test Scenario into a minimal, strictly actionable sequence of steps for the web application. Write plain text lines only (no numbering, no JSON, no tables). One action per line; if an assertion is required, write it as the next line. You are generating exact, step-by-step instructions for a browser automation agent.",
+        "promptDescription": "Test Scenario to Test Case Generation Prompt - TS to TC",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_03",
+      "name": "Create prompt with valid payload - BR to IMPACT",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Analyze Test Scenario Impact Based on the modified user story and the business impact analysis provided below, analyze the provided list of existing test scenarios (that were generated with the older version of the same user story), and determine the following: Create a Requirements Delta Analysis with Additions, Modifications, Deletions, and Clarifications.",
+        "promptDescription": "STUDIO BR IMPACT ANALYSIS - BR to IMPACT",
+        "promptSource": "BR",
+        "promptDestination": "IMPACT",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_04",
+      "name": "Create prompt with valid payload - IMPACT to REFINETESTSCENARIO",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "You are a US-based loan servicing business analyst and testing specialist. Task: Compare the Previous and Current versions of the business requirement and analyze the impact on existing test scenarios (that were generated with the older version of the same user story). Create Requirements Delta Analysis and Test Scenario Impact Mapping.",
+        "promptDescription": "Impact Refined Test Scenarios - IMPACT to REFINETESTSCENARIO",
+        "promptSource": "IMPACT",
+        "promptDestination": "REFINETESTSCENARIO",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_05",
+      "name": "Create prompt with valid payload - BR to GapAnalysis",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "You are a Testing Subject Matter Expert. Role: Compare the Previous Version and Current Version of the business requirement provided below. Identify all changes and assess their business impact. Analysis Framework Step 1: Identify and Categorize All Changes. Step 2: Assess Business Impact for each identified change.",
+        "promptDescription": "BR to GapAnalysis - Business Impact Analysis",
+        "promptSource": "BR",
+        "promptDestination": "GapAnalysis",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_06",
+      "name": "Create prompt with valid payload - BR to REFINETESTSCENARIO",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Refine test scenarios based on updated business requirements and ensure comprehensive coverage",
+        "promptDescription": "Business Requirements to Refined Test Scenarios mapping",
+        "promptSource": "BR",
+        "promptDestination": "REFINETESTSCENARIO",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_07",
+      "name": "Create prompt with valid payload - TS to IMPACT",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Analyze test scenarios to determine impact on test execution and coverage",
+        "promptDescription": "Test Scenarios to Impact Analysis mapping",
+        "promptSource": "TS",
+        "promptDestination": "IMPACT",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_08",
+      "name": "Create prompt with valid payload - TS to GapAnalysis",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Identify coverage gaps in test scenarios across positive, negative, edge cases",
+        "promptDescription": "Test Scenarios to Gap Analysis mapping",
+        "promptSource": "TS",
+        "promptDestination": "GapAnalysis",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_09",
+      "name": "Create prompt with valid payload - TS to REFINETESTSCENARIO",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Refine and optimize existing test scenarios for better coverage",
+        "promptDescription": "Test Scenarios refinement mapping",
+        "promptSource": "TS",
+        "promptDestination": "REFINETESTSCENARIO",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_10",
+      "name": "Create prompt with valid payload - IMPACT to TS",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Generate test scenarios based on impact analysis results",
+        "promptDescription": "Impact Analysis to Test Scenarios mapping",
+        "promptSource": "IMPACT",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_11",
+      "name": "Create prompt with valid payload - IMPACT to TC",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Generate test cases from impact analysis findings",
+        "promptDescription": "Impact Analysis to Test Cases mapping",
+        "promptSource": "IMPACT",
+        "promptDestination": "TC",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_12",
+      "name": "Create prompt with valid payload - IMPACT to GapAnalysis",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Identify gaps revealed by impact analysis",
+        "promptDescription": "Impact Analysis to Gap Analysis mapping",
+        "promptSource": "IMPACT",
+        "promptDestination": "GapAnalysis",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_13",
+      "name": "Create prompt with valid payload - GapAnalysis to TS",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Generate test scenarios to address identified gaps",
+        "promptDescription": "Gap Analysis to Test Scenarios mapping",
+        "promptSource": "GapAnalysis",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_14",
+      "name": "Create prompt with valid payload - GapAnalysis to TC",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Create test cases to fill coverage gaps",
+        "promptDescription": "Gap Analysis to Test Cases mapping",
+        "promptSource": "GapAnalysis",
+        "promptDestination": "TC",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_15",
+      "name": "Create prompt with valid payload - GapAnalysis to IMPACT",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Analyze impact of identified gaps on test coverage",
+        "promptDescription": "Gap Analysis to Impact Analysis mapping",
+        "promptSource": "GapAnalysis",
+        "promptDestination": "IMPACT",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_16",
+      "name": "Create prompt with valid payload - GapAnalysis to REFINETESTSCENARIO",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Refine test scenarios to address coverage gaps",
+        "promptDescription": "Gap Analysis to Refined Test Scenarios mapping",
+        "promptSource": "GapAnalysis",
+        "promptDestination": "REFINETESTSCENARIO",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_17",
+      "name": "Create prompt with valid payload - BR to TC",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, prompt created successfully",
+      "request": {
+        "promptText": "Generate test cases directly from business requirements with detailed steps",
+        "promptDescription": "Business Requirements to Test Cases mapping",
+        "promptSource": "BR",
+        "promptDestination": "TC",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_18",
+      "name": "Create prompt with numeric userId",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK / validated",
+      "request": {
+        "promptText": "Test prompt text",
+        "promptDescription": "Test description",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": 33
+      }
+    },
+    {
+      "tcId": "TC_CP_19",
+      "name": "Create prompt with extra fields",
+      "role": "SUPER_ADMIN",
+      "priority": "LOW",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "Ignored, 200 OK",
+      "request": {
+        "promptText": "Test prompt",
+        "promptDescription": "Test description",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33",
+        "extra": "x",
+        "randomField": "test"
+      }
+    },
+    {
+      "tcId": "TC_CP_20",
+      "name": "Missing promptText field",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {
+        "promptDescription": "Test description",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_21",
+      "name": "Missing promptDescription field",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {
+        "promptText": "Test prompt",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_22",
+      "name": "Missing promptSource field",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {
+        "promptText": "Test prompt",
+        "promptDescription": "Test description",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_23",
+      "name": "Missing promptDestination field",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {
+        "promptText": "Test prompt",
+        "promptDescription": "Test description",
+        "promptSource": "BR",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_24",
+      "name": "Missing userId field",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {
+        "promptText": "Test prompt",
+        "promptDescription": "Test description",
+        "promptSource": "BR",
+        "promptDestination": "TS"
+      }
+    },
+    {
+      "tcId": "TC_CP_25",
+      "name": "promptText as null",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request",
+      "request": {
+        "promptText": null,
+        "promptDescription": "Test description",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_26",
+      "name": "promptText as empty string",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 400,
+      "expectedResult": "Validation error",
+      "request": {
+        "promptText": "",
+        "promptDescription": "Test description",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_27",
+      "name": "Invalid userId - Non-existent",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 401,
+      "expectedResult": "Authorization / empty response",
+      "request": {
+        "promptText": "Test prompt",
+        "promptDescription": "Test description",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "99999"
+      }
+    },
+    {
+      "tcId": "TC_CP_28",
+      "name": "Unauthorized request - No auth header",
+      "role": "NO_AUTH",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 401,
+      "expectedResult": "401 Unauthorized",
+      "request": {
+        "promptText": "Test prompt",
+        "promptDescription": "Test description",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_29",
+      "name": "Invalid token",
+      "role": "INVALID_TOKEN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 401,
+      "expectedResult": "401 Unauthorized",
+      "request": {
+        "promptText": "Test prompt",
+        "promptDescription": "Test description",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_30",
+      "name": "SQL injection in promptText",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Input rejected",
+      "request": {
+        "promptText": "' OR '1'='1",
+        "promptDescription": "Test description",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_31",
+      "name": "XSS injection in promptText",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Input rejected",
+      "request": {
+        "promptText": "<script>alert(1)</script>",
+        "promptDescription": "Test description",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_32",
+      "name": "Invalid promptSource value",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Invalid source",
+      "request": {
+        "promptText": "Test prompt",
+        "promptDescription": "Test description",
+        "promptSource": "INVALID_SOURCE",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_CP_33",
+      "name": "Invalid promptDestination value",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "FAIL",
+      "expectedStatusCode": 400,
+      "expectedResult": "400 Bad Request - Invalid destination",
+      "request": {
+        "promptText": "Test prompt",
+        "promptDescription": "Test description",
+        "promptSource": "BR",
+        "promptDestination": "INVALID_DEST",
+        "userId": "33"
+      }
+    },
+
+    {
+      "tcId": "TC_CP_34",
+      "name": "Duplicate promptText with same source and destination",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 409,
+      "expectedResult": "Duplicate prompt not allowed OR handled gracefully",
+      "request": {
+        "promptText": "Generate test cases directly from business requirements with detailed steps",
+        "promptDescription": "Duplicate test",
+        "promptSource": "BR",
+        "promptDestination": "TC",
+        "userId": "33"
+      }
+    }
+,
+    {
+      "tcId": "TC_CP_35",
+      "name": "Same promptText with different source/destination",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "expectedResult": "Allowed as mapping differs",
+      "request": {
+        "promptText": "Generate test cases directly from business requirements with detailed steps",
+        "promptDescription": "Same text but different mapping",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33"
+      }
+    }
+,{
+      "tcId": "TC_CP_36",
+      "name": "promptSource in lowercase",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 400,
+      "expectedResult": "Invalid source enum",
+      "request": {
+        "promptText": "Test prompt",
+        "promptDescription": "Lowercase source",
+        "promptSource": "br",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    }
+,
+    {
+      "tcId": "TC_CP_37",
+      "name": "promptDestination in lowercase",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 400,
+      "expectedResult": "Invalid destination enum",
+      "request": {
+        "promptText": "Test prompt",
+        "promptDescription": "Lowercase destination",
+        "promptSource": "BR",
+        "promptDestination": "ts",
+        "userId": "33"
+      }
+    }
+,{
+      "tcId": "TC_CP_38",
+      "name": "promptSource with leading/trailing spaces",
+      "role": "SUPER_ADMIN",
+      "priority": "LOW",
+      "expectedStatusCode": 200,
+      "expectedResult": "Spaces trimmed and accepted OR validation error",
+      "request": {
+        "promptText": "Test prompt",
+        "promptDescription": "Whitespace handling",
+        "promptSource": " BR ",
+        "promptDestination": " TS ",
+        "userId": "33"
+      }
+    }
+,
+    {
+      "tcId": "TC_CP_39",
+      "name": "promptDescription as empty string",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "expectedResult": "Validation error",
+      "request": {
+        "promptText": "Valid prompt",
+        "promptDescription": "",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33"
+      }
+    }
+,
+    {
+      "tcId": "TC_CP_40",
+      "name": "Client-sent promptCreatedDatetime should be ignored",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "expectedResult": "Server-generated timestamps used",
+      "request": {
+        "promptText": "Audit test",
+        "promptDescription": "Client timestamp override attempt",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33",
+        "promptCreatedDatetime": "1999-01-01T00:00:00Z"
+      }
+    }
+
+
+  ]
+}

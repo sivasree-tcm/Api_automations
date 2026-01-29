@@ -1,0 +1,176 @@
+{
+  "scenario": "Get prompt- Comprehensive Test Suite",
+  "testCases": [
+
+    {
+      "tcId": "TC_GDUM_01",
+      "name": "Get prompt details with valid query parameters",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": 33
+      }
+    },
+
+    {
+      "tcId": "TC_GDUM_02",
+      "name": "Validate response structure on successful retrieval",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": 33
+      }
+    },
+
+
+
+    {
+      "tcId": "TC_GDUM_04",
+      "name": "userId as string",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+
+        "userId": "33"
+      }
+    },
+
+
+
+    {
+      "tcId": "TC_GDUM_06",
+      "name": "Missing userId parameter",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+
+      }
+    },
+
+
+
+
+
+    {
+      "tcId": "TC_GDUM_09",
+      "name": "Null userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+
+        "userId": null
+      }
+    },
+
+
+
+    {
+      "tcId": "TC_GDUM_11",
+      "name": "Invalid userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 403,
+      "request": {
+
+        "userId": 99999
+      }
+    },
+
+
+
+    {
+      "tcId": "TC_GDUM_13",
+      "name": "Negative userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+
+        "userId": -1
+      }
+    },
+
+
+
+    {
+      "tcId": "TC_GDUM_15",
+      "name": "Zero userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+
+        "userId": 0
+      }
+    },
+
+    {
+      "tcId": "TC_GDUM_16",
+      "name": "Extra query parameters",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": 103,
+        "userId": 33,
+        "extraParam": "test"
+      }
+    },
+
+    {
+      "tcId": "TC_GDUM_17",
+      "name": "User without access to project",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 403,
+      "request": {
+
+        "userId": 50
+      }
+    },
+
+
+
+    {
+      "tcId": "TC_GDUM_19",
+      "name": "Special characters in userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+
+        "userId": "33#"
+      }
+    },
+
+    {
+      "tcId": "TC_GDUM_20",
+      "name": "Response time validation",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+
+        "userId": 33
+      }
+    },
+
+    {
+      "tcId": "TC_GDUM_21",
+      "name": "Verify response contains current user info",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+
+        "userId": 33
+      }
+    },
+
+
+
+    {
+      "tcId": "TC_GDUM_23",
+      "name": "Very large userId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 403,
+      "request": {
+
+        "userId": 999999999999
+      }
+    }
+
+  ]
+}

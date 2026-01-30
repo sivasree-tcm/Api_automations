@@ -10,6 +10,7 @@ import utils.JsonUtils;
 import utils.TokenUtil;
 
 import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
@@ -73,5 +74,23 @@ public class PromptApi {
 
         return req.post("/api/updatePrompt");
     }
+
+    public static Response mapPrompt(Object request, String role) {
+
+        var req = given()
+                .baseUri("https://test.cognitest.ai")
+                .contentType(ContentType.JSON);
+
+        if (!"NO_AUTH".equalsIgnoreCase(role)) {
+            req.header("Authorization", TokenUtil.getToken(role));
+        }
+
+        if (request != null) {
+            req.body(request);
+        }
+
+        return req.post("/api/mapPrompt");
+    }
+
 
 }

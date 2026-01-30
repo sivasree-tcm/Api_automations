@@ -11,7 +11,7 @@ import java.util.List;
 
 public class GetPromptTest extends BaseTest {
 
-    @Test(dependsOnGroups = "prompt-create")
+    @Test
     public void getPromptApiTest() {
 
         GetPromptTestData testData =
@@ -48,22 +48,22 @@ public class GetPromptTest extends BaseTest {
                         if (response.getStatusCode() == 200) {
 
                             List<Integer> promptIds =
-                                    response.jsonPath().getList("prompts.promptId");
+                                    response.jsonPath().getList("results.promptId");
 
                             if (promptIds != null && !promptIds.isEmpty()) {
 
                                 Integer firstPromptId = promptIds.get(0);
 
-                                // Store ONLY if not already stored
                                 if (!PromptStore.hasPromptId()) {
                                     PromptStore.setPromptId(firstPromptId);
                                     System.out.println("📌 Stored Prompt ID: " + firstPromptId);
                                 }
 
                             } else {
-                                System.out.println("ℹ️ No prompts found for this user");
+                                System.out.println("ℹ️ No prompts found in response");
                             }
                         }
+
 
                         return response;
                     }

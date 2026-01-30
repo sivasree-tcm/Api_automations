@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class CreatePromptTest extends BaseTest {
 
-    @Test(groups = "prompt-create")
+@Test
     public void createPromptApiTest() {
 
         CreatePromptTestData testData =

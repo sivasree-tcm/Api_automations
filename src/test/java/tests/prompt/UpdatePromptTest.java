@@ -7,11 +7,11 @@ import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.PromptStore;
 
-import java.util.List;
+import java.util.Map;
 
 public class UpdatePromptTest extends BaseTest {
-    @Test(dependsOnGroups = "prompt-create")
 
+    @Test
     public void updatePromptApiTest() {
 
         CreatePromptTestData testData =
@@ -24,22 +24,29 @@ public class UpdatePromptTest extends BaseTest {
 
         for (CreatePromptTestData.TestCase tc : testData.getTestCases()) {
 
-            Integer promptId = PromptStore.getPromptId();
+            Map<String, Object> request = tc.getRequest();
 
-            if (promptId == null) {
-                throw new RuntimeException(
-                        "❌ promptId not found. Run GetPrompt before UpdatePrompt."
-                );
+            // 🔐 Only replace promptId if it is explicitly present in JSON
+            if (request.containsKey("promptId")) {
+
+                Object value = request.get("promptId");
+
+                if ("DYNAMIC".equals(value)) {
+                    Integer promptId = PromptStore.getPromptId();
+                    if (promptId == null) {
+                        throw new RuntimeException(
+                                "❌ promptId not found. Run Create/Get Prompt before UpdatePrompt."
+                        );
+                    }
+                    request.put("promptId", promptId);
+                }
             }
-
-            // ✅ Inject dynamic promptId
-            tc.getRequest().put("promptId", promptId);
 
             ApiTestExecutor.execute(
                     testData.getScenario(),
                     tc,
                     () -> PromptApi.updatePrompt(
-                            tc.getRequest(),
+                            request,
                             tc.getRole()
                     )
             );

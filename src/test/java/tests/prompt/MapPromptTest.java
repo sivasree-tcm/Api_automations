@@ -17,7 +17,7 @@ public class MapPromptTest extends BaseTest {
 
         CreatePromptTestData testData =
                 JsonUtils.readJson(
-                        "testdata/prompt/MapPrompt.json",
+                        "testdata/Prompt/MapPrompt.json",
                         CreatePromptTestData.class
                 );
 

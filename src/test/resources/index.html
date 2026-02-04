@@ -306,6 +306,7 @@
     }
 
     /* RENDER */
+    /* UPDATED RENDER FUNCTION */
     function render(){
         rows.innerHTML="";
         const start=(page-1)*size;
@@ -314,32 +315,31 @@
             const st=scenarioStatus(s);
 
             rows.innerHTML+=`
-      <tr class="scenario-row" onclick="toggleScenario('sc_${idx}')">
-       <td><b>${escapeHTML(s.name)}</b>
-</td>
-       <td><span class="badge ${st==='PASS'?'b-pass':'b-fail'}">${st}</span></td>
-       <td>${scenarioDuration(s)}</td>
-      </tr>
+  <tr class="scenario-row" onclick="toggleScenario('sc_${idx}')">
+   <td><b>${escapeHTML(s.name)}</b></td>
+   <td><span class="badge ${st==='PASS'?'b-pass':'b-fail'}">${st}</span></td>
+   <td>${scenarioDuration(s)}</td>
+  </tr>
 
-      <tr id="sc_${idx}" class="details">
-       <td colspan="3">
-        ${s.testCases.map((tc,j)=>`
-         <div class="testcase-card" onclick="toggleCase(event,'tc_${idx}_${j}')">
-<span class="tc-name">${tc.name}</span>
-          <div class="tc-right">
-           <span class="badge ${tc.status==='PASS'?'b-pass':'b-fail'}">${tc.status}</span>
-           <span class="tc-time">${formatDuration(parseInt(tc.duration))}</span>
-          </div>
-         </div>
-         <div id="tc_${idx}_${j}" class="details">
-          ${tc.steps.map(st=>`
-           <b>[${st.type}] ${st.label}</b>
-<pre>${st.value}</pre>
-          `).join("")}
-         </div>
-        `).join("")}
-       </td>
-      </tr>`;
+  <tr id="sc_${idx}" class="details">
+   <td colspan="3">
+    ${s.testCases.map((tc,j)=>`
+     <div class="testcase-card" onclick="toggleCase(event,'tc_${idx}_${j}')">
+      <span class="tc-name">${escapeHTML(tc.name)}</span>
+      <div class="tc-right">
+       <span class="badge ${tc.status==='PASS'?'b-pass':'b-fail'}">${tc.status}</span>
+       <span class="tc-time">${formatDuration(parseInt(tc.duration))}</span>
+      </div>
+     </div>
+     <div id="tc_${idx}_${j}" class="details">
+      ${tc.steps.map(st=>`
+       <b>[${escapeHTML(st.type)}] ${escapeHTML(st.label)}</b>
+       <pre>${escapeHTML(st.value)}</pre>
+      `).join("")}
+     </div>
+    `).join("")}
+   </td>
+  </tr>`;
         });
         renderPagination();
     }

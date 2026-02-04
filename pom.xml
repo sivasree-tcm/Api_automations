@@ -99,6 +99,23 @@
           <suiteXmlFiles>
             <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
+
+          <!-- Force sequential execution -->
+          <threadCount>1</threadCount>
+          <perCoreThreadCount>false</perCoreThreadCount>
+
+          <!-- TestNG specific properties -->
+          <properties>
+            <property>
+              <name>suitethreadpoolsize</name>
+              <value>1</value>
+            </property>
+            <property>
+              <name>dataproviderthreadcount</name>
+              <value>1</value>
+            </property>
+          </properties>
+
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>

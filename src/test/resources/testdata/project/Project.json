@@ -1,0 +1,35 @@
+{
+  "scenario": "Create Project API Validation - Comprehensive Test Suite",
+  "testCases": [
+    {
+      "tcId": "TC_CP_01",
+      "name": "Valid project creation - All fields",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "status": "PASS",
+      "expectedStatusCode": 200,
+      "expectedResult": "200 OK, project created successfully",
+      "request": {
+        "userId": "{{userId}}",
+        "projectName": "{{projectName}}",
+        "projectDescription": "Demo Project",
+        "projectSummary": null,
+        "projectStartDate": "{{auto}}",
+        "projectEndDate": "{{auto}}",
+        "projectCreatedBy": "{{userId}}",
+        "webFramework": "Playwright_Java",
+        "mobileFrameworks": "Appium_Java",
+        "autonomous": 0,
+        "projectDomain": "Agriculture",
+        "testType": null,
+        "InsightsBasedOnExistingAssets": "yes",
+        "refOrgId": "1",
+        "storageType": "S3",
+        "connectionId": "{{connectionId}}",
+        "devopsProjectName": "f3c9e398-fa65-4695-bc19-b5172acd23a6",
+        "teams": "Insurance Team",
+        "platform": "{{platform}}"
+      }
+    }
+  ]
+}

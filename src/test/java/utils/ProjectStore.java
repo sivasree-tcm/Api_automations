@@ -67,4 +67,16 @@ public class ProjectStore {
     public static Integer getAnyProjectId() {
         return PROJECT_MAP.keySet().stream().findFirst().orElse(null);
     }
-}
+
+        private static final ThreadLocal<Integer> projectId = new ThreadLocal<>();
+
+        public static void setProjectId(int id) {
+            projectId.set(id);
+        }
+
+        public static Integer getProjectId() {
+            return projectId.get();
+        }
+
+    }
+

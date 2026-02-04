@@ -1,0 +1,27 @@
+{
+  "scenario": "Configure Project Database Information",
+  "testCases": [
+    {
+      "tcId": "TC_DB_01",
+      "name": "Add Database Info - Automation Env",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": "{{userId}}",
+        "projectId": "{{projectId}}",
+        "environemntDetails": [
+          {
+            "environmentName": "Automation",
+            "envirtonmentUrl": "http://52.91.206.42:3000/",
+            "db_name": "insurance_db",
+            "db_host": "52.91.206.42",
+            "db_user": "ins_user",
+            "db_password": "ins_password",
+            "port": "3306"
+          }
+        ]
+      }
+    }
+  ]
+}

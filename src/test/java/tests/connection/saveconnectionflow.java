@@ -8,15 +8,16 @@ import base.BaseTest;
 import org.testng.annotations.Test;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
+import utils.TokenUtil;
 import java.util.Map;
 import java.util.List;
 
-public class SaveConnectionTest extends BaseTest {
+public class saveconnectionflow extends BaseTest {
 
-    @Test
+
     public void saveConnectionTest() {
         ConnectionReport testData = JsonUtils.readJson(
-                "testdata/connectionsData/saveConnection.json",
+                "testdata/connectionsData/saveconnectionflow.json",
                 ConnectionReport.class
         );
 
@@ -26,13 +27,29 @@ public class SaveConnectionTest extends BaseTest {
     private void execute(ConnectionReport testData, List<ConnectionReport.TestCase> cases) {
 
         for (ConnectionReport.TestCase tc : cases) {
-
             // 1. Get the main request map
             Map<String, Object> request = (Map<String, Object>) tc.getRequest();
 
-            // 2. Get the nested connection object (Declared ONCE here)
-            Map<String, Object> connection = (Map<String, Object>) request.get("connection");
+            // 2. Handle Dynamic userId (Just like Project workflow)
+            if (request.containsKey("userId")) {
+                Object userIdVal = request.get("userId");
+                if (userIdVal != null && userIdVal.toString().contains("{{userId}}")) {
 
+                    boolean isSpecialRole = tc.getRole() != null &&
+                            (tc.getRole().equalsIgnoreCase("NO_AUTH") ||
+                                    tc.getRole().equalsIgnoreCase("INVALID_TOKEN"));
+
+                    // Fetch ID based on role via TokenUtil
+                    int dynamicUserId = isSpecialRole ?
+                            TokenUtil.getUserId("SUPER_ADMIN") :
+                            TokenUtil.getUserId(tc.getRole());
+
+                    request.put("userId", dynamicUserId);
+                }
+            }
+
+            // 3. Get the nested connection object
+            Map<String, Object> connection = (Map<String, Object>) request.get("connection");
             if (connection == null) continue;
 
             // ✅ Dynamic org name
@@ -61,24 +78,24 @@ public class SaveConnectionTest extends BaseTest {
                 connection.put("spaceName", TestDataGenerator.generateSpaceName());
             }
 
-            // 3. Capture the platform type before executing (e.g., "azure", "jira")
+            // 4. Capture platform type (e.g., "azure") for the Store
             String currentPlatform = (String) connection.get("type");
 
-            // 4. Execute API call and capture response data
+            // 5. Execute API and capture the ID for chaining
             ApiTestExecutor.execute(
                     testData.getScenario(),
                     tc,
                     () -> {
                         Response res = SaveConnectionApi.saveConnection(request, tc.getRole(), tc.getAuthType());
 
-                        // ✅ Extract ID and Platform only on success (200 or 201)
+                        // Store ID and Platform ONLY on successful creation
                         if (res.getStatusCode() == 200 || res.getStatusCode() == 201) {
                             try {
                                 int id = res.jsonPath().getInt("data.id");
                                 ConnectionStore.setData(id, currentPlatform);
-                                System.out.println("DEBUG: Stored Connection ID [" + id + "] for platform [" + currentPlatform + "]");
+                                System.out.println("DEBUG: Captured Connection ID: " + id + " [" + currentPlatform + "]");
                             } catch (Exception e) {
-                                System.err.println("ERROR: Failed to parse connection ID from response: " + e.getMessage());
+                                System.err.println("ERROR: Could not parse connection ID: " + e.getMessage());
                             }
                         }
                         return res;

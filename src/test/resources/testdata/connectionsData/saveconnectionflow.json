@@ -1,0 +1,24 @@
+{
+  "scenario": "Save Connection API Validation - Comprehensive Test Suite",
+  "testCases": [
+    {
+      "tcId": "TC_SAVE_01",
+      "name": "Azure Save connection",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": "{{userId}}",
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "azure",
+          "endDate": "__AUTO__",
+          "orgName": "TickingMinds",
+          "source": "direct",
+          "token": "CYXhNkyiWdd3z7rN8b8ZTwktB7hv16m6Omgv6XGLCd4hBhevfR3LJQQJ99CAACAAAAAmcDqcAAASAZDO1Ntz"
+        }
+      }
+    }
+  ]
+}

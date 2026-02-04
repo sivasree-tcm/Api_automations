@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class GetTSByBRTest extends BaseTest {
 
-    @Test
+
     public void getTestScenariosForGeneratedBRs() {
 
         if(!GeneratedBRStore.hasBrs() ){

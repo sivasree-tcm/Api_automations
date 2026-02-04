@@ -1,4 +1,4 @@
-package api.project;
+package api.generation;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -6,9 +6,9 @@ import utils.TokenUtil;
 
 import static io.restassured.RestAssured.given;
 
-public class GetProjectsApi {
+public class GenerateTSApi {
 
-    public static Response getProjects(
+    public static Response generateTS(
             Object request,
             String role,
             String authType
@@ -16,17 +16,14 @@ public class GetProjectsApi {
 
         var req = given()
                 .relaxedHTTPSValidation()
-//                .baseUri("https://test.cognitest.ai")
                 .contentType(ContentType.JSON);
 
-        // Authorization handling
+        // 🔐 Authorization
         if ("MISSING".equalsIgnoreCase(authType)) {
-            // no header
-        }
-        else if ("INVALID".equalsIgnoreCase(authType)) {
+            // no token
+        } else if ("INVALID".equalsIgnoreCase(authType)) {
             req.header("Authorization", "Bearer invalid_token");
-        }
-        else {
+        } else {
             req.header(
                     "Authorization",
                     TokenUtil.getToken(
@@ -38,6 +35,6 @@ public class GetProjectsApi {
         return req
                 .body(request)
                 .when()
-                .post("/api/getProjects");
+                .post("/api/generateTS");
     }
 }

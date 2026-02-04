@@ -1,0 +1,18 @@
+{
+  "scenario": "Get Generation Status API",
+  "testCases": [
+    {
+      "tcId": "TC_GET_GEN_STATUS_01",
+      "name": "Get BR → TS generation status",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": 1164,
+        "source": "BR",
+        "pending": [],
+        "userId": 32
+      }
+    }
+  ]
+}

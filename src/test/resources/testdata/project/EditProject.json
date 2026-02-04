@@ -1,7 +1,7 @@
 {
   "scenario": "Edit Project API Validation - Comprehensive Test Suite",
   "basePayload": {
-    "projectId": "230",
+    "projectId": " 1242",
     "userId": "33",
     "projectCreatedBy": "33",
     "projectName": "AutoProject_{{timestamp}}",
@@ -25,7 +25,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK, project updated successfully",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -49,7 +49,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "UpdatedProjectName_{{timestamp}}",
@@ -73,7 +73,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -97,7 +97,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -121,7 +121,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -145,7 +145,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -169,7 +169,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "Ignored, 200 OK",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -242,7 +242,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "projectCreatedBy": "33",
         "projectName": "UniqueNameTC10_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -265,7 +265,7 @@
       "expectedStatusCode": 403,
       "expectedResult": "403 Forbidden",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "44",
         "projectName": "AutoProject_{{timestamp}}",
@@ -289,7 +289,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectDescription": "project related to automation",
@@ -312,7 +312,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "Validation error",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "",
@@ -336,7 +336,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -359,7 +359,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -382,7 +382,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "Validation error",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -406,7 +406,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "Validation error",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -430,7 +430,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "Validation error",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -454,7 +454,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "Validation error",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -478,7 +478,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "Validation error",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -502,7 +502,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "Validation error",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -526,7 +526,7 @@
       "expectedStatusCode": 401,
       "expectedResult": "401 Unauthorized",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -550,7 +550,7 @@
       "expectedStatusCode": 401,
       "expectedResult": "401 Unauthorized",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -575,7 +575,7 @@
       "expectedResult": "403 Forbidden",
       "note": "Using ADMIN token but userId is SUPER_ADMIN's",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -599,7 +599,7 @@
       "expectedStatusCode": 403,
       "expectedResult": "403 Forbidden",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -623,7 +623,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "Input rejected",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "' OR '1'='1",
@@ -647,7 +647,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "Input rejected",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "<script>alert(1)</script>",
@@ -671,7 +671,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "Sanitized / rejected",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -695,7 +695,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK / ignored",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -724,7 +724,7 @@
       "expectedResult": "415 Unsupported Media Type",
       "note": "Send with Content-Type: text/plain",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -782,7 +782,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": null,
@@ -806,7 +806,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
@@ -830,7 +830,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "projectId": "230",
+        "projectId": " 1242",
         "userId": "33",
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",

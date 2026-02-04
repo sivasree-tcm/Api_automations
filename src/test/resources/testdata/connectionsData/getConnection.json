@@ -8,7 +8,7 @@
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 200,
       "request": {
-        "userId": 32,
+        "userId": 33,
         "orgId": 1
       }
     },
@@ -41,7 +41,7 @@
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 400,
       "request": {
-        "userId": 32,
+        "userId": 33,
         "orgId": null
       }
     },
@@ -53,7 +53,7 @@
       "authType": "INVALID",
       "expectedStatusCode": 401,
       "request": {
-        "userId": 32,
+        "userId": 33,
         "orgId": 1
       }
     },
@@ -83,7 +83,7 @@
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 400,
       "request": {
-        "userId": 32,
+        "userId": 33,
         "orgId": "abc"
       }
     },
@@ -93,7 +93,7 @@
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 400,
       "request": {
-        "userId": "32",
+        "userId": "33",
         "orgId": 1
       }
     },
@@ -103,7 +103,7 @@
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 400,
       "request": {
-        "userId": "32",
+        "userId": "33",
         "orgId": "1"
       }
     },
@@ -114,7 +114,7 @@
       "authType": "MISSING",
       "expectedStatusCode": 401,
       "request": {
-        "userId": 32,
+        "userId": 33,
         "orgId": 1
       }
     }

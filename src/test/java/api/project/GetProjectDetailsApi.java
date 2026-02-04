@@ -1,25 +1,19 @@
 package api.project;
 
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import static io.restassured.RestAssured.*;
 import utils.TokenUtil;
 
-import static io.restassured.RestAssured.given;
+public class GetProjectDetailsApi {
 
-public class GetProjectsApi {
-
-    public static Response getProjects(
+    public static Response getProjectDetails(
             Object request,
             String role,
             String authType
     ) {
 
-        var req = given()
-                .relaxedHTTPSValidation()
-//                .baseUri("https://test.cognitest.ai")
-                .contentType(ContentType.JSON);
+        var req = given().contentType("application/json");
 
-        // Authorization handling
         if ("MISSING".equalsIgnoreCase(authType)) {
             // no header
         }
@@ -37,7 +31,6 @@ public class GetProjectsApi {
 
         return req
                 .body(request)
-                .when()
-                .post("/api/getProjects");
+                .post("/api/getProjectDetailsByProjectId");
     }
 }

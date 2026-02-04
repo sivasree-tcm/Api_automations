@@ -1,27 +1,23 @@
-package api.project;
+package api.azure;
 
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import utils.TokenUtil;
 
 import static io.restassured.RestAssured.given;
 
-public class GetProjectsApi {
+public class GetAzureDevOpsSprintsApi {
 
-    public static Response getProjects(
+    public static Response getAzureDevOpsSprints(
             Object request,
             String role,
             String authType
     ) {
 
         var req = given()
-                .relaxedHTTPSValidation()
-//                .baseUri("https://test.cognitest.ai")
-                .contentType(ContentType.JSON);
+                .contentType("application/json");
 
-        // Authorization handling
         if ("MISSING".equalsIgnoreCase(authType)) {
-            // no header
+            // ❌ No Authorization header
         }
         else if ("INVALID".equalsIgnoreCase(authType)) {
             req.header("Authorization", "Bearer invalid_token");
@@ -37,7 +33,6 @@ public class GetProjectsApi {
 
         return req
                 .body(request)
-                .when()
-                .post("/api/getProjects");
+                .post("/api/getAzureDevOpsSprints");
     }
 }

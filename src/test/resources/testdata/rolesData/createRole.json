@@ -1,0 +1,18 @@
+{
+  "scenario": "Create Role",
+  "testCases": [
+    {
+      "tcId": "CREATE_ROLE_01",
+      "name": "Create role for project",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 201,
+      "request": {
+        "refProjectId": 0,
+        "roleName": "",
+        "roleDescription": "",
+        "userId": 0
+      }
+    }
+  ]
+}

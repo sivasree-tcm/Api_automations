@@ -1,0 +1,16 @@
+{
+  "scenario": "Get Roles",
+  "testCases": [
+    {
+      "tcId": "GET_ROLES_01",
+      "name": "Get all roles for project",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "refProjectId": 0,
+        "userId": 0
+      }
+    }
+  ]
+}

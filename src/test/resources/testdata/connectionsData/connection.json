@@ -1,0 +1,24 @@
+{
+  "scenario": "Save Connection API",
+  "testCases": [
+    {
+      "tcId": "TC_SAVE_01",
+      "name": "Azure Save connection",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": 32,
+        "orgId": 1,
+        "connection": {
+          "id": null,
+          "type": "azure",
+          "endDate": "2026-01-31",
+          "orgName": "TickingMinds",
+          "source": "direct",
+          "token": "1DFi7yCzOWzlH38VDYBI4sLwkvtwxYee7Vs9sR1wjlBW3W3I59cKJQQJ99BLACAAAAAmcDqcAAASAZDO3a8D"
+        }
+      }
+    }
+  ]
+}

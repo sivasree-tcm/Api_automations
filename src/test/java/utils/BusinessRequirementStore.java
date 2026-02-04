@@ -1,0 +1,52 @@
+package utils;
+
+import java.util.*;
+
+public class BusinessRequirementStore {
+
+    // projectId → list of brIds
+    private static final Map<Integer, List<Integer>> BR_MAP = new HashMap<>();
+
+    public static void store(Integer projectId, List<Integer> brIds) {
+        BR_MAP.put(projectId, brIds);
+    }
+
+    // projectId → COMPLETED BR IDs
+    private static final Map<Integer, List<Integer>> COMPLETED_BR_MAP =
+            new LinkedHashMap<>();
+
+    // ✅ NEW: Store completed BRs
+    public static void storeCompletedBRs(Integer projectId, List<Integer> completedBrIds) {
+        COMPLETED_BR_MAP.put(projectId, completedBrIds);
+    }
+
+    // ✅ Getter for completed BRs (used in next flow)
+    public static List<Integer> getCompletedBRs(Integer projectId) {
+        return COMPLETED_BR_MAP.getOrDefault(projectId, new ArrayList<>());
+    }
+
+    public static Map<Integer, List<Integer>> getAll() {
+        return BR_MAP;
+    }
+
+    public static List<Integer> getBrIds(Integer projectId) {
+        return BR_MAP.getOrDefault(projectId, new ArrayList<>());
+    }
+
+    public static void clear() {
+        BR_MAP.clear();
+    }
+
+    // BRs actually sent for generation
+    private static final Map<Integer, List<Integer>> GENERATED_BR_MAP =
+            new HashMap<>();
+
+    public static void storeGeneratedBRs(Integer projectId, List<Integer> brIds) {
+        GENERATED_BR_MAP.put(projectId, new ArrayList<>(brIds));
+    }
+
+    public static List<Integer> getGeneratedBRs(Integer projectId) {
+        return GENERATED_BR_MAP.getOrDefault(projectId, new ArrayList<>());
+    }
+
+}

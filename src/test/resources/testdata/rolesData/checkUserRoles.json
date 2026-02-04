@@ -1,0 +1,15 @@
+{
+  "scenario": "Check User Roles",
+  "testCases": [
+    {
+      "tcId": "CHECK_ROLE_01",
+      "name": "Check user role",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": 32
+      }
+    }
+  ]
+}

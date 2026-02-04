@@ -1,0 +1,17 @@
+{
+  "scenario": "Delete Role",
+  "testCases": [
+    {
+      "tcId": "DEL_ROLE_01",
+      "name": "Delete role",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "roleId": 0,
+        "userId": 0,
+        "action": "delete"
+      }
+    }
+  ]
+}

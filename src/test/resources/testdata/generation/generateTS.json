@@ -1,0 +1,19 @@
+{
+  "scenario": "Generate Test Scenario",
+  "testCases": [
+    {
+      "tcId": "TC_GEN_TS_01",
+      "name": "Generate Test Scenario from BR",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "source": "BR",
+        "destination": "TS",
+        "sourceString": [],
+        "projectId": 0,
+        "userId": 32
+      }
+    }
+  ]
+}

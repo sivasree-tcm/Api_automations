@@ -1,0 +1,17 @@
+{
+  "scenario": "Get Azure DevOps Sprints",
+  "testCases": [
+    {
+      "tcId": "TC_AZ_SPRINT_01",
+      "name": "Fetch Azure DevOps sprints with valid project",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": "DYNAMIC",
+        "refProjectId": "DYNAMIC",
+        "platform": "azure"
+      }
+    }
+  ]
+}

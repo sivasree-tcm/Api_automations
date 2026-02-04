@@ -13,10 +13,10 @@
         "connection": {
           "id": null,
           "type": "azure",
-          "endDate": "2026-01-31",
+          "endDate": "__AUTO__",
           "orgName": "TickingMinds",
           "source": "direct",
-          "token": "1DFi7yCzOWzlH38VDYBI4sLwkvtwxYee7Vs9sR1wjlBW3W3I59cKJQQJ99BLACAAAAAmcDqcAAASAZDO3a8D"
+          "token": "CYXhNkyiWdd3z7rN8b8ZTwktB7hv16m6Omgv6XGLCd4hBhevfR3LJQQJ99CAACAAAAAmcDqcAAASAZDO1Ntz"
         }
       }
     },
@@ -32,8 +32,8 @@
         "connection": {
           "id": null,
           "type": "jira",
-          "endDate": "2026-01-31",
-          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "endDate": "__AUTO__",
+          "siteUrl": "__AUTO__",
           "email": "cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -52,7 +52,7 @@
         "connection": {
           "id": null,
           "type": "gitlab",
-          "endDate":"2026-01-31",
+          "endDate":"__AUTO__",
           "spaceName":"Dharshini-TM-group",
           "source": "direct",
           "token": "glpat-IF7UZ6PTB1MI8vxKR4v8rG86MQp1Oml3dHpoCw.01.1210ebzd5"
@@ -71,8 +71,8 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -91,8 +91,8 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -111,8 +111,8 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -131,7 +131,7 @@
         "connection": {
           "id": null,
           "type": "azure",
-          "endDate": "2026-01-31",
+          "endDate": "__AUTO__",
           "orgName": "TickingMinds",
           "source": "direct",
           "token": "1DFi7yCzOWzlH38VDYBI4SAZDO3a8D"
@@ -150,8 +150,8 @@
         "connection": {
           "id": null,
           "type": "jira",
-          "endDate": "2026-01-31",
-          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "endDate": "__AUTO__",
+          "siteUrl": "__AUTO__",
           "email": "cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -170,7 +170,7 @@
         "connection": {
           "id": null,
           "type": "gitlab",
-          "endDate":"2026-01-31",
+          "endDate":"__AUTO__",
           "spaceName":"Dharshini-TM-group",
           "source": "direct",
           "token": "glpat-IF7UZ6P1Cw.01.1210ebzd5"
@@ -189,8 +189,8 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlCFG18zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -209,7 +209,7 @@
         "connection": {
           "id": null,
           "type": "azure",
-          "endDate": "2026-01-31",
+          "endDate": "__AUTO__",
           "orgName": "TickingMinds",
           "source": "direct"
         }
@@ -227,8 +227,8 @@
         "connection": {
           "id": null,
           "type": "jira",
-          "endDate": "2026-01-31",
-          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "endDate": "__AUTO__",
+          "siteUrl": "__AUTO__",
           "email": "cognidemo2023@gmail.com",
           "source": "direct"
         }
@@ -246,7 +246,7 @@
         "connection": {
           "id": null,
           "type": "gitlab",
-          "endDate":"2026-01-31",
+          "endDate":"__AUTO__",
           "spaceName":"Dharshini-TM-group",
           "source": "direct"
         }
@@ -264,8 +264,8 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct"
         }
@@ -283,10 +283,10 @@
         "connection": {
           "id": null,
           "type": "azure",
-          "endDate": "2026-01-31",
+          "endDate": "__AUTO__",
           "orgName": "TickingMinds",
           "source": "direct",
-          "token": "1DFi7yCzOWzlH38VDYBI4sLwkvtwxYee7Vs9sR1wjlBW3W3I59cKJQQJ99BLACAAAAAmcDqcAAASAZDO3a8D"
+          "token": "CYXhNkyiWdd3z7rN8b8ZTwktB7hv16m6Omgv6XGLCd4hBhevfR3LJQQJ99CAACAAAAAmcDqcAAASAZDO1Ntz"
         }
       }
     },
@@ -302,8 +302,8 @@
         "connection": {
           "id": null,
           "type": "jira",
-          "endDate": "2026-01-31",
-          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "endDate": "__AUTO__",
+          "siteUrl": "__AUTO__",
           "email": "cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -322,7 +322,7 @@
         "connection": {
           "id": null,
           "type": "gitlab",
-          "endDate":"2026-01-31",
+          "endDate":"__AUTO__",
           "spaceName":"Dharshini-TM-group",
           "source": "direct",
           "token": "glpat-IF7UZ6PTB1MI8vxKR4v8rG86MQp1Oml3dHpoCw.01.1210ebzd5"
@@ -341,8 +341,8 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -360,10 +360,10 @@
         "connection": {
           "id": null,
           "type": "azure",
-          "endDate": "2026-01-31",
+          "endDate": "__AUTO__",
           "orgName": "TickingMinds",
           "source": "direct",
-          "token": "1DFi7yCzOWzlH38VDYBI4sLwkvtwxYee7Vs9sR1wjlBW3W3I59cKJQQJ99BLACAAAAAmcDqcAAASAZDO3a8D"
+          "token": "CYXhNkyiWdd3z7rN8b8ZTwktB7hv16m6Omgv6XGLCd4hBhevfR3LJQQJ99CAACAAAAAmcDqcAAASAZDO1Ntz"
         }
       }
     },
@@ -378,8 +378,8 @@
         "connection": {
           "id": null,
           "type": "jira",
-          "endDate": "2026-01-31",
-          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "endDate": "__AUTO__",
+          "siteUrl": "__AUTO__",
           "email": "cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -397,7 +397,7 @@
         "connection": {
           "id": null,
           "type": "gitlab",
-          "endDate":"2026-01-31",
+          "endDate":"__AUTO__",
           "spaceName":"Dharshini-TM-group",
           "source": "direct",
           "token": "glpat-IF7UZ6PTB1MI8vxKR4v8rG86MQp1Oml3dHpoCw.01.1210ebzd5"
@@ -415,8 +415,8 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -435,10 +435,10 @@
         "connection": {
           "id": null,
           "type": "azure",
-          "endDate": "2026-01-31",
+          "endDate": "__AUTO__",
           "orgName": "TickingMinds",
           "source": "direct",
-          "token": "1DFi7yCzOWzlH38VDYBI4sLwkvtwxYee7Vs9sR1wjlBW3W3I59cKJQQJ99BLACAAAAAmcDqcAAASAZDO3a8D"
+          "token": "CYXhNkyiWdd3z7rN8b8ZTwktB7hv16m6Omgv6XGLCd4hBhevfR3LJQQJ99CAACAAAAAmcDqcAAASAZDO1Ntz"
         }
       }
     },
@@ -454,8 +454,8 @@
         "connection": {
           "id": null,
           "type": "jira",
-          "endDate": "2026-01-31",
-          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "endDate": "__AUTO__",
+          "siteUrl": "__AUTO__",
           "email": "cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -474,7 +474,7 @@
         "connection": {
           "id": null,
           "type": "gitlab",
-          "endDate":"2026-01-31",
+          "endDate":"__AUTO__",
           "spaceName":"Dharshini-TM-group",
           "source": "direct",
           "token": "glpat-IF7UZ6PTB1MI8vxKR4v8rG86MQp1Oml3dHpoCw.01.1210ebzd5"
@@ -493,8 +493,8 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -512,10 +512,10 @@
         "connection": {
           "id": null,
           "type": "azure",
-          "endDate": "2026-01-31",
+          "endDate": "__AUTO__",
           "orgName": "TickingMinds",
           "source": "direct",
-          "token": "1DFi7yCzOWzlH38VDYBI4sLwkvtwxYee7Vs9sR1wjlBW3W3I59cKJQQJ99BLACAAAAAmcDqcAAASAZDO3a8D"
+          "token": "CYXhNkyiWdd3z7rN8b8ZTwktB7hv16m6Omgv6XGLCd4hBhevfR3LJQQJ99CAACAAAAAmcDqcAAASAZDO1Ntz"
         }
       }
     },
@@ -530,8 +530,8 @@
         "connection": {
           "id": null,
           "type": "jira",
-          "endDate": "2026-01-31",
-          "siteUrl": "https://cognidemo2023.atlassian.net",
+          "endDate": "__AUTO__",
+          "siteUrl": "__AUTO__",
           "email": "cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -549,7 +549,7 @@
         "connection": {
           "id": null,
           "type": "gitlab",
-          "endDate":"2026-01-31",
+          "endDate":"__AUTO__",
           "spaceName":"Dharshini-TM-group",
           "source": "direct",
           "token": "glpat-IF7UZ6PTB1MI8vxKR4v8rG86MQp1Oml3dHpoCw.01.1210ebzd5"
@@ -567,8 +567,8 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -600,8 +600,8 @@
         "connection": {
           "id": null,
           "type": "github",
-          "endDate":"2026-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -620,8 +620,8 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
-          "siteUrl":"atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"@!!!atlassian.net",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -640,7 +640,7 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
+          "endDate":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -659,8 +659,8 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"__AUTO__",
           "email":"0283tickingminds",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -679,8 +679,8 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "endDate":"2026-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "endDate":"__AUTO__",
+          "siteUrl":"__AUTO__",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
         }
@@ -699,7 +699,7 @@
           "id": null,
           "type": "confluence",
           "endDate":"2000-01-31",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -718,7 +718,7 @@
         "connection": {
           "id": null,
           "type": "confluence",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"
@@ -738,7 +738,7 @@
           "id": null,
           "type": "confluence",
           "endDate":"2026-300-391",
-          "siteUrl":"https://cognidemo2023.atlassian.net",
+          "siteUrl":"__AUTO__",
           "email":"cognidemo2023@gmail.com",
           "source": "direct",
           "token": "ATATT3xFfGF0O3NtixAM-iSwlC8l1RR4k1Z2sWmRleQWyVYZZOQN4iJt4tqmDS2duUt0Pkgk7N4kiN2pG_Brm5m_oeUO40YtZqfg_b-Z8uKi7grBOJmXdT0IFG1h3BqbyzkLgX8zN1yJdi-C4VpA6DP54WR0Pl2FL6IsfCPUergFp3IDNu12u_E=3DA9B8ED"

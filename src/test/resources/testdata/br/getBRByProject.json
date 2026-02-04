@@ -1,0 +1,18 @@
+{
+  "scenario": "Get Business Requirement",
+  "testCases": [
+    {
+      "tcId": "TC_GET_BR_01",
+      "name": "Get BR for valid project",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": 1164,
+        "page": 1,
+        "pageSize": 10,
+        "userId": 32
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "scenario": "Import Azure User Stories",
+  "testCases": [
+    {
+      "tcId": "TC_AZ_IMP_01",
+      "name": "Import Azure user stories with valid inputs",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "platform": "azure"
+      }
+    }
+  ]
+}

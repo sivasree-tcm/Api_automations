@@ -6,9 +6,9 @@ import utils.TokenUtil;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateRolesApi {
+public class DeleteRoleApi {
 
-    public static Response createRole(
+    public static Response deleteRole(
             Object request,
             String role,
             String authType
@@ -18,21 +18,15 @@ public class CreateRolesApi {
                 .contentType(ContentType.JSON);
 
         if ("MISSING".equalsIgnoreCase(authType)) {
-            // No auth header
+            // no auth
         } else if ("INVALID".equalsIgnoreCase(authType)) {
             req.header("Authorization", "Bearer invalid_token");
         } else {
-            req.header(
-                    "Authorization",
-                    TokenUtil.getToken(
-                            tests.roles.UserRole.valueOf(role)
-                    )
-            );
+            req.header("Authorization", TokenUtil.getToken(role));
         }
 
         return req
                 .body(request)
-                .when()
-                .post("/api/createRole");
+                .post("/deleteRole");
     }
 }

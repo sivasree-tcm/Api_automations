@@ -46,11 +46,33 @@ public class TestConnectionTest extends BaseTest {
 
             // ✅ Dynamic site URL
             if (connection.containsKey("siteUrl")) {
-                connection.put(
-                        "siteUrl",
-                        TestDataGenerator.generateSiteUrl()
-                );
+
+                Object siteUrl = connection.get("siteUrl");
+
+                // Generate ONLY when test data explicitly says AUTO
+                if ("__AUTO__".equals(siteUrl)) {
+                    connection.put(
+                            "siteUrl",
+                            TestDataGenerator.generateSiteUrl()
+                    );
+                }
+                // else → keep whatever test data provided (valid or invalid)
             }
+
+            if (connection.containsKey("endDate")) {
+
+                Object endDate = connection.get("endDate");
+
+                // Auto-generate ONLY when explicitly asked
+                if ("__AUTO__".equals(endDate)) {
+                    connection.put(
+                            "endDate",
+                            TestDataGenerator.generateFutureDate()
+                    );
+                }
+                // else → keep JSON value as-is (valid / invalid / past)
+            }
+
 
             // ✅ Dynamic space name (for GitLab / others)
             if (connection.containsKey("spaceName")) {

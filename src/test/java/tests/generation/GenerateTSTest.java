@@ -1,0 +1,82 @@
+package tests.generation;
+
+import api.generation.GenerateTSApi;
+import base.BaseTest;
+import io.restassured.response.Response;
+import tests.connection.ConnectionReport;
+import tests.user.ApiTestExecutor;
+import utils.*;
+
+import java.util.*;
+
+public class GenerateTSTest extends BaseTest {
+
+    public void generateTSForBR() {
+
+        // ✅ Get selected project
+        Integer projectId = ProjectStore.getSelectedProjectId();
+
+        // ✅ Get all BRs
+        List<Integer> brIds =
+                BusinessRequirementStore.getBrIds(projectId);
+
+        if (brIds == null || brIds.isEmpty()) {
+            throw new RuntimeException(
+                    "❌ No BRs found for project " + projectId
+            );
+        }
+
+        // ✅ TAKE ONLY FIRST 10 BRs
+        List<Integer> selectedBrs =
+                brIds.size() >= 10 ? brIds.subList(0, 10) : brIds;
+
+        System.out.println("🔹 BRs selected for TS generation → " + selectedBrs);
+
+        // 🔥 FIX: STORE generated BRs for next step
+        BusinessRequirementStore.storeGeneratedBRs(
+                projectId,
+                selectedBrs
+        );
+
+        ConnectionReport testData =
+                JsonUtils.readJson(
+                        "testdata/generation/generateTS.json",
+                        ConnectionReport.class
+                );
+
+        ConnectionReport.TestCase tc =
+                new ConnectionReport.TestCase(
+                        testData.getTestCases().get(0)
+                );
+
+        Map<String, Object> request = new HashMap<>();
+        request.put("source", "BR");
+        request.put("destination", "TS");
+        request.put("sourceString", selectedBrs);
+        request.put("projectId", projectId);
+        request.put("userId", TokenUtil.getUserId());
+
+        tc.setRequest(request);
+        tc.setTcId("GEN_TS_" + projectId);
+        tc.setName("Generate TS | BR " + selectedBrs);
+
+        ApiTestExecutor.execute(
+                testData.getScenario(),
+                tc,
+                () -> {
+                    Response response =
+                            GenerateTSApi.generateTS(
+                                    request,
+                                    tc.getRole(),
+                                    tc.getAuthType()
+                            );
+
+                    System.out.println(
+                            "✅ TS generation queued for BRs → " + selectedBrs
+                    );
+
+                    return response;
+                }
+        );
+    }
+}

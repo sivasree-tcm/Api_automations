@@ -1,5 +1,7 @@
 package utils;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.UUID;
 
@@ -15,6 +17,13 @@ public class TestDataGenerator {
         }
         return sb.toString();
     }
+
+    public static String generateFutureDate() {
+        return LocalDate.now()
+                .plusDays(30)
+                .format(DateTimeFormatter.ISO_LOCAL_DATE);
+    }
+
 
     // ✅ Org Name → only letters
     public static String generateOrgName() {

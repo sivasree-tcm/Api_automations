@@ -26,7 +26,7 @@ public class GetProjectDetailsTest extends BaseTest {
 
         ConnectionReport testData =
                 JsonUtils.readJson(
-                        "testdata/project/getProjectDetails.json",
+                        "testdata/project/GetProjectDetails.json",
                         ConnectionReport.class
                 );
 

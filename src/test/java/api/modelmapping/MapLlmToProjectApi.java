@@ -1,4 +1,4 @@
-package api.connection;
+package api.modelmapping;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -6,11 +6,15 @@ import utils.TokenUtil;
 
 import static io.restassured.RestAssured.given;
 
-public class DbConfigApi {
+public class MapLlmToProjectApi {
 
-    public static Response addDbInfo(Object request, String role, String authType) {
+    public static Response mapModelToProject(
+            Object requestPayload,
+            String role,
+            String authType
+    ) {
 
-        System.out.println("\n🔧 DbConfigApi.addDbInfo called");
+        System.out.println("\n🤖 MapLlmToProjectApi.mapModelToProject called");
         System.out.println("Role: " + role);
         System.out.println("Auth Type: " + authType);
 
@@ -18,14 +22,13 @@ public class DbConfigApi {
                 .relaxedHTTPSValidation()
                 .contentType(ContentType.JSON);
 
-        // ===================== AUTH HANDLING =====================
         if (!"MISSING".equalsIgnoreCase(authType)) {
 
             String token;
 
             if ("INVALID".equalsIgnoreCase(authType)) {
                 token = "invalid_token";
-                System.out.println("⚠️ Using INVALID token for negative testing");
+                System.out.println("⚠️ Using INVALID token");
             } else {
                 token = TokenUtil.getToken(
                         tests.roles.UserRole.valueOf(role)
@@ -34,34 +37,24 @@ public class DbConfigApi {
             }
 
             if (token == null || token.isBlank()) {
-                throw new IllegalStateException("❌ Token is NULL or EMPTY. Login flow is broken.");
+                throw new IllegalStateException("❌ Token is null or empty");
             }
 
-            // Token preview (safe)
-            System.out.println("Token preview: " +
-                    (token.length() > 30 ? token.substring(0, 30) + "..." : token));
-
-            // ❗ IMPORTANT: Backend expects RAW token, NOT Bearer
             req.header("Authorization", token);
-
-        } else {
-            System.out.println("⚠️ No Authorization header (MISSING auth type)");
         }
 
-        // ===================== API CALL =====================
-        System.out.println("\n📤 Sending request to /api/addDbInfo");
+        System.out.println("\n📤 Sending request to /api/map-llm-to-project");
 
         Response response = req
-                .body(request)
+                .body(requestPayload)
                 .log().all()
                 .when()
-                .post("/api/addDbInfo")
+                .post("/api/map-llm-to-project")
                 .then()
                 .log().all()
                 .extract()
                 .response();
 
-        // ===================== RESPONSE LOG =====================
         System.out.println("\n📥 Response Status: " + response.getStatusCode());
         System.out.println("Response Body: " + response.getBody().asString());
 

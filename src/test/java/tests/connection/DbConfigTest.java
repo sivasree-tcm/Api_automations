@@ -1,9 +1,10 @@
-package tests.connection;
+package tests.connection; // Ensure this file is moved to src/test/java/tests/connection/
 
 import api.connection.DbConfigApi;
 import base.BaseTest;
 import models.connection.DbConfigReport;
 import org.testng.annotations.Test;
+import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.TokenUtil;
 import utils.ProjectStore;
@@ -14,15 +15,14 @@ public class DbConfigTest extends BaseTest {
 
     @Test
     public void addDbInfoTest() {
+        // Updated path to match the reference style
         DbConfigReport testData = JsonUtils.readJson(
                 "testdata/connectionsData/dbConfig.json",
                 DbConfigReport.class
         );
 
-        if (testData != null && testData.getTestCases() != null) {
+        if (testData != null) {
             execute(testData, testData.getTestCases());
-        } else {
-            System.err.println("ERROR: Could not load dbConfig.json test data.");
         }
     }
 
@@ -30,28 +30,25 @@ public class DbConfigTest extends BaseTest {
         for (DbConfigReport.TestCase tc : cases) {
             Map<String, Object> request = (Map<String, Object>) tc.getRequest();
 
-            // 🔹 1. Fix UserID Injection
-            // Converting to Integer to match the format of successful requests
+            // ✅ Dynamic Injection - Logic from today's debugging
             int actualUserId = TokenUtil.getUserId(tc.getRole());
             request.put("userId", actualUserId);
 
-            // 🔹 2. Fix ProjectID Injection
-            // Retrieve the ID captured from the 'project_id' field in Step 2
             Integer savedId = ProjectStore.getProjectId();
             if (savedId != null) {
-                request.put("projectId", savedId);
-                System.out.println("DEBUG: Injected Project ID: " + savedId);
-            } else {
-                // Warning if the previous step failed to store the ID
-                System.err.println("CRITICAL: ProjectID is null. Ensure createprojectflow passed and saved the project_id.");
+                request.put("projectId", savedId); // Injected Project ID: 1556
             }
 
-            // 🔹 3. API Execution
-            // Ensure tc.getAuthType() is "VALID" in your JSON to provide the correct token
-            tests.user.ApiTestExecutor.execute(
+            // ✅ Use the specific key found in your working payload
+            // This matches "environemntDetails" (with the spelling from your confirmation)
+            ApiTestExecutor.execute(
                     testData.getScenario(),
                     tc,
-                    () -> DbConfigApi.addDbInfo(request, tc.getRole(), tc.getAuthType())
+                    () -> DbConfigApi.addDbInfo(
+                            request,
+                            tc.getRole(),
+                            tc.getAuthType()
+                    )
             );
         }
     }

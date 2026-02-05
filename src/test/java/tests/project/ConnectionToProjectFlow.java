@@ -3,23 +3,35 @@ package tests.project;
 import base.BaseTest;
 import org.testng.annotations.Test;
 import tests.connection.DbConfigTest;
-import tests.connection.SaveConnectionTest;
 import tests.connection.saveconnectionflow;
-import tests.project.ProjectTest;
+import tests.project.createprojectflow;
+import tests.modelmapping.GetLlmModelsTest;
+import tests.modelmapping.MapLlmToProjectTest;
 
 public class ConnectionToProjectFlow extends BaseTest {
 
-    @Test(description = "Step 1: Save Connection and Capture ID")
+    @Test
     public void step1_saveConnection() {
         new saveconnectionflow().saveConnectionTest();
     }
 
-    @Test(dependsOnMethods = "step1_saveConnection", description = "Step 2: Create Project using Captured ID")
+    @Test(dependsOnMethods = "step1_saveConnection")
     public void step2_createProject() {
         new createprojectflow().projectApiTest();
     }
-    @Test(dependsOnMethods = "step2_createProject", description = "Flow Step 3: Configure Database")
+
+    @Test(dependsOnMethods = "step2_createProject")
     public void step3_AddDbConfig() {
         new DbConfigTest().addDbInfoTest();
+    }
+
+    @Test(dependsOnMethods = "step3_AddDbConfig")
+    public void step4_getModels() {
+        new GetLlmModelsTest().fetchAndStoreModels();
+    }
+
+    @Test(dependsOnMethods = "step4_getModels")
+    public void step5_mapModels() {
+        new MapLlmToProjectTest().mapLlmToProjectTest();
     }
 }

@@ -1,0 +1,29 @@
+{
+  "scenario": "Map LLM models to project",
+  "testCases": [
+    {
+      "name": "Map multimodal model",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "modelType": "multimodal",
+      "request": {
+        "custom_temperature": null,
+        "custom_max_tokens": null,
+        "custom_top_p": null
+      },
+      "expectedStatus": 200
+    },
+    {
+      "name": "Map chat model",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "modelType": "chat",
+      "request": {
+        "custom_temperature": 0.7,
+        "custom_max_tokens": 4096,
+        "custom_top_p": 0.9
+      },
+      "expectedStatus": 200
+    }
+  ]
+}

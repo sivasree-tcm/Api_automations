@@ -5,6 +5,7 @@ import java.util.*;
 public class TestScenarioStore {
 
     private static final Map<Integer, List<Integer>> BR_TS_MAP = new HashMap<>();
+    private static final Map<Integer, List<Integer>> TS_BY_BR = new HashMap<>();
 
     public static void addTs(Integer brId, Integer tsId) {
         BR_TS_MAP
@@ -15,7 +16,12 @@ public class TestScenarioStore {
     public static List<Integer> getTsByBr(Integer brId) {
         return BR_TS_MAP.getOrDefault(brId, Collections.emptyList());
     }
-
+    public static Integer getAnyTsId() {
+        return TS_BY_BR.values().stream()
+                .flatMap(List::stream)
+                .findFirst()
+                .orElse(null);
+    }
     public static Set<Integer> getAllBrIds() {
         return BR_TS_MAP.keySet();
     }

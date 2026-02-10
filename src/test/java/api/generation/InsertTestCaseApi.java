@@ -1,38 +1,42 @@
-package api.roles;
+package api.generation;
 
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import utils.TokenUtil;
+import tests.roles.UserRole;
+
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateRolesApi {
+public class InsertTestCaseApi {
 
-    public static Response createRole(
-            Object request,
+    /**
+     * POST /api/insertTC
+     */
+    public static Response insertTestCase(
+            Map<String, Object> request,
             String role,
             String authType
     ) {
 
         var req = given()
-                .contentType(ContentType.JSON);
+                .contentType("application/json")
+                .body(request);
 
+        // 🔐 Auth handling (same pattern everywhere)
         if ("MISSING".equalsIgnoreCase(authType)) {
-            // No auth header
+            // no auth
         } else if ("INVALID".equalsIgnoreCase(authType)) {
             req.header("Authorization", "Bearer invalid_token");
         } else {
             req.header(
                     "Authorization",
-                    TokenUtil.getToken(
-                            tests.roles.UserRole.valueOf(role)
-                    )
+                    TokenUtil.getToken(UserRole.valueOf(role))
             );
         }
 
         return req
-                .body(request)
                 .when()
-                .post("/createRole");
+                .post("/api/insertTC");
     }
 }

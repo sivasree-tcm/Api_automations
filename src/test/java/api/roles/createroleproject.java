@@ -6,7 +6,7 @@ import utils.TokenUtil;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateRolesApi {
+public class createroleproject {
 
     public static Response createRole(
             Object request,
@@ -17,8 +17,9 @@ public class CreateRolesApi {
         var req = given()
                 .contentType(ContentType.JSON);
 
+        // 🔐 Authorization handling
         if ("MISSING".equalsIgnoreCase(authType)) {
-            // No auth header
+            // no auth header
         } else if ("INVALID".equalsIgnoreCase(authType)) {
             req.header("Authorization", "Bearer invalid_token");
         } else {
@@ -30,6 +31,7 @@ public class CreateRolesApi {
             );
         }
 
+        // ✅ CORRECT endpoint (NO /api)
         return req
                 .body(request)
                 .when()

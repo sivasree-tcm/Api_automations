@@ -1,0 +1,13 @@
+{
+  "scenario": "Get Test Case With Steps API",
+  "testCases": [
+    {
+      "tcId": "TC_GET_TC_STEPS_01",
+      "name": "Get test case with steps dynamically",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {}
+    }
+  ]
+}

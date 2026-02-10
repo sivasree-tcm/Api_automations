@@ -6,12 +6,12 @@
       "name": "Create QA role",
       "role": "SUPER_ADMIN",
       "authType": "VALID",
-      "expectedStatusCode": 200,
+      "expectedStatusCode": 201,
       "request": {
-        "refProjectId": "182",
-        "roleName": "",
-        "roleDescription": "",
-        "userId": 32
+        "refProjectId": "800",
+        "roleName": "qa",
+        "roleDescription": "testing",
+        "userId": 33
       }
     }
   ]

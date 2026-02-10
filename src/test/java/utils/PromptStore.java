@@ -1,22 +1,28 @@
 package utils;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class PromptStore {
 
-    private static Integer promptId;
+    private static final Map<String, Integer> promptIds =
+            new ConcurrentHashMap<>();
 
-    public static void setPromptId(Integer id) {
-        promptId = id;
+    // Save prompt by type (BR_TO_TS, TS_TO_TC)
+    public static void setPromptId(String type, Integer id) {
+        promptIds.put(type, id);
     }
 
-    public static Integer getPromptId() {
-        return promptId;
+    // Get prompt by type
+    public static Integer getPromptId(String type) {
+        return promptIds.get(type);
     }
 
-    public static boolean hasPromptId() {
-        return promptId != null;
+    public static boolean hasPromptId(String type) {
+        return promptIds.containsKey(type);
     }
 
     public static void clear() {
-        promptId = null;
+        promptIds.clear();
     }
 }

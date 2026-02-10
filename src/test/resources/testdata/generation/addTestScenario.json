@@ -1,0 +1,13 @@
+{
+  "scenario": "Add Test Scenario API",
+  "testCases": [
+    {
+      "tcId": "TC_ADD_TS_01",
+      "name": "Add Test Scenario dynamically",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {}
+    }
+  ]
+}

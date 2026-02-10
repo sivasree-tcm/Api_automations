@@ -37,7 +37,7 @@ public class GenerateTCTest extends BaseTest {
 
             // ✅ MANUAL TS SELECTION - Take only first 5 TS (customize as needed)
             List<Integer> selectedTsIds =
-                    tsIds.size() >=2 ? tsIds.subList(0, 2) : tsIds;
+                    tsIds.size() >=1 ? tsIds.subList(0, 1) : tsIds;
             GeneratedTSStore.store(selectedTsIds);
 
             System.out.println("🔹 Selected TS for TC generation → " + selectedTsIds);

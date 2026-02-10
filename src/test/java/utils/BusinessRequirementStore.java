@@ -51,5 +51,34 @@ public class BusinessRequirementStore {
         public static List<Integer> getGeneratedBRs(Integer projectId) {
             return GENERATED_BR_MAP.getOrDefault(projectId, new ArrayList<>());
         }
+    public static Integer getAnyBrId(Integer projectId) {
 
+        // 1️⃣ Prefer BRs used for generation
+        List<Integer> generated =
+                GENERATED_BR_MAP.get(projectId);
+
+        if (generated != null && !generated.isEmpty()) {
+            return generated.get(0);
+        }
+
+        // 2️⃣ Fallback to completed BRs
+        List<Integer> completed =
+                COMPLETED_BR_MAP.get(projectId);
+
+        if (completed != null && !completed.isEmpty()) {
+            return completed.get(0);
+        }
+
+        // 3️⃣ Fallback to any fetched BR
+        List<Integer> all =
+                BR_MAP.get(projectId);
+
+        if (all != null && !all.isEmpty()) {
+            return all.get(0);
+        }
+
+        return null;
     }
+
+
+}

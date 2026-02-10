@@ -1,0 +1,28 @@
+{
+  "scenario": "Add Test Case API Validation",
+  "testCases": [
+    {
+      "tcId": "TC_ADD_TC_01",
+      "name": "Add test case with valid payload",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "tcDescription": "Verify that administrators can successfully create a new grantee profile with all required information",
+        "tcPrecondition": "Administrator has valid login credentials and permissions",
+        "tcStepArray": [],
+        "tcCreationMethod": "manual",
+        "atsGenerationStatus": 0,
+        "refTSId": "DYNAMIC_TS",
+        "refBrId": "DYNAMIC_BR",
+        "smoke": 0,
+        "regression": 1,
+        "uat": 0,
+        "tcPriority": "medium",
+        "bddTestCase": "",
+        "testData": "{ \"username\": \"test_user\", \"email\": \"user@example.com\" }",
+        "testCaseType": "negative"
+      }
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 package tests.roles;
 
 import api.roles.CreateRolesApi;
+import base.BaseTest;
 import tests.connection.ConnectionReport;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
@@ -9,8 +10,9 @@ import utils.TestDataGenerator;
 import org.testng.annotations.Test;
 
 import java.util.Map;
+@Test
 
-public class CreateRolesTest {
+public class CreateRolesTest extends BaseTest {
 
 
     public void createRoleTest() {
@@ -32,7 +34,7 @@ public class CreateRolesTest {
                                 (Map<String, Object>) tc.getRequest();
 
                         req.put("roleName", TestDataGenerator.randomRoleName());
-                        req.put("roleDescription", TestDataGenerator.randomDescription());
+                        req.put("roleDescription", "testing");
 
                         return CreateRolesApi.createRole(
                                 req,

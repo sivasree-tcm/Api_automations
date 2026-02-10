@@ -1,0 +1,27 @@
+{
+  "scenario": "Map Prompt API Validation",
+  "testCases": [
+    {
+      "tcId": "TC_MP_01",
+      "name": "Map BR to TS prompt",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptType": "BR_TO_TS",
+        "refprojectId": "DYNAMIC_PROJECT",
+        "mappingComment": "Mapped BR to TS via automation"
+      }
+    },
+    {
+      "tcId": "TC_MP_02",
+      "name": "Map TS to TC prompt",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptType": "TS_TO_TC",
+        "refprojectId": "DYNAMIC_PROJECT",
+        "mappingComment": "Mapped TS to TC via automation"
+      }
+    }
+  ]
+}

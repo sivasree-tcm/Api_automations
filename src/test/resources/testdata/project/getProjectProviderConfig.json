@@ -1,0 +1,14 @@
+{
+  "scenario": "Get Project Provider Config API",
+  "testCases": [
+    {
+      "tcId": "TC_GPPC_01",
+      "name": "Get provider config for logged-in user",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": "DYNAMIC_USER"
+      }
+    }
+  ]
+}

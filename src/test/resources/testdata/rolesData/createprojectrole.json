@@ -1,0 +1,17 @@
+{
+  "scenario": "Create Role API",
+  "testCases": [
+    {
+      "testCaseId": "TC_ROLE_01",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatus": 200,
+      "request": {
+        "refProjectId": "",
+        "roleName": "",
+        "roleDescription": "",
+        "userId": ""
+      }
+    }
+  ]
+}

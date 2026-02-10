@@ -1,0 +1,13 @@
+{
+  "scenario": "Get Test Case Summary For Test Scenario",
+  "testCases": [
+    {
+      "tcId": "GET_TC_SUMMARY",
+      "name": "Get Test Case Summary",
+      "role": "SUPER_ADMIN",
+      "authType": "TOKEN",
+      "expectedStatusCode": 200,
+      "request": {}
+    }
+  ]
+}

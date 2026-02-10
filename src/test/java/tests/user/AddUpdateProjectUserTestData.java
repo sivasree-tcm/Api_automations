@@ -17,6 +17,7 @@ public class AddUpdateProjectUserTestData {
     }
 
     public static class TestCase {
+        private Integer admin;
 
         private String tcId;
         private String name;
@@ -29,6 +30,9 @@ public class AddUpdateProjectUserTestData {
         public String getRole() { return role; }
         public int getExpectedStatusCode() { return expectedStatusCode; }
         public Map<String, Object> getRequest() { return request; }
+
+        public Integer getAdmin() { return admin; }   // ✅ ADD THIS
+
 
         @Override
         public String toString() {

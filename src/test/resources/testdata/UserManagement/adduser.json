@@ -1,0 +1,12 @@
+{
+  "scenario": "Update Project User – Admin Toggle",
+  "testCases": [
+    {
+      "tcId": "TC_UPU_01",
+      "name": "Make user project admin",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "isAdmin": 1
+      }
+    }]}

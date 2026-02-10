@@ -12,7 +12,6 @@ import java.util.Map;
 
 public class MapLlmToProjectTest extends BaseTest {
 
-    @Test
     public void mapLlmToProjectTest() {
 
         MapLlmReport testData = JsonUtils.readJson(

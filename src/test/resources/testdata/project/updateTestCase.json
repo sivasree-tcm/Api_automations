@@ -1,0 +1,13 @@
+{
+  "scenario": "Update Test Case API",
+  "testCases": [
+    {
+      "tcId": "TC_UPDATE_TC_01",
+      "name": "Update test case dynamically",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {}
+    }
+  ]
+}

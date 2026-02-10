@@ -4,12 +4,21 @@ import java.util.*;
 
 public class ProjectStore {
 
+    // ================= PROJECT LIST =================
     private static final Map<Integer, String> PROJECT_MAP = new LinkedHashMap<>();
-    private static Integer selectedProjectId; // ⭐ important
 
-    // inside ProjectStore
+    // ================= CURRENT PROJECT =================
+    private static Integer selectedProjectId;
+
+    // ================= THREAD-SAFE PROJECT ID =================
+    private static final ThreadLocal<Integer> PROJECT_ID = new ThreadLocal<>();
+
+    // ================= USER =================
     private static String USER_ID;
 
+    // -------------------------------------------------
+    // USER
+    // -------------------------------------------------
     public static void setUserId(String userId) {
         USER_ID = userId;
     }
@@ -17,7 +26,10 @@ public class ProjectStore {
     public static String getUserId() {
         return USER_ID;
     }
-    // Store all projects
+
+    // -------------------------------------------------
+    // PROJECT LIST
+    // -------------------------------------------------
     public static void storeProjects(List<Map<String, Object>> response) {
 
         PROJECT_MAP.clear();
@@ -34,19 +46,6 @@ public class ProjectStore {
         }
     }
 
-    public static void setSelectedProject(Integer projectId) {
-        selectedProjectId = projectId;
-    }
-
-    // ✅ Get selected project
-    public static Integer getSelectedProjectId() {
-        if (selectedProjectId == null) {
-            throw new RuntimeException("❌ No project selected");
-        }
-        return selectedProjectId;
-    }
-
-    // Optional helper
     public static boolean containsProject(Integer projectId) {
         return PROJECT_MAP.containsKey(projectId);
     }
@@ -59,24 +58,43 @@ public class ProjectStore {
         return PROJECT_MAP.keySet();
     }
 
-    public static void clear() {
-        PROJECT_MAP.clear();
-        selectedProjectId = null;
-    }
-
     public static Integer getAnyProjectId() {
         return PROJECT_MAP.keySet().stream().findFirst().orElse(null);
     }
 
-        private static final ThreadLocal<Integer> projectId = new ThreadLocal<>();
-
-        public static void setProjectId(int id) {
-            projectId.set(id);
-        }
-
-        public static Integer getProjectId() {
-            return projectId.get();
-        }
-
+    // -------------------------------------------------
+    // SELECTED PROJECT (SAFE)
+    // -------------------------------------------------
+    public static void setSelectedProject(Integer projectId) {
+        selectedProjectId = projectId;
     }
 
+    /** ❌ DO NOT THROW HERE */
+    public static Integer getSelectedProjectId() {
+        return selectedProjectId;
+    }
+
+    public static Integer peekSelectedProjectId() {
+        return selectedProjectId;
+    }
+
+    // -------------------------------------------------
+    // THREAD-LOCAL PROJECT ID (used by API calls)
+    // -------------------------------------------------
+    public static void setProjectId(Integer id) {
+        PROJECT_ID.set(id);
+    }
+
+    public static Integer getProjectId() {
+        return PROJECT_ID.get();
+    }
+
+    // -------------------------------------------------
+    // RESET
+    // -------------------------------------------------
+    public static void clear() {
+        PROJECT_MAP.clear();
+        selectedProjectId = null;
+        PROJECT_ID.remove();
+    }
+}

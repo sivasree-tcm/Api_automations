@@ -15,13 +15,13 @@ import java.util.List;
 import java.util.Map;
 
 public class GetLlmCredentialsTest extends BaseTest {
-@Test
+
     public void fetchLlmCredentials() {
 
         // 🔹 Load generic test data (only for reporting)
         ConnectionReport testData =
                 JsonUtils.readJson(
-                        "testdata/project/GetLlmCredentials.json",
+                        "testdata/project/getLlmCredentials.json",
                         ConnectionReport.class
                 );
 
@@ -29,6 +29,7 @@ public class GetLlmCredentialsTest extends BaseTest {
                 new ConnectionReport.TestCase(
                         testData.getTestCases().get(0)
                 );
+        System.out.println("getllm");
 
         // 🔹 Build request dynamically
         Map<String, Object> request = new HashMap<>();

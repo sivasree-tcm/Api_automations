@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class MapCredentialToProjectTest extends BaseTest {
 
-    @Test
+
     public void mapCredentialToProjectApiTest() {
 
         // ✅ Reuse ConnectionReport

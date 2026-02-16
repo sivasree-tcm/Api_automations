@@ -63,4 +63,8 @@ public class ProjectStore {
         PROJECT_MAP.clear();
         selectedProjectId = null;
     }
+
+    public static void log() {
+
+    }
 }

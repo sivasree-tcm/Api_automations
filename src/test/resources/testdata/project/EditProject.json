@@ -2,7 +2,7 @@
   "scenario": "Edit Project API Validation - Comprehensive Test Suite",
   "basePayload": {
     "projectId": "230",
-    "userId": "33",
+    "userId": 32,
     "projectCreatedBy": "33",
     "projectName": "AutoProject_{{timestamp}}",
     "projectDescription": "project related to automation",
@@ -26,7 +26,7 @@
       "expectedResult": "200 OK, project updated successfully",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "Updated project description",
@@ -50,7 +50,7 @@
       "expectedResult": "200 OK",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "UpdatedProjectName_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -74,7 +74,7 @@
       "expectedResult": "200 OK",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "Completely new description for testing",
@@ -98,7 +98,7 @@
       "expectedResult": "200 OK",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -122,7 +122,7 @@
       "expectedResult": "200 OK",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -146,7 +146,7 @@
       "expectedResult": "200 OK",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -170,7 +170,7 @@
       "expectedResult": "Ignored, 200 OK",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -195,7 +195,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -219,7 +219,7 @@
       "expectedResult": "404 Not Found / validation error",
       "request": {
         "projectId": "99999",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -266,7 +266,7 @@
       "expectedResult": "403 Forbidden",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "44",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -290,7 +290,7 @@
       "expectedResult": "400 Bad Request",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectDescription": "project related to automation",
         "projectDomain": "Automation",
@@ -313,7 +313,7 @@
       "expectedResult": "Validation error",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "",
         "projectDescription": "project related to automation",
@@ -337,7 +337,7 @@
       "expectedResult": "400 Bad Request",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -360,7 +360,7 @@
       "expectedResult": "400 Bad Request",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -383,7 +383,7 @@
       "expectedResult": "Validation error",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -407,7 +407,7 @@
       "expectedResult": "Validation error",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -431,7 +431,7 @@
       "expectedResult": "Validation error",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -455,7 +455,7 @@
       "expectedResult": "Validation error",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -479,7 +479,7 @@
       "expectedResult": "Validation error",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -503,7 +503,7 @@
       "expectedResult": "Validation error",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -527,7 +527,7 @@
       "expectedResult": "401 Unauthorized",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -551,7 +551,7 @@
       "expectedResult": "401 Unauthorized",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -576,7 +576,7 @@
       "note": "Using ADMIN token but userId is SUPER_ADMIN's",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -600,7 +600,7 @@
       "expectedResult": "403 Forbidden",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -624,7 +624,7 @@
       "expectedResult": "Input rejected",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "' OR '1'='1",
         "projectDescription": "project related to automation",
@@ -648,7 +648,7 @@
       "expectedResult": "Input rejected",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "<script>alert(1)</script>",
         "projectDescription": "project related to automation",
@@ -672,7 +672,7 @@
       "expectedResult": "Sanitized / rejected",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "<b>Test</b> <i>HTML</i>",
@@ -696,7 +696,7 @@
       "expectedResult": "200 OK / ignored",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -725,7 +725,7 @@
       "note": "Send with Content-Type: text/plain",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -759,7 +759,7 @@
       "expectedResult": "400 Bad Request",
       "request": {
         "projectId": null,
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -783,7 +783,7 @@
       "expectedResult": "400 Bad Request",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": null,
         "projectDescription": "project related to automation",
@@ -807,7 +807,7 @@
       "expectedResult": "400 Bad Request",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",
@@ -831,7 +831,7 @@
       "expectedResult": "400 Bad Request",
       "request": {
         "projectId": "230",
-        "userId": "33",
+        "userId": 32,
         "projectCreatedBy": "33",
         "projectName": "AutoProject_{{timestamp}}",
         "projectDescription": "project related to automation",

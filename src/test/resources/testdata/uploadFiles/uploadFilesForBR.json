@@ -1,0 +1,12 @@
+{
+  "scenario": "Upload Files API",
+  "testCases": [
+    {
+      "tcId": "UPLOAD_FILE_01",
+      "name": "Upload image for BR",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200
+    }
+  ]
+}

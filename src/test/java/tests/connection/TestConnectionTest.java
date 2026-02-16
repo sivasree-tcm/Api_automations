@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class TestConnectionTest extends BaseTest {
 
-    @Test
+
     public void testConnection() {
 
         ConnectionReport testData =

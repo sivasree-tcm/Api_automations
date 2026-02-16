@@ -1,0 +1,12 @@
+{
+  "scenario": "Update Test Case Step",
+  "testCases": [
+    {
+      "tcId": "UPDATE_TC_STEP_01",
+      "name": "Update existing test case step with valid data",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200
+    }
+  ]
+}

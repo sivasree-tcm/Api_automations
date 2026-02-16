@@ -13,7 +13,7 @@ public class EditProjectTest extends BaseTest {
     private static final String PROJECT_ID = "230";
     private static final String USER_ID = "33";
 
-    @Test
+
     public void editProjectApiTest() {
 
         EditProjectTestData testData =

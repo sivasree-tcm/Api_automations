@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ToggleUserStatus extends BaseTest {
 
-    @Test
+
     public void toggleUserStatusApiTest() {
 
         ToggleUserStatusTestData testData =

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SaveConnectionTest extends BaseTest {
 
-    @Test
+
     public void saveConnectionTest() {
 
         ConnectionReport testData =

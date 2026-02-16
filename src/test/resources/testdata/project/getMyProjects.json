@@ -10,7 +10,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK, project list returned",
       "request": {
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -56,7 +56,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "Accepted or validation error",
       "request": {
-        "userId": 33
+        "userId": 32
       }
     },
     {
@@ -92,7 +92,7 @@
       "expectedStatusCode": 401,
       "expectedResult": "401 Unauthorized",
       "request": {
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -104,7 +104,7 @@
       "expectedStatusCode": 401,
       "expectedResult": "401 Unauthorized",
       "request": {
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -117,7 +117,7 @@
       "expectedResult": "403 Forbidden",
       "note": "Using ADMIN token but requesting SUPER_ADMIN's projects",
       "request": {
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -153,7 +153,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "Ignored, 200 OK",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "extra": "test",
         "randomField": "value"
       }
@@ -167,7 +167,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK / ignored",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "f1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "f2": "Sed do eiusmod tempor incididunt ut labore et dolore",
         "f3": "Ut enim ad minim veniam, quis nostrud exercitation"
@@ -193,7 +193,7 @@
       "expectedResult": "415 Unsupported Media Type",
       "note": "Send with Content-Type: text/plain",
       "request": {
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -206,7 +206,7 @@
       "expectedResult": "200 OK / rate limit handled",
       "note": "Same payload sent repeatedly - execute 5 times",
       "request": {
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -231,7 +231,7 @@
       "expectedResult": "4xx error, no 500",
       "note": "This requires special handling to send malformed JSON",
       "request": {
-        "userId": "33"
+        "userId": 32
       }
     },
     {

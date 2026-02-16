@@ -14,7 +14,7 @@
         "promptDescription": "Updated description for governance prompt",
         "promptSource": "TS",
         "promptDestination": "TC",
-        "userId": "33",
+        "userId": 32,
         "promptActive": true
       }
     },
@@ -31,7 +31,7 @@
         "promptDescription": "Validate update response message",
         "promptSource": "TS",
         "promptDestination": "TC",
-        "userId": "33",
+        "userId": 32,
         "promptActive": true
       }
     },
@@ -48,7 +48,7 @@
         "promptDescription": "Multiline prompt update",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33",
+        "userId": 32,
         "promptActive": true
       }
     },
@@ -65,7 +65,7 @@
         "promptDescription": "Special chars !@#$%",
         "promptSource": "BR",
         "promptDestination": "TC",
-        "userId": "33",
+        "userId": 32,
         "promptActive": true
       }
     },
@@ -82,7 +82,7 @@
         "promptDescription": "Prompt marked as inactive",
         "promptSource": "TS",
         "promptDestination": "TC",
-        "userId": "33",
+        "userId": 32,
         "promptActive": false
       }
     },
@@ -98,7 +98,7 @@
         "promptDescription": "Validation test",
         "promptSource": "TS",
         "promptDestination": "TC",
-        "userId": "33",
+        "userId": 32,
         "promptActive": true
       }
     },
@@ -115,7 +115,7 @@
         "promptDescription": "Non-existent promptId",
         "promptSource": "TS",
         "promptDestination": "TC",
-        "userId": "33",
+        "userId": 32,
         "promptActive": true
       }
     },
@@ -131,7 +131,7 @@
         "promptDescription": "Missing promptText",
         "promptSource": "TS",
         "promptDestination": "TC",
-        "userId": "33",
+        "userId": 32,
         "promptActive": true
       }
     },
@@ -147,7 +147,7 @@
         "promptText": "Missing description",
         "promptSource": "TS",
         "promptDestination": "TC",
-        "userId": "33",
+        "userId": 32,
         "promptActive": true
       }
     },
@@ -164,7 +164,7 @@
         "promptDescription": "No auth header",
         "promptSource": "TS",
         "promptDestination": "TC",
-        "userId": "33",
+        "userId": 32,
         "promptActive": true
       }
     },
@@ -181,7 +181,7 @@
         "promptDescription": "Extra fields ignored",
         "promptSource": "BR",
         "promptDestination": "TC",
-        "userId": "33",
+        "userId": 32,
         "promptActive": true,
         "extraField": "test",
         "randomKey": "value"

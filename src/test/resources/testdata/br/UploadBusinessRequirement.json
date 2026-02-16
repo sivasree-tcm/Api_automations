@@ -1,0 +1,13 @@
+{
+  "scenario": "Upload Business Requirement API",
+  "testCases": [
+    {
+      "tcId": "TC_BR_01",
+      "name": "Upload BR Excel file",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {}
+    }
+  ]
+}

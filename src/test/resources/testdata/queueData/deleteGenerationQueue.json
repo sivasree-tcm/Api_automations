@@ -9,7 +9,7 @@
       "expectedStatusCode": 200,
       "request": {
         "userIdFromAPI": 33,
-        "userId": "32",
+        "userId": 32,
         "projectId": "1167",
         "queueIds": [1938, 1940],
         "userName": "Suhapriyan U",

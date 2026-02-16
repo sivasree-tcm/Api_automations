@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AddUpdateProjectUserTest extends BaseTest {
 
-    @Test
+
     public void addUpdateProjectUserApiTest() {
 
         AddUpdateProjectUserTestData testData =

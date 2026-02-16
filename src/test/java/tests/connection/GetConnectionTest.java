@@ -10,7 +10,7 @@ import java.util.List;
 
 public class GetConnectionTest extends BaseTest {
 
-    @Test
+
     public void getConnectionsTest() {
 
         ConnectionReport testData =

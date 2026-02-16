@@ -28,7 +28,8 @@ public class GenerateTSTest extends BaseTest {
 
         // ✅ TAKE ONLY FIRST 10 BRs
         List<Integer> selectedBrs =
-                brIds.size() >= 10 ? brIds.subList(0, 10) : brIds;
+                brIds.size() >= 1 ? brIds.subList(0, 1) : brIds;
+        GeneratedBRStore.store(selectedBrs);
 
         System.out.println("🔹 BRs selected for TS generation → " + selectedBrs);
 

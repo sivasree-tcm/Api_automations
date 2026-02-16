@@ -10,7 +10,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK, project details returned",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": "230"
       }
     },
@@ -23,7 +23,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK / validated",
       "request": {
-        "userId": 33,
+        "userId": 32,
         "projectId": 230
       }
     },
@@ -36,7 +36,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "Ignored, 200 OK",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": "230",
         "extra": "x",
         "randomField": "test"
@@ -63,7 +63,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -88,7 +88,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": null
       }
     },
@@ -114,7 +114,7 @@
       "expectedStatusCode": 404,
       "expectedResult": "404 Not Found / validation error",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": "99999"
       }
     },
@@ -140,7 +140,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "Validation error",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": ""
       }
     },
@@ -153,7 +153,7 @@
       "expectedStatusCode": 401,
       "expectedResult": "401 Unauthorized",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": "230"
       }
     },
@@ -166,7 +166,7 @@
       "expectedStatusCode": 401,
       "expectedResult": "401 Unauthorized",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": "230"
       }
     },
@@ -180,7 +180,7 @@
       "expectedResult": "403 Forbidden",
       "note": "Using ADMIN token but requesting with SUPER_ADMIN userId",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": "230"
       }
     },
@@ -206,7 +206,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request - Input rejected",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": "' OR '1'='1"
       }
     },
@@ -232,7 +232,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request - Input rejected",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": "<script>alert(1)</script>"
       }
     },
@@ -258,7 +258,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request - Validation error",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": "230@#$"
       }
     },
@@ -284,7 +284,7 @@
       "expectedStatusCode": 400,
       "expectedResult": "400 Bad Request - Invalid projectId",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": "-230"
       }
     },
@@ -334,7 +334,7 @@
       "expectedResult": "415 Unsupported Media Type",
       "note": "Send with Content-Type: text/plain",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": "230"
       }
     },
@@ -347,7 +347,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK - Extra fields ignored",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": "230",
         "extra1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "extra2": "Sed do eiusmod tempor incididunt ut labore et dolore",
@@ -376,7 +376,7 @@
       "expectedStatusCode": 200,
       "expectedResult": "200 OK - Spaces trimmed",
       "request": {
-        "userId": "33",
+        "userId": 32,
         "projectId": " 230 "
       }
     }

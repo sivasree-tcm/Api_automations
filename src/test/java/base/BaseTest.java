@@ -5,12 +5,13 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import report.CustomReportManager;
 import tests.login.LoginTest;
+import utils.ConfigReader;
 import utils.FailureTracker;
 
 public class BaseTest {
 
     static {
-        RestAssured.baseURI = "https://test.cognitest.ai";
+        RestAssured.baseURI = ConfigReader.get("base.url");
         RestAssured.useRelaxedHTTPSValidation();
     }
 

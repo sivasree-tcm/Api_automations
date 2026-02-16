@@ -12,7 +12,7 @@
         "projectId": 103,
         "refRoleId": 94,
         "isActive": 0,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -26,7 +26,7 @@
         "projectId": 103,
         "refRoleId": 94,
         "isActive": 1,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -39,7 +39,7 @@
         "projectId": 103,
         "refRoleId": 94,
         "isActive": 0,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -52,7 +52,7 @@
         "targetUserId": 37,
         "refRoleId": 94,
         "isActive": 0,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -65,7 +65,7 @@
         "targetUserId": 37,
         "projectId": 103,
         "refRoleId": 94,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -79,7 +79,7 @@
         "projectId": 103,
         "refRoleId": 94,
         "isActive": 0,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -93,7 +93,7 @@
         "projectId": 103,
         "refRoleId": 94,
         "isActive": null,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -107,7 +107,7 @@
         "projectId": 103,
         "refRoleId": 94,
         "isActive": 2,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -121,7 +121,7 @@
         "projectId": 103,
         "refRoleId": 94,
         "isActive": -1,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -135,7 +135,7 @@
         "projectId": 103,
         "refRoleId": 94,
         "isActive": "abc",
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -149,7 +149,7 @@
         "projectId": 103,
         "refRoleId": 94,
         "isActive": false,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -163,7 +163,7 @@
         "projectId": 103,
         "refRoleId": 94,
         "isActive": 0,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -177,7 +177,7 @@
         "projectId": 99999,
         "refRoleId": 94,
         "isActive": 0,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -191,7 +191,7 @@
         "projectId": -1,
         "refRoleId": 94,
         "isActive": 0,
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -219,7 +219,7 @@
         "projectId": 103,
         "refRoleId": 94,
         "isActive": 0,
-        "userId": "33",
+        "userId": 32,
         "extraField": "test"
       }
     },

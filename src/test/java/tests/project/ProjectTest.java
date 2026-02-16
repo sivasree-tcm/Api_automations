@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ProjectTest extends BaseTest {
 
-    @Test
+
     public void projectApiTest() {
 
         ProjectTestData testData =

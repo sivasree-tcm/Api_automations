@@ -26,6 +26,7 @@ public class GenerateTCTest extends BaseTest {
         // ✅ MANUAL SELECTION - Take only first BR (or customize as needed)
         List<Integer> selectedBrIds = allBrIds.subList(0, 1);
 
+
         System.out.println("🔹 Selected BRs for TC generation → " + selectedBrIds);
 
         for (Integer brId : selectedBrIds) {
@@ -37,6 +38,7 @@ public class GenerateTCTest extends BaseTest {
             // ✅ MANUAL TS SELECTION - Take only first 5 TS (customize as needed)
             List<Integer> selectedTsIds =
                     tsIds.size() >=1 ? tsIds.subList(0, 1) : tsIds;
+            GeneratedTSStore.store(selectedTsIds);
 
             System.out.println("🔹 Selected TS for TC generation → " + selectedTsIds);
 

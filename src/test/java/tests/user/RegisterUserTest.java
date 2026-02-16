@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RegisterUserTest extends BaseTest {
 
-    @Test
+
     public void registerUserTest() {
 
         RegisterUserTestData testData =

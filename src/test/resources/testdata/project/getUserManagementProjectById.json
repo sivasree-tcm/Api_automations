@@ -8,7 +8,7 @@
       "expectedStatusCode": 200,
       "request": {
         "projectId": 230,
-        "userId": 33
+        "userId": 32
       }
     },
     {
@@ -18,7 +18,7 @@
       "expectedStatusCode": 200,
       "request": {
         "projectId": 230,
-        "userId": 33
+        "userId": 32
       }
     },
     {
@@ -28,7 +28,7 @@
       "expectedStatusCode": 200,
       "request": {
         "projectId": 103,
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -38,7 +38,7 @@
       "expectedStatusCode": 200,
       "request": {
         "projectId": "230",
-        "userId": 33
+        "userId": 32
       }
     },
     {
@@ -58,7 +58,7 @@
       "expectedStatusCode": 400,
       "expectedMessage": "projectId",
       "request": {
-        "userId": 33
+        "userId": 32
       }
     },
     {
@@ -80,7 +80,7 @@
       "expectedMessage": "project not found",
       "request": {
         "projectId": 99999,
-        "userId": 33
+        "userId": 32
       }
     },
     {
@@ -102,7 +102,7 @@
       "expectedMessage": "projectId",
       "request": {
         "projectId": null,
-        "userId": 33
+        "userId": 32
       }
     },
     {
@@ -132,7 +132,7 @@
       "expectedMessage": "invalid projectId",
       "request": {
         "projectId": -1,
-        "userId": 33
+        "userId": 32
       }
     },
     {
@@ -154,7 +154,7 @@
       "expectedMessage": "invalid projectId",
       "request": {
         "projectId": 0,
-        "userId": 33
+        "userId": 32
       }
     },
     {
@@ -164,7 +164,7 @@
       "expectedStatusCode": 200,
       "request": {
         "projectId": 230,
-        "userId": 33,
+        "userId": 32,
         "extraField": "test"
       }
     },
@@ -187,7 +187,7 @@
       "maxResponseTimeMs": 2000,
       "request": {
         "projectId": 230,
-        "userId": 33
+        "userId": 32
       }
     }
   ]

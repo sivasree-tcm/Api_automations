@@ -14,7 +14,7 @@
         "promptDescription": "T-Sigma.ai Quality Engineering Test Insight Framework Prompt - BR to TS",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -30,7 +30,7 @@
         "promptDescription": "Test Scenario to Test Case Generation Prompt - TS to TC",
         "promptSource": "TS",
         "promptDestination": "TC",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -46,7 +46,7 @@
         "promptDescription": "STUDIO BR IMPACT ANALYSIS - BR to IMPACT",
         "promptSource": "BR",
         "promptDestination": "IMPACT",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -62,7 +62,7 @@
         "promptDescription": "Impact Refined Test Scenarios - IMPACT to REFINETESTSCENARIO",
         "promptSource": "IMPACT",
         "promptDestination": "REFINETESTSCENARIO",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -78,7 +78,7 @@
         "promptDescription": "BR to GapAnalysis - Business Impact Analysis",
         "promptSource": "BR",
         "promptDestination": "GapAnalysis",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -94,7 +94,7 @@
         "promptDescription": "Business Requirements to Refined Test Scenarios mapping",
         "promptSource": "BR",
         "promptDestination": "REFINETESTSCENARIO",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -110,7 +110,7 @@
         "promptDescription": "Test Scenarios to Impact Analysis mapping",
         "promptSource": "TS",
         "promptDestination": "IMPACT",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -126,7 +126,7 @@
         "promptDescription": "Test Scenarios to Gap Analysis mapping",
         "promptSource": "TS",
         "promptDestination": "GapAnalysis",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -142,7 +142,7 @@
         "promptDescription": "Test Scenarios refinement mapping",
         "promptSource": "TS",
         "promptDestination": "REFINETESTSCENARIO",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -158,7 +158,7 @@
         "promptDescription": "Impact Analysis to Test Scenarios mapping",
         "promptSource": "IMPACT",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -174,7 +174,7 @@
         "promptDescription": "Impact Analysis to Test Cases mapping",
         "promptSource": "IMPACT",
         "promptDestination": "TC",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -190,7 +190,7 @@
         "promptDescription": "Impact Analysis to Gap Analysis mapping",
         "promptSource": "IMPACT",
         "promptDestination": "GapAnalysis",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -206,7 +206,7 @@
         "promptDescription": "Gap Analysis to Test Scenarios mapping",
         "promptSource": "GapAnalysis",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -222,7 +222,7 @@
         "promptDescription": "Gap Analysis to Test Cases mapping",
         "promptSource": "GapAnalysis",
         "promptDestination": "TC",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -238,7 +238,7 @@
         "promptDescription": "Gap Analysis to Impact Analysis mapping",
         "promptSource": "GapAnalysis",
         "promptDestination": "IMPACT",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -254,7 +254,7 @@
         "promptDescription": "Gap Analysis to Refined Test Scenarios mapping",
         "promptSource": "GapAnalysis",
         "promptDestination": "REFINETESTSCENARIO",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -270,7 +270,7 @@
         "promptDescription": "Business Requirements to Test Cases mapping",
         "promptSource": "BR",
         "promptDestination": "TC",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -286,7 +286,7 @@
         "promptDescription": "Test description",
         "promptSource": "TS",
         "promptDestination": "TC",
-        "userId": 33
+        "userId": 32
       }
     },
     {
@@ -302,7 +302,7 @@
         "promptDescription": "Test description",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33",
+        "userId": 32,
         "extra": "x",
         "randomField": "test"
       }
@@ -319,7 +319,7 @@
         "promptDescription": "Test description",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -334,7 +334,7 @@
         "promptText": "Test prompt",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -349,7 +349,7 @@
         "promptText": "Test prompt",
         "promptDescription": "Test description",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -364,7 +364,7 @@
         "promptText": "Test prompt",
         "promptDescription": "Test description",
         "promptSource": "BR",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -395,7 +395,7 @@
         "promptDescription": "Test description",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -411,7 +411,7 @@
         "promptDescription": "Test description",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -443,7 +443,7 @@
         "promptDescription": "Test description",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -459,7 +459,7 @@
         "promptDescription": "Test description",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -475,7 +475,7 @@
         "promptDescription": "Test description",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -491,7 +491,7 @@
         "promptDescription": "Test description",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -507,7 +507,7 @@
         "promptDescription": "Test description",
         "promptSource": "INVALID_SOURCE",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     },
     {
@@ -523,7 +523,7 @@
         "promptDescription": "Test description",
         "promptSource": "BR",
         "promptDestination": "INVALID_DEST",
-        "userId": "33"
+        "userId": 32
       }
     },
 
@@ -539,7 +539,7 @@
         "promptDescription": "Duplicate test",
         "promptSource": "BR",
         "promptDestination": "TC",
-        "userId": "33"
+        "userId": 32
       }
     }
 ,
@@ -555,7 +555,7 @@
         "promptDescription": "Same text but different mapping",
         "promptSource": "TS",
         "promptDestination": "TC",
-        "userId": "33"
+        "userId": 32
       }
     }
 ,{
@@ -570,7 +570,7 @@
         "promptDescription": "Lowercase source",
         "promptSource": "br",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     }
 ,
@@ -586,7 +586,7 @@
         "promptDescription": "Lowercase destination",
         "promptSource": "BR",
         "promptDestination": "ts",
-        "userId": "33"
+        "userId": 32
       }
     }
 ,{
@@ -601,7 +601,7 @@
         "promptDescription": "Whitespace handling",
         "promptSource": " BR ",
         "promptDestination": " TS ",
-        "userId": "33"
+        "userId": 32
       }
     }
 ,
@@ -617,7 +617,7 @@
         "promptDescription": "",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33"
+        "userId": 32
       }
     }
 ,
@@ -633,7 +633,7 @@
         "promptDescription": "Client timestamp override attempt",
         "promptSource": "BR",
         "promptDestination": "TS",
-        "userId": "33",
+        "userId": 32,
         "promptCreatedDatetime": "1999-01-01T00:00:00Z"
       }
     }

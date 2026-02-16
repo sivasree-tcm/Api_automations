@@ -1,0 +1,12 @@
+{
+  "scenario": "Delete Test Case Step",
+  "testCases": [
+    {
+      "tcId": "DELETE_TC_STEP_01",
+      "name": "Delete existing test case step with valid step id",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200
+    }
+  ]
+}

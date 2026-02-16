@@ -93,7 +93,7 @@
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 400,
       "request": {
-        "userId": "32",
+        "userId": 32,
         "orgId": 1
       }
     },
@@ -103,7 +103,7 @@
       "role": "SUPER_ADMIN",
       "expectedStatusCode": 400,
       "request": {
-        "userId": "32",
+        "userId": 32,
         "orgId": "1"
       }
     },

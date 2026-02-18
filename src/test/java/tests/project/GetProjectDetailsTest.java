@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import tests.connection.ConnectionReport;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
+import utils.ProjectFileLogger;
 import utils.ProjectStore;
 import utils.TokenUtil;
 
@@ -21,6 +22,7 @@ public class GetProjectDetailsTest extends BaseTest {
         }
         // ✅ SET selected project here
         ProjectStore.setSelectedProject(expectedProjectId);
+        ProjectFileLogger.logSelectedProject();
 
         System.out.println("✅ Selected Project ID set to: " + expectedProjectId);
 

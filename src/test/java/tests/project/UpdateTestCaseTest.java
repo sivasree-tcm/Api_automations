@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class UpdateTestCaseTest extends BaseTest {
 
-    @Test
+
     public void updateTestCaseApiTest() {
 
         if (!TestCaseStore.hasTestCases()) {

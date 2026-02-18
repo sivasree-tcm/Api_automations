@@ -1,0 +1,17 @@
+{
+  "scenario": "Delete Test Case API",
+  "testCases": [
+    {
+      "tcId": "TC_DELETE_TC_01",
+      "name": "Delete last Test Case from pagination",
+      "description": "Deactivate the last Test Case fetched dynamically using pagination",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "testCaseId": "DYNAMIC_TC",
+        "userId": "DYNAMIC_USER"
+      }
+    }
+  ]
+}

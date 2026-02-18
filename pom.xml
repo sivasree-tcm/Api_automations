@@ -34,6 +34,25 @@
     </dependency>
 
     <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <version>8.3.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>jakarta.mail</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sun.activation</groupId>
+      <artifactId>jakarta.activation</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+
+
+    <dependency>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-testng</artifactId>
       <version>${allure.version}</version>
@@ -99,23 +118,6 @@
           <suiteXmlFiles>
             <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
-
-          <!-- Force sequential execution -->
-          <threadCount>1</threadCount>
-          <perCoreThreadCount>false</perCoreThreadCount>
-
-          <!-- TestNG specific properties -->
-          <properties>
-            <property>
-              <name>suitethreadpoolsize</name>
-              <value>1</value>
-            </property>
-            <property>
-              <name>dataproviderthreadcount</name>
-              <value>1</value>
-            </property>
-          </properties>
-
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>

@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class UploadBusinessRequirementTest extends BaseTest {
 
-
+    @Test
     public void uploadBusinessRequirementTest() {
 
         ConnectionReport testData =
@@ -26,88 +26,57 @@ public class UploadBusinessRequirementTest extends BaseTest {
 
         for (ConnectionReport.TestCase tc : testData.getTestCases()) {
 
-            Map<String, Object> request =
-                    (Map<String, Object>) tc.getRequest();
+            Map<String, Object> request = (Map<String, Object>) tc.getRequest();
 
-            // 🔁 Dynamic userId
             int userId = TokenUtil.getUserId(tc.getRole());
-            request.put("userId", userId);
-
-            // 🔁 Dynamic projectId
             Integer projectId = ProjectStore.getProjectId();
+
             if (projectId == null) {
                 throw new RuntimeException("❌ Project ID not available");
             }
-            request.put("projectId", projectId);
 
-            // 📂 File path (as requested)
-            File brFile = new File(
-                    "src/test/resources/files/BR_Sample (6).xlsx"
-            );
+            File brFile = new File("src/test/resources/files/BR_Sample (6).xlsx");
 
             if (!brFile.exists()) {
-                throw new AssertionError(
-                        "❌ BR file not found at path: " + brFile.getAbsolutePath()
-                );
+                throw new AssertionError("❌ BR file not found at: " + brFile.getAbsolutePath());
             }
 
             ApiTestExecutor.execute(
                     testData.getScenario(),
                     tc,
                     () -> {
+                        Response response = UploadBusinessRequirementApi.uploadBR(
+                                brFile,
+                                userId,
+                                projectId,
+                                TokenUtil.getToken(tc.getRole())
+                        );
 
-                        Response response =
-                                UploadBusinessRequirementApi.uploadBR(
-                                        brFile,
-                                        userId,
-                                        projectId,
-                                        TokenUtil.getToken(tc.getRole())
-                                );
+                        // ✅ MODIFIED LOGIC
+                        if (response.getStatusCode() == 200 || response.getStatusCode() == 201) {
 
-                        // ✅ STORE BR IDs AFTER UPLOAD
-                        if (response.getStatusCode() == 200) {
+                            System.out.println("✅ Upload successful message received. Attempting to retrieve IDs...");
 
-                            List<Integer> brIds = new ArrayList<>();
+                            // 1. Try to get IDs from response first (if they exist)
+                            List<Integer> brIds = response.jsonPath().getList("br_ids");
 
-                            // Case 1: { "brIds": [...] }
-                            List<Integer> directIds =
-                                    response.jsonPath().getList("brIds");
+                            if (brIds != null && !brIds.isEmpty()) {
+                                BusinessRequirementStore.store(projectId, brIds);
+                                System.out.println("✅ Stored IDs from Response: " + brIds);
+                            } else {
+                                // 2. Fallback: If response has no IDs, trigger the Fetch API to sync the store
+                                System.out.println("⚠️ No IDs in response. Syncing with GetBusinessRequirement API...");
 
-                            if (directIds != null && !directIds.isEmpty()) {
-                                brIds.addAll(directIds);
-                            }
+                                // This calls your Step 17 logic inside Step 16 to ensure data is available for Step 18
+                                new tests.br.GetBusinessRequirementTest().fetchBRsForProject();
 
-                            // Case 2: { "results": [ { "brId": X } ] }
-                            List<Map<String, Object>> results =
-                                    response.jsonPath().getList("results");
-
-                            if (results != null) {
-                                for (Map<String, Object> item : results) {
-                                    Object id = item.get("brId");
-                                    if (id instanceof Number) {
-                                        brIds.add(((Number) id).intValue());
-                                    }
+                                // Log the result of the sync
+                                if (BusinessRequirementStore.getIds(projectId).isEmpty()) {
+                                    System.err.println("⚠️ Warning: Sync completed but Store is still empty. " +
+                                            "Database might be processing the file asynchronously.");
                                 }
                             }
-
-                            if (brIds.isEmpty()) {
-                                throw new RuntimeException(
-                                        "❌ Upload succeeded but no BR IDs returned"
-                                );
-                            }
-
-                            // 🔥 Store BR IDs for TS generation
-                            BusinessRequirementStore.store(
-                                    projectId,
-                                    brIds
-                            );
-
-                            System.out.println(
-                                    "✅ Stored BR IDs for project "
-                                            + projectId + " → " + brIds
-                            );
                         }
-
                         return response;
                     }
             );

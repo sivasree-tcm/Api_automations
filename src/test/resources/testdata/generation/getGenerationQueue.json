@@ -1,0 +1,19 @@
+{
+  "scenario": "Get Generation Queue",
+  "testCases": [
+    {
+      "tcId": "TC_GET_GENERATION_QUEUE",
+      "name": "Get generation queue for user",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userIdFromAPI": 0,
+        "projectId": 0,
+        "userId": "",
+        "userName": "",
+        "projectName": ""
+      }
+    }
+  ]
+}

@@ -9,8 +9,26 @@ public class ConnectionStore {
         savedPlatform.set(platform);
     }
 
-    public static Integer getConnectionId() { return savedConnectionId.get(); }
-    public static String getPlatform() { return savedPlatform.get(); }
+    // ✅ Hardcoded Connection ID
+    public static Integer getConnectionId() {
+        return 33;
+    }
+
+    // ✅ Hardcoded Platform
+    public static String getPlatform() {
+        return "azure";
+    }
+
+    // ✅ Hardcoded DevOps Project Name (Fixes IDE Error)
+    public static String getDevopsProjectName() {
+        return "f3c9e398-fa65-4695-bc19-b5172acd23a6";
+
+    }
+
+    // ✅ Hardcoded Team Name (Fixes IDE Error)
+    public static String getTeamName() {
+        return "Insurance Team";
+    }
 
     public static void clear() {
         savedConnectionId.remove();

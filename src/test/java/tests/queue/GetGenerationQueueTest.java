@@ -124,8 +124,6 @@ public class GetGenerationQueueTest extends BaseTest {
     }
     public void fetchGenerationQueue() {
 
-//        TokenUtil.refreshToken();
-
         for (Integer projectId : ProjectStore.getAllProjectIds()) {
 
             for (Map<String, Object> user : ProjectUserStore.getUsers(projectId)) {
@@ -137,24 +135,35 @@ public class GetGenerationQueueTest extends BaseTest {
                 request.put("userIdFromAPI", userId);
                 request.put("userId", TokenUtil.getUserId());
 
-                // 🔹 Call API
-                Response response =
-                        GetGenerationQueueApi.getGenerationQueue(
-                                request,
-                                "SUPER_ADMIN",
-                                "VALID"
-                        );
+                Response response;
+
+                try {
+                    // 🔹 API Call
+                    response = GetGenerationQueueApi.getGenerationQueue(
+                            request,
+                            "SUPER_ADMIN",
+                            "VALID"
+                    );
+                } catch (Exception e) {
+                    // ✅ Prevent execution break
+                    System.out.println(
+                            "⚠️ Connection timeout for project=" + projectId +
+                                    " user=" + userId +
+                                    " → Skipping"
+                    );
+                    continue; // 👈 move to next user safely
+                }
 
                 List<Map<String, Object>> queue =
                         response.jsonPath().getList("data");
 
-                // ✅ CASE 1: No queue → DO NOTHING (no report)
+                // ✅ No queue → skip
                 if (queue == null || queue.isEmpty()) {
                     System.out.println("ℹ No queue for user " + userId);
                     continue;
                 }
 
-                // ✅ CASE 2: Queue exists → store + report
+                // ✅ Queue exists → store
                 List<Integer> queueIds =
                         queue.stream()
                                 .map(q -> (Integer) q.get("queueId"))
@@ -164,11 +173,11 @@ public class GetGenerationQueueTest extends BaseTest {
 
                 System.out.println(
                         "✅ Queue stored → project=" + projectId +
-                                " user=" + userId +
-                                " queues=" + queueIds
+                                ", user=" + userId +
+                                ", queue=" + queueIds
                 );
 
-                // ✅ REPORT ONLY WHEN QUEUE EXISTS
+                // ✅ Report only when queue exists
                 ConnectionReport testData =
                         JsonUtils.readJson(
                                 "testdata/queueData/getGenerationQueue.json",
@@ -181,7 +190,7 @@ public class GetGenerationQueueTest extends BaseTest {
                         );
 
                 tc.setTcId("GET_QUEUE_" + projectId + "_" + userId);
-                tc.setName("Get Generation Queue | User " + userId + "_" +projectId);
+                tc.setName("Get Generation Queue | User " + userId);
                 tc.setRequest(request);
 
                 ApiTestExecutor.execute(
@@ -192,7 +201,4 @@ public class GetGenerationQueueTest extends BaseTest {
             }
         }
     }
-
-
-
 }

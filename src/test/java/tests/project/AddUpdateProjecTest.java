@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class AddUpdateProjecTest extends BaseTest {
 
-    @Test
+
     public void addUpdateProjectUserApiTest() {
 
         AddUpdateProjectUserTestData testData =

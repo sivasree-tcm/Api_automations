@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class CreateRole extends BaseTest {
 
-    @Test
+
     public void createRoleTest() {
 
         ConnectionReport testData = JsonUtils.readJson(

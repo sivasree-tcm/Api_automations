@@ -5,44 +5,34 @@ import base.BaseTest;
 import models.project.ProjectRequest;
 import org.testng.annotations.Test;
 import tests.user.ApiTestExecutor;
-import utils.ConnectionStore;
-import utils.JsonUtils;
-import utils.TokenUtil;
-import utils.ProjectStore;
+import utils.*;
 import io.restassured.response.Response;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.*;
 
 public class createprojectflow extends BaseTest {
 
     @Test
     public void projectApiTest() {
-        ProjectTestData testData = JsonUtils.readJson(
-                "testdata/project/Project.json",
-                ProjectTestData.class
-        );
+        ProjectTestData testData = JsonUtils.readJson("testdata/project/Project.json", ProjectTestData.class);
         execute(testData, testData.getTestCases());
     }
 
     private void execute(ProjectTestData testData, List<ProjectTestData.TestCase> cases) {
         String timestamp = String.valueOf(System.currentTimeMillis());
-        String duplicateProjectName = "DuplicateTest_" + timestamp;
+        String dynamicProjectName = "Automation_" + timestamp;
 
         for (ProjectTestData.TestCase tc : cases) {
             ProjectRequest request = tc.getRequest();
 
             if (request != null) {
-                // 1. Dynamic User/Creator Injection
                 int userId = TokenUtil.getUserId(tc.getRole());
                 request.setUserId(String.valueOf(userId));
                 request.setProjectCreatedBy(String.valueOf(userId));
 
-                // 2. Dynamic Project Name
                 if (request.getProjectName() != null && request.getProjectName().contains("{{projectName}}")) {
-                    request.setProjectName(duplicateProjectName);
+                    request.setProjectName(dynamicProjectName);
                 }
-
-                // 3. Dynamic Connection & Platform Injection
                 if (request.getConnectionId() != null && request.getConnectionId().contains("{{connectionId}}")) {
                     request.setConnectionId(String.valueOf(ConnectionStore.getConnectionId()));
                 }
@@ -50,36 +40,37 @@ public class createprojectflow extends BaseTest {
                     request.setPlatform(ConnectionStore.getPlatform());
                 }
 
-                // 4. Dynamic Date Generation
                 request.setProjectStartDate(LocalDate.now().toString());
                 request.setProjectEndDate(LocalDate.now().plusDays(30).toString());
             }
 
-            // ✅ Execution with Correct ID Extraction
-            ApiTestExecutor.execute(
-                    testData.getScenario(),
-                    tc,
-                    () -> {
-                        Response res = ProjectApi.createProject(tc.getRequest(), tc.getRole());
+            ApiTestExecutor.execute(testData.getScenario(), tc, () -> {
+                Response res = ProjectApi.createProject(tc.getRequest(), tc.getRole());
 
-                        if (res.getStatusCode() == 200 || res.getStatusCode() == 201) {
-                            try {
-                                // ✅ FIX: Extraction matches "project_id" in response
-                                Object idObj = res.jsonPath().get("project_id");
-                                if (idObj != null) {
-                                    int id = Integer.parseInt(idObj.toString());
-                                    ProjectStore.setProjectId(id);
-                                    System.out.println("SUCCESS: Saved Project ID " + id);
-                                }
-                            } catch (Exception e) {
-                                System.err.println("WARN: Parse failed for project_id. Full body: " + res.asString());
-                            }
-                        } else {
-                            System.err.println("API ERROR: " + res.getStatusCode() + " - " + res.asString());
-                        }
-                        return res;
+                if (res.getStatusCode() == 200 || res.getStatusCode() == 201) {
+                    Object idObj = res.jsonPath().get("project_id");
+                    if (idObj != null) {
+                        int projectId = Integer.parseInt(idObj.toString());
+                        String projectName = tc.getRequest().getProjectName();
+
+                        // ✅ FIX: Manually register the project in the Map so getProjectName() works later
+                        Map<String, Object> projectData = new HashMap<>();
+                        projectData.put("projectId", projectId);
+                        projectData.put("projectName", projectName);
+                        ProjectStore.storeProjects(Collections.singletonList(projectData));
+
+                        // ✅ Set as active selection
+                        ProjectStore.setSelectedProject(projectId);
+                        ProjectStore.setProjectId(projectId);
+                        ProjectFileLogger.logSelectedProject();
+
+                        System.out.println("✅ Project Created & Registered → ID: " + projectId + ", Name: " + projectName);
                     }
-            );
+                } else {
+                    System.err.println("❌ Failed: " + res.getStatusCode() + " | " + res.asString());
+                }
+                return res;
+            });
         }
     }
 }

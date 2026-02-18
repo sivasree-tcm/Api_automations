@@ -88,7 +88,7 @@ public class GetGenerationStatusTest {
 
                                 // Find matching brId in response
                                 for (Map<String, Object> item : statusList) {
-                                    Integer responseBrId = (Integer) item.get("brId");
+                                    Integer responseBrId = (Integer) item.get("refId");
                                     if (brId.equals(responseBrId)) {
                                         String status = (String) item.get("status");
                                         isCompleted = "Completed".equalsIgnoreCase(status);

@@ -54,32 +54,66 @@ public class GetLlmCredentialsTest extends BaseTest {
                                     tc.getAuthType()
                             );
 
-                    // 🔍 Extract ACTIVE Bedrock credential
-                    List<Map<String, Object>> creds =
-                            response.jsonPath().getList("$");
+                    // ✅ Always validate response first
+                    if (response.getStatusCode() != 200) {
+                        throw new RuntimeException(
+                                "❌ Failed to fetch LLM credentials. Status: "
+                                        + response.getStatusCode()
+                        );
+                    }
 
+                    Object body = response.jsonPath().get("$");
+
+                    List<Map<String, Object>> creds = new java.util.ArrayList<>();
+
+                    // ✅ Handle BOTH list and object safely
+                    if (body instanceof List<?>) {
+                        creds = response.jsonPath().getList("$");
+                    }
+                    else if (body instanceof Map<?, ?>) {
+                        System.out.println(
+                                "⚠️ Credentials API returned object instead of list:"
+                        );
+                        response.prettyPrint();
+                        return response; // no credentials to store
+                    }
+                    else {
+                        throw new RuntimeException(
+                                "❌ Unexpected response structure from GetLlmCredentials API"
+                        );
+                    }
+
+                    // 🔍 Extract ACTIVE Bedrock credential
                     for (Map<String, Object> cred : creds) {
+
+                        if (cred == null) continue;
 
                         String provider =
                                 String.valueOf(cred.get("provider"));
 
                         int isActive =
-                                ((Number) cred.get("is_active")).intValue();
+                                cred.get("is_active") == null ? 0 :
+                                        ((Number) cred.get("is_active")).intValue();
 
                         if ("bedrock".equalsIgnoreCase(provider)
                                 && isActive == 1) {
 
-                            int credentialId =
-                                    ((Number) cred.get("credential_id"))
-                                            .intValue();
+                            Integer credentialId =
+                                    cred.get("credential_id") == null ? null :
+                                            ((Number) cred.get("credential_id")).intValue();
 
-                            CredentialStore.setCredentialId(credentialId);
-                            break;
+                            if (credentialId != null) {
+                                CredentialStore.setCredentialId(credentialId);
+                                System.out.println(
+                                        "✅ Stored Bedrock Credential ID → " + credentialId
+                                );
+                                break;
+                            }
                         }
                     }
 
                     return response;
                 }
         );
-    }
-}
+
+    }}

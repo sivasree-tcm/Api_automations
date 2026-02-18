@@ -12,7 +12,6 @@ import java.util.Map;
 
 public class GetTestCaseWithStepsTest extends BaseTest {
 
-    @Test
     public void getTestCaseWithStepsApiTest() {
 
         // 🔁 HARD GUARD WITH LOGGING

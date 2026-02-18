@@ -12,7 +12,7 @@
         "projectId": 0,
         "environemntDetails": [
           {
-            "environmentName": "tsigma",
+            "environmentName": "Ticking",
             "envirtonmentUrl": "http://52.91.206.42:3000/",
             "db_host": "52.91.206.42",
             "port": "3306",

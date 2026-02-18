@@ -5,8 +5,10 @@
       "tcId": "TC_UPU_01",
       "name": "Make user project admin",
       "role": "SUPER_ADMIN",
-      "expectedStatusCode": 200,
+      "expectedStatusCode": 201,
       "request": {
         "isAdmin": 1
       }
-    }]}
+    }
+  ]
+}

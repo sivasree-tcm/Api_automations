@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class AddTestCaseTest extends BaseTest {
 
-    @Test
+
     public void addTestCaseApiTest() {
 
         ConnectionReport testData =

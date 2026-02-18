@@ -1,0 +1,31 @@
+{
+  "scenario": "Create Prompt API Validation Test Suite",
+  "testCases": [
+    {
+      "tcId": "TC_CP_01",
+      "name": "Create prompt with valid payload - BR to TS",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptType": "BR_TO_TS",
+        "promptText": "\n\n---\n\n# ✅ T-Sigma.ai Quality Engineering Test Insight Framework Prompt\n\nYou are a **Quality Engineering Subject Matter Expert (SME)** specializing in **Requirement Engineering, Test Strategy Design, Test Case Generation, Traceability, Impact Analysis, and Compliance Validation** across the SDLC...\n[Rest of original BR to TS prompt remains here]",
+        "promptDescription": "Business Requirement to Test Scenario prompt",
+        "promptSource": "BR",
+        "promptDestination": "TS"
+      }
+    },
+    {
+      "tcId": "TC_CP_02",
+      "name": "Create prompt with valid payload - TS to TC",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptType": "TS_TO_TC",
+        "promptText": "SECTION 1: ROLE AND OUTPUT FORMAT\nROLE:\nTranslate a noisy Test Scenario into a minimal, strictly actionable sequence of steps for the web application.\n\nOUTPUT FORMAT (STRICT — MUST FOLLOW):\nReturn ONLY valid JSON.\nThe response must contain no explanation, no markdown, and no text outside JSON.\n\nRequired Structure:\n{\n  \"testCases\": [\n    {\n      \"name\": \"string\",\n      \"steps\": [\n        \"plain text action or assertion line\"\n      ]\n    }\n  ]\n}\n\nRules:\n- Steps must remain plain text lines.\n- One action per line.\n- Assertions must appear as the next line.\n- Do NOT include numbering.\n- Do NOT include commentary.\n\nSECTION 2: PRIME DIRECTIVE AND WRITING STYLE\nPRIME DIRECTIVE (STRICT):\nYou are generating exact, step-by-step instructions for a browser automation agent.\n• Do NOT write commentary, explanations, or narrative outcomes.\n• Do NOT write any expected result sentences that are not literal on-screen texts.\n• Only assert exact UI texts from the whitelist.\n• Any phrasing like 'results are displayed with matching records…' is forbidden; replace it with the literal on-screen text from the whitelist.\n\nSECTION 3: MANDATORY LOGIN FLOW\nMANDATORY LOGIN STEPS (ALWAYS OUTPUT THESE BEFORE ANY SEARCH STEPS)\nEnter 'EMAIL' in the 'Email' field.\n'Email' field is filled with 'EMAIL'.\nEnter 'PASSWORD' in the 'Password' field.\n'Password' field is filled with 'PASSWORD'.\nClick 'Sign In' button.\n'Insurance Search' text is displayed.\n\nSECTION 4: APPLICATION CONTEXT AND ELEMENT DEFINITIONS\nAPP CONTEXT (DYNAMIC — DERIVE FROM CURRENT BUSINESS REQUIREMENTS)\nStatic Elements:\nApp name: TickingMinds_Test\nLogin page fields: Email (text), Password (text)\nAfter sign-in, the page shows: 'Insurance Search'\nButtons: Sign In, Search\n\nSECTION 5: ACTION VERBS AND CONFIRMATIONS\nVERBS (USE ONLY THESE)\nNavigate: Navigate to the application URL.\nFill: Enter 'VALUE' in the 'Field Label' field.\nSelect: Select 'VALUE' from the 'Dropdown Label' dropdown.\nClick btn: Click 'Button Label' button.\nClick link: Click 'VALUE' link in 'Search Results'.\n\nSECTION 8: TEST CLASSIFICATION AND TECHNIQUE SELECTION\nStep 1: Classify the Requirement\nSMOKE, REGRESSION, UAT.\n\nSECTION 10: TRANSFORMATION PIPELINE\n1. Extract Active Fields.\n2. Classify Test Type.\n3. Select Test Techniques.\n4. Generate Test Case Structure.\n5. Validate Against Current BR.\n6. Apply Normalization.\n7. Generate steps as plain text lines but return them inside the required JSON structure.\n\nSECTION 11: CRITICAL RULES AND COMPLIANCE CHECKLIST\nDO: Extract fields dynamically; Use exact UI labels.\nDO NOT: Hardcode field names; Include fields removed from current BR.",
+        "promptDescription": "Test Scenario to Test Case prompt",
+        "promptSource": "TS",
+        "promptDestination": "TC"
+      }
+    }
+  ]
+}

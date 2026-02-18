@@ -1,0 +1,12 @@
+{
+  "scenario": "Export BR Excel",
+  "testCases": [
+    {
+      "tcId": "EXPORT_BR_EXCEL_01",
+      "name": "Download BR Excel and store file",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatus": 200
+    }
+  ]
+}

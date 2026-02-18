@@ -25,7 +25,7 @@ public class ExportTCExcelApi {
         var req = given()
                 .relaxedHTTPSValidation()
                 .contentType(ContentType.JSON)
-                .accept("*/*")
+                .accept("/")
                 .body(payload);
 
         if ("VALID".equalsIgnoreCase(authType)) {

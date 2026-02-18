@@ -1,0 +1,28 @@
+{
+  "scenario": "Configure Project Database Information",
+  "testCases": [
+    {
+      "tcId": "TC_DB_01",
+      "name": "Add Database Info - tsigma",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": "33",
+        "projectId": 0,
+        "environemntDetails": [
+          {
+            "environmentName": "Ticking",
+            "envirtonmentUrl": "http://52.91.206.42:3000/",
+            "db_host": "52.91.206.42",
+            "port": "3306",
+            "db_name": "insurance_db",
+            "db_engine": "mysql",
+            "db_user": "ins_user",
+            "db_password": "ins_password"
+          }
+        ]
+      }
+    }
+  ]
+}

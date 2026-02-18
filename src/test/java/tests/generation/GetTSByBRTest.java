@@ -44,7 +44,7 @@ public class GetTSByBRTest extends BaseTest {
                 );
 
                 tc.setRequest(request);
-                tc.setTcId("GET_TS_BR_" + brId + "PAGE" + page);
+                tc.setTcId("GET_TS_BR_" + brId + "_PAGE_" + page);
                 tc.setName("Get TS for BR " + brId + " | Page " + page);
 
                 int currentPage = page;

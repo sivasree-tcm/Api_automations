@@ -1,5 +1,4 @@
 package tests.project;
-
 import api.project.GetProjectDetailsApi;
 import base.BaseTest;
 import io.restassured.response.Response;
@@ -23,16 +22,13 @@ public class GetProjectDetailsTest extends BaseTest {
         }
         // ✅ SET selected project here
         ProjectStore.setSelectedProject(expectedProjectId);
-
-        // ✅ LOG selected project (CRITICAL FIX)
         ProjectFileLogger.logSelectedProject();
-
 
         System.out.println("✅ Selected Project ID set to: " + expectedProjectId);
 
         ConnectionReport testData =
                 JsonUtils.readJson(
-                        "testdata/project/getProjectDetails.json",
+                        "testdata/project/GetProjectDetails.json",
                         ConnectionReport.class
                 );
 
@@ -44,7 +40,6 @@ public class GetProjectDetailsTest extends BaseTest {
         Map<String, Object> request = new HashMap<>();
         request.put("userId", TokenUtil.getUserId());
         request.put("projectId", expectedProjectId);
-        request.put("isSuperAdmin", true);
 
         tc.setRequest(request);
         tc.setTcId("GET_PROJECT_DETAILS_" + expectedProjectId);

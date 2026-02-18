@@ -1,0 +1,19 @@
+{
+  "scenario": "Update Test Scenario API",
+  "testCases": [
+    {
+      "tcId": "TC_UPDATE_TS_01",
+      "name": "Update test scenario with valid inputs",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "testScenarioId": "DYNAMIC_TS",
+        "tsDescription": "Verify that a grant application can be submitted and enters the evaluation workflow",
+        "tsPriority": "medium",
+        "projectId": "DYNAMIC_PROJECT",
+        "tcGenerate": 0
+      }
+    }
+  ]
+}

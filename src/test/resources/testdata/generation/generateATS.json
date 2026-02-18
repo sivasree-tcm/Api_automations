@@ -1,0 +1,15 @@
+{
+  "scenario": "Generate ATS",
+  "testCases": [
+    {
+      "tcId": "GATS_001",
+      "name": "Generate ATS - Valid Request",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "automationFramework": "Playwright_Java"
+      }
+    }
+  ]
+}

@@ -41,6 +41,6 @@ public class LoginTest extends BaseTest {
                 "Authorization token should not be null"
         );
 
-        System.out.println("Auth token: " + authToken);
+//        System.out.println("Auth token: " + authToken);
     }
 }

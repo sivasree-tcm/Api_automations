@@ -11,14 +11,12 @@ import utils.SprintStore;
 import utils.TokenUtil;
 import utils.UserStoryStore;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GetUserStoriesTest extends BaseTest {
 
 
-     public void getUserStories() {
+    public void getUserStories() {
 
         // ✅ Read JSON test data
         var testData = JsonUtils.readJson(
@@ -28,62 +26,116 @@ public class GetUserStoriesTest extends BaseTest {
 
         var tc = testData.getTestCases().get(0);
 
-        // ✅ Build request from JSON
+        // ✅ Base request from JSON
         @SuppressWarnings("unchecked")
-        Map<String, Object> request =
+        Map<String, Object> baseRequest =
                 tc.getRequest() == null
                         ? new HashMap<>()
                         : new HashMap<>((Map<String, Object>) tc.getRequest());
 
         // ✅ Inject dynamic values
-        request.put("userId", String.valueOf(TokenUtil.getUserId()));
-        request.put("refProjectId", ProjectStore.getSelectedProjectId());
-        request.put("sprintName", extractSprintName());
-        request.put("platform", "azure");
+        baseRequest.put("userId", String.valueOf(TokenUtil.getUserId()));
+        baseRequest.put("refProjectId", ProjectStore.getSelectedProjectId());
+        baseRequest.put("sprintName", extractSprintName());
+        baseRequest.put("platform", "azure");
 
-        System.out.println("📦 GetUserStories Payload:");
-        System.out.println(request);
+        System.out.println("📦 GetUserStories Base Payload:");
+        System.out.println(baseRequest);
 
         ApiTestExecutor.execute(
                 testData.getScenario(),
                 tc,
                 () -> {
 
-                    Response response =
-                            GetUserStoriesApi.getUserStories(
-                                    request,
-                                    tc.getRole(),
-                                    tc.getAuthType()
-                            );
+                    int page = 1;
+                    int pageSize = 20;
+                    int maxPages = 50; // 🔒 safety limit
 
-                    // ✅ ADD THIS BLOCK (VERY IMPORTANT)
-                    if (response.getStatusCode() == 200) {
+                    List<Integer> allUserStoryIds = new ArrayList<>();
+                    List<Integer> previousPageIds = null;
+                    Response lastResponse = null;
 
-                        List<Integer> userStoryIds =
-                                response.jsonPath().getList("workItems.id");
+                    while (page <= maxPages) {
 
-                        if (userStoryIds == null || userStoryIds.isEmpty()) {
-                            System.out.println("⚠️ No user stories found for sprint: " + extractSprintName());
-                            UserStoryStore.clear();
-                            return response;
+                        // 🔁 Build paginated request
+                        Map<String, Object> pagedRequest = new HashMap<>(baseRequest);
+                        pagedRequest.put("page", page);
+                        pagedRequest.put("pageSize", pageSize);
+
+                        Response response =
+                                GetUserStoriesApi.getUserStories(
+                                        pagedRequest,
+                                        tc.getRole(),
+                                        tc.getAuthType()
+                                );
+
+                        lastResponse = response;
+
+                        if (response.getStatusCode() != 200) {
+                            System.out.println("❌ Failed at page " + page);
+                            break;
                         }
 
+                        List<Integer> currentPageIds =
+                                response.jsonPath().getList("workItems.id");
 
-                        // ✅ Store for Import API
-                        UserStoryStore.setUserStoryIds(userStoryIds);
+                        if (currentPageIds == null || currentPageIds.isEmpty()) {
+                            System.out.println("ℹ No user stories returned. Stop pagination.");
+                            break;
+                        }
 
-                        System.out.println("✅ User Stories Count: " + userStoryIds.size());
-                        System.out.println("✅ User Story IDs: " + userStoryIds);
+                        // 🛑 STOP if backend repeats same data
+                        if (previousPageIds != null &&
+                                new HashSet<>(currentPageIds)
+                                        .equals(new HashSet<>(previousPageIds))) {
+
+                            System.out.println(
+                                    "ℹ Duplicate page detected at page " + page +
+                                            ". Backend pagination ignored. Stopping."
+                            );
+                            break;
+                        }
+
+                        allUserStoryIds.addAll(currentPageIds);
+
+                        System.out.println(
+                                "✅ Page " + page +
+                                        " fetched → User Stories: " + currentPageIds.size()
+                        );
+
+                        previousPageIds = currentPageIds;
+                        page++;
                     }
 
-                    return response;
+                    // ✅ Final storage
+                    if (allUserStoryIds.isEmpty()) {
+                        System.out.println(
+                                "⚠️ No user stories found for sprint: " + extractSprintName()
+                        );
+                        UserStoryStore.clear();
+                    } else {
+                        // Remove duplicates defensively
+                        allUserStoryIds =
+                                new ArrayList<>(new LinkedHashSet<>(allUserStoryIds));
+
+                        UserStoryStore.setUserStoryIds(allUserStoryIds);
+
+                        System.out.println(
+                                "✅ Total Unique User Stories Stored: " + allUserStoryIds.size()
+                        );
+                        System.out.println(
+                                "✅ User Story IDs: " + allUserStoryIds
+                        );
+                    }
+
+                    return lastResponse;
                 }
         );
     }
 
     /**
-     * Azure sprint iterationPath = CogniTestWorkbench\\Sprint6
-     * API needs sprintName = Sprint6
+     * Azure iterationPath → SprintName
+     * Example: CogniTestWorkbench\\Sprint7 → Sprint7
      */
     private String extractSprintName() {
 

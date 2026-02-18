@@ -17,6 +17,11 @@ public class TestDataGenerator {
         }
         return sb.toString();
     }
+    public static String generateFutureDate() {
+        return LocalDate.now()
+                .plusDays(30)
+                .format(DateTimeFormatter.ISO_LOCAL_DATE);
+    }
 
     public static String generateFutureDate() {
         return LocalDate.now()

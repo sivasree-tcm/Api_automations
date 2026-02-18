@@ -31,6 +31,7 @@ public class GenerateTSTest extends BaseTest {
                 brIds.size() >= 1 ? brIds.subList(0, 1) : brIds;
         GeneratedBRStore.store(selectedBrs);
 
+
         System.out.println("🔹 BRs selected for TS generation → " + selectedBrs);
 
         // 🔥 FIX: STORE generated BRs for next step

@@ -1,7 +1,6 @@
 {
-  "scenario": "Update Prompt API Validation - Comprehensive Test Suite",
+  "scenario": "Update Prompt API Validation - Comprehensive Enhanced Test Suite",
   "testCases": [
-
     {
       "tcId": "TC_UP_01",
       "name": "Update prompt with valid data",
@@ -18,7 +17,6 @@
         "promptActive": true
       }
     },
-
     {
       "tcId": "TC_UP_02",
       "name": "Validate response message on successful update",
@@ -35,7 +33,6 @@
         "promptActive": true
       }
     },
-
     {
       "tcId": "TC_UP_03",
       "name": "Update prompt with multiline promptText",
@@ -52,7 +49,6 @@
         "promptActive": true
       }
     },
-
     {
       "tcId": "TC_UP_04",
       "name": "Update prompt with special characters",
@@ -69,7 +65,6 @@
         "promptActive": true
       }
     },
-
     {
       "tcId": "TC_UP_05",
       "name": "Deactivate existing prompt",
@@ -86,7 +81,6 @@
         "promptActive": false
       }
     },
-
     {
       "tcId": "TC_UP_06",
       "name": "Missing promptId",
@@ -102,7 +96,6 @@
         "promptActive": true
       }
     },
-
     {
       "tcId": "TC_UP_07",
       "name": "Invalid promptId",
@@ -119,7 +112,6 @@
         "promptActive": true
       }
     },
-
     {
       "tcId": "TC_UP_08",
       "name": "Missing promptText",
@@ -135,7 +127,6 @@
         "promptActive": true
       }
     },
-
     {
       "tcId": "TC_UP_09",
       "name": "Missing promptDescription",
@@ -151,7 +142,6 @@
         "promptActive": true
       }
     },
-
     {
       "tcId": "TC_UP_10",
       "name": "Unauthorized user updating prompt",
@@ -168,7 +158,6 @@
         "promptActive": true
       }
     },
-
     {
       "tcId": "TC_UP_11",
       "name": "Extra unexpected fields",
@@ -186,7 +175,685 @@
         "extraField": "test",
         "randomKey": "value"
       }
-    }
+    },
+    {
+      "tcId": "TC_UP_12",
+      "name": "Empty promptText",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "",
+        "promptDescription": "Empty prompt text validation",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_13",
+      "name": "Empty promptDescription",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Valid prompt text",
+        "promptDescription": "",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_14",
+      "name": "Null promptText",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": null,
+        "promptDescription": "Null prompt text test",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_15",
+      "name": "Null promptDescription",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Valid prompt text",
+        "promptDescription": null,
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_16",
+      "name": "Invalid promptSource value",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Testing invalid source",
+        "promptDescription": "Invalid source value",
+        "promptSource": "INVALID",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_17",
+      "name": "Invalid promptDestination value",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Testing invalid destination",
+        "promptDescription": "Invalid destination value",
+        "promptSource": "TS",
+        "promptDestination": "INVALID",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_18",
+      "name": "Missing promptSource",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Missing source field",
+        "promptDescription": "Source field missing",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_19",
+      "name": "Missing promptDestination",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Missing destination field",
+        "promptDescription": "Destination field missing",
+        "promptSource": "TS",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_20",
+      "name": "Missing userId",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Missing userId field",
+        "promptDescription": "UserId field missing",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_21",
+      "name": "Invalid userId format",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Invalid userId test",
+        "promptDescription": "Testing invalid userId",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "invalid_user",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_22",
+      "name": "Missing promptActive field",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Missing active field",
+        "promptDescription": "Active field missing",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_UP_23",
+      "name": "Invalid promptActive value - string instead of boolean",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Invalid active value",
+        "promptDescription": "Active value as string",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": "true"
+      }
+    },
+    {
+      "tcId": "TC_UP_24",
+      "name": "Very long promptText - 5000 characters",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText":"asdfghjsdfghjdfghjsdfghsdfg",
+        "promptDescription": "Testing very long prompt text",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_25",
+      "name": "Very long promptDescription - 2000 characters",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Testing long description",
+        "promptDescription": "Bbbbb",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_26",
+      "name": "Update with Unicode characters",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Prompt avec des caractères spéciaux: café, naïve, 日本語, 中文, עברית",
+        "promptDescription": "Unicode description: ñ, ü, ö, ä, ß",
+        "promptSource": "BR",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_27",
+      "name": "Update with HTML tags in promptText",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "<script>alert('test')</script> HTML Injection Test",
+        "promptDescription": "<b>Bold description</b>",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_28",
+      "name": "Update with SQL injection attempt",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "'; DROP TABLE prompts; --",
+        "promptDescription": "1' OR '1'='1",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_29",
+      "name": "Negative promptId",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": -1,
+        "promptText": "Negative ID test",
+        "promptDescription": "Testing negative promptId",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_30",
+      "name": "Zero promptId",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": 0,
+        "promptText": "Zero ID test",
+        "promptDescription": "Testing zero promptId",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_31",
+      "name": "String promptId instead of number",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "abc123",
+        "promptText": "String ID test",
+        "promptDescription": "Testing string promptId",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_32",
+      "name": "Update all valid promptSource-Destination combinations - TS to BR",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "TS to BR update",
+        "promptDescription": "Testing TS to BR combination",
+        "promptSource": "TS",
+        "promptDestination": "BR",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_33",
+      "name": "Update all valid promptSource-Destination combinations - BR to TC",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "BR to TC update",
+        "promptDescription": "Testing BR to TC combination",
+        "promptSource": "BR",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_34",
+      "name": "Update all valid promptSource-Destination combinations - TC to TS",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "TC to TS update",
+        "promptDescription": "Testing TC to TS combination",
+        "promptSource": "TC",
+        "promptDestination": "TS",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_35",
+      "name": "Whitespace-only promptText",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "    ",
+        "promptDescription": "Whitespace text test",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_36",
+      "name": "Whitespace-only promptDescription",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Valid text",
+        "promptDescription": "    ",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_37",
+      "name": "Forbidden user role attempting update",
+      "role": "USER",
+      "priority": "HIGH",
+      "expectedStatusCode": 403,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Forbidden update attempt",
+        "promptDescription": "User without permission",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_38",
+      "name": "Admin role attempting update",
+      "role": "ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Admin update test",
+        "promptDescription": "Admin role update",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_39",
+      "name": "Update with tabs and special whitespace characters",
+      "role": "SUPER_ADMIN",
+      "priority": "LOW",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Text\twith\ttabs\rand\nspecial\rwhitespace",
+        "promptDescription": "Description\twith\ttabs",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_40",
+      "name": "Case sensitivity test - lowercase source destination",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Lowercase test",
+        "promptDescription": "Testing case sensitivity",
+        "promptSource": "ts",
+        "promptDestination": "tc",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_41",
+      "name": "Concurrent update simulation - same promptId",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Concurrent update test",
+        "promptDescription": "Testing race conditions",
+        "promptSource": "BR",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_42",
+      "name": "Update from inactive to active",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC_INACTIVE",
+        "promptText": "Reactivated prompt",
+        "promptDescription": "Changing from inactive to active",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_43",
+      "name": "Multiple consecutive updates to same prompt",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Third consecutive update",
+        "promptDescription": "Multiple update test",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_44",
+      "name": "Numeric string in promptText",
+      "role": "SUPER_ADMIN",
+      "priority": "LOW",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "12345678901234567890",
+        "promptDescription": "Numeric string test",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_45",
+      "name": "Expired or invalid authentication token",
+      "role": "EXPIRED_TOKEN",
+      "priority": "HIGH",
+      "expectedStatusCode": 401,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Expired token test",
+        "promptDescription": "Testing expired auth",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_46",
+      "name": "JSON injection in fields",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "{\"malicious\": \"json\"}",
+        "promptDescription": "[\"array\", \"injection\"]",
+        "promptSource": "BR",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_47",
+      "name": "Update with emoji characters",
+      "role": "SUPER_ADMIN",
+      "priority": "LOW",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Prompt with emojis 😀🎉✅❌🔥",
+        "promptDescription": "Description with symbols ⭐💯🚀",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_48",
+      "name": "Large userId value",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Large userId test",
+        "promptDescription": "Testing boundary values",
+        "promptSource": "BR",
+        "promptDestination": "TS",
+        "userId": "9999999999",
+        "promptActive": true
+      }
+    },
 
+    {
+      "tcId": "TC_UP_50",
+      "name": "Empty request body",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {}
+    },
+    {
+      "tcId": "TC_UP_51",
+      "name": "Content-Type header missing",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 415,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Missing content type",
+        "promptDescription": "Header validation",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      },
+      "note": "Send without Content-Type: application/json header"
+    },
+    {
+      "tcId": "TC_UP_52",
+      "name": "Verify idempotency of update operation",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Idempotency test - same data",
+        "promptDescription": "Same update twice",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      },
+      "note": "Execute same request multiple times and verify result"
+    },
+    {
+      "tcId": "TC_UP_53",
+      "name": "Update with XSS payload",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 200,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "<img src=x onerror=alert('XSS')>",
+        "promptDescription": "<svg onload=alert('XSS')>",
+        "promptSource": "BR",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_54",
+      "name": "promptId as float instead of integer",
+      "role": "SUPER_ADMIN",
+      "priority": "MEDIUM",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": 123.45,
+        "promptText": "Float ID test",
+        "promptDescription": "Testing float promptId",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": "33",
+        "promptActive": true
+      }
+    },
+    {
+      "tcId": "TC_UP_55",
+      "name": "Null userId",
+      "role": "SUPER_ADMIN",
+      "priority": "HIGH",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC",
+        "promptText": "Null userId test",
+        "promptDescription": "Testing null userId",
+        "promptSource": "TS",
+        "promptDestination": "TC",
+        "userId": null,
+        "promptActive": true
+      }
+    }
   ]
 }

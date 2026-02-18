@@ -1,5 +1,4 @@
 package api.generation;
-
 import io.restassured.response.Response;
 import utils.TokenUtil;
 import static io.restassured.RestAssured.given;

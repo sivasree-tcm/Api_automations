@@ -66,28 +66,45 @@ public class GetGenerationStatusTest {
                                             tc.getAuthType()
                                     );
 
-                            List<Map<String, Object>> statusList =
-                                    response.jsonPath().getList("$");
+                            // ✅ Handle BOTH List and Map responses
+                            Object responseBody = response.jsonPath().get("$");
 
-                            if (statusList == null || statusList.isEmpty()) {
-                                // still in queue
+                            if (responseBody == null) {
                                 stillPending.add(brId);
                                 continue;
                             }
 
                             boolean isCompleted = false;
 
-                            for (Map<String, Object> item : statusList) {
+                            if (responseBody instanceof List) {
+                                // Response is an array
+                                List<Map<String, Object>> statusList =
+                                        response.jsonPath().getList("$");
 
-                                Integer responseBrId = (Integer) item.get("brId");
+                                if (statusList.isEmpty()) {
+                                    stillPending.add(brId);
+                                    continue;
+                                }
 
-                                if (brId.equals(responseBrId)) {
-                                    String status = (String) item.get("status");
-
-                                    if ("Completed".equalsIgnoreCase(status)) {
-                                        isCompleted = true;
+                                // Find matching brId in response
+                                for (Map<String, Object> item : statusList) {
+                                    Integer responseBrId = (Integer) item.get("refId");
+                                    if (brId.equals(responseBrId)) {
+                                        String status = (String) item.get("status");
+                                        isCompleted = "Completed".equalsIgnoreCase(status);
+                                        break;
                                     }
-                                    break;
+                                }
+
+                            } else if (responseBody instanceof Map) {
+                                // Response is a single object (usually when completed)
+                                Map<String, Object> statusMap =
+                                        response.jsonPath().getMap("$");
+
+                                Integer responseBrId = (Integer) statusMap.get("brId");
+                                if (brId.equals(responseBrId)) {
+                                    String status = (String) statusMap.get("status");
+                                    isCompleted = "Completed".equalsIgnoreCase(status);
                                 }
                             }
 
@@ -98,7 +115,6 @@ public class GetGenerationStatusTest {
                             } else {
                                 stillPending.add(brId);
                             }
-
                         }
 
                         System.out.println("✅ Completed BRs → " + completed);
@@ -143,63 +159,36 @@ public class GetGenerationStatusTest {
         );
     }
 
-    public void waitUntilAllCompletedfortc() {
+    public void waitUntilAllCompletedForTC() {
 
         Integer projectId = ProjectStore.getSelectedProjectId();
+        List<Integer> tsIds = GeneratedTSStore.getAll();
 
-        // ✅ Get ONLY the TS that were sent for TC generation
-        List<Integer> generatedBrs = BusinessRequirementStore.getGeneratedBRs(projectId);
-
-        if (generatedBrs == null || generatedBrs.isEmpty()) {
-            throw new RuntimeException("❌ No BRs found");
+        if (tsIds == null || tsIds.isEmpty()) {
+            throw new RuntimeException("❌ No TS available for TC generation status check");
         }
 
-        // ✅ Use SAME logic as GenerateTCTest - select only first BR
-        List<Integer> selectedBrIds =
-                generatedBrs.size() > 1 ? generatedBrs.subList(0, 1) : generatedBrs;
+        System.out.println("🧪 TS used for TC generation status → " + tsIds);
 
-        List<Integer> allTsIds = new ArrayList<>();
-
-        // ✅ Get ONLY the TS from the selected BR(s)
-        for (Integer brId : selectedBrIds) {
-            List<Integer> tsIds = TestScenarioStore.getTsByBr(brId);
-            if (tsIds != null && !tsIds.isEmpty()) {
-                // ✅ Apply SAME selection logic - only 2 TS
-                List<Integer> selectedTsIds =
-                        tsIds.size() > 2 ? tsIds.subList(0, 2) : tsIds;
-                allTsIds.addAll(selectedTsIds);
-            }
-        }
-
-        if (allTsIds.isEmpty()) {
-            throw new RuntimeException("❌ No TS found to check TC generation status");
-        }
-
-        System.out.println("🧪 TS used for TC generation status → " + allTsIds);
-
-        ConnectionReport testData =
-                JsonUtils.readJson(
-                        "testdata/generation/getGenerationStatus.json",
-                        ConnectionReport.class
-                );
+        ConnectionReport testData = JsonUtils.readJson(
+                "testdata/generation/getGenerationStatus.json",
+                ConnectionReport.class
+        );
 
         ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(
-                        testData.getTestCases().get(0)
-                );
+                new ConnectionReport.TestCase(testData.getTestCases().get(0));
 
-        tc.setTcId("GET_TC_GEN_STATUS_" + projectId);
-        tc.setName("Get TC Generation Status | Project " + projectId);
+        tc.setTcId("WAIT_TC_GEN_STATUS_" + projectId);
+        tc.setName("Wait for TC Generation Completion | Project " + projectId);
 
         ApiTestExecutor.execute(
                 testData.getScenario(),
                 tc,
                 () -> {
 
-                    List<Integer> pending = new ArrayList<>(allTsIds);
+                    List<Integer> pending = new ArrayList<>(tsIds);
                     List<Integer> completed = new ArrayList<>();
 
-                    // 🔁 Poll until all TS are completed
                     while (!pending.isEmpty()) {
 
                         List<Integer> stillPending = new ArrayList<>();
@@ -210,7 +199,7 @@ public class GetGenerationStatusTest {
                             request.put("projectId", projectId);
                             request.put("source", "TS");
                             request.put("userId", TokenUtil.getUserId());
-                            request.put("pending", List.of(tsId)); // 🔥 ONE BY ONE
+                            request.put("pending", List.of(tsId));
 
                             Response response =
                                     GetGenerationStatusApi.getStatus(
@@ -219,52 +208,22 @@ public class GetGenerationStatusTest {
                                             tc.getAuthType()
                                     );
 
-                            // ✅ Handle BOTH List and Map responses
-                            Object responseBody = response.jsonPath().get("$");
-
-                            if (responseBody == null) {
-                                stillPending.add(tsId);
-                                continue;
-                            }
-
+                            Object body = response.jsonPath().get("$");
                             boolean isCompleted = false;
 
-                            if (responseBody instanceof List) {
-                                // Response is an array
-                                List<Map<String, Object>> statusList =
-                                        response.jsonPath().getList("$");
-
-                                if (statusList.isEmpty()) {
-                                    stillPending.add(tsId);
-                                    continue;
-                                }
-
-                                // Find matching tsId in response
-                                for (Map<String, Object> item : statusList) {
-                                    Integer responseTsId = (Integer) item.get("tsId");
-                                    if (tsId.equals(responseTsId)) {
-                                        String status = (String) item.get("status");
-                                        isCompleted = "Completed".equalsIgnoreCase(status);
-                                        break;
-                                    }
-                                }
-
-                            } else if (responseBody instanceof Map) {
-                                // Response is a single object (usually when completed)
-                                Map<String, Object> statusMap =
-                                        response.jsonPath().getMap("$");
-
-                                Integer responseTsId = (Integer) statusMap.get("tsId");
-                                if (tsId.equals(responseTsId)) {
-                                    String status = (String) statusMap.get("status");
+                            if (body instanceof List) {
+                                List<Map<String, Object>> list = response.jsonPath().getList("$");
+                                if (!list.isEmpty()) {
+                                    String status = String.valueOf(list.get(0).get("status"));
                                     isCompleted = "Completed".equalsIgnoreCase(status);
                                 }
+                            } else if (body instanceof Map) {
+                                String status = String.valueOf(((Map<?, ?>) body).get("status"));
+                                isCompleted = "Completed".equalsIgnoreCase(status);
                             }
 
                             if (isCompleted) {
-                                if (!completed.contains(tsId)) {
-                                    completed.add(tsId);
-                                }
+                                completed.add(tsId);
                             } else {
                                 stillPending.add(tsId);
                             }
@@ -277,20 +236,20 @@ public class GetGenerationStatusTest {
 
                         if (!pending.isEmpty()) {
                             try {
-                                Thread.sleep(2 * 60 * 1000); // ⏱ 2 minutes
+                                Thread.sleep(2 * 60 * 1000); // 2 minutes
                             } catch (InterruptedException e) {
                                 Thread.currentThread().interrupt();
-                                break;
+                                throw new RuntimeException(e);
                             }
                         }
                     }
 
                     System.out.println(
-                            "🎉 ALL TS completed TC generation for project " +
+                            "🎉 ALL TS completed for project " +
                                     projectId + " → " + completed
                     );
 
-                    // 🔥 FINAL SINGLE REPORT CALL
+                    // ✅ FINAL RESPONSE FOR REPORT - MUST BE INSIDE execute()
                     Map<String, Object> finalRequest = new HashMap<>();
                     finalRequest.put("projectId", projectId);
                     finalRequest.put("source", "TS");
@@ -302,7 +261,8 @@ public class GetGenerationStatusTest {
                             tc.getRole(),
                             tc.getAuthType()
                     );
-                }
-        );
+                }  // 🔥 CLOSING BRACE OF execute() - Everything must be BEFORE this
+        );  // 🔥 CLOSING PARENTHESIS OF execute()
     }
+
 }

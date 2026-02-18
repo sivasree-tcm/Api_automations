@@ -1,0 +1,16 @@
+{
+  "scenario": "Update Test Case Step Order",
+  "testCases": [
+    {
+      "tcId": "TC_UPDATE_STEP_ORDER_01",
+      "name": "Update Test Case Step Order - Valid",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "steps": "DYNAMIC_STEPS",
+        "userId": "DYNAMIC_USER"
+      }
+    }
+  ]
+}

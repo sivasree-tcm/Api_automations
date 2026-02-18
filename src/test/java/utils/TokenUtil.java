@@ -1,6 +1,6 @@
 package utils;
-import tests.roles.UserRole;
 
+import tests.roles.UserRole;
 import api.login.LoginApi;
 import io.restassured.response.Response;
 
@@ -20,7 +20,10 @@ public class TokenUtil {
 
     public static String getToken(UserRole role) {
         if (!tokenMap.containsKey(role) || isExpired(role)) {
+            System.out.println("⚠️ Token not cached or expired for " + role + " - generating new token");
             initLogin(role);
+        } else {
+            System.out.println("✅ Using cached token for " + role);
         }
         return tokenMap.get(role);
     }
@@ -34,19 +37,11 @@ public class TokenUtil {
 
     // ================== PUBLIC - STRING VERSION (FOR FLEXIBILITY) ==================
 
-    /**
-     * Get token by role name (String)
-     * @param roleString - "SUPER_ADMIN", "ADMIN", or "END_USER"
-     */
     public static String getToken(String roleString) {
         UserRole role = parseRole(roleString);
         return getToken(role);
     }
 
-    /**
-     * Get userId by role name (String)
-     * @param roleString - "SUPER_ADMIN", "ADMIN", or "END_USER"
-     */
     public static int getUserId(String roleString) {
         UserRole role = parseRole(roleString);
         return getUserId(role);
@@ -66,14 +61,12 @@ public class TokenUtil {
 
     private static UserRole parseRole(String roleString) {
         if (roleString == null || roleString.trim().isEmpty()) {
-            return UserRole.SUPER_ADMIN; // Default
+            return UserRole.SUPER_ADMIN;
         }
 
         try {
-            // Handle common variations
             String normalized = roleString.trim().toUpperCase().replace(" ", "_");
 
-            // Map common variations to enum values
             switch (normalized) {
                 case "SUPERADMIN":
                 case "SUPER-ADMIN":
@@ -81,7 +74,7 @@ public class TokenUtil {
 
                 case "ENDUSER":
                 case "END-USER":
-                case "USER":  // Map "USER" to END_USER
+                case "USER":
                     return UserRole.END_USER;
 
                 default:
@@ -96,10 +89,22 @@ public class TokenUtil {
     // ================== INTERNAL ==================
 
     private static boolean isExpired(UserRole role) {
-        return System.currentTimeMillis() > expiryMap.getOrDefault(role, 0L);
+        long currentTime = System.currentTimeMillis();
+        long expiryTime = expiryMap.getOrDefault(role, 0L);
+        boolean expired = currentTime > expiryTime;
+
+        if (tokenMap.containsKey(role)) {
+            long remainingTime = (expiryTime - currentTime) / 1000;
+            if (remainingTime > 0) {
+                System.out.println("🕒 Token for " + role + " valid for " + remainingTime + " more seconds");
+            }
+        }
+
+        return expired;
     }
 
     private static synchronized void initLogin(UserRole role) {
+        System.out.println("\n🔐 Initiating login for role: " + role);
 
         String email;
         String password;
@@ -123,18 +128,39 @@ public class TokenUtil {
 
         Response response = LoginApi.login(email, password);
 
-        tokenMap.put(role, response.getHeader("Authorization"));
-        userIdMap.put(role, response.jsonPath().getInt("userId"));
+        // ✅ CRITICAL: Extract token from Authorization HEADER (not body)
+        String token = response.getHeader("Authorization");
+
+        if (token == null || token.isEmpty()) {
+            System.err.println("❌ ERROR: Authorization header is missing!");
+            System.err.println("Response Status: " + response.getStatusCode());
+            System.err.println("Response Headers: " + response.getHeaders());
+            System.err.println("Response Body: " + response.getBody().asString());
+            throw new RuntimeException("Authorization token not found in header for role: " + role);
+        }
+
+        // Extract userId from response body
+        int userId;
+        try {
+            userId = response.jsonPath().getInt("userId");
+        } catch (Exception e) {
+            System.err.println("⚠️ Warning: Could not extract userId from response body");
+            userId = 0; // Default value
+        }
+
+        // Store in cache
+        tokenMap.put(role, token);
+        userIdMap.put(role, userId);
         expiryMap.put(role, System.currentTimeMillis() + TOKEN_VALIDITY);
 
-        System.out.println("✅ Logged in as " + role + " | userId = " + userIdMap.get(role));
+//        System.out.println("Auth token: " + token);
+
+//        System.out.println("✅ Logged in as " + role + " | userId = " + userId);
+        System.out.println("⏰ Token will expire in " + (TOKEN_VALIDITY / 1000) + " seconds\n");
     }
 
     // ================== UTILITY - CLEAR CACHE (FOR TESTING) ==================
 
-    /**
-     * Clear cached token for a specific role (useful for testing token expiry)
-     */
     public static void clearToken(UserRole role) {
         tokenMap.remove(role);
         userIdMap.remove(role);
@@ -142,9 +168,6 @@ public class TokenUtil {
         System.out.println("🔄 Cleared token cache for " + role);
     }
 
-    /**
-     * Clear all cached tokens
-     */
     public static void clearAllTokens() {
         tokenMap.clear();
         userIdMap.clear();
@@ -159,9 +182,8 @@ public class TokenUtil {
     }
 
     public static synchronized void refreshToken(UserRole role) {
-        System.out.println("🔄 Forcing token refresh...");
+        System.out.println("🔄 Forcing token refresh for " + role + "...");
 
-        // Clear only token (not userId)
         tokenMap.remove(role);
         expiryMap.remove(role);
 
@@ -169,6 +191,4 @@ public class TokenUtil {
 
         System.out.println("✅ Token refreshed successfully for " + role);
     }
-
-
 }

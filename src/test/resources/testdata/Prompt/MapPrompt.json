@@ -1,0 +1,48 @@
+{
+  "scenario": "Map Prompt API Validation",
+  "testCases": [
+    {
+      "tcId": "TC_MP_01",
+      "name": "Map prompt with valid inputs",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "refprojectId": "DYNAMIC_PROJECT",
+        "promptId": "DYNAMIC_PROMPT",
+        "userId": "33",
+        "mappingComment": "Created via automation"
+      }
+    },
+    {
+      "tcId": "TC_MP_02",
+      "name": "Missing projectId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "promptId": "DYNAMIC_PROMPT",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_MP_03",
+      "name": "Missing promptId",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 400,
+      "request": {
+        "refprojectId": "DYNAMIC_PROJECT",
+        "userId": "33"
+      }
+    },
+    {
+      "tcId": "TC_MP_04",
+      "name": "Unauthorized mapping",
+      "role": "NO_AUTH",
+      "expectedStatusCode": 401,
+      "request": {
+        "refprojectId": "DYNAMIC_PROJECT",
+        "promptId": "DYNAMIC_PROMPT",
+        "userId": "33"
+      }
+    }
+  ]
+}

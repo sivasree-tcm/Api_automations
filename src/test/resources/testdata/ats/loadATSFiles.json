@@ -1,0 +1,12 @@
+{
+  "scenario": "Load ATS Files API",
+  "testCases": [
+    {
+      "name": "Load ATS Files",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {}
+    }
+  ]
+}

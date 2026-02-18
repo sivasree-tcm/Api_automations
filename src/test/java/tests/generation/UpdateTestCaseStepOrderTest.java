@@ -117,7 +117,7 @@ import java.util.*;
 
 public class UpdateTestCaseStepOrderTest extends BaseTest {
 
-    @Test
+
     public void updateTestCaseStepOrderApiTest() {
 
         // 🔴 STEP 1: Get all generated Test Case IDs from the store

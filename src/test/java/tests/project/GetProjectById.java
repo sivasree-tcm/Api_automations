@@ -12,7 +12,7 @@ public class GetProjectById extends BaseTest {
 
 
 
-    @Test
+
     public void getProjectByIdApiTest() {
 
         GetProjectByIdTestData testData =

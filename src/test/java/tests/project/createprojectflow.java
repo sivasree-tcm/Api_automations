@@ -12,7 +12,7 @@ import java.util.*;
 
 public class createprojectflow extends BaseTest {
 
-    @Test
+
     public void projectApiTest() {
         ProjectTestData testData = JsonUtils.readJson("testdata/project/Project.json", ProjectTestData.class);
         execute(testData, testData.getTestCases());

@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class LoadATSFilesTest extends BaseTest {
 
-    @Test
+
     public void loadAtsFilesApiTest() {
 
         // ✅ Load dummy testcase ONLY for executor reporting

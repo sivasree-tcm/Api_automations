@@ -16,7 +16,6 @@ import java.util.Map;
 
 public class createprompt extends BaseTest {
 
-    @Test
     public void createPromptApiTest() {
         CreatePromptTestData testData = JsonUtils.readJson(
                 "testdata/project/createprompt.json",

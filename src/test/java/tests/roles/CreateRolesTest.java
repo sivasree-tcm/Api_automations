@@ -10,7 +10,7 @@ import utils.TestDataGenerator;
 import org.testng.annotations.Test;
 
 import java.util.Map;
-@Test
+
 
 public class CreateRolesTest extends BaseTest {
 

@@ -1,40 +1,40 @@
-trigger:
-  - main
 
-schedules:
-  - cron: "30 5 * * *"
-    displayName: "Daily API Automation Run - 11 AM IST"
-    branches:
-      include:
-        - main
-    always: true
+  trigger:
+    - main
 
-pool:
-  vmImage: 'ubuntu-latest'
+  # ✅ Daily schedule at 11:00 AM IST
+  schedules:
+    - cron: "30 5 * * *"   # 11:00 AM IST (UTC +5:30)
+      displayName: "Daily API Automation Run - 11 AM IST"
+      branches:
+        include:
+          - main
+      always: true
 
-steps:
-  # 1️⃣ Run API automation tests
-  - task: Maven@3
-    displayName: 'Run API Automation Tests'
-    inputs:
-      mavenPomFile: 'pom.xml'
-      goals: 'clean test'
-      publishJUnitResults: true
-      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+  pool:
+    vmImage: 'ubuntu-latest'
 
-  # 2️⃣ Copy files to Staging (Runs even if tests fail)
-  - task: CopyFiles@2
-    displayName: 'Stage Report Files'
-    condition: succeededOrFailed()
-    inputs:
-      SourceFolder: '$(Build.SourcesDirectory)/target/report'
-      Contents: '**'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)/AutomationReport'
+  steps:
+    # 1️⃣ Run API automation tests
+    - task: Maven@3
+      displayName: 'Run API Automation Tests'
+      inputs:
+        mavenPomFile: 'pom.xml'
+        goals: 'clean test'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
 
-  # 3️⃣ Publish the Artifact (Runs even if tests fail)
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifacts'
-    condition: succeededOrFailed()
-    inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)/AutomationReport'
-      ArtifactName: 'CustomApiDashboard'
+    # 2️⃣ Copy files to Staging
+    - task: CopyFiles@2
+      displayName: 'Stage Report Files'
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)/target/report'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/AutomationReport'
+
+    # 3️⃣ Publish the Artifact
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifacts'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/AutomationReport'
+        ArtifactName: 'CustomApiDashboard'

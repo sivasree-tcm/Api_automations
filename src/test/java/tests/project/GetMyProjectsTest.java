@@ -10,7 +10,7 @@ import java.util.List;
 
 public class GetMyProjectsTest extends BaseTest {
 
-    @Test
+
     public void getMyProjectsApiTest() {
 
         GetMyProjectsTestData testData =

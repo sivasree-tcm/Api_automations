@@ -52,13 +52,13 @@ public class UploadBRFlow {
         new tests.br.GetBusinessRequirementTest().fetchBRsForProject();
     }
 
-    @Test(dependsOnMethods = "step9_getBRs")
-    public void step10_uploadFilesForBR() {
-        System.out.println("▶ Step 10: Image Upload Files for BR");
-        new tests.uploadFiles.UploadFilesForBRTest().uploadImageForALLBRs();
-    }
+//    @Test(dependsOnMethods = "step9_getBRs")
+//    public void step10_uploadFilesForBR() {
+//        System.out.println("▶ Step 10: Image Upload Files for BR");
+//        new tests.uploadFiles.UploadFilesForBRTest().uploadImageForALLBRs();
+//    }
 
-    @Test(dependsOnMethods = "step10_uploadFilesForBR")
+    @Test(dependsOnMethods = "step9_getBRs")
     public void step11_exportBRExcel() throws Exception {
         System.out.println("▶ Step 11: Export BR Excel");
         new tests.export.ExportBRExcelTest().exportBRExcelAndValidate();

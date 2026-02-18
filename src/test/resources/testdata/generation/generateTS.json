@@ -1,18 +1,13 @@
 {
-  "scenario": "Get Business Requirement",
+  "scenario": "Generate Test Cases API",
   "testCases": [
     {
-      "tcId": "TC_GET_BR_01",
-      "name": "Get BR for valid project",
+      "tcId": "TC_GENERATE_TC_01",
+      "name": "Generate TC for Selected TS",
       "role": "SUPER_ADMIN",
       "authType": "VALID",
       "expectedStatusCode": 200,
-      "request": {
-        "projectId": 1164,
-        "page": 1,
-        "pageSize": 10,
-        "userId": 32
-      }
+      "request": {}
     }
   ]
 }

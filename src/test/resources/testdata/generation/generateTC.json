@@ -1,10 +1,21 @@
 {
-  "source": "TS",
-  "destination": "TC",
-  "sourceString": [15756,15757],
-  "userId": "33",
-  "projectId": 1164,
-  "refBrId": "1785",
-  "generationConfirmation": "NOW"
+  "scenario": "Generate Test Cases API",
+  "testCases": [
+    {
+      "tcId": "TC_GENERATE_TC_01",
+      "name": "Generate TC for valid TS",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "source": "TS",
+        "destination": "TC",
+        "sourceString": [15756, 15757],
+        "userId": 33,
+        "projectId": 1164,
+        "refBrId": "1785",
+        "generationConfirmation": "NOW"
+      }
+    }
+  ]
 }
-

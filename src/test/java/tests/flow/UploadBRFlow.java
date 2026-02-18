@@ -1,6 +1,7 @@
 package tests.flow;
 
 import org.testng.annotations.Test;
+import tests.br.UploadBusinessRequirementTest;
 import tests.export.ExportTCExcelTest;
 import tests.generation.GenerateTCTest;
 import tests.generation.GetGenerationStatusTest;
@@ -9,12 +10,10 @@ import tests.generation.GetTSByBRTest;
 import tests.project.GetProjectDetailsTest;
 import tests.project.GetTestCaseSummaryForTSTest;
 import tests.project.GetTestCaseWithStepsTest;
-import tests.sprints.GetAzureSprintsTest;
-import tests.sprints.GetUserStoriesTest;
-import tests.sprints.ImportAzureUserStoriesTest;
-import utils.*;
+import utils.BusinessRequirementStore;
+import utils.ProjectStore;
 
-public class QuickGenerationFlow {
+public class UploadBRFlow {
 
     @Test
     public void step1_getProjects() {
@@ -25,7 +24,7 @@ public class QuickGenerationFlow {
     @Test(dependsOnMethods = "step1_getProjects")
     public void step2_getProjectDetails() {
         System.out.println("▶ Step 2: Get Project Details");
-        new GetProjectDetailsTest().fetchProjectDetails(99);
+        new GetProjectDetailsTest().fetchProjectDetails(144);
     }
 
     @Test(dependsOnMethods = "step2_getProjectDetails")
@@ -41,27 +40,12 @@ public class QuickGenerationFlow {
         new tests.br.DeleteBusinessRequirementTest().deleteBRs();
     }
 
-
     @Test(dependsOnMethods = "step5_deleteBRs")
-    public void step6_getAzureSprints() {
-        System.out.println("▶ Step 6: Get Azure DevOps Sprints");
-        SprintStore.clear();
-        new GetAzureSprintsTest().getAzureDevOpsSprints();
+    public void step6_uploadBusinessRequirement() {
+        new UploadBusinessRequirementTest().uploadBusinessRequirementTest();
     }
 
-    @Test(dependsOnMethods = "step6_getAzureSprints")
-    public void step7_getUserStories() {
-        System.out.println("▶ Step 7: Get User Stories");
-        new GetUserStoriesTest().getUserStories();
-    }
-
-    @Test(dependsOnMethods = "step7_getUserStories")
-    public void step8_importAzureUserStories() {
-        System.out.println("▶ Step 8: Import Azure User Stories");
-        new ImportAzureUserStoriesTest().importAzureUserStories();
-    }
-
-    @Test(dependsOnMethods = "step8_importAzureUserStories")
+    @Test(dependsOnMethods = "step6_uploadBusinessRequirement")
     public void step9_getBRs() {
         System.out.println("▶ Step 9: Get BRs");
         BusinessRequirementStore.clear();

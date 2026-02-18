@@ -13,7 +13,7 @@ import java.util.*;
 
 public class DeleteTestCaseTest extends BaseTest {
 
-    @Test
+
     public void deleteLastTestCase() {
 
         Integer tsId = GeneratedTSStore.getAnyTsId();

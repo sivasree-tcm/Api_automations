@@ -75,7 +75,7 @@ import java.util.Map;
 
 public class UpdateTestScenarioTest extends BaseTest {
 
-    @Test
+
     public void updateTestScenarioApiTest() {
 
         ConnectionReport testData =

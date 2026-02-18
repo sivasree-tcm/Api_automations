@@ -15,6 +15,10 @@ public class ProjectStore {
     // ✅ ADDED: ThreadLocal for Project Name to ensure it's captured during creation
     private static final ThreadLocal<String> CURRENT_PROJECT_NAME = new ThreadLocal<>();
 
+    // ✅ NEW: Framework configuration (REQUIRED BY ATS)
+    private static String AUTOMATION_FRAMEWORK;
+    private static String STORAGE_TYPE;
+
     // ================= USER =================
     private static String USER_ID;
 
@@ -47,6 +51,35 @@ public class ProjectStore {
         return PROJECT_MAP.get(selectedProjectId);
     }
 
+    // -------------------------------------------------
+    // ✅ NEW: AUTOMATION FRAMEWORK
+    // -------------------------------------------------
+    public static void setAutomationFramework(String framework) {
+        AUTOMATION_FRAMEWORK = framework;
+        System.out.println("✅ Automation Framework set → " + framework);
+    }
+
+    public static String getAutomationFramework() {
+        if (AUTOMATION_FRAMEWORK == null) {
+            throw new RuntimeException("❌ Automation Framework not set in ProjectStore");
+        }
+        return AUTOMATION_FRAMEWORK;
+    }
+
+    // -------------------------------------------------
+    // ✅ NEW: STORAGE TYPE
+    // -------------------------------------------------
+    public static void setStorageType(String storageType) {
+        STORAGE_TYPE = storageType;
+        System.out.println("✅ Storage Type set → " + storageType);
+    }
+
+    public static String getStorageType() {
+        if (STORAGE_TYPE == null) {
+            throw new RuntimeException("❌ Storage Type not set in ProjectStore");
+        }
+        return STORAGE_TYPE;
+    }
     // -------------------------------------------------
     // PROJECT LIST
     // -------------------------------------------------

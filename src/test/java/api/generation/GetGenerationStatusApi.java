@@ -34,10 +34,6 @@ public class GetGenerationStatusApi {
         return req
                 .body(request)
                 .when()
-<<<<<<<< HEAD:src/test/java/api/generation/GetGenerationStatusApi.java
                 .post("/getGenerationStatus");
-========
-                .post("/createRole");
->>>>>>>> origin/main:src/test/java/api/roles/CreateRolesApi.java
     }
 }

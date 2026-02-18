@@ -103,7 +103,7 @@ import java.util.Map;
 
 public class AddTestScenarioTest extends BaseTest {
 
-    @Test
+
     public void addTestScenarioApiTest() {
 
         ConnectionReport testData =

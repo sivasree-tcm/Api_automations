@@ -9,8 +9,7 @@
       "expectedStatusCode": 200,
       "request": {
         "userId": 32,
-        "projectId": 1684,
-        "isSuperAdmin": true
+        "projectId": 1164
       }
     }
   ]

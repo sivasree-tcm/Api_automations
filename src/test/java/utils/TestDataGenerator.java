@@ -23,11 +23,6 @@ public class TestDataGenerator {
                 .format(DateTimeFormatter.ISO_LOCAL_DATE);
     }
 
-    public static String generateFutureDate() {
-        return LocalDate.now()
-                .plusDays(30)
-                .format(DateTimeFormatter.ISO_LOCAL_DATE);
-    }
 
 
     // ✅ Org Name → only letters

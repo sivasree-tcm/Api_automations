@@ -1,6 +1,6 @@
 package tests.project;
 
-import api.roles.CreateRolesApi;
+import api.roles.CreateRoleApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import tests.connection.ConnectionReport;
@@ -42,7 +42,7 @@ public class CreateRole extends BaseTest {
                                 TestDataGenerator.randomDescription());
 
                         // 🔥 CALL API
-                        Response response = CreateRolesApi.createRole(
+                        Response response = CreateRoleApi.createRole(
                                 req,
                                 tc.getRole(),
                                 tc.getAuthType()

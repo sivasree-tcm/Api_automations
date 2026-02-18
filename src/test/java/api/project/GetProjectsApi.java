@@ -16,7 +16,6 @@ public class GetProjectsApi {
 
         var req = given()
                 .relaxedHTTPSValidation()
-//                .baseUri("https://test.cognitest.ai")
                 .contentType(ContentType.JSON);
 
         // Authorization handling

@@ -19,7 +19,7 @@ public class LoginTest extends BaseTest {
                 ConfigReader.get("superadmin.password")
         );
 
-        // ✅ Status Code Validatio
+        // ✅ Status Code Validation
         // n
         Assert.assertEquals(response.getStatusCode(), 200);
 

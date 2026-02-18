@@ -1,0 +1,13 @@
+{
+  "scenario": "Download ATS Framework API",
+  "testCases": [
+    {
+      "tcId": "TC_DOWNLOAD_FRAMEWORK_01",
+      "name": "Download Playwright Java framework for valid project",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": null
+    }
+  ]
+}

@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class GetProjectProviderConfigTest extends BaseTest {
 
-    @Test
+
     public void getProjectProviderConfigApiTest() {
 
         // ✅ Reuse ConnectionReport

@@ -35,8 +35,9 @@ public class ExportTSExcelTest extends BaseTest {
             Files.createDirectories(downloadDir);
         } catch (Exception e) {
             throw new RuntimeException("❌ Failed to create TS Excel directory", e);
-        }
 
+        }
+        System.out.println("error thrown");
         // 📊 Folder size BEFORE download
         long sizeBefore = getFolderSize(downloadDir);
 

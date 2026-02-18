@@ -17,7 +17,7 @@ import utils.*;
 
 public class QuickGenerationFlow {
 
-    @Test
+
     public void step1_getProjects() {
         ProjectStore.clear();
         new tests.project.GetProjectsTest().fetchProjects();
@@ -26,21 +26,21 @@ public class QuickGenerationFlow {
     @Test(dependsOnMethods = "step1_getProjects")
     public void step2_getProjectDetails() {
         System.out.println("▶ Step 2: Get Project Details");
-        new GetProjectDetailsTest().fetchProjectDetails(99);
+        new GetProjectDetailsTest().fetchProjectDetails(144);
     }
 
-//    @Test(dependsOnMethods = "step2_getProjectDetails")
-//    public void step3_getBRs() {
-//        System.out.println("▶ Step 3: Get BRs");
-//        BusinessRequirementStore.clear();
-//        new tests.br.GetBusinessRequirementTest().fetchBRsForProject();
-//    }
-//
-//    @Test(dependsOnMethods = "step3_getBRs")
-//    public void step5_deleteBRs() {
-//        System.out.println("▶ Step 5: Delete BRs");
-//        new tests.br.DeleteBusinessRequirementTest().deleteBRs();
-//    }
+    @Test(dependsOnMethods = "step2_getProjectDetails")
+    public void step3_getBRs() {
+        System.out.println("▶ Step 3: Get BRs");
+        BusinessRequirementStore.clear();
+        new tests.br.GetBusinessRequirementTest().fetchBRsForProject();
+    }
+
+    @Test(dependsOnMethods = "step3_getBRs")
+    public void step5_deleteBRs() {
+        System.out.println("▶ Step 5: Delete BRs");
+        new tests.br.DeleteBusinessRequirementTest().deleteBRs();
+    }
 
 //
 //    @Test(dependsOnMethods = "step5_deleteBRs")
@@ -62,7 +62,7 @@ public class QuickGenerationFlow {
 //        new ImportAzureUserStoriesTest().importAzureUserStories();
 //    }
 
-    @Test(dependsOnMethods = "step2_getProjectDetails")
+    @Test(dependsOnMethods = "step5_deleteBRs")
     public void step9_getBRs() {
         System.out.println("▶ Step 9: Get BRs");
         BusinessRequirementStore.clear();

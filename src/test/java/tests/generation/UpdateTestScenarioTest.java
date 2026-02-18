@@ -99,7 +99,7 @@ public class UpdateTestScenarioTest extends BaseTest {
                     "Verify that the system allows tracking of project progress by enabling updates to project milestones, deliverables, and status indicators for each grantee."
             );
             request.put("tsPriority", "high");
-            request.put("userId", 33);
+            request.put("userId", 28);
             request.put("projectId", 1636);
             request.put("tcGenerate", 0);
 

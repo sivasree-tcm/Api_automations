@@ -1,4 +1,4 @@
-package db;
+package tests.db;
 
 import base.BaseTest;
 import utils.ConfigReader;

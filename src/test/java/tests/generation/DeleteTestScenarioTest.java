@@ -13,7 +13,7 @@ import java.util.*;
 
 public class DeleteTestScenarioTest extends BaseTest {
 
-    @Test
+
     public void deleteLastTestScenario() {
 
         // 1️⃣ Load test data (MANDATORY for ApiTestExecutor)

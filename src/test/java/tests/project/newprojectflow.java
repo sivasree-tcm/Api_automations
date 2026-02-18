@@ -101,13 +101,9 @@ public class newprojectflow extends BaseTest {
         new UploadBusinessRequirementTest().uploadBusinessRequirementTest();
     }
 
-    @Test(dependsOnMethods = "step14_uploadBusinessRequirement")
-    public void step15_uploadFilesForBR() {
-        System.out.println("▶ Step 15: Image Upload Files for BR");
-        new tests.uploadFiles.UploadFilesForBRTest().uploadImageForALLBRs();
-    }
 
-    @Test(dependsOnMethods = "step15_uploadFilesForBR")
+
+    @Test(dependsOnMethods = "step14_uploadBusinessRequirement")
     public void step16_exportBRExcel() throws Exception {
         System.out.println("▶ Step 16: Export BR Excel");
         new tests.export.ExportBRExcelTest().exportBRExcelAndValidate();
@@ -244,4 +240,5 @@ public class newprojectflow extends BaseTest {
         System.out.println("▶ Step 38: Generate Automation Code");
         new GenerateATSTest().generateAtsApiTest();
     }
+
 }

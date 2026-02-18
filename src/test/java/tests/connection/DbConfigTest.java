@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DbConfigTest extends BaseTest {
 
-    @Test
+
     public void addDbInfoTest() {
         // Updated path to match the reference style
         DbConfigReport testData = JsonUtils.readJson(

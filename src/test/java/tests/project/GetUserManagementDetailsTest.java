@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class GetUserManagementDetailsTest extends BaseTest {
 
-    @Test
+
     public void getUserManagementDetailsApiTest() {
 
         GetUserManagementDetailsTestData testData =

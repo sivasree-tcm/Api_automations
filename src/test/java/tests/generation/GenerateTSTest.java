@@ -25,7 +25,6 @@ public class GenerateTSTest extends BaseTest {
                     "❌ No BRs found for project " + projectId
             );
         }
-
         // ✅ TAKE ONLY FIRST 10 BRs
         List<Integer> selectedBrs =
                 brIds.size() >= 1 ? brIds.subList(0, 1) : brIds;

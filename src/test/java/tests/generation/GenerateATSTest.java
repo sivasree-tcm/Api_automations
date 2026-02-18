@@ -12,7 +12,7 @@ import java.util.*;
 
 public class GenerateATSTest extends BaseTest {
 
-    @Test
+
     public void generateAtsApiTest() {
 
         // ===============================

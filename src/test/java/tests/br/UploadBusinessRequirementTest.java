@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class UploadBusinessRequirementTest extends BaseTest {
 
-    @Test
+
     public void uploadBusinessRequirementTest() {
 
         ConnectionReport testData =
@@ -29,13 +29,15 @@ public class UploadBusinessRequirementTest extends BaseTest {
             Map<String, Object> request = (Map<String, Object>) tc.getRequest();
 
             int userId = TokenUtil.getUserId(tc.getRole());
-            Integer projectId = ProjectStore.getProjectId();
+//            Integer projectId = ProjectStore.getProjectId();
+                     Integer projectId = ProjectStore.getSelectedProjectId();
+
 
             if (projectId == null) {
                 throw new RuntimeException("❌ Project ID not available");
             }
 
-            File brFile = new File("src/test/resources/files/BR_Sample (6).xlsx");
+            File brFile = new File("src/test/resources/files/updatedbr.xlsx");
 
             if (!brFile.exists()) {
                 throw new AssertionError("❌ BR file not found at: " + brFile.getAbsolutePath());

@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class UploadBusinessRequirementTest extends BaseTest {
 
-
+    @Test
     public void uploadBusinessRequirementTest() {
 
         ConnectionReport testData =
@@ -30,8 +30,9 @@ public class UploadBusinessRequirementTest extends BaseTest {
 
             int userId = TokenUtil.getUserId(tc.getRole());
 //            Integer projectId = ProjectStore.getProjectId();
+                     Integer projectId = ProjectStore.getSelectedProjectId();
 
-            Integer projectId = ProjectStore.getSelectedProjectId();
+
             if (projectId == null) {
                 throw new RuntimeException("❌ Project ID not available");
             }

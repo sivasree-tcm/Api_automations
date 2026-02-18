@@ -129,7 +129,7 @@ public class AddTestScenarioTest extends BaseTest {
             request.put("refProjectId", 1636);
             request.put("tsPriority", "medium");
             request.put("tsCreationMethod", "manual");
-            request.put("userId", 33);
+            request.put("userId", 28);
 
             tc.setRequest(request);
 

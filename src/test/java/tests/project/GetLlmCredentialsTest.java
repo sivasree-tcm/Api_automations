@@ -95,7 +95,7 @@ public class GetLlmCredentialsTest extends BaseTest {
                                 cred.get("is_active") == null ? 0 :
                                         ((Number) cred.get("is_active")).intValue();
 
-                        if ("bedrock".equalsIgnoreCase(provider)
+                        if ("openai-api_key".equalsIgnoreCase(provider)
                                 && isActive == 1) {
 
                             Integer credentialId =

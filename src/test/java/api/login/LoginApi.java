@@ -23,7 +23,6 @@ public class LoginApi {
                 .when()
                 .post("/api/login")
                 .then()
-//                .log().all()  // Log response details
                 .extract()
                 .response();
 

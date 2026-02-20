@@ -77,7 +77,7 @@ public class GetGenerationTCStatus {
 
                                 for (Map<String, Object> item : list) {
                                     Integer responseTsId =
-                                            Integer.valueOf(String.valueOf(item.get("refId")));
+                                            Integer.valueOf(String.valueOf(item.get("tsId")));
                                     if (responseTsId.equals(tsId)) {
                                         String status =
                                                 String.valueOf(item.get("status"));

@@ -9,11 +9,14 @@ import utils.JsonUtils;
 import utils.ProjectStore;
 import utils.TokenUtil;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GetGenerationTCStatus {
-
     public void waitUntilAllCompletedForTC() {
+
         Integer projectId = ProjectStore.getSelectedProjectId();
         List<Integer> tsIds = GeneratedTSStore.getAll();
 
@@ -28,7 +31,9 @@ public class GetGenerationTCStatus {
                 ConnectionReport.class
         );
 
-        ConnectionReport.TestCase tc = new ConnectionReport.TestCase(testData.getTestCases().get(0));
+        ConnectionReport.TestCase tc =
+                new ConnectionReport.TestCase(testData.getTestCases().get(0));
+
         tc.setTcId("WAIT_TC_GEN_STATUS_" + projectId);
         tc.setName("Wait for TC Generation Completion | Project " + projectId);
 
@@ -36,61 +41,59 @@ public class GetGenerationTCStatus {
                 testData.getScenario(),
                 tc,
                 () -> {
+
                     List<Integer> pending = new ArrayList<>(tsIds);
                     List<Integer> completed = new ArrayList<>();
 
                     while (!pending.isEmpty()) {
+
                         List<Integer> stillPending = new ArrayList<>();
 
                         for (Integer tsId : pending) {
+
                             Map<String, Object> request = new HashMap<>();
                             request.put("projectId", projectId);
                             request.put("source", "TS");
                             request.put("userId", TokenUtil.getUserId());
                             request.put("pending", List.of(tsId));
 
-                            Response response = GetGenerationStatusApi.getStatus(
-                                    request,
-                                    tc.getRole(),
-                                    tc.getAuthType()
-                            );
+                            Response response =
+                                    GetGenerationStatusApi.getStatus(
+                                            request,
+                                            tc.getRole(),
+                                            tc.getAuthType()
+                                    );
 
-                            // --- FLEXIBLE HANDLING START ---
-                            Object rawResponse = response.jsonPath().get("$");
-                            List<Map<String, Object>> items = new ArrayList<>();
+                            List<Map<String, Object>> list =
+                                    response.jsonPath().getList("$");
 
-                            if (rawResponse instanceof List) {
-                                // API returned an Array []
-                                items = (List<Map<String, Object>>) rawResponse;
-                            } else if (rawResponse instanceof Map) {
-                                // API returned a single Object {}
-                                items.add((Map<String, Object>) rawResponse);
-                            }
-                            // --- FLEXIBLE HANDLING END ---
-
-                            if (items.isEmpty()) {
+                            if (list == null || list.isEmpty()) {
+                                // still in queue
                                 stillPending.add(tsId);
                                 continue;
                             }
 
                             boolean isCompleted = false;
-                            for (Map<String, Object> item : items) {
-                                Object resRefIdObj = item.get("refId");
-                                Object statusObj = item.get("status");
 
-                                if (resRefIdObj != null && statusObj != null) {
-                                    Integer responseTsId = Integer.valueOf(String.valueOf(resRefIdObj));
-                                    String status = String.valueOf(statusObj);
+                                for (Map<String, Object> item : list) {
+                                    Integer responseTsId =
+                                            Integer.valueOf(String.valueOf(item.get("tsId")));
+                                    if (responseTsId.equals(tsId)) {
+                                        String status =
+                                                String.valueOf(item.get("status"));
 
-                                    if (responseTsId.equals(tsId) && "Completed".equalsIgnoreCase(status)) {
-                                        isCompleted = true;
+                                        if ("Completed".equalsIgnoreCase(status)) {
+                                            isCompleted = true;
+
+                                        }
                                         break;
                                     }
                                 }
-                            }
 
                             if (isCompleted) {
-                                if (!completed.contains(tsId)) completed.add(tsId);
+                                if(!completed.contains(tsId)) {
+                                    completed.add(tsId);
+                                }
                             } else {
                                 stillPending.add(tsId);
                             }
@@ -111,8 +114,12 @@ public class GetGenerationTCStatus {
                         }
                     }
 
-                    System.out.println("🎉 ALL TS completed for project " + projectId + " → " + completed);
+                    System.out.println(
+                            "🎉 ALL TS completed for project " +
+                                    projectId + " → " + completed
+                    );
 
+                    // ✅ FINAL RESPONSE FOR REPORT - MUST BE INSIDE execute()
                     Map<String, Object> finalRequest = new HashMap<>();
                     finalRequest.put("projectId", projectId);
                     finalRequest.put("source", "TS");
@@ -124,7 +131,8 @@ public class GetGenerationTCStatus {
                             tc.getRole(),
                             tc.getAuthType()
                     );
-                }
-        );
+                }  // 🔥 CLOSING BRACE OF execute() - Everything must be BEFORE this
+        );  // 🔥 CLOSING PARENTHESIS OF execute()
     }
+
 }

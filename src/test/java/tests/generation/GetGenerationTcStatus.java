@@ -11,7 +11,7 @@ import utils.TokenUtil;
 
 import java.util.*;
 
-public class GetGenerationTcStatus {
+public class GetGenerationTCStatus {
 
     public void waitUntilAllCompletedForTC() {
         Integer projectId = ProjectStore.getSelectedProjectId();
@@ -75,11 +75,11 @@ public class GetGenerationTcStatus {
 
                             boolean isCompleted = false;
                             for (Map<String, Object> item : items) {
-                                Object resTsIdObj = item.get("tsId");
+                                Object resRefIdObj = item.get("refId");
                                 Object statusObj = item.get("status");
 
-                                if (resTsIdObj != null && statusObj != null) {
-                                    Integer responseTsId = Integer.valueOf(String.valueOf(resTsIdObj));
+                                if (resRefIdObj != null && statusObj != null) {
+                                    Integer responseTsId = Integer.valueOf(String.valueOf(resRefIdObj));
                                     String status = String.valueOf(statusObj);
 
                                     if (responseTsId.equals(tsId) && "Completed".equalsIgnoreCase(status)) {

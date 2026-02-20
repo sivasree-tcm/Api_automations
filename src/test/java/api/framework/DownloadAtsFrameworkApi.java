@@ -6,10 +6,9 @@ import utils.TokenUtil;
 
 import java.io.*;
 import java.nio.file.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+import java.util.zip.ZipFile;
 
 import static io.restassured.RestAssured.given;
 
@@ -21,22 +20,15 @@ public class DownloadAtsFrameworkApi {
     private static final String UNZIP_DIR =
             "C:\\Users\\hp\\AutomationFrameworkUnzipped";
 
+    // ✅ CRITICAL SAFETY LIMIT (Prevents infinite downloads)
+    private static final long MAX_ZIP_SIZE =
+            300L * 1024 * 1024; // 300 MB
+
     public static Response downloadFramework(
-            Integer projectId,
-            Integer userId,
-            String automationFramework,
-            String projectName,
-            String storageType,
+            Map<String, Object> payload,
             String role,
             String authType
     ) {
-
-        Map<String, Object> payload = new HashMap<>();
-        payload.put("projectId", String.valueOf(projectId));
-        payload.put("userId", String.valueOf(userId));
-        payload.put("automationFramework", automationFramework);
-        payload.put("projectName", projectName);
-        payload.put("storageType", storageType);
 
         var req = given()
                 .relaxedHTTPSValidation()
@@ -56,7 +48,11 @@ public class DownloadAtsFrameworkApi {
         Response response =
                 req.when().post("/api/downloadAtsFramework");
 
-        saveAndUnzipIfPresent(response, automationFramework, projectName);
+        saveAndUnzipIfPresent(
+                response,
+                String.valueOf(payload.get("automationFramework")),
+                String.valueOf(payload.get("projectName"))
+        );
 
         return response;
     }
@@ -68,6 +64,8 @@ public class DownloadAtsFrameworkApi {
             String framework,
             String projectName
     ) {
+
+        File zipFile = null;
 
         try {
 
@@ -83,21 +81,49 @@ public class DownloadAtsFrameworkApi {
                     projectName.replaceAll("\\s+", "_")
                             + "_" + framework + ".zip";
 
-            File zipFile = new File(zipDir, fileName);
+            zipFile = new File(zipDir, fileName);
 
-            /* ✅ SAVE ZIP */
+            // ✅ CLEAN OLD ZIP (Prevents corruption & appending)
+            if (zipFile.exists()) {
+                System.out.println("♻ Removing existing ZIP → " + zipFile.getAbsolutePath());
+                Files.delete(zipFile.toPath());
+            }
+
+            long contentLength = extractContentLength(response);
+
+            byte[] buffer = new byte[65536]; // ⭐ 64KB buffer (FASTER)
+            long totalBytes = 0;
+            int len;
+
+            /* ✅ SAFE STREAM DOWNLOAD */
             try (InputStream is = response.asInputStream();
                  FileOutputStream fos = new FileOutputStream(zipFile)) {
 
-                byte[] buffer = new byte[8192];
-                int len;
-
                 while ((len = is.read(buffer)) > 0) {
+
                     fos.write(buffer, 0, len);
+                    totalBytes += len;
+
+                    // ✅ HARD SAFETY CUT (CRITICAL)
+                    if (totalBytes > MAX_ZIP_SIZE) {
+                        throw new RuntimeException(
+                                "❌ ZIP exceeded safety limit (" + MAX_ZIP_SIZE + "). Stream likely corrupted."
+                        );
+                    }
+
+                    // ✅ CONTENT-LENGTH TERMINATION (IF AVAILABLE)
+                    if (contentLength > 0 && totalBytes >= contentLength) {
+                        break;
+                    }
                 }
             }
 
+            if (totalBytes == 0) {
+                throw new RuntimeException("❌ Downloaded ZIP is EMPTY.");
+            }
+
             System.out.println("📦 ZIP Saved → " + zipFile.getAbsolutePath());
+            System.out.println("📦 Total Bytes Written → " + totalBytes);
 
             /* ✅ UNZIP */
             Path targetDir = Paths.get(
@@ -105,27 +131,53 @@ public class DownloadAtsFrameworkApi {
                     zipFile.getName().replace(".zip", "")
             );
 
-            unzip(zipFile, targetDir);
+            unzipUsingZipFile(zipFile, targetDir);
 
             System.out.println("✅ ZIP Extracted → " + targetDir);
 
         } catch (Exception e) {
+
+            if (zipFile != null && zipFile.exists()) {
+                System.out.println("🧹 Cleaning corrupt ZIP → " + zipFile.getAbsolutePath());
+                zipFile.delete();
+            }
+
             throw new RuntimeException("❌ ZIP Save / Unzip Failed", e);
         }
     }
 
     /* -------------------------------------------------- */
 
-    private static void unzip(File zipFile, Path targetDir) throws IOException {
+    private static long extractContentLength(Response response) {
+
+        try {
+            String header = response.getHeader("Content-Length");
+
+            if (header != null) {
+                long length = Long.parseLong(header);
+                System.out.println("📏 Content-Length → " + length);
+                return length;
+            }
+
+        } catch (Exception ignored) {
+        }
+
+        return -1;
+    }
+
+    /* -------------------------------------------------- */
+
+    private static void unzipUsingZipFile(File zipFile, Path targetDir) throws IOException {
 
         Files.createDirectories(targetDir);
 
-        try (ZipInputStream zis =
-                     new ZipInputStream(new FileInputStream(zipFile))) {
+        try (ZipFile zf = new ZipFile(zipFile)) {
 
-            ZipEntry entry;
+            Enumeration<? extends ZipEntry> entries = zf.entries();
 
-            while ((entry = zis.getNextEntry()) != null) {
+            while (entries.hasMoreElements()) {
+
+                ZipEntry entry = entries.nextElement();
 
                 Path filePath = targetDir.resolve(entry.getName());
 
@@ -135,11 +187,13 @@ public class DownloadAtsFrameworkApi {
 
                     Files.createDirectories(filePath.getParent());
 
-                    Files.copy(
-                            zis,
-                            filePath,
-                            StandardCopyOption.REPLACE_EXISTING
-                    );
+                    try (InputStream is = zf.getInputStream(entry)) {
+                        Files.copy(
+                                is,
+                                filePath,
+                                StandardCopyOption.REPLACE_EXISTING
+                        );
+                    }
                 }
             }
         }

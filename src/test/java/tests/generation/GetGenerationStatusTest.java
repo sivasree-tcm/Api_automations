@@ -86,10 +86,10 @@ public class GetGenerationStatusTest {
 
                                 for (Map<String, Object> item : list) {
 
-                                    Integer responseBrId =
-                                            (Integer) item.get("brId");
+                                    Integer responseRefId =
+                                            (Integer) item.get("refId");
 
-                                    if (brId.equals(responseBrId)) {
+                                    if (brId.equals(responseRefId)) {
 
                                         status = String.valueOf(item.get("status"));
 
@@ -111,8 +111,8 @@ public class GetGenerationStatusTest {
                                 Map<String, Object> map =
                                         response.jsonPath().getMap("$");
 
-                                Integer responseBrId =
-                                        (Integer) map.get("brId");
+                                Integer responseRefId =
+                                        (Integer) map.get("refId");
 
                                 status = String.valueOf(map.get("status"));
 
@@ -122,7 +122,7 @@ public class GetGenerationStatusTest {
                                 }
 
                                 isCompleted =
-                                        brId.equals(responseBrId)
+                                        brId.equals(responseRefId)
                                                 && "Completed".equalsIgnoreCase(status);
                             }
 

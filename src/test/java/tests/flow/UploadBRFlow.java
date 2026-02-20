@@ -3,13 +3,11 @@ package tests.flow;
 import org.testng.annotations.Test;
 import tests.br.UploadBusinessRequirementTest;
 import tests.export.ExportTCExcelTest;
-import tests.generation.GenerateTCTest;
+import tests.framework.DownloadAtsFrameworkTest;
+import tests.generation.*;
 import tests.generation.GetGenerationStatusTest;
-import tests.generation.GetGenerationTcStatus;
-import tests.generation.GetTSByBRTest;
-import tests.project.GetProjectDetailsTest;
-import tests.project.GetTestCaseSummaryForTSTest;
-import tests.project.GetTestCaseWithStepsTest;
+import tests.generation.ValidateATSGenerationPollingTest;
+import tests.project.*;
 import utils.BusinessRequirementStore;
 import utils.ProjectStore;
 
@@ -97,7 +95,7 @@ public class UploadBRFlow {
     @Test(dependsOnMethods = "step16_generateTC")
     public void step17_getGenerationStatus() {
         System.out.println("▶ Step 17: Wait for TC Generation");
-        new GetGenerationTcStatus().waitUntilAllCompletedForTC();
+        new GetGenerationTCStatus().waitUntilAllCompletedForTC();
     }
 
     @Test(dependsOnMethods = "step17_getGenerationStatus")
@@ -137,4 +135,47 @@ public class UploadBRFlow {
         System.out.println("▶ Step 23: Delete Test Case Step");
         new tests.testCase.DeleteTestCaseStepTest().deleteTestCaseStep();
     }
+
+    @Test(dependsOnMethods = "step23_deleteTestCaseStep")
+    public void step34_updateTestCaseStepOrder() {
+        System.out.println("▶ Step 34: Update Test Case Step Order");
+        new UpdateTestCaseStepOrderTest().updateTestCaseStepOrderApiTest();
+    }
+
+    @Test(dependsOnMethods = "step34_updateTestCaseStepOrder")
+    public void step35_updateTestCase() {
+        System.out.println("▶ Step 35: Update Test Case");
+        new UpdateTestCaseTest().updateTestCaseApiTest();
+    }
+
+    @Test(dependsOnMethods = "step35_updateTestCase")
+    public void step36_addTestCase() {
+        System.out.println("▶ Step 36: Add Test Case");
+        new AddTestCaseTest().addTestCaseApiTest();
+    }
+
+    @Test(dependsOnMethods = "step36_addTestCase")
+    public void step37_deleteTestCase() {
+        System.out.println("▶ Step 37: Delete Test Case");
+        new DeleteTestCaseTest().deleteLastTestCase();
+    }
+
+    @Test(dependsOnMethods = "step37_deleteTestCase")
+    public void step38_generateAutomationCode() {
+        System.out.println("▶ Step 38: Generate Automation Code");
+        new GenerateATSTest().generateAtsApiTest();
+    }
+
+    @Test(dependsOnMethods = "step38_generateAutomationCode")
+    public void step39_checkATSStatus() {
+        System.out.println("▶ Step 39: Check the ATS Status");
+        new ValidateATSGenerationPollingTest().validateATSGenerationWithPolling();
+    }
+
+    @Test(dependsOnMethods = "step39_checkATSStatus")
+    public void step40_downloadATSFramework() {
+        System.out.println("▶ Step 39: Download ATS Framework");
+        new DownloadAtsFrameworkTest().downloadAtsFramework();
+    }
+
 }

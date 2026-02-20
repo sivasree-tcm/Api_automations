@@ -7,7 +7,7 @@
       "role": "SUPER_ADMIN",
       "authType": "VALID",
       "expectedStatusCode": 200,
-      "request": null
+      "request": {}
     }
   ]
 }

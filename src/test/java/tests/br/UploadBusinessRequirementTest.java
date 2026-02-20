@@ -15,7 +15,6 @@ import java.util.Map;
 
 public class UploadBusinessRequirementTest extends BaseTest {
 
-    @Test
     public void uploadBusinessRequirementTest() {
 
         ConnectionReport testData =

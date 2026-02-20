@@ -36,14 +36,9 @@ public class UploadBusinessRequirementApi {
                 // ✅ Query params
                 .queryParam("userId", userId)
                 .queryParam("projectId", projectId)
-
-                .log().all()
-
                 .when()
                 .post("/api/uploadBusinessRequirement")
-
                 .then()
-                .log().all()
                 .extract()
                 .response();
     }

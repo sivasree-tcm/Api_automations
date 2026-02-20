@@ -9,16 +9,11 @@ import report.ReportTest;
 import tests.project.GetMyProjectsTestData;
 import utils.JsonUtils;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Supplier;
 
 public class ApiTestExecutor {
 
-    /* ======================================================
-       POST / PUT (GENERIC – Register, Project, etc.)
-       ====================================================== */
     private static boolean hasMethod(Object obj, String methodName) {
         try {
             obj.getClass().getMethod(methodName);
@@ -28,6 +23,9 @@ public class ApiTestExecutor {
         }
     }
 
+    /* ======================================================
+       GENERIC EXECUTOR (POST / PUT / DOWNLOAD SAFE)
+       ====================================================== */
     public static <T> void execute(
             String scenarioName,
             T tc,
@@ -41,7 +39,8 @@ public class ApiTestExecutor {
         long start = System.currentTimeMillis();
 
         try {
-            // 🔹 Log Request if present
+
+            /* ✅ REQUEST LOGGING (SAFE) */
             try {
                 Object request =
                         tc.getClass().getMethod("getRequest").invoke(tc);
@@ -52,27 +51,39 @@ public class ApiTestExecutor {
                         JsonUtils.toJson(request)
                 ));
             } catch (Exception ignored) {
-                // Not all test cases have request
             }
 
-            // 🔹 API call
+            /* ✅ API CALL */
             Response response = apiCall.get();
 
-            // 🔹 Actual Status Code
+            /* ✅ STATUS CODE */
             test.addStep(new ReportStep(
                     "Info",
                     "Actual Status Code",
                     String.valueOf(response.getStatusCode())
             ));
 
-            // 🔹 Actual Response
-            test.addStep(new ReportStep(
-                    "Info",
-                    "Actual Response",
-                    response.asPrettyString()
-            ));
+            /* ✅ CONTENT TYPE CHECK (CRITICAL FIX) */
+            String contentType = response.getHeader("Content-Type");
 
-            // 🔹 Expected Status Code (if exists)
+            if (isBinaryResponse(contentType)) {
+
+                test.addStep(new ReportStep(
+                        "Info",
+                        "Actual Response",
+                        "[Binary Response Omitted] Content-Type → " + contentType
+                ));
+
+            } else {
+
+                test.addStep(new ReportStep(
+                        "Info",
+                        "Actual Response",
+                        response.asPrettyString()
+                ));
+            }
+
+            /* ✅ EXPECTED STATUS CODE */
             try {
                 int expectedStatusCode =
                         (int) tc.getClass()
@@ -84,11 +95,11 @@ public class ApiTestExecutor {
                         expectedStatusCode,
                         "Status code mismatch"
                 );
+
             } catch (Exception ignored) {
-                // Some test cases may not have expectedStatusCode
             }
 
-            // 🔹 Expected Status field (optional)
+            /* ✅ OPTIONAL STATUS FIELD */
             try {
                 String expectedStatus =
                         (String) tc.getClass()
@@ -105,7 +116,6 @@ public class ApiTestExecutor {
             } catch (Exception ignored) {
             }
 
-            // ✅ PASS
             test.markPassed(
                     "Passed in " +
                             (System.currentTimeMillis() - start) + " ms"
@@ -118,11 +128,10 @@ public class ApiTestExecutor {
             test.addStep(new ReportStep(
                     "Fail",
                     "Failure",
-                    e.getMessage()
+                    String.valueOf(e.getMessage())
             ));
 
             test.markFailed("Test failed");
-
 
         } finally {
             CustomReportManager.addTest(scenarioName, test);
@@ -130,7 +139,7 @@ public class ApiTestExecutor {
     }
 
     /* ======================================================
-       GET / DELETE (SPECIAL CASE – List validation)
+       GET / DELETE EXECUTOR (Also Binary Safe)
        ====================================================== */
     public static void execute(
             String scenarioName,
@@ -145,13 +154,27 @@ public class ApiTestExecutor {
         long start = System.currentTimeMillis();
 
         try {
+
             Response response = apiCall.get();
 
-            test.addStep(new ReportStep(
-                    "Info",
-                    "Actual Response",
-                    response.asPrettyString()
-            ));
+            String contentType = response.getHeader("Content-Type");
+
+            if (isBinaryResponse(contentType)) {
+
+                test.addStep(new ReportStep(
+                        "Info",
+                        "Actual Response",
+                        "[Binary Response Omitted] Content-Type → " + contentType
+                ));
+
+            } else {
+
+                test.addStep(new ReportStep(
+                        "Info",
+                        "Actual Response",
+                        response.asPrettyString()
+                ));
+            }
 
             Assert.assertEquals(
                     response.getStatusCode(),
@@ -159,7 +182,6 @@ public class ApiTestExecutor {
                     "Status code mismatch"
             );
 
-            // ===== OPTIONAL LIST VALIDATION =====
             if (hasMethod(tc, "getMinSize") && tc.getMinSize() != null) {
 
                 List<?> list =
@@ -171,7 +193,6 @@ public class ApiTestExecutor {
                         "Expected minimum size: " + tc.getMinSize()
                 );
             }
-
 
             if (tc.getRequiredField() != null) {
                 Object field =
@@ -193,12 +214,29 @@ public class ApiTestExecutor {
             test.addStep(new ReportStep(
                     "Fail",
                     "Failure",
-                    e.getMessage()
+                    String.valueOf(e.getMessage())
             ));
+
             test.markFailed("Test failed");
 
         } finally {
             CustomReportManager.addTest(scenarioName, test);
         }
+    }
+
+    /* ======================================================
+       HELPER – Binary Detection (CRITICAL)
+       ====================================================== */
+    private static boolean isBinaryResponse(String contentType) {
+
+        if (contentType == null) return false;
+
+        contentType = contentType.toLowerCase();
+
+        return contentType.contains("octet-stream")
+                || contentType.contains("zip")
+                || contentType.contains("pdf")
+                || contentType.contains("excel")
+                || contentType.contains("spreadsheet");
     }
 }

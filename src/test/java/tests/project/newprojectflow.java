@@ -172,7 +172,7 @@ public class newprojectflow extends BaseTest {
     @Test(dependsOnMethods = "step26_generateTC")
     public void step27_waitForTCCompletion() throws InterruptedException {
         System.out.println("▶ Step 27: Wait for TC Generation");
-        new GetGenerationTcStatus().waitUntilAllCompletedForTC();
+        new GetGenerationTCStatus().waitUntilAllCompletedForTC();
     }
 
     @Test(dependsOnMethods = "step27_waitForTCCompletion")

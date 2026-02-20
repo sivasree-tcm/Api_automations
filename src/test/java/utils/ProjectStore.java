@@ -50,6 +50,20 @@ public class ProjectStore {
         }
         return PROJECT_MAP.get(selectedProjectId);
     }
+    public static void updateProject(Integer projectId, String projectName) {
+
+        if (projectId == null || projectName == null || projectName.isBlank()) {
+            throw new RuntimeException("❌ Invalid project update request.");
+        }
+
+        PROJECT_MAP.put(projectId, projectName);
+
+        System.out.println(
+                "✅ ProjectStore Updated → ID: " + projectId +
+                        " | Name: " + projectName
+        );
+    }
+
 
     // -------------------------------------------------
     // ✅ NEW: AUTOMATION FRAMEWORK

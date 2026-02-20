@@ -43,7 +43,7 @@ public class ExportTSExcelTest extends BaseTest {
 
         ConnectionReport testData =
                 JsonUtils.readJson(
-                        "testdata/export/exporttsexcel.json",
+                        "testdata/export/exportTSExcel.json",
                         ConnectionReport.class
                 );
 

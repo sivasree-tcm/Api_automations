@@ -20,6 +20,11 @@ public class QuickGenerationFlow {
     @Test
     public void step1_getProjects() {
         ProjectStore.clear();
+        GeneratedTSStore.clear();
+        TestScenarioStore.clear();
+        TestCaseStore.clear();
+        ATSStore.clear();
+        BusinessRequirementStore.clear();
         new tests.project.GetProjectsTest().fetchProjects();
     }
 
@@ -66,7 +71,7 @@ public class QuickGenerationFlow {
     public void step9_getBRs() {
         System.out.println("▶ Step 9: Get BRs");
         BusinessRequirementStore.clear();
-        new UploadBusinessRequirementTest().uploadBusinessRequirementTest();
+        new tests.br.GetBusinessRequirementTest().fetchBRsForProject();
     }
 
 //    @Test(dependsOnMethods = "step9_getBRs")
@@ -153,5 +158,11 @@ public class QuickGenerationFlow {
     public void step23_deleteTestCaseStep() {
         System.out.println("▶ Step 23: Delete Test Case Step");
         new tests.testCase.DeleteTestCaseStepTest().deleteTestCaseStep();
+        ProjectStore.clear();
+        GeneratedTSStore.clear();
+        TestScenarioStore.clear();
+        TestCaseStore.clear();
+        ATSStore.clear();
+        BusinessRequirementStore.clear();
     }
 }

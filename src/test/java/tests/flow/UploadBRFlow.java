@@ -8,14 +8,18 @@ import tests.generation.*;
 import tests.generation.GetGenerationStatusTest;
 import tests.generation.ValidateATSGenerationPollingTest;
 import tests.project.*;
-import utils.BusinessRequirementStore;
-import utils.ProjectStore;
+import utils.*;
 
 public class UploadBRFlow {
 
     @Test
     public void step1_getProjects() {
         ProjectStore.clear();
+        GeneratedTSStore.clear();
+        TestScenarioStore.clear();
+        TestCaseStore.clear();
+        ATSStore.clear();
+        BusinessRequirementStore.clear();
         new tests.project.GetProjectsTest().fetchProjects();
     }
 
@@ -40,6 +44,7 @@ public class UploadBRFlow {
 
     @Test(dependsOnMethods = "step4_deleteBRs")
     public void step5_uploadBusinessRequirement() {
+        System.out.println("▶ Step 5: Upload BRs");
         new UploadBusinessRequirementTest().uploadBusinessRequirementTest();
     }
 
@@ -176,6 +181,12 @@ public class UploadBRFlow {
     public void step26_downloadATSFramework() {
         System.out.println("▶ Step 26: Download ATS Framework");
         new DownloadAtsFrameworkTest().downloadAtsFramework();
+        ProjectStore.clear();
+        GeneratedTSStore.clear();
+        TestScenarioStore.clear();
+        TestCaseStore.clear();
+        ATSStore.clear();
+        BusinessRequirementStore.clear();
     }
 
 }

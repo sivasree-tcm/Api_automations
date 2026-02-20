@@ -8,6 +8,8 @@ public class MapLlmReport {
 
     private String scenario;
     private List<TestCase> testCases;
+    public String getScenario() { return scenario; }
+    public List<TestCase> getTestCases() { return testCases; }
 
     public static class TestCase {
 

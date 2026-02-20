@@ -76,9 +76,9 @@ public class GetGenerationTCStatus {
                             boolean isCompleted = false;
 
                                 for (Map<String, Object> item : list) {
-                                    Integer responseRefId =
+                                    Integer responseTsId =
                                             Integer.valueOf(String.valueOf(item.get("refId")));
-                                    if (responseRefId.equals(tsId)) {
+                                    if (responseTsId.equals(tsId)) {
                                         String status =
                                                 String.valueOf(item.get("status"));
 

@@ -1,6 +1,7 @@
 package tests.flow;
 
 import org.testng.annotations.Test;
+import tests.ats.LoadATSFilesTest;
 import tests.br.UploadBusinessRequirementTest;
 import tests.export.ExportTCExcelTest;
 import tests.framework.DownloadAtsFrameworkTest;
@@ -181,12 +182,29 @@ public class UploadBRFlow {
     public void step26_downloadATSFramework() {
         System.out.println("▶ Step 26: Download ATS Framework");
         new DownloadAtsFrameworkTest().downloadAtsFramework();
+    }
+
+    @Test(dependsOnMethods = "step26_downloadATSFramework")
+    public void step27_loadATSFiles() {
+        System.out.println("▶ Step 27: Load ATS Files");
+        new LoadATSFilesTest().loadATSFiles();
         ProjectStore.clear();
         GeneratedTSStore.clear();
         TestScenarioStore.clear();
         TestCaseStore.clear();
         ATSStore.clear();
         BusinessRequirementStore.clear();
+    }
+
+//    @Test(dependsOnMethods = "step27_loadATSFiles")
+    public void step28_AtsRunner() {
+        System.out.println("▶ Step 28: Ats Runner");
+        AtsFrameworkRunner.run(
+                ProjectStore.getProjectName(ProjectStore.getSelectedProjectId()),
+                ProjectStore.getAutomationFramework(),
+                TestCaseStore.getAnyTestCaseNumber()
+        );
+
     }
 
 }

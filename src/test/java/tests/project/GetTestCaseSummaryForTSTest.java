@@ -75,7 +75,11 @@ public class GetTestCaseSummaryForTSTest extends BaseTest {
                                     Integer.valueOf(
                                             String.valueOf(item.get("testCaseId"))
                                     );
+                            String tcNumber = String.valueOf(
+                                    item.get("testCaseNumber")   // ⭐ CRITICAL
+                            );
                             TestCaseStore.add(tcId);
+                            TestCaseStore.addTestCaseNumber(tcNumber);
                         }
 
                         System.out.println(

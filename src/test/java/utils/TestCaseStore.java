@@ -8,12 +8,25 @@ import java.util.ArrayList;
 public class TestCaseStore {
 
     private static final Set<Integer> TEST_CASE_IDS = new LinkedHashSet<>();
+    private static final Set<String> TEST_CASE_NUMBERS = new LinkedHashSet<>();
 
     // ✅ Add TC
     public static void add(Integer tcId) {
         if (tcId != null) {
             TEST_CASE_IDS.add(tcId);
         }
+    }
+
+    // ✅ NEW
+    public static void addTestCaseNumber(String tcNumber) {
+        if (tcNumber != null && !tcNumber.isBlank()) {
+            TEST_CASE_NUMBERS.add(tcNumber);
+        }
+    }
+
+    // ✅ NEW
+    public static String getAnyTestCaseNumber() {
+        return TEST_CASE_NUMBERS.stream().findFirst().orElse(null);
     }
 
     // ✅ Used by Update TC / Get TC Steps

@@ -3,54 +3,107 @@ package tests.ats;
 import api.ats.LoadATSFilesApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
 import tests.connection.ConnectionReport;
 import tests.user.ApiTestExecutor;
-import utils.JsonUtils;
-import utils.TokenUtil;
+import utils.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoadATSFilesTest extends BaseTest {
 
-@Test
-    public void loadAtsFilesApiTest() {
+    public void loadATSFiles() {
 
-        // ✅ Load dummy testcase ONLY for executor reporting
-        ConnectionReport testData =
-                JsonUtils.readJson(
-                        "testdata/ats/loadATSFiles.json",
-                        ConnectionReport.class
-                );
+        Integer projectId = ProjectStore.getSelectedProjectId();
+        if (projectId == null) {
+            throw new RuntimeException("❌ Project ID missing in ProjectStore.");
+        }
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(
-                        testData.getTestCases().get(0)
-                );
+        String projectName = ProjectStore.getProjectName(projectId);
+        String framework = ProjectStore.getAutomationFramework();
+        String storageType = ProjectStore.getStorageType();
+        String userId = String.valueOf(TokenUtil.getUserId());
+        String tcNumber = TestCaseStore.getAnyTestCaseNumber();
 
-        // ✅ Build request dynamically
+        if (projectName == null || framework == null ||
+                storageType == null || tcNumber == null) {
+            throw new RuntimeException("❌ Required store values missing.");
+        }
+
+        System.out.println("✅ Using Automation Framework → " + framework);
+
+        ConnectionReport testData = JsonUtils.readJson(
+                "testdata/ats/loadATSFiles.json",
+                ConnectionReport.class
+        );
+
+        if (testData == null || testData.getTestCases() == null) {
+            throw new RuntimeException("❌ loadATSFiles.json missing or invalid.");
+        }
+
+        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+
+            executeForType(testData, tc, projectId, userId,
+                    framework, projectName, tcNumber, storageType, "TestCase");
+
+            executeForType(testData, tc, projectId, userId,
+                    framework, projectName, tcNumber, storageType, "MenuPage");
+        }
+    }
+
+    /* ========================================================= */
+
+    private void executeForType(
+            ConnectionReport testData,
+            ConnectionReport.TestCase tc,
+            Integer projectId,
+            String userId,
+            String framework,
+            String projectName,
+            String tcNumber,
+            String storageType,
+            String requestedType
+    ) {
+
+        // ✅ BUILD PAYLOAD FIRST (CRITICAL FIX)
         Map<String, Object> request = new HashMap<>();
-        request.put("userProjectId", "64");
-        request.put("userId", TokenUtil.getUserId(tc.getRole()));
-        request.put("automationFramework", "C# + Playwright");
-        request.put("projectName", "Build-47-test7889990");
-        request.put("testCaseNumber", "TC-3530-028788");
-        request.put("storageType", "S3");
-        request.put("requestedType", "MenuPage");
+        request.put("userProjectId", String.valueOf(projectId));
+        request.put("userId", userId);
+        request.put("automationFramework", framework);
+        request.put("projectName", projectName);
+        request.put("testCaseNumber", tcNumber);
+        request.put("storageType", storageType);
+        request.put("requestedType", requestedType);
 
-        tc.setRequest(request); // ONLY required field
+        tc.setRequest(request);   // ⭐ NOW executor sees payload
 
         ApiTestExecutor.execute(
-                testData.getScenario(),
+                testData.getScenario() + " | " + requestedType,
                 tc,
                 () -> {
-                    Response response =
-                            LoadATSFilesApi.loadATSFiles(
-                                    request,
-                                    tc.getRole(),
-                                    tc.getAuthType()
-                            );
+
+                    System.out.println(
+                            "📦 Load ATS Payload (" + requestedType + ") → " + request
+                    );
+
+                    Response response = LoadATSFilesApi.loadATS(
+                            request,
+                            tc.getRole(),
+                            tc.getAuthType()
+                    );
+
+                    if (response == null) {
+                        throw new RuntimeException("❌ Load ATS API returned NULL response.");
+                    }
+
+                    if (response.getStatusCode() != tc.getExpectedStatusCode()) {
+                        throw new RuntimeException(
+                                "❌ Load ATS Failed (" + requestedType + ") → Status: "
+                                        + response.getStatusCode()
+                        );
+                    }
+
+                    System.out.println("✅ ATS Loaded Successfully → " + requestedType);
 
                     return response;
                 }

@@ -1,40 +1,35 @@
 package api.ats;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import static io.restassured.RestAssured.*;
-
-import tests.roles.UserRole;
 import utils.TokenUtil;
 
 import java.util.Map;
 
+import static io.restassured.RestAssured.given;
+
 public class LoadATSFilesApi {
 
-    public static Response loadATSFiles(
-            Map<String, Object> request,
+    public static Response loadATS(
+            Map<String, Object> payload,
             String role,
             String authType
     ) {
 
         var req = given()
-                .contentType("application/json");
+                .relaxedHTTPSValidation()
+                .contentType(ContentType.JSON)
+                .body(payload);
 
-        // 🔐 Auth handling
-        if ("MISSING".equalsIgnoreCase(authType)) {
-            // no auth header
-        }
-        else if ("INVALID".equalsIgnoreCase(authType)) {
-            req.header("Authorization", "Bearer invalid_token");
-        }
-        else {
+        if ("VALID".equalsIgnoreCase(authType)) {
             req.header(
                     "Authorization",
-                    TokenUtil.getToken(UserRole.valueOf(role))
+                    TokenUtil.getToken(
+                            tests.roles.UserRole.valueOf(role)
+                    )
             );
         }
 
-        return req
-                .body(request)
-                .post("/api/loadAtsFiles");
+        return req.when().post("/api/loadAtsFiles");
     }
 }

@@ -12,6 +12,9 @@ import java.util.Map;
 
 public class GetProjectDetailsTest extends BaseTest {
 
+    // ✅ Hard-coded framework (authoritative for entire flow)
+    private static final String DEFAULT_FRAMEWORK = "Playwright_Java";
+
     public void fetchProjectDetails(Integer expectedProjectId) {
 
         if (expectedProjectId == null) {
@@ -71,7 +74,6 @@ public class GetProjectDetailsTest extends BaseTest {
                     System.out.println("📦 Project Details Response → ");
                     System.out.println(response.asPrettyString());
 
-                    // ✅ EXACT FIX BASED ON REAL RESPONSE
                     String projectName =
                             response.jsonPath().getString("results[0].projectName");
 
@@ -86,13 +88,17 @@ public class GetProjectDetailsTest extends BaseTest {
                         throw new RuntimeException("❌ storageType missing in response.");
                     }
 
-                    // ✅ Persist into ProjectStore
+                    // ✅ Persist values into ProjectStore
                     ProjectStore.updateProject(expectedProjectId, projectName);
                     ProjectStore.setProjectName(projectName);
                     ProjectStore.setStorageType(storageType);
 
+                    // ✅ HARD-CODED FRAMEWORK (CRITICAL FIX)
+                    ProjectStore.setAutomationFramework(DEFAULT_FRAMEWORK);
+
                     System.out.println("✅ Project Name Stored → " + projectName);
                     System.out.println("✅ Storage Type Stored → " + storageType);
+                    System.out.println("✅ Automation Framework Stored → " + DEFAULT_FRAMEWORK);
 
                     return response;
                 }

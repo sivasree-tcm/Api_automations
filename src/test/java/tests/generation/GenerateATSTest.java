@@ -13,9 +13,9 @@ public class GenerateATSTest extends BaseTest {
 
     public void generateAtsApiTest() {
 
-        // ===============================
-        // 1️⃣ Validate prerequisites
-        // ===============================
+        /* ===============================
+           1️⃣ Validate prerequisites
+           =============================== */
 
         if (!TestCaseStore.hasTestCases()) {
             throw new RuntimeException(
@@ -34,9 +34,24 @@ public class GenerateATSTest extends BaseTest {
             System.out.println("⚠️ Project Name missing in Store, using fallback: " + projectName);
         }
 
-        // ===============================
-        // 2️⃣ Resolve TestCaseId (CRITICAL CHANGE)
-        // ===============================
+        /* ===============================
+           2️⃣ Resolve Automation Framework (CRITICAL FIX)
+           =============================== */
+
+        String automationFramework = ProjectStore.getAutomationFramework();
+
+        if (automationFramework == null || automationFramework.isBlank()) {
+            throw new RuntimeException(
+                    "❌ Automation Framework not set in ProjectStore. " +
+                            "Ensure GetProjectDetailsTest executed successfully."
+            );
+        }
+
+        System.out.println("✅ Using Automation Framework from Store → " + automationFramework);
+
+        /* ===============================
+           3️⃣ Resolve TestCaseId
+           =============================== */
 
         Integer testCaseId = TestCaseStore.getAnyTestCaseId();
 
@@ -46,14 +61,13 @@ public class GenerateATSTest extends BaseTest {
             );
         }
 
-        // ✅ Persist for polling validator
         ATSStore.set(testCaseId);
 
         System.out.println("🎯 ATS Triggered for TestCase → " + testCaseId);
 
-        // ===============================
-        // 3️⃣ Load JSON (Reporting Only)
-        // ===============================
+        /* ===============================
+           4️⃣ Load JSON (Reporting Only)
+           =============================== */
 
         ConnectionReport testData = JsonUtils.readJson(
                 "testdata/generation/generateATS.json",
@@ -64,28 +78,19 @@ public class GenerateATSTest extends BaseTest {
             throw new RuntimeException("❌ generateATS.json is missing or corrupt.");
         }
 
-        // ===============================
-        // 4️⃣ Execute ATS API
-        // ===============================
+        /* ===============================
+           5️⃣ Execute ATS API
+           =============================== */
 
         for (ConnectionReport.TestCase tc : testData.getTestCases()) {
 
-            Map<String, Object> request = (tc.getRequest() != null)
-                    ? new HashMap<>((Map<String, Object>) tc.getRequest())
-                    : new HashMap<>();
+            Map<String, Object> request = new HashMap<>();
 
-            // ✅ Inject TC-based payload
-            request.put("sourceString", List.of(testCaseId));   // ✅ FIXED
+            request.put("sourceString", List.of(testCaseId));     // ✅ TC based
             request.put("userId", TokenUtil.getUserId());
             request.put("projectId", projectId);
             request.put("projectName", projectName);
-
-            if (request.get("automationFramework") == null) {
-                System.out.println(
-                        "ℹ️ 'automationFramework' missing. Injecting default: Playwright_Java"
-                );
-                request.put("automationFramework", "Playwright_Java");
-            }
+            request.put("automationFramework", automationFramework); // ✅ STRICT STORE VALUE
 
             tc.setRequest(request);
 
@@ -125,6 +130,6 @@ public class GenerateATSTest extends BaseTest {
             );
         }
 
-        System.out.println("✅ Step 29: Automation Code Generation Triggered Successfully.");
+        System.out.println("✅ Step: Automation Code Generation Triggered Successfully.");
     }
 }

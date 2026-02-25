@@ -20,7 +20,7 @@
         "webFramework": "Playwright_Java",
         "mobileFrameworks": "Appium_Java",
         "autonomous": 0,
-        "projectDomain": "Agriculture",
+        "projectDomain": "Telecommunications",
         "testType": null,
         "InsightsBasedOnExistingAssets": "yes",
         "refOrgId": "1",

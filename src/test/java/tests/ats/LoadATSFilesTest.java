@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class LoadATSFilesTest extends BaseTest {
 
-
+@Test
     public void loadAtsFilesApiTest() {
 
         // ✅ Load dummy testcase ONLY for executor reporting
@@ -34,8 +34,8 @@ public class LoadATSFilesTest extends BaseTest {
         request.put("userProjectId", "64");
         request.put("userId", TokenUtil.getUserId(tc.getRole()));
         request.put("automationFramework", "C# + Playwright");
-        request.put("projectName", "Build-47-test");
-        request.put("testCaseNumber", "TC-3530-028");
+        request.put("projectName", "Build-47-test7889990");
+        request.put("testCaseNumber", "TC-3530-028788");
         request.put("storageType", "S3");
         request.put("requestedType", "MenuPage");
 

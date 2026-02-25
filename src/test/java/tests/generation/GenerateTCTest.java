@@ -66,7 +66,11 @@ public class GenerateTCTest extends BaseTest {
             request.put("refBrId", String.valueOf(brId));
 
             request.put("testType", "REGRESSION");
-            request.put("environmentName", "Piepline");
+
+            // ✅ UPDATED: Fetching dynamic environment name from ProjectStore
+            String dynamicEnv = ProjectStore.getEnvironmentName();
+            request.put("environmentName", (dynamicEnv != null) ? dynamicEnv : "Ticking");
+
             request.put("generationConfirmation", "NOW");
             request.put("testDataGeneration", "NOW");
 

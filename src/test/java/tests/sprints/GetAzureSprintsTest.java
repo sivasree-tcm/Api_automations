@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class GetAzureSprintsTest extends BaseTest {
 
-
+@Test
     public void getAzureDevOpsSprints() {
 
         var testData = JsonUtils.readJson(

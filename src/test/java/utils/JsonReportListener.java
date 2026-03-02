@@ -5,7 +5,7 @@
 //import report.CustomReportManager;
 //import report.ReportTest;
 //
-//public class JsonReportListener implements ITestListener {
+//public class implements ITestListener {
 //
 //    @Override
 //    public void onTestStart(ITestResult result) {

@@ -1,0 +1,28 @@
+{
+  "scenario": "Save Project Configuration",
+  "testCases": [
+    {
+      "tcId": "CONFIG_001",
+      "name": "Save configuration for active project",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": "dynamic",
+        "projectId": "dynamic",
+        "model": "OpenAI",
+        "refBR": "With RefBR",
+        "testDataMCP": "Generate Test Data with MCP",
+        "atsBranch": "Using MCP",
+        "azureDevOps": "Direct",
+        "dbConfig": "service account based connection",
+        "apiSettings": {
+          "temperature": 0.5,
+          "version": "v1"
+        },
+        "threshold": 1,
+        "tcFormat": "JSON"
+      }
+    }
+  ]
+}

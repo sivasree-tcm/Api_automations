@@ -1,0 +1,16 @@
+{
+  "scenario": "Fetch Environment Details",
+  "testCases": [
+    {
+      "tcId": "ENV_001",
+      "name": "Get details for current project",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": "template",
+        "projectId": 0
+      }
+    }
+  ]
+}

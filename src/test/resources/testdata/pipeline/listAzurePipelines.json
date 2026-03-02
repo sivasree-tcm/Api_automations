@@ -1,0 +1,17 @@
+{
+  "scenario": "List Azure Pipelines",
+  "testCases": [
+    {
+      "tcId": "LIST_AZURE_PIPELINES_01",
+      "name": "Validate Azure Pipelines Retrieval",
+      "role": "SUPER_ADMIN",
+      "authType": "Bearer",
+      "expectedStatusCode": 200,
+      "request": {
+        "includeYaml": true,
+        "includeClassic": true,
+        "repoNameFilter": "ATS S3"
+      }
+    }
+  ]
+}

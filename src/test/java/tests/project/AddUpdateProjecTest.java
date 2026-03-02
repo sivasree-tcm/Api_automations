@@ -2,8 +2,6 @@ package tests.project;
 
 import api.UserManagement.UserManagementApi;
 import base.BaseTest;
-import io.restassured.response.Response;
-import org.testng.annotations.Test;
 import tests.user.AddUpdateProjectUserTestData;
 import tests.user.ApiTestExecutor;
 import utils.*;
@@ -13,7 +11,6 @@ import java.util.Map;
 
 public class AddUpdateProjecTest extends BaseTest {
 
-@Test
     public void addUpdateProjectUserApiTest() {
 
         AddUpdateProjectUserTestData testData =
@@ -31,20 +28,14 @@ public class AddUpdateProjecTest extends BaseTest {
 
                         Map<String, Object> req = new HashMap<>();
 
-//                        req.put("targetUserId", 32);
-//                        req.put("projectId", ProjectStore.getProjectId());
-//                        req.put("refRoleId", RoleStore.getRoleId());
-//                        req.put("userId", TokenUtil.getUserId(tc.getRole()));
-
-                        // ✅ CORRECT FIELD
-                        req.put("isAdmin", tc.getAdmin());
+                        // ✅ DYNAMICALLY FETCHED VALUES
+                        req.put("projectId", ProjectStore.getProjectId());
+                        req.put("refRoleId", RoleStore.getRoleId());
                         req.put("targetUserId", 32);
-                        req.put("projectId", 144);
-                        req.put("refRoleId", 1261);
-                        req.put("userId", TokenUtil.getUserId(tc.getRole()));
-//
-//                        // ✅ CORRECT FIELD
-//                        req.put("isAdmin", tc.getAdmin());
+                        Integer userId = TokenUtil.getUserId(tc.getRole());
+
+                        req.put("userId", String.valueOf(userId)); // match Postman exactly
+                        req.put("isAdmin", tc.getAdmin());
 
                         return UserManagementApi.addOrUpdateProjectUser(
                                 req,

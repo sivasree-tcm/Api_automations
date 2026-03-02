@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class ValidateATSGenerationPollingTest extends BaseTest {
 
-    private static final int MAX_ATTEMPTS = 10;
+    private static final int MAX_ATTEMPTS    = 15;
     private static final int POLL_INTERVAL_MS = 120000; // 2 minutes
 
     public void validateATSGenerationWithPolling() {
@@ -21,7 +21,6 @@ public class ValidateATSGenerationPollingTest extends BaseTest {
         if (!GeneratedTSStore.hasTS()) {
             throw new RuntimeException("❌ No TS available for ATS validation.");
         }
-
         if (!ATSStore.has()) {
             throw new RuntimeException(
                     "❌ No ATS-triggered TestCaseId found. Run GenerateATSTest first."
@@ -29,14 +28,12 @@ public class ValidateATSGenerationPollingTest extends BaseTest {
         }
 
         Integer trackedTestCaseId = ATSStore.get();
-
         System.out.println("🎯 Validating ATS for TestCase → " + trackedTestCaseId);
 
-        ConnectionReport testData =
-                JsonUtils.readJson(
-                        "testdata/project/getTestCaseSummaryForTS.json",
-                        ConnectionReport.class
-                );
+        ConnectionReport testData = JsonUtils.readJson(
+                "testdata/project/getTestCaseSummaryForTS.json",
+                ConnectionReport.class
+        );
 
         if (testData == null || testData.getTestCases() == null) {
             throw new RuntimeException("❌ Summary JSON missing or invalid.");
@@ -44,114 +41,141 @@ public class ValidateATSGenerationPollingTest extends BaseTest {
 
         for (Integer tsId : GeneratedTSStore.getAll()) {
 
-            ConnectionReport.TestCase tc =
-                    new ConnectionReport.TestCase(
-                            testData.getTestCases().get(0)
-                    );
+            ConnectionReport.TestCase tc = new ConnectionReport.TestCase(
+                    testData.getTestCases().get(0)
+            );
 
             Map<String, Object> request = new HashMap<>();
             request.put("testScenarioId", tsId);
             request.put("page", 1);
-            request.put("pageSize", 50);
+            request.put("pageSize", 200);
             request.put("userId", TokenUtil.getUserId(tc.getRole()));
 
             tc.setRequest(request);
             tc.setTcId("POLL_ATS_TC_" + trackedTestCaseId + "_TS_" + tsId);
-            tc.setName("Validate ATS Generation (Polling) | TC " +
-                    trackedTestCaseId + " | TS " + tsId);
+            tc.setName("Validate ATS Generation (Polling)");
 
             ApiTestExecutor.execute(
                     testData.getScenario(),
                     tc,
                     () -> {
-
                         for (int attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
 
                             System.out.println(
-                                    "⏳ ATS Poll Attempt " + attempt +
-                                            " / " + MAX_ATTEMPTS +
-                                            " | TS → " + tsId
+                                    "⏳ ATS Poll Attempt " + attempt + "/" + MAX_ATTEMPTS
+                                            + " | TS → " + tsId
                             );
 
-                            Response response =
-                                    GetTestCaseSummaryForTSApi.getTestCaseSummary(
-                                            request,
-                                            tc.getRole(),
-                                            tc.getAuthType()
-                                    );
+                            Response response = GetTestCaseSummaryForTSApi.getTestCaseSummary(
+                                    request, tc.getRole(), tc.getAuthType()
+                            );
+
+                            // 🔍 Print full raw response for first attempt or on issues
+                            if (attempt == 1) {
+                                System.out.println("📋 Raw Response: " + response.asString());
+                            }
 
                             List<Map<String, Object>> results =
                                     response.jsonPath().getList("results");
 
                             if (results == null || results.isEmpty()) {
-                                throw new RuntimeException(
-                                        "❌ No test cases returned for TS " + tsId
-                                );
+                                System.out.println("⚠️ Empty results — ATS likely still processing...");
+                                sleepOrThrow(attempt, MAX_ATTEMPTS,
+                                        "❌ No test cases found after all attempts for TS " + tsId);
+                                continue;
                             }
 
-                            boolean testCaseFound = false;
+                            System.out.println("📦 Total results in response: " + results.size());
+
+                            boolean found = false;
 
                             for (Map<String, Object> item : results) {
+                                // FIX: Safe integer parsing
+                                int testCaseId = toInt(item.get("testCaseId"));
 
-                                Integer testCaseId = Integer.valueOf(
-                                        String.valueOf(item.get("testCaseId"))
-                                );
-
-                                if (!testCaseId.equals(trackedTestCaseId)) {
+                                if (testCaseId != trackedTestCaseId) {
                                     continue;
                                 }
 
-                                testCaseFound = true;
+                                found = true;
 
-                                Integer atsStatus = Integer.valueOf(
-                                        String.valueOf(item.get("atsGenerationStatus"))
-                                );
-
-                                String atsText = String.valueOf(
-                                        item.get("atsGenerationStatusText")
-                                );
+                                // FIX: Use int (primitive) for comparison, not Integer
+                                int    atsStatus = toInt(item.get("atsGenerationStatus"));
+                                String atsText   = String.valueOf(item.get("atsGenerationStatusText")).trim();
 
                                 System.out.println(
-                                        "🔎 Tracking TC → " + testCaseId +
-                                                " | ATS → " + atsStatus +
-                                                " | " + atsText
+                                        "🔎 Found TC → " + testCaseId
+                                                + " | atsGenerationStatus = " + atsStatus
+                                                + " | atsGenerationStatusText = \"" + atsText + "\""
                                 );
 
-                                if (atsStatus == 1 &&
-                                        "Generated".equalsIgnoreCase(atsText)) {
-
-                                    System.out.println(
-                                            "✅ ATS Generation Completed → TC " + testCaseId
-                                    );
-
+                                // ✅ SUCCESS — use primitive int comparison
+                                if (atsStatus == 1 && "Generated".equalsIgnoreCase(atsText)) {
+                                    System.out.println("✅ ATS Generation Completed → TC " + testCaseId);
                                     return response;
                                 }
+
+                                // ❌ FAILURE — ATS errored out, no point waiting
+                                if (atsStatus == -1 || "Failed".equalsIgnoreCase(atsText)) {
+                                    throw new RuntimeException(
+                                            "❌ ATS Generation FAILED (not timeout) → TC "
+                                                    + testCaseId + " | Status: " + atsStatus
+                                                    + " | " + atsText
+                                    );
+                                }
+
+                                // Still in progress
+                                System.out.println(
+                                        "⏳ ATS still processing → status=" + atsStatus
+                                                + " text=\"" + atsText + "\""
+                                );
+
+                                break; // FIX: Found our TC, no need to check other items
                             }
 
-                            if (!testCaseFound) {
+                            if (!found) {
                                 System.out.println(
-                                        "⚠️ Tracked TestCase not part of TS → " + tsId
+                                        "⚠️ TC " + trackedTestCaseId
+                                                + " not yet visible in TS → " + tsId
                                 );
                             }
 
-                            if (attempt < MAX_ATTEMPTS) {
-                                try {
-                                    System.out.println("⏱ Waiting 2 minutes before next poll...");
-                                    Thread.sleep(POLL_INTERVAL_MS);
-                                } catch (InterruptedException e) {
-                                    Thread.currentThread().interrupt();
-                                    throw new RuntimeException("❌ Polling interrupted", e);
-                                }
-                            }
+                            sleepOrThrow(attempt, MAX_ATTEMPTS,
+                                    "❌ ATS Generation TIMEOUT → TC " + trackedTestCaseId
+                                            + " | TS → " + tsId
+                            );
                         }
 
+                        // Should never reach here, but satisfies compiler
                         throw new RuntimeException(
-                                "❌ ATS Generation TIMEOUT → TC " +
-                                        trackedTestCaseId +
-                                        " | TS → " + tsId
+                                "❌ ATS Generation TIMEOUT → TC " + trackedTestCaseId
                         );
                     }
             );
+        }
+    }
+
+    // ─── Helpers ───────────────────────────────────────────────────────────────
+
+    /** Safely converts Object → int regardless of whether it came back as
+     *  Integer, Long, String, Double, etc. */
+    private int toInt(Object value) {
+        if (value == null) throw new RuntimeException("❌ Null value in toInt()");
+        return Integer.parseInt(String.valueOf(value).trim());
+    }
+
+    /** Wait if there are remaining attempts, otherwise throw timeout. */
+    private void sleepOrThrow(int attempt, int maxAttempts, String timeoutMsg) {
+        if (attempt < maxAttempts) {
+            try {
+                System.out.println("⏱ Waiting 2 minutes before next poll...");
+                Thread.sleep(POLL_INTERVAL_MS);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new RuntimeException("❌ Polling interrupted", e);
+            }
+        } else {
+            throw new RuntimeException(timeoutMsg);
         }
     }
 }

@@ -87,8 +87,7 @@ public class EmailSender {
             e.printStackTrace();
 
             throw new RuntimeException(
-                    "❌ Email sending failed → " + e.getMessage(),
-                    e
+                    "❌ Email sending failed → " + e.getMessage()
             );
         }
     }

@@ -22,7 +22,7 @@ public class GetLlmModelsTest extends BaseTest {
 
         // 👇 Stores BOTH multimodal + chat model IDs
 //        LlmModelSelector.selectAndStoreModels(response);
-        ModelStore.setChatModelId(309);
-        ModelStore.setMultimodalModelId(2);
+        ModelStore.setChatModelId(316);
+        ModelStore.setMultimodalModelId(315);
     }
 }

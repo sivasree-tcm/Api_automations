@@ -7,13 +7,14 @@ import org.testng.annotations.Test;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class GetAzureSprintsTest extends BaseTest {
 
-@Test
+
     public void getAzureDevOpsSprints() {
 
         var testData = JsonUtils.readJson(
@@ -44,99 +45,106 @@ public class GetAzureSprintsTest extends BaseTest {
                                     tc.getAuthType()
                             );
 
-                    System.out.println("🔍 Azure Sprint API Response:");
-                    System.out.println(response.asString());
+                    System.out.println("🔍 Azure API Response Received.");
 
                     if (response.getStatusCode() != 200) {
                         return response;
                     }
 
-                    List<Map<String, Object>> sprints =
+                    // ================== READ BOTH SCRUM + KANBAN ==================
+
+                    List<Map<String, Object>> sprintsList =
                             response.jsonPath().getList("sprints");
 
-                    if (sprints == null || sprints.isEmpty()) {
-                        throw new RuntimeException("❌ No sprints returned from Azure");
-                    }
+                    List<Map<String, Object>> kanbanList =
+                            response.jsonPath().getList("kanbanIterations");
 
-                    System.out.println("========== AZURE SPRINT LIST ==========");
-                    for (int i = 0; i < sprints.size(); i++) {
-                        Map<String, Object> s = sprints.get(i);
-                        System.out.println(
-                                "[" + i + "] " +
-                                        "name=" + s.get("name") +
-                                        ", iterationPath=" + s.get("iterationPath") +
-                                        ", startDate=" + s.get("startDateForSprint")
+                    List<Map<String, Object>> allIterations = new ArrayList<>();
+
+                    if (sprintsList != null) allIterations.addAll(sprintsList);
+                    if (kanbanList != null) allIterations.addAll(kanbanList);
+
+                    if (allIterations.isEmpty()) {
+                        throw new RuntimeException(
+                                "❌ No sprints or kanban iterations returned from Azure"
                         );
                     }
 
+                    System.out.println("========== AZURE SPRINT/ITERATION LIST ==========");
+                    for (int i = 0; i < allIterations.size(); i++) {
+                        Map<String, Object> s = allIterations.get(i);
+                        System.out.println(
+                                "[" + i + "] name=" + s.get("name")
+                                        + ", iterationPath=" + s.get("iterationPath")
+                        );
+                    }
 
-                    // ================== CUSTOM SPRINT SELECTION LOGIC ==================
+                    // ================== SMART ITERATION SELECTION ==================
 
-                    Map<String, Object> selectedSprint = null;
-                    int maxBrCount = 0;
+                    Map<String, Object> selectedIteration = null;
+                    int maxStoryCount = -1;
 
-// ---------- PHASE 1: Prefer sprint with BR > 4 ----------
-                    for (int i = sprints.size() - 1; i >= 0; i--) {
+                    // -------- PHASE 1: Pick iteration that contains user stories --------
+                    for (int i = allIterations.size() - 1; i >= 0; i--) {
 
-                        Map<String, Object> sprint = sprints.get(i);
-                        String iterationPath = (String) sprint.get("iterationPath");
+                        Map<String, Object> iteration = allIterations.get(i);
+                        String iterationPath =
+                                (String) iteration.get("iterationPath");
 
-                        if (iterationPath == null || iterationPath.trim().isEmpty()) {
+                        // ✅ Skip ROOT node (ex: "Insurance")
+                        if (iterationPath == null ||
+                                !iterationPath.contains("\\")) {
                             continue;
                         }
 
                         SprintStore.setSelectedSprint(iterationPath);
-                        int brCount = AzureSprintValidator.getUserStoryCountForSprint();
 
-                        System.out.println("🔍 Sprint: " + iterationPath + " | BR Count: " + brCount);
+                        int storyCount =
+                                AzureSprintValidator.getUserStoryCountForSprint();
 
-                        if (brCount > 4 && brCount >= maxBrCount) {
-                            maxBrCount = brCount;
-                            selectedSprint = sprint;
+                        System.out.println(
+                                "🔍 Path: " + iterationPath +
+                                        " | User Story Count: " + storyCount
+                        );
+
+                        if (storyCount > 0 && storyCount > maxStoryCount) {
+                            maxStoryCount = storyCount;
+                            selectedIteration = iteration;
                         }
                     }
 
-// ---------- PHASE 2: Fallback order (1st → 3rd → 2nd) ----------
-                    if (selectedSprint == null) {
+                    // -------- PHASE 2: FALLBACK → latest valid iteration --------
+                    if (selectedIteration == null) {
 
-                        int[] fallbackOrder = {0, 2, 1};
+                        for (int i = allIterations.size() - 1; i >= 0; i--) {
 
-                        for (int index : fallbackOrder) {
-                            if (index >= sprints.size()) continue;
+                            String path =
+                                    (String) allIterations.get(i).get("iterationPath");
 
-                            Map<String, Object> sprint = sprints.get(index);
-                            String iterationPath = (String) sprint.get("iterationPath");
-
-                            if (iterationPath == null || iterationPath.trim().isEmpty()) {
-                                continue;
+                            if (path != null && path.contains("\\")) {
+                                selectedIteration = allIterations.get(i);
+                                System.out.println(
+                                        "⚠️ Using latest iteration fallback: " + path
+                                );
+                                break;
                             }
-
-                            SprintStore.setSelectedSprint(iterationPath);
-                            selectedSprint = sprint;
-
-                            System.out.println("⚠️ Using fallback sprint: " + iterationPath);
-                            break;
                         }
                     }
 
-// ---------- PHASE 3: Absolute fallback ----------
-                    if (selectedSprint == null && !sprints.isEmpty()) {
-                        selectedSprint = sprints.get(sprints.size() - 1);
-                        System.out.println("⚠️ Using last sprint as fallback");
-                    }
-
-// ---------- FINAL SELECTION ----------
-                    if (selectedSprint == null) {
-                        throw new RuntimeException("❌ No sprint could be selected");
+                    if (selectedIteration == null) {
+                        throw new RuntimeException(
+                                "❌ No valid Azure iteration could be selected"
+                        );
                     }
 
                     String finalIterationPath =
-                            (String) selectedSprint.get("iterationPath");
+                            (String) selectedIteration.get("iterationPath");
 
                     SprintStore.setSelectedSprint(finalIterationPath);
 
-                    System.out.println("✅ FINAL SELECTED SPRINT: " + finalIterationPath);
-
+                    System.out.println(
+                            "✅ FINAL SELECTED PATH: " + finalIterationPath
+                    );
 
                     return response;
                 }

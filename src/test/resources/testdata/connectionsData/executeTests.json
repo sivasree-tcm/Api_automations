@@ -1,0 +1,20 @@
+{
+  "scenario": "Azure Pipeline Execution API",
+  "testCases": [
+    {
+      "tcId": "TC_EXEC_01",
+      "name": "Execute Automation Test Pipeline",
+      "description": "Trigger Azure DevOps pipeline with dynamic Project and TC IDs",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectName": "DYNAMIC",
+        "userId": "DYNAMIC",
+        "refProjectId": "DYNAMIC",
+        "pipelineId": 130,
+        "selectedData": []
+      }
+    }
+  ]
+}

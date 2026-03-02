@@ -26,8 +26,8 @@
         "refOrgId": "1",
         "storageType": "S3",
         "connectionId": "{{connectionId}}",
-        "devopsProjectName": "f3c9e398-fa65-4695-bc19-b5172acd23a6",
-        "teams": "Insurance Team",
+        "devopsProjectName": "2702f85d-556d-4d32-a00b-87840ca2739d",
+        "teams": "bcc44224-daec-4f79-9bdd-eb381d709b0a",
         "platform": "{{platform}}"
       }
     }

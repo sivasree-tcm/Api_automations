@@ -19,11 +19,18 @@ public class ReportTest {
     }
 
     public void addStep(ReportStep step) {
+
+        if (step == null) return;
+
         steps.add(CustomReportManager.step(
-                step.getType(),
-                step.getLabel(),
-                step.getValue()
+                safe(step.getType()),
+                safe(step.getLabel()),
+                safe(step.getValue())
         ));
+    }
+
+    private String safe(String v) {
+        return v == null ? "" : v;
     }
 
     public void markPassed(String msg) {

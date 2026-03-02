@@ -1,3 +1,4 @@
+
 package tests.user;
 
 import io.restassured.response.Response;
@@ -134,28 +135,7 @@ public class ApiTestExecutor {
             test.markFailed("Test failed");
 
         } finally {
-
-            // ===== AUTO DETECT RUNNER CLASS (SAFE) =====
-            String runnerName = "UnknownRunner";
-
-            try {
-                StackTraceElement[] stack = Thread.currentThread().getStackTrace();
-
-                for (StackTraceElement e : stack) {
-                    if (e.getClassName().contains("runner")
-                            || e.getClassName().contains("Flow")
-                            || e.getClassName().contains("Runner")) {
-
-                        runnerName =
-                                e.getClassName()
-                                        .substring(e.getClassName().lastIndexOf('.') + 1);
-                        break;
-                    }
-                }
-            } catch (Exception ignored) {}
-
-            // ===== NEW SAFE CALL =====
-            CustomReportManager.addTest(runnerName, scenarioName, test);
+            CustomReportManager.addTest(scenarioName, test);
         }
     }
 
@@ -240,29 +220,8 @@ public class ApiTestExecutor {
 
             test.markFailed("Test failed");
 
-        }finally {
-
-            // ===== AUTO DETECT RUNNER CLASS (SAFE) =====
-            String runnerName = "UnknownRunner";
-
-            try {
-                StackTraceElement[] stack = Thread.currentThread().getStackTrace();
-
-                for (StackTraceElement e : stack) {
-                    if (e.getClassName().contains("runner")
-                            || e.getClassName().contains("Flow")
-                            || e.getClassName().contains("Runner")) {
-
-                        runnerName =
-                                e.getClassName()
-                                        .substring(e.getClassName().lastIndexOf('.') + 1);
-                        break;
-                    }
-                }
-            } catch (Exception ignored) {}
-
-            // ===== NEW SAFE CALL =====
-            CustomReportManager.addTest(runnerName, scenarioName, test);
+        } finally {
+            CustomReportManager.addTest(scenarioName, test);
         }
     }
 

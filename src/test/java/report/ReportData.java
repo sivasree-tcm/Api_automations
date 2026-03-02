@@ -1,18 +1,26 @@
 package report;
 
 import java.util.List;
+import tests.user.ReportScenario;
 
 public class ReportData {
-    public ReportSummary summary;
-    public List<ReportTest> tests;
 
+    private ReportSummary summary;
+    private List<ReportScenario> scenarios;
 
-        public void setSummary(ReportSummary summary) {
-            this.summary = summary;
-        }
-
-        public void setTests(List<ReportTest> tests) {
-            this.tests = tests;
-        }
+    public ReportSummary getSummary() {
+        return summary;
     }
 
+    public void setSummary(ReportSummary summary) {
+        this.summary = summary;
+    }
+
+    public List<ReportScenario> getScenarios() {
+        return scenarios;
+    }
+
+    public void setScenarios(List<ReportScenario> scenarios) {
+        this.scenarios = scenarios;
+    }
+}

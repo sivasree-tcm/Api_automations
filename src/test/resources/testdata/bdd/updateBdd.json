@@ -9,7 +9,7 @@
       "expectedStatusCode": 200,
       "request": {
         "testCaseId": "18480",
-        "bddContent": "No BDD content available."
+        "bddContent": "Scenario: Verify that clicking the 'Sign In' button displays 'Insurance Search'\\nGiven I navigate to the application URL\\nThen 'TickingMinds_Test' is displayed\\nWhen I click 'Sign In' button\\nThen 'Insurance Search' is displayed\""
       }
     }
   ]

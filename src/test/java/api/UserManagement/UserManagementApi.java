@@ -12,9 +12,8 @@ public class UserManagementApi {
             Object request,
             String role
     ) {
-
         var req = given()
-                .baseUri("https://test.cognitest.ai")
+                .relaxedHTTPSValidation() // Added for consistency with your other APIs
                 .contentType(ContentType.JSON);
 
         // Authorization handling
@@ -26,11 +25,13 @@ public class UserManagementApi {
             req.body(request);
         }
 
+        // Removed hardcoded baseUri; uses global config now
         return req.post("/addUpdateProjectUser");
     }
-    public static Response toggleUserStatus(Object request, String role) {
 
+    public static Response toggleUserStatus(Object request, String role) {
         var req = given()
+                .relaxedHTTPSValidation()
                 .contentType(ContentType.JSON);
 
         if (!"NO_AUTH".equalsIgnoreCase(role)) {
@@ -43,5 +44,4 @@ public class UserManagementApi {
 
         return req.post("/toggleUserStatus");
     }
-
 }

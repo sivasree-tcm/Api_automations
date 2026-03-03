@@ -21,7 +21,7 @@
           "version": "v1"
         },
         "threshold": 1,
-        "tcFormat": "JSON"
+        "tcFormat": "BDD"
       }
     }
   ]

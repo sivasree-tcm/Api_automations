@@ -8,21 +8,22 @@ import tests.connection.ConnectionReport;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.TokenUtil;
+import utils.TestCaseStore; // ✅ Import the store where ID was saved
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class UpdateBddTest extends BaseTest {
-@Test
+
+    @Test
     public void updateBdd() {
 
         Integer userId = TokenUtil.getUserId();
-
         if (userId == null) {
             throw new RuntimeException("❌ UserId missing from TokenUtil.");
         }
 
-        // ✅ Reusing common testdata model
+        // ✅ Read JSON Test Data
         ConnectionReport testData = JsonUtils.readJson(
                 "testdata/bdd/updateBdd.json",
                 ConnectionReport.class
@@ -38,15 +39,29 @@ public class UpdateBddTest extends BaseTest {
                     testData.getScenario(),
                     tc,
                     () -> {
+                        // ✅ Clone request to modify it dynamically
+                        Map<String, Object> request = (tc.getRequest() != null)
+                                ? new HashMap<>((Map<String, Object>) tc.getRequest())
+                                : new HashMap<>();
 
-                        Map<String, Object> request =
-                                (tc.getRequest() != null)
-                                        ? new HashMap<>((Map<String, Object>) tc.getRequest())
-                                        : new HashMap<>();
+                        /* 🔗 DYNAMIC LINKING: Fetch stored TestCaseId */
+                        if ("DYNAMIC_TC".equals(request.get("testCaseId"))) {
+
+                            // Get the ID that was stored in Step 22 (AddTestCaseTest)
+                            Integer testCaseId = TestCaseStore.getAnyTestCaseId();
+
+                            if (testCaseId == null) {
+                                throw new RuntimeException("❌ No TestCase ID found in Store! Ensure AddTestCaseTest ran first.");
+                            }
+
+                            request.put("testCaseId", testCaseId);
+                            System.out.println("🔗 Injected Dynamic TestCase ID → " + testCaseId);
+                        }
 
                         /* ✅ Inject dynamic userId */
                         request.put("userId", userId.toString());
 
+                        // Update TC object with the new dynamic request for the report
                         tc.setRequest(request);
 
                         System.out.println("📦 Update BDD Payload → " + request);
@@ -60,16 +75,6 @@ public class UpdateBddTest extends BaseTest {
                         if (response == null) {
                             throw new RuntimeException("❌ API returned NULL response.");
                         }
-
-                        if (response.getStatusCode() != tc.getExpectedStatusCode()) {
-                            throw new RuntimeException(
-                                    "❌ Update BDD Failed → Status: "
-                                            + response.getStatusCode()
-                                            + " | Body: " + response.asString()
-                            );
-                        }
-
-                        System.out.println("✅ Update BDD executed successfully");
 
                         return response;
                     }

@@ -9,7 +9,7 @@ public class PromptApi {
 
     public static Response getAllPrompts(Object request, String role) {
         var req = given()
-                .baseUri("https://test.tsigma.ai");
+                .relaxedHTTPSValidation(); // standard for your environment
 
         if (!"NO_AUTH".equalsIgnoreCase(role)) {
             req.header("Authorization", TokenUtil.getToken(role));
@@ -22,26 +22,27 @@ public class PromptApi {
             }
         }
 
+        // Removed hardcoded baseUri; uses global config
         return req.get("/api/getAllPrompts");
     }
 
     public static Response createPrompt(Object request, String role) {
         return given()
-                .baseUri("https://test.tsigma.ai")
+                .relaxedHTTPSValidation()
                 .contentType(ContentType.JSON)
                 .header("Authorization", TokenUtil.getToken(role))
                 .body(request)
-                .log().all() // 👈 Logs the JSON you are sending
+                .log().all()
                 .post("/api/createPrompt")
                 .then()
-                .log().all() // 👈 Logs the error message from the server
+                .log().all()
                 .extract()
                 .response();
     }
 
     public static Response updatePrompt(Object request, String role) {
         return given()
-                .baseUri("https://test.tsigma.ai")
+                .relaxedHTTPSValidation()
                 .contentType(ContentType.JSON)
                 .header("Authorization", TokenUtil.getToken(role))
                 .body(request)
@@ -55,9 +56,9 @@ public class PromptApi {
 
     public static Response mapPrompt(Object request, String role) {
         return given()
+                .relaxedHTTPSValidation()
                 .contentType(ContentType.JSON)
                 .header("Connection", "close")
-                .baseUri("https://test.tsigma.ai")
                 .header("Authorization", TokenUtil.getToken(role))
                 .body(request)
                 .log().all()

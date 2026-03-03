@@ -4,7 +4,10 @@ import api.UserManagement.UserManagementApi;
 import base.BaseTest;
 import tests.user.AddUpdateProjectUserTestData;
 import tests.user.ApiTestExecutor;
-import utils.*;
+import utils.JsonUtils;
+import utils.ProjectStore;
+import utils.RoleStore;
+import utils.TokenUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,16 +29,40 @@ public class AddUpdateProjecTest extends BaseTest {
                     tc,
                     () -> {
 
-                        Map<String, Object> req = new HashMap<>();
+                        // ✅ Always create a fresh request map (DO NOT mutate original JSON map)
+                        Map<String, Object> req = new HashMap<>(tc.getRequest());
 
-                        // ✅ DYNAMICALLY FETCHED VALUES
-                        req.put("projectId", ProjectStore.getProjectId());
-                        req.put("refRoleId", RoleStore.getRoleId());
-                        req.put("targetUserId", 32);
-                        Integer userId = TokenUtil.getUserId(tc.getRole());
+                        // ✅ Fetch dynamic values safely
+                        Integer projectId = ProjectStore.getProjectId();
+                        Integer roleId = RoleStore.getRoleId();
+                        Integer actingUserId = TokenUtil.getUserId(tc.getRole());
 
-                        req.put("userId", String.valueOf(userId)); // match Postman exactly
-                        req.put("isAdmin", tc.getAdmin());
+                        if (projectId == null || roleId == null || actingUserId == null) {
+                            throw new RuntimeException("ProjectId / RoleId / ActingUserId is NULL. Check previous flow.");
+                        }
+
+                        // ✅ Inject dynamic values
+                        req.put("projectId", projectId);
+                        req.put("refRoleId", roleId);
+
+                        // ⚠ Replace hardcoded 31 with dynamic value if possible
+                        Integer targetUserId = 31; // TODO: Replace with UserStore.getTargetUserId()
+                        req.put("targetUserId", targetUserId);
+
+                        // ⚠ If backend derives from token, consider removing this field entirely
+                        req.put("userId", actingUserId);
+
+                        // ✅ Debug logging (VERY IMPORTANT)
+                        System.out.println("--------------------------------------------------");
+                        System.out.println("SCENARIO      : " + testData.getScenario());
+                        System.out.println("TC ID         : " + tc.getTcId());
+                        System.out.println("ROLE          : " + tc.getRole());
+                        System.out.println("PROJECT ID    : " + projectId);
+                        System.out.println("ROLE ID       : " + roleId);
+                        System.out.println("ACTING USER   : " + actingUserId);
+                        System.out.println("TARGET USER   : " + targetUserId);
+                        System.out.println("FINAL REQUEST : " + req);
+                        System.out.println("--------------------------------------------------");
 
                         return UserManagementApi.addOrUpdateProjectUser(
                                 req,

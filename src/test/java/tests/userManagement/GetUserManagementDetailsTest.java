@@ -37,7 +37,7 @@ public class GetUserManagementDetailsTest extends BaseTest {
            =============================== */
 
         ConnectionReport testData = JsonUtils.readJson(
-                "testdata/usermanagement/getUserManagementDetails.json",
+                "testdata/UserManagement/getUserManagementDetails.json",
                 ConnectionReport.class
         );
 

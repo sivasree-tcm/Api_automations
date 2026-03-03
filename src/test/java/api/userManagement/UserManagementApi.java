@@ -1,4 +1,4 @@
-package api.UserManagement;
+package api.userManagement;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;

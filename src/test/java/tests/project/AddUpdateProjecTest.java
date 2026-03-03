@@ -1,6 +1,6 @@
 package tests.project;
 
-import api.UserManagement.UserManagementApi;
+import api.userManagement.UserManagementApi;
 import base.BaseTest;
 import tests.user.AddUpdateProjectUserTestData;
 import tests.user.ApiTestExecutor;

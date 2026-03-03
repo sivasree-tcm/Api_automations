@@ -3,7 +3,6 @@ package tests.flow;
 import base.BaseTest;
 import org.testng.annotations.Test;
 import tests.ats.LoadATSFilesTest;
-import tests.bdd.UpdateBddTest;
 import tests.connection.DbConfigTest;
 import tests.export.ExportTCExcelTest;
 import tests.framework.DownloadAtsFrameworkTest;
@@ -256,67 +255,62 @@ public class newprojectflow extends BaseTest {
         System.out.println("▶ Step 40: Update Test Case");
         new UpdateTestCaseTest().updateTestCaseApiTest();
     }
-    @Test(dependsOnMethods = "step38_deleteTestCaseStep")
-    public void step41_updatebdd() {
-        System.out.println("▶ Step 40: Update Test Case");
-        new UpdateTestCaseTest().updateTestCaseApiTest();
-    }
 
-    @Test(dependsOnMethods = "step41_updatebdd")
-    public void step42_addTestCase() {
+    @Test(dependsOnMethods = "step40_updateTestCase")
+    public void step41_addTestCase() {
         System.out.println("▶ Step 41: Add Test Case");
-        new UpdateBddTest().updateBdd();
+        new AddTestCaseTest().addTestCaseApiTest();
     }
 
-    @Test(dependsOnMethods = "step42_addTestCase")
-    public void step43_deleteTestCase() {
+    @Test(dependsOnMethods = "step41_addTestCase")
+    public void step42_deleteTestCase() {
         System.out.println("▶ Step 42: Delete Test Case");
         new DeleteTestCaseTest().deleteLastTestCase();
     }
 
-    @Test(dependsOnMethods = "step43_deleteTestCase")
-    public void step44_generateAutomationCode() {
+    @Test(dependsOnMethods = "step42_deleteTestCase")
+    public void step43_generateAutomationCode() {
         System.out.println("▶ Step 43: Generate Automation Code");
         new GenerateATSTest().generateAtsApiTest();
     }
 
-    @Test(dependsOnMethods = "step44_generateAutomationCode")
-    public void step45_checkATSStatus() {
+    @Test(dependsOnMethods = "step43_generateAutomationCode")
+    public void step44_checkATSStatus() {
         System.out.println("▶ Step 44: Check the ATS Status");
         new ValidateATSGenerationPollingTest().validateATSGenerationWithPolling();
     }
 
-    @Test(dependsOnMethods = "step45_checkATSStatus")
-    public void step46_downloadATSFramework() {
+    @Test(dependsOnMethods = "step44_checkATSStatus")
+    public void step45_downloadATSFramework() {
         System.out.println("▶ Step 45: Download ATS Framework");
         new DownloadAtsFrameworkTest().downloadAtsFramework();
     }
 
-    @Test(dependsOnMethods = "step46_downloadATSFramework")
-    public void step47_loadATSFiles() {
+    @Test(dependsOnMethods = "step45_downloadATSFramework")
+    public void step46_loadATSFiles() {
         System.out.println("▶ Step 46: Load ATS Files");
         new LoadATSFilesTest().loadATSFiles();
     }
 
 
-    @Test(dependsOnMethods = "step47_loadATSFiles")
-    public void step48_listAzurePipelines() {
+    @Test(dependsOnMethods = "step46_loadATSFiles")
+    public void step47_listAzurePipelines() {
         System.out.println("▶ Step 28: List Azure Pipelines");
 
         // Instantiate the class and call the logic
         tests.pipeline.ListAzurePipelinesTest pipelineTest = new tests.pipeline.ListAzurePipelinesTest();
         pipelineTest.listAzurePipelines();
     }
-    @Test(dependsOnMethods = "step48_listAzurePipelines")
-    public void step49_executeAutomationTests() {
+    @Test(dependsOnMethods = "step47_listAzurePipelines")
+    public void step48_executeAutomationTests() {
         System.out.println("▶ Step 48: Triggering Automation Execution");
 
         // Instantiate the class and call the logic
         tests.connection.ExecuteTestsTest executeTest = new tests.connection.ExecuteTestsTest();
         executeTest.executeAutomationTests();
     }
-    @Test(dependsOnMethods = "step49_executeAutomationTests")
-    public void step50_validateExecutionState() {
+    @Test(dependsOnMethods = "step48_executeAutomationTests")
+    public void step49_validateExecutionState() {
         System.out.println("▶ Step 49: Polling Execution Result State");
 
         // Instantiate the class and call the logic

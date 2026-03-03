@@ -1,0 +1,13 @@
+{
+  "scenario": "Get Automation Video",
+  "testCases": [
+    {
+      "tcId": "GET_AUTOMATION_VIDEO_01",
+      "name": "Validate Automation Video Retrieval",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {}
+    }
+  ]
+}

@@ -1,10 +1,7 @@
 package tests.user;
 
-import api.UserManagement.UserManagementApi;
+import api.userManagement.UserManagementApi;
 import base.BaseTest;
-import org.testng.annotations.Test;
-import tests.user.AddUpdateProjectUserTestData;
-import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 
 import java.util.List;

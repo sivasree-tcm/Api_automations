@@ -1,0 +1,13 @@
+{
+  "scenario": "Get User Management Details For Project",
+  "testCases": [
+    {
+      "tcId": "GET_USER_MGMT_DETAILS_01",
+      "name": "Validate User Management Details Retrieval",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {}
+    }
+  ]
+}

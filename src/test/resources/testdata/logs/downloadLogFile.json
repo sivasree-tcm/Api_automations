@@ -1,0 +1,11 @@
+{
+  "scenario": "Download Log File API",
+  "testCases": [
+    {
+      "name": "DOWNLOAD_LOG_FILE_01",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200
+    }
+  ]
+}

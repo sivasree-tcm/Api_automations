@@ -33,7 +33,7 @@ public class GetAutomationVideoTest extends BaseTest {
             throw new RuntimeException("❌ Required values missing from Stores.");
         }
 
-        // Normalize framework for API (e.g., Playwright_Java → playwright)
+        // Normalize framework for API
         String normalizedFramework =
                 framework.toLowerCase().contains("playwright")
                         ? "playwright"
@@ -58,21 +58,29 @@ public class GetAutomationVideoTest extends BaseTest {
 
         for (ConnectionReport.TestCase tc : testData.getTestCases()) {
 
+            /* ✅ Build Payload BEFORE execution */
+            Map<String, Object> request = new HashMap<>();
+
+            request.put("userId", userId);
+            request.put("projectId", projectId);
+            request.put("testCaseNumber", testCaseNumber);
+            request.put("framework", normalizedFramework);
+
+            /* ✅ Attach payload to report */
+            tc.setRequest(request);
+
+            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            System.out.println("🎥 Get Automation Video API");
+            System.out.println("📁 Project   : " + projectName + " (ID: " + projectId + ")");
+            System.out.println("🧪 Test Case : " + testCaseNumber);
+            System.out.println("⚙ Framework  : " + normalizedFramework);
+            System.out.println("📦 Payload   : " + request);
+            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+
             ApiTestExecutor.execute(
                     testData.getScenario() + " | " + projectName,
                     tc,
                     () -> {
-
-                        Map<String, Object> request = new HashMap<>();
-
-                        request.put("userId", String.valueOf(userId));
-                        request.put("projectId", String.valueOf(projectId));
-                        request.put("testCaseNumber", testCaseNumber);
-                        request.put("framework", normalizedFramework);
-
-                        tc.setRequest(request);
-
-                        System.out.println("📦 Get Automation Video Payload → " + request);
 
                         Response response =
                                 GetAutomationVideoApi.getAutomationVideo(

@@ -45,11 +45,12 @@ public class TestDataGenerator {
     }
 
     public static String randomRoleName() {
-        return "Role_" + randomWord();
+        return "Senior QA Analyst";
     }
 
     public static String randomDescription() {
-        return "Auto role " + randomWord();
+        return "You are a Senior QA Automation Engineer with 10+ years of experience in US loan servicing applications — including origination, servicing, claims, payments, insurance, and borrower management platforms.\n" +
+                "Your task is to generate automation-ready test cases from the given Test Scenario. These test cases are directly consumed by an automated C# Playwright code generator.\n";
     }
 
     private static String randomWord() {

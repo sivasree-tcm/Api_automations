@@ -18,7 +18,7 @@ public class EditProjectTest extends BaseTest {
 
         EditProjectTestData testData =
                 JsonUtils.readJson(
-                        "testdata/project/EditProject.json",
+                        "testdata/project/EditProjectone.json",
                         EditProjectTestData.class
                 );
 

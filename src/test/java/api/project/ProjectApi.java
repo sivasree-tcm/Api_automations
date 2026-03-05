@@ -197,22 +197,34 @@ public class ProjectApi {
 
     // ✅ EDIT PROJECT - WITH ROLE SUPPORT
     public static Response editProject(Object request, String role) {
+        // 1. Get Base URI from a central config or system property to avoid hardcoding
+        String baseUri = System.getProperty("base.uri", "https://test.cognitest.ai");
 
         var req = given()
-                .baseUri("https://test.cognitest.ai")
+                .baseUri(baseUri)
+                .contentType(ContentType.JSON)
+                .log().ifValidationFails(); // Good practice for debugging failed dynamic tests
 
-                .contentType(ContentType.JSON);
-
-        // Authorization handling
-        if (!"NO_AUTH".equalsIgnoreCase(role)) {
-            req.header("Authorization", TokenUtil.getToken(role));
+        // 2. Dynamic Authorization
+        if (role != null && !"NO_AUTH".equalsIgnoreCase(role)) {
+            String token = TokenUtil.getToken(role);
+            if (token != null) {
+                req.header("Authorization", "Bearer " + token);
+            }
         }
 
+        // 3. Attach dynamic request body
         if (request != null) {
             req.body(request);
         }
 
-        return req.put("/api/editProject");
+        // 4. Execute PUT request
+        Response response = req.when().put("/api/editProject");
+
+        // 5. Optional: Log response details for troubleshooting dynamic data
+        System.out.println("🚀 API Request sent to: " + baseUri + "/api/editProject");
+
+        return response;
     }
     // ✅ GET USER MANAGEMENT DETAILS FOR PROJECT ID
     public static Response getUserManagementDetailsForProjectId(Object request, String role) {

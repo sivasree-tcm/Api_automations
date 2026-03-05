@@ -31,7 +31,15 @@ public class BusinessRequirementStore {
             BR_MAP.put(projectId, new ArrayList<>(brIds));
         }
     }
-
+    public static void removeBrId(Integer projectId, Integer brId) {
+        if (BR_MAP.containsKey(projectId)) {
+            List<Integer> ids = BR_MAP.get(projectId);
+            ids.remove(brId); // Removes the specific Integer object
+            if (ids.isEmpty()) {
+                BR_MAP.remove(projectId);
+            }
+        }
+    }
     /**
      * Stores the BR IDs that were specifically selected/sent for generation.
      */

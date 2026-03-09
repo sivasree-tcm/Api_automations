@@ -15,7 +15,6 @@ import java.util.Map;
 
 public class UpdateBddTest extends BaseTest {
 
-    @Test
     public void updateBdd() {
 
         Integer userId = TokenUtil.getUserId();

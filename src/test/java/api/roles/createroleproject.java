@@ -35,6 +35,6 @@ public class createroleproject {
         return req
                 .body(request)
                 .when()
-                .post("/createRole");
+                .post("/api/createRole");
     }
 }

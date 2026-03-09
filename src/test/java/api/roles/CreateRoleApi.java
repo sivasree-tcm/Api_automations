@@ -33,4 +33,3 @@ public class CreateRoleApi {
                 .post("/createRole");
     }
 }
-

@@ -1,0 +1,176 @@
+2026-03-03 21:59:13+05:30 [MCP] [info] → [PLAYWRIGHT] Service URL: http://playwright-app-service
+2026-03-03 21:59:13+05:30 [MCP] [info] → Is in AWS (Production/Test) {"isProduction":true}
+2026-03-03 21:59:13+05:30 [MCP] [info] → [STARTUP] Loading RDS credentials from API...
+2026-03-03 21:59:13+05:30 [MCP] [info] → [RETRY] Attempt 1/60 for RDS credentials...
+2026-03-03 21:59:13+05:30 [MCP] [debug] → [API] Loading RDS credentials from API endpoint...
+2026-03-03 21:59:13+05:30 [MCP] [warn] → [RETRY] RDS credentials failed on attempt 1: fetch failed
+2026-03-03 21:59:13+05:30 [MCP] [info] → [RETRY] Retrying RDS credentials in 2 seconds...
+2026-03-03 21:59:15+05:30 [MCP] [info] → [RETRY] Attempt 2/60 for RDS credentials...
+2026-03-03 21:59:15+05:30 [MCP] [debug] → [API] Loading RDS credentials from API endpoint...
+2026-03-03 21:59:15+05:30 [MCP] [warn] → [RETRY] RDS credentials failed on attempt 2: fetch failed
+2026-03-03 21:59:15+05:30 [MCP] [info] → [RETRY] Retrying RDS credentials in 2 seconds...
+2026-03-03 21:59:17+05:30 [MCP] [info] → [RETRY] Attempt 3/60 for RDS credentials...
+2026-03-03 21:59:17+05:30 [MCP] [debug] → [API] Loading RDS credentials from API endpoint...
+2026-03-03 21:59:17+05:30 [MCP] [warn] → [RETRY] RDS credentials failed on attempt 3: fetch failed
+2026-03-03 21:59:17+05:30 [MCP] [info] → [RETRY] Retrying RDS credentials in 2 seconds...
+2026-03-03 21:59:19+05:30 [MCP] [info] → [RETRY] Attempt 4/60 for RDS credentials...
+2026-03-03 21:59:19+05:30 [MCP] [debug] → [API] Loading RDS credentials from API endpoint...
+2026-03-03 21:59:19+05:30 [MCP] [warn] → [RETRY] RDS credentials failed on attempt 4: fetch failed
+2026-03-03 21:59:19+05:30 [MCP] [info] → [RETRY] Retrying RDS credentials in 2 seconds...
+2026-03-03 21:59:21+05:30 [MCP] [info] → [RETRY] Attempt 5/60 for RDS credentials...
+2026-03-03 21:59:21+05:30 [MCP] [debug] → [API] Loading RDS credentials from API endpoint...
+2026-03-03 21:59:21+05:30 [MCP] [debug] → [API] RDS credentials loaded from API successfully
+2026-03-03 21:59:21+05:30 [MCP] [debug] → [API] RDS Host {"rdsHost":"tsigma.c5kgmaeuk99l.us-east-1.rds.amazonaws.com"}
+2026-03-03 21:59:21+05:30 [MCP] [debug] → [API] RDS User {"rdsUser":"root"}
+2026-03-03 21:59:21+05:30 [MCP] [debug] → [API] RDS Database {"rdsDb":"tsigmademo"}
+2026-03-03 21:59:21+05:30 [MCP] [debug] → [API] RDS Password length {"rdsPasswordLength":8}
+2026-03-03 21:59:21+05:30 [MCP] [info] → [DEBUG] RDS credentials loaded {"host":"tsigma.c5kgmaeuk99l.us-east-1.rds.amazonaws.com","user":"root","database":"tsigmademo"}
+2026-03-03 21:59:21+05:30 [MCP] [info] → [DEBUG] isProduction flag value: true
+2026-03-03 21:59:21+05:30 [MCP] [info] → [DEBUG] Entering PRODUCTION block
+2026-03-03 21:59:21+05:30 [MCP] [info] → [DEBUG] rdsCredentials object exists {"keys":["rdsHost","rdsUser","rdsPass","rdsDb"]}
+2026-03-03 21:59:21+05:30 [MCP] [info] → [DEBUG] Production Config Values: {"host":"tsigma.c5kgmaeuk99l.us-east-1.rds.amazonaws.com","user":"root","database":"tsigmademo","hasPassword":true}
+2026-03-03 21:59:21+05:30 [MCP] [info] → [DEBUG] Production initialDbConfig constructed {"host":"tsigma.c5kgmaeuk99l.us-east-1.rds.amazonaws.com","user":"root","database":"tsigmademo","hasPassword":true}
+2026-03-03 21:59:21+05:30 [MCP] [info] → [DB] Attempting connection {"host":"tsigma.c5kgmaeuk99l.us-east-1.rds.amazonaws.com","database":"tsigmademo"}
+2026-03-03 21:59:21+05:30 [MCP] [info] → [DEBUG] initialDbConfig (Resolved Credentials): {"initialDbConfig":{"host":"tsigma.c5kgmaeuk99l.us-east-1.rds.amazonaws.com","user":"root","password":"Root2023","database":"tsigmademo","waitForConnections":true,"connectionLimit":15,"queueLimit":45,"enableKeepAlive":true,"keepAliveInitialDelay":0,"multipleStatements":true}}
+2026-03-03 21:59:21+05:30 [MCP] [info] → [STARTUP] RDS credentials loaded and pool created successfully
+2026-03-03 21:59:21+05:30 [MCP] [info] → [RETRY] Attempt 1/60 for Agent credentials...
+2026-03-03 21:59:21+05:30 [MCP] [info] → [API] Loading credentials from API endpoint...
+2026-03-03 21:59:21+05:30 [MCP] [info] → [API] Agent ID response {"agentIdData":{"key":"AGENT_ID","value":"agent_int_file"}}
+2026-03-03 21:59:21+05:30 [MCP] [info] → [API] Secret key response {"secretKeyData":{"key":"AGENT_SECRET_KEY","value":"My_agent_secret_key_98"}}
+2026-03-03 21:59:21+05:30 [MCP] [info] → [API] Credentials loaded from API successfully
+2026-03-03 21:59:21+05:30 [MCP] [info] → [API] Agent ID {"agentId":"agent_int_file"}
+2026-03-03 21:59:21+05:30 [MCP] [info] → [API] Secret key length {"secretKeyLength":22}
+2026-03-03 21:59:21+05:30 [MCP] [info] → [STARTUP]  Credentials loaded successfully:
+2026-03-03 21:59:21+05:30 [MCP] [info] → [STARTUP]    Agent ID: "agent_int_file"
+2026-03-03 21:59:21+05:30 [MCP] [info] → [STARTUP]    Secret Key Length: 22 characters
+2026-03-03 21:59:21+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T16:29:21.924Z
+2026-03-03 21:59:21+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-03 21:59:21+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxNjoyOToyMS45MjBaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiYjU4YjFjNDY5MjBkNWM0NCIsImlhdCI6MTc3MjU1NTM2MSwiZXhwIjoxNzcyNTU2NTYxfQ.bhXwN-Dy8WUxUj36xrUwZGxgjWWzwHGo-FiAn_oQGaw
+2026-03-03 21:59:21+05:30 [MCP] [info] → [JWT] WebSocket server not available for token broadcast
+2026-03-03 21:59:21+05:30 [MCP] [info] → [JWT] Token refresh system initialized - refreshing every 15 minutes
+2026-03-03 21:59:21+05:30 [MCP] [info] → [STARTUP] Testing database connection...
+2026-03-03 21:59:21+05:30 [MCP] [info] → [STARTUP] Initial database connection test successful
+2026-03-03 21:59:21+05:30 [MCP] [info] → [STARTUP] Note: Target environment database will be configured when agent connects
+2026-03-03 21:59:21+05:30 [MCP] [debug] → [DEBUG] Database connection test successful
+2026-03-03 21:59:21+05:30 [MCP] [info] → Starting integrated server with WebSocket MCP and TDGen on ws://localhost:8931
+2026-03-03 21:59:21+05:30 [MCP] [info] → MCP listening on ws://localhost:8931
+2026-03-03 22:14:21+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-03 22:14:21+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T16:44:21.991Z
+2026-03-03 22:14:21+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-03 22:14:21+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxNjo0NDoyMS45ODlaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiZDU5MTUyOGFjMTAyN2IyNyIsImlhdCI6MTc3MjU1NjI2MSwiZXhwIjoxNzcyNTU3NDYxfQ.kc5UX8dFh2mRbFtjQmoK6_5tH58ttXeScQ0Ux0vAkNU
+2026-03-03 22:29:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-03 22:29:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T16:59:22.014Z
+2026-03-03 22:29:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-03 22:29:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxNjo1OToyMi4wMTRaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiYmI4MTg1ODU0YTk0N2MyNiIsImlhdCI6MTc3MjU1NzE2MiwiZXhwIjoxNzcyNTU4MzYyfQ.qORpzPcvav4xgqYOm33WeGEtNn_nWSl0bJNsuo7uUxM
+2026-03-03 22:44:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-03 22:44:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T17:14:22.043Z
+2026-03-03 22:44:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-03 22:44:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxNzoxNDoyMi4wNDJaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiZjYwMGExZWZjMzJmNDcwMSIsImlhdCI6MTc3MjU1ODA2MiwiZXhwIjoxNzcyNTU5MjYyfQ.Z7goNHbWv0Akw2FUcYF0b6H2aUpo8ZzL6mpOSqo0-GY
+2026-03-03 22:59:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-03 22:59:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T17:29:22.069Z
+2026-03-03 22:59:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-03 22:59:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxNzoyOToyMi4wNjhaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiYmNmYjFlMTI1NzM4YmYzZSIsImlhdCI6MTc3MjU1ODk2MiwiZXhwIjoxNzcyNTYwMTYyfQ.b9YxcwivVV0s3IC7AmBGY5UMR-CehXxCi94QMAixwj8
+2026-03-03 23:14:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-03 23:14:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T17:44:22.095Z
+2026-03-03 23:14:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-03 23:14:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxNzo0NDoyMi4wOTVaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiM2I3YWQ3ZmM3YmRiY2YwYSIsImlhdCI6MTc3MjU1OTg2MiwiZXhwIjoxNzcyNTYxMDYyfQ.wbX0XeTXx7R1C6BJvjky4AnICbevg5GbghF7Rjn3Ss4
+2026-03-03 23:29:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-03 23:29:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T17:59:22.108Z
+2026-03-03 23:29:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-03 23:29:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxNzo1OToyMi4xMDdaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiOGRmNzI2NDU1NDA3NGJmMiIsImlhdCI6MTc3MjU2MDc2MiwiZXhwIjoxNzcyNTYxOTYyfQ.5K3IxSLghfCpnaIkip3XJP1fJh4LYHDx2Sdf-5HW9iA
+2026-03-03 23:44:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-03 23:44:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T18:14:22.132Z
+2026-03-03 23:44:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-03 23:44:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxODoxNDoyMi4xMzJaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiYWY0Y2Y5YzE4N2QxZTFhOCIsImlhdCI6MTc3MjU2MTY2MiwiZXhwIjoxNzcyNTYyODYyfQ.8faEdnQ4vyx79-PQt6NlCqnt660JcXQ7pInuno9OCFA
+2026-03-03 23:59:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-03 23:59:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T18:29:22.157Z
+2026-03-03 23:59:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-03 23:59:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxODoyOToyMi4xNTZaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiYzA1MWQ4MTE5NjU2MTc4NSIsImlhdCI6MTc3MjU2MjU2MiwiZXhwIjoxNzcyNTYzNzYyfQ.rfO8Zz3vfw2avTVzrfKnS3s1O3SOftAJ0-8n4Htgf2Y
+2026-03-04 00:14:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 00:14:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T18:44:22.174Z
+2026-03-04 00:14:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 00:14:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxODo0NDoyMi4xNzNaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiM2ViNzJjOWZiZjhlZTMyZSIsImlhdCI6MTc3MjU2MzQ2MiwiZXhwIjoxNzcyNTY0NjYyfQ.XzjEIm_0dJlM6Qb6Ma72CyoS5QgVeV7tfhIHODHG178
+2026-03-04 00:29:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 00:29:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T18:59:22.196Z
+2026-03-04 00:29:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 00:29:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxODo1OToyMi4xOTZaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiMGYxNTU0MGE2NDNhMTRiNyIsImlhdCI6MTc3MjU2NDM2MiwiZXhwIjoxNzcyNTY1NTYyfQ.bHlP9ehMVStHik-23_38DtuMdLLnT-2OD7sc0ex3k2w
+2026-03-04 00:44:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 00:44:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T19:14:22.212Z
+2026-03-04 00:44:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 00:44:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxOToxNDoyMi4yMTJaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNGNiZmQwMTEyZTlmNzgxMiIsImlhdCI6MTc3MjU2NTI2MiwiZXhwIjoxNzcyNTY2NDYyfQ.JQCgICHehFiK4SFp1-86sFVkWkTcpqG673kczU_FDB4
+2026-03-04 00:59:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 00:59:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T19:29:22.222Z
+2026-03-04 00:59:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 00:59:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxOToyOToyMi4yMjFaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiN2VlMjQ2ZmFmMzRmNDhhOCIsImlhdCI6MTc3MjU2NjE2MiwiZXhwIjoxNzcyNTY3MzYyfQ.jLwh2Pk6ssXqc775OVDfZB_EZ8OdfmnqNQ-mZ0UIA-U
+2026-03-04 01:14:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 01:14:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T19:44:22.241Z
+2026-03-04 01:14:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 01:14:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxOTo0NDoyMi4yNDFaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiYThmZTUzNjY0ODRhMWVjOCIsImlhdCI6MTc3MjU2NzA2MiwiZXhwIjoxNzcyNTY4MjYyfQ.wuWmMeCMYVtHkrSvHqc3gWaaAyP_M87UgT8v84YA_kk
+2026-03-04 01:29:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 01:29:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T19:59:22.261Z
+2026-03-04 01:29:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 01:29:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QxOTo1OToyMi4yNjFaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiZGY0YzVjMTY2Mzc0ZDU4YyIsImlhdCI6MTc3MjU2Nzk2MiwiZXhwIjoxNzcyNTY5MTYyfQ.WtILzBcADotKxIEzAh8-R8ZSHAqoesqEoUgLWrKH-1w
+2026-03-04 01:44:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 01:44:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T20:14:22.281Z
+2026-03-04 01:44:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 01:44:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMDoxNDoyMi4yODBaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiZGVhOTAyNzZiZWQ0ZmFmNSIsImlhdCI6MTc3MjU2ODg2MiwiZXhwIjoxNzcyNTcwMDYyfQ.bir16J82bKBQfJe-TFzRCVrqPl_3Rp6wEAPTbkFDB9I
+2026-03-04 01:59:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 01:59:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T20:29:22.300Z
+2026-03-04 01:59:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 01:59:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMDoyOToyMi4zMDBaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiM2YzYzE2NGQzNmVjZDIzYSIsImlhdCI6MTc3MjU2OTc2MiwiZXhwIjoxNzcyNTcwOTYyfQ.fUaECs1v040wq0fqZojYAcxE_CoOsABWp69n21Iqsik
+2026-03-04 02:14:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 02:14:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T20:44:22.311Z
+2026-03-04 02:14:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 02:14:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMDo0NDoyMi4zMTFaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiOGZhYzE1Y2ZhMTNhZjlmMCIsImlhdCI6MTc3MjU3MDY2MiwiZXhwIjoxNzcyNTcxODYyfQ.lZrigg702ptV_jd_3z8BNffPZs1ihgH41ht0JtMLu5o
+2026-03-04 02:29:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 02:29:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T20:59:22.329Z
+2026-03-04 02:29:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 02:29:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMDo1OToyMi4zMjlaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiODllZWVmMDhlNDIzNTBlZiIsImlhdCI6MTc3MjU3MTU2MiwiZXhwIjoxNzcyNTcyNzYyfQ.IFH6sr8KTWhimAL4tr_E4ziI6v-31LaiZoeMlp7xoQ8
+2026-03-04 02:44:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 02:44:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T21:14:22.338Z
+2026-03-04 02:44:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 02:44:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMToxNDoyMi4zMzhaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNjM1ODBhYmZiMzlkMjMwMCIsImlhdCI6MTc3MjU3MjQ2MiwiZXhwIjoxNzcyNTczNjYyfQ.jjUH-MWLM7vUHNjnjWyZLFjlLznUhO4C-vWMO_7n-08
+2026-03-04 02:59:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 02:59:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T21:29:22.351Z
+2026-03-04 02:59:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 02:59:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMToyOToyMi4zNTFaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNmFmZDc1NDJjZGViZjY0OSIsImlhdCI6MTc3MjU3MzM2MiwiZXhwIjoxNzcyNTc0NTYyfQ.AQn1Ml9NpRyKTbdB9O5lVm1fZrfwy4IOKejYpBXwAA0
+2026-03-04 03:14:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 03:14:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T21:44:22.365Z
+2026-03-04 03:14:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 03:14:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMTo0NDoyMi4zNjRaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNmJkNGUzYmZhNzNlZjVjZCIsImlhdCI6MTc3MjU3NDI2MiwiZXhwIjoxNzcyNTc1NDYyfQ.r_XcqAXq8MKmqn4z7Op9lQZX4TwU28QxJc_lB9Fcfws
+2026-03-04 03:29:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 03:29:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T21:59:22.378Z
+2026-03-04 03:29:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 03:29:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMTo1OToyMi4zNzdaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNTM3Y2ZjMWY4YmVhMzM5MyIsImlhdCI6MTc3MjU3NTE2MiwiZXhwIjoxNzcyNTc2MzYyfQ.lG5n0F7Plz_y0wQSPAI295sRz3yjSHfsCPrDfGcSUbU
+2026-03-04 03:44:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 03:44:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T22:14:22.393Z
+2026-03-04 03:44:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 03:44:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMjoxNDoyMi4zOTJaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiOTEzZGI4MzAxMjhlN2U2YyIsImlhdCI6MTc3MjU3NjA2MiwiZXhwIjoxNzcyNTc3MjYyfQ.X_43PxWGUhrF2cO9UsU_g20fyTxtfkC_5qfv-jBbA8w
+2026-03-04 03:59:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 03:59:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T22:29:22.404Z
+2026-03-04 03:59:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 03:59:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMjoyOToyMi40MDNaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNzE5NWU1NDNmMTU2ZWQ5NiIsImlhdCI6MTc3MjU3Njk2MiwiZXhwIjoxNzcyNTc4MTYyfQ.6yLPGItzWmc_pXziW32moCSj7obulxN-z4I1NlCXwO8
+2026-03-04 04:14:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 04:14:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T22:44:22.411Z
+2026-03-04 04:14:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 04:14:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMjo0NDoyMi40MTBaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNDJhNzExNjkyYjY1ODM0ZSIsImlhdCI6MTc3MjU3Nzg2MiwiZXhwIjoxNzcyNTc5MDYyfQ.L2DDX6G1PZz8qgOWTVG9BjGSfN5gvh27U1aP3PIDTY4
+2026-03-04 04:29:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 04:29:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T22:59:22.416Z
+2026-03-04 04:29:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 04:29:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMjo1OToyMi40MTVaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiMTgxYjVmNjI1NjM4N2E2OSIsImlhdCI6MTc3MjU3ODc2MiwiZXhwIjoxNzcyNTc5OTYyfQ.OUdoNz-mtqMGM5lS-vgmbRlJkbrpmlMC5uSgvwKN3c4
+2026-03-04 04:44:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 04:44:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T23:14:22.428Z
+2026-03-04 04:44:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 04:44:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMzoxNDoyMi40MjhaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiYjUwZjViYTA0N2Q4Zjk1OCIsImlhdCI6MTc3MjU3OTY2MiwiZXhwIjoxNzcyNTgwODYyfQ.tFmOZrfk_jNQAIe1xTO1pGsU6UD9cCABEhF86x0tbvU
+2026-03-04 04:59:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 04:59:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T23:29:22.441Z
+2026-03-04 04:59:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 04:59:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMzoyOToyMi40NDFaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiMzZkYjMxY2E4MmMyNzFmOSIsImlhdCI6MTc3MjU4MDU2MiwiZXhwIjoxNzcyNTgxNzYyfQ.Juc3x9PQpxtdrQxWxPPeScaH0BOQkees8tVGxcrv5uA
+2026-03-04 05:14:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 05:14:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T23:44:22.451Z
+2026-03-04 05:14:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 05:14:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMzo0NDoyMi40NTBaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNWNmNjE0NmQ5NDg0MmNjZiIsImlhdCI6MTc3MjU4MTQ2MiwiZXhwIjoxNzcyNTgyNjYyfQ.t_zsd98S0fZR_h8u2wmBtejEaFnOYF61MdcI1DroOJU
+2026-03-04 05:29:22+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-04 05:29:22+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-03T23:59:22.462Z
+2026-03-04 05:29:22+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-04 05:29:22+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0wM1QyMzo1OToyMi40NjJaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiMDc5NjJkY2Y3OGNiZTVkYyIsImlhdCI6MTc3MjU4MjM2MiwiZXhwIjoxNzcyNTgzNTYyfQ.wL9XvWFfw2RGaIYPJPw0ArNkaxiVqjq0ES0Z3M9xqCo

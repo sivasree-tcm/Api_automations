@@ -1,0 +1,12 @@
+{
+  "scenario": "Check GCS Path For BR API",
+  "testCases": [
+    {
+      "tcId": "CHECK_GCS_PATH_BR_01",
+      "name": "Check GCS path for BR",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200
+    }
+  ]
+}

@@ -55,7 +55,7 @@ public class DbConfigApi {
                 .body(request)
                 .log().all()
                 .when()
-                .post("/api/addDbInfo")
+                .post("/addDbInfo")
                 .then()
                 .log().all()
                 .extract()

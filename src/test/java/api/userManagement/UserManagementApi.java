@@ -26,7 +26,7 @@ public class UserManagementApi {
         }
 
         // Removed hardcoded baseUri; uses global config now
-        return req.post("/addUpdateProjectUser");
+        return req.post("addUpdateProjectUser");
     }
 
     public static Response toggleUserStatus(Object request, String role) {
@@ -42,6 +42,6 @@ public class UserManagementApi {
             req.body(request);
         }
 
-        return req.post("/toggleUserStatus");
+        return req.post("toggleUserStatus");
     }
 }

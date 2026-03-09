@@ -1,0 +1,11 @@
+{
+  "scenario": "Get Connections API",
+  "testCases": [
+    {
+      "name": "TC_GET_CONNECTIONS_01 - Get connections as SUPER_ADMIN",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200
+    }
+  ]
+}

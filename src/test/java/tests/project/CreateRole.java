@@ -4,7 +4,6 @@ import api.roles.CreateRoleApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import tests.connection.ConnectionReport;
-import org.testng.annotations.Test;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -12,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreateRole extends BaseTest {
-
 
     public void createRoleTest() {
 
@@ -32,14 +30,16 @@ public class CreateRole extends BaseTest {
                     tc,
                     () -> {
 
-                        // ✅ Build request fresh
+                        // ✅ Build request payload
                         Map<String, Object> req = new HashMap<>();
 
                         req.put("refProjectId", ProjectStore.getProjectId());
                         req.put("userId", TokenUtil.getUserId(tc.getRole()));
                         req.put("roleName", TestDataGenerator.randomRoleName());
-                        req.put("roleDescription",
-                                TestDataGenerator.randomDescription());
+                        req.put("roleDescription", TestDataGenerator.randomDescription());
+
+                        // ✅ Add payload to report
+                        tc.setRequest(req);
 
                         // 🔥 CALL API
                         Response response = CreateRoleApi.createRole(
@@ -48,7 +48,14 @@ public class CreateRole extends BaseTest {
                                 tc.getAuthType()
                         );
 
-                        // 🔥 EXTRACT & STORE roleId
+                        if (response == null) {
+                            throw new RuntimeException("❌ CreateRole API returned NULL response.");
+                        }
+
+                        System.out.println("📦 Create Role Payload → " + req);
+                        System.out.println("📦 Create Role Response → " + response.asPrettyString());
+
+                        // 🔥 EXTRACT roleId
                         Integer roleId = response.jsonPath().getInt("roleId");
 
                         if (roleId == null) {
@@ -57,7 +64,10 @@ public class CreateRole extends BaseTest {
                             );
                         }
 
+                        // ✅ Store roleId
                         RoleStore.setRoleId(roleId);
+
+                        System.out.println("✅ Role ID Stored → " + roleId);
 
                         return response;
                     }

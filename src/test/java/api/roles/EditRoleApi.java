@@ -27,6 +27,6 @@ public class EditRoleApi {
 
         return req
                 .body(request)
-                .post("/editRole");
+                .post("/api/editRole");
     }
 }

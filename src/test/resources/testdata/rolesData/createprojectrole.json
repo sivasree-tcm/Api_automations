@@ -7,10 +7,6 @@
       "authType": "VALID",
       "expectedStatusCode": 201,
       "request": {
-        "refProjectId": "",
-        "roleName": "",
-        "roleDescription": "",
-        "userId": ""
       }
     }
   ]

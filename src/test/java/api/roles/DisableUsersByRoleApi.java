@@ -27,6 +27,6 @@ public class DisableUsersByRoleApi {
 
         return req
                 .body(request)
-                .post("/disableUsersByRole");
+                .post("/api/disableUsersByRole");
     }
 }

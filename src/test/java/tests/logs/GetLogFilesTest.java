@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Test
+
 public class GetLogFilesTest extends BaseTest {
 
     public void getLogFilesApiTest() {

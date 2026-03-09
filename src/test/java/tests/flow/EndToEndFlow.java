@@ -4,11 +4,17 @@ import base.BaseTest;
 import org.testng.annotations.Test;
 import tests.ats.GetAutomationVideoTest;
 import tests.ats.LoadATSFilesTest;
+import tests.bdd.UpdateBddTest;
+import tests.br.CheckGcsPathForBrTest;
 import tests.connection.DbConfigTest;
+import tests.connection.GetConnectionsTest;
 import tests.export.ExportTCExcelTest;
 import tests.framework.DownloadAtsFrameworkTest;
 import tests.generation.*;
 import tests.generation.GetGenerationStatusTest;
+import tests.logs.DownloadLogFileTest;
+import tests.logs.GetLogFilesTest;
+import tests.organization.GetOrganizationsTest;
 import tests.project.*;
 import tests.modelmapping.GetLlmModelsTest;
 import tests.modelmapping.MapLlmToProjectTest;
@@ -17,6 +23,7 @@ import tests.project.GenerateTSTest;
 import tests.sprints.GetAzureSprintsTest;
 import tests.sprints.GetUserStoriesTest;
 import tests.sprints.ImportAzureUserStoriesTest;
+import tests.system.GetVersionTest;
 import tests.uploadFiles.DeleteFilesTest;
 import tests.uploadFiles.DownloadFilesTest;
 import tests.uploadFiles.UploadFilesForBRTest;
@@ -26,6 +33,16 @@ import utils.*;
 public class EndToEndFlow extends BaseTest {
 
     @Test
+    public void getOrg() {
+        new GetOrganizationsTest().getOrganizationsApiTest();
+    }
+
+    @Test(dependsOnMethods = "getOrg")
+    public void getConnections() {
+        new GetConnectionsTest().getConnectionsApiTest();
+    }
+
+    @Test(dependsOnMethods = "getOrg")
     public void step1_createProject() {
         System.out.println("▶ Step 1: Create Project");
         new createprojectflow().projectApiTest();
@@ -158,6 +175,11 @@ public class EndToEndFlow extends BaseTest {
         new GetBusinessRequirementTest().fetchBRsForProject();
     }
 
+    @Test(dependsOnMethods = "step22_getBRsRefresh")
+    public void checkGCSForBR() {
+        new CheckGcsPathForBrTest().checkGcsPathForBrApiTest();
+    }
+
     // ✅ INSERTED HERE
     @Test(dependsOnMethods = "step22_getBRsRefresh")
     public void step23_importImageForBR() {
@@ -280,13 +302,13 @@ public class EndToEndFlow extends BaseTest {
         new AddTestCaseTest().addTestCaseApiTest();
     }
     @Test(dependsOnMethods = "step42_addTestCase")
-    public void step43_addbrr() {
+    public void step43_addbr() {
         System.out.println("▶ Step 39: Add Test Case");
-        new AddTestCaseTest().addTestCaseApiTest();
+        new UpdateBddTest().updateBdd();
     }
 
 
-    @Test(dependsOnMethods = "step43_addbrr")
+    @Test(dependsOnMethods = "step43_addbr")
     public void step44_deleteTestCase() {
         System.out.println("▶ Step 40: Delete Test Case");
         new DeleteTestCaseTest().deleteLastTestCase();
@@ -338,11 +360,30 @@ public class EndToEndFlow extends BaseTest {
     public void step52_downloadATSVideo() {
         System.out.println("▶ Step 48: Download ATS Video");
         new GetAutomationVideoTest().getAutomationVideo();
+    }
+
+    @Test(dependsOnMethods = "step52_downloadATSVideo")
+    public void step53_checkVersion() {
+        System.out.println("▶ Step 53: Checking Current Version");
+        new GetVersionTest().getVersionApiTest();
+    }
+
+    @Test(dependsOnMethods = "step53_checkVersion")
+    public void step54_getLogFiles() {
+        System.out.println("▶ Step 55:  Get Log Files");
+        new GetLogFilesTest().getLogFilesApiTest();
+    }
+
+    @Test(dependsOnMethods = "step54_getLogFiles")
+    public void step55_downloadLogFiles() {
+        System.out.println("▶ Step 56:  Download Log Files");
+        new DownloadLogFileTest().downloadLogFileApiTest();
         ProjectStore.clear();
         GeneratedTSStore.clear();
         TestScenarioStore.clear();
         TestCaseStore.clear();
         ATSStore.clear();
         BusinessRequirementStore.clear();
+        LogStore.clear();
     }
 }

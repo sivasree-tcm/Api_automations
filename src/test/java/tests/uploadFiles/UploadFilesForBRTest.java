@@ -3,7 +3,7 @@ package tests.uploadFiles;
 import api.uploadFiles.UploadFilesForBRApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -25,10 +25,10 @@ public class UploadFilesForBRTest extends BaseTest {
             throw new RuntimeException("❌ No BRs found for image upload");
         }
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/uploadFiles/uploadFilesForBR.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
         // 🔥 MUST be done BEFORE copying TestCase
@@ -46,8 +46,8 @@ public class UploadFilesForBRTest extends BaseTest {
 
         for (Integer brId : brIds) {
 
-            ConnectionReport.TestCase tc =
-                    new ConnectionReport.TestCase(
+            Report.TestCase tc =
+                    new Report.TestCase(
                             testData.getTestCases().get(0)
                     );
 
@@ -86,8 +86,8 @@ public class UploadFilesForBRTest extends BaseTest {
         }
         for (Integer brId : brIds) {
 
-            ConnectionReport.TestCase tc =
-                    new ConnectionReport.TestCase(
+            Report.TestCase tc =
+                    new Report.TestCase(
                             testData.getTestCases().get(0)
                     );
 

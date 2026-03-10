@@ -3,8 +3,7 @@ package tests.testCase;
 import api.testCase.UpdateTestCaseStepApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -34,13 +33,13 @@ public class UpdateTestCaseStepTest extends BaseTest {
 
         System.out.println("🧪 Updating TestStepId → " + testStepId);
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/testCase/updateTestCaseStep.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             Map<String, Object> request = new HashMap<>();
 

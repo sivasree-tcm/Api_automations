@@ -3,7 +3,7 @@ package tests.uploadFiles;
 import api.uploadFiles.DownloadFilesApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 import java.util.HashMap;
@@ -28,9 +28,9 @@ public class DownloadFilesTest extends BaseTest {
         // 3. Pick the first available BR ID dynamically
         String dynamicBrId = String.valueOf(brIds.get(0));
 
-        ConnectionReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/uploadFiles/uploadFilesForBR.json",
-                ConnectionReport.class
+                Report.class
         );
 
         // Fix for NullPointerException in TestCase copy constructor
@@ -38,7 +38,7 @@ public class DownloadFilesTest extends BaseTest {
             testData.getTestCases().get(0).setRequest(new HashMap<>());
         }
 
-        ConnectionReport.TestCase tc = new ConnectionReport.TestCase(testData.getTestCases().get(0));
+        Report.TestCase tc = new Report.TestCase(testData.getTestCases().get(0));
 
         // 4. Construct the Payload using the dynamic BR ID
         Map<String, Object> downloadPayload = new HashMap<>();

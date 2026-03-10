@@ -3,7 +3,7 @@ package tests.pipeline;
 import api.pipeline.ListAzurePipelinesApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.ProjectStore;
@@ -23,16 +23,16 @@ public class ListAzurePipelinesTest extends BaseTest {
             throw new RuntimeException("❌ ProjectId missing in ProjectStore.");
         }
 
-        ConnectionReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/pipeline/listAzurePipelines.json",
-                ConnectionReport.class
+                Report.class
         );
 
         if (testData == null || testData.getTestCases() == null) {
             throw new RuntimeException("❌ listAzurePipelines.json missing or invalid.");
         }
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             ApiTestExecutor.execute(
                     testData.getScenario(),

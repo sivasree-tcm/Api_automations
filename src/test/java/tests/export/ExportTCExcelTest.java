@@ -4,7 +4,7 @@ import api.export.ExportTCExcelApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import org.testng.Assert;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.GeneratedTSStore;
 import utils.JsonUtils;
@@ -35,13 +35,13 @@ public class ExportTCExcelTest extends BaseTest {
 
         long sizeBefore = getFolderSize(downloadDir);
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/export/exportTCExcel.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        ConnectionReport.TestCase tc =
+        Report.TestCase tc =
                 testData.getTestCases().get(0);
 
         for (Integer tsId : GeneratedTSStore.getAll()) {

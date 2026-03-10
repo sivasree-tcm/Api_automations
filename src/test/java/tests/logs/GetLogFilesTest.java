@@ -3,8 +3,7 @@ package tests.logs;
 import api.logs.GetLogFilesApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -19,12 +18,12 @@ public class GetLogFilesTest extends BaseTest {
 
         Integer userId = TokenUtil.getUserId();
 
-        ConnectionReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/logs/getLogFiles.json",
-                ConnectionReport.class
+                Report.class
         );
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             Map<String, Object> request = new HashMap<>();
             request.put("userId", userId);

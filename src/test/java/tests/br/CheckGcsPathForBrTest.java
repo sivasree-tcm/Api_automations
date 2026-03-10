@@ -3,7 +3,7 @@ package tests.br;
 import api.br.CheckGcsPathForBrApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -22,17 +22,17 @@ public class CheckGcsPathForBrTest extends BaseTest {
             throw new RuntimeException("❌ No BR ID found for project.");
         }
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/br/checkGcsPathForBr.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
         if (testData == null || testData.getTestCases() == null) {
             throw new RuntimeException("❌ checkGcsPathForBr.json missing or invalid.");
         }
 
-        ConnectionReport.TestCase tc =
+        Report.TestCase tc =
                 testData.getTestCases().get(0);
 
         Map<String, Object> request = new HashMap<>();

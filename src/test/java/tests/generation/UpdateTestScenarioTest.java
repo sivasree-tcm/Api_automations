@@ -1,8 +1,8 @@
 package tests.generation;
 
-import api.generation.UpdateTestScenarioApi;
+import api.testScenario.UpdateTestScenarioApi;
 import base.BaseTest;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 import java.util.HashMap;
@@ -11,12 +11,12 @@ import java.util.Map;
 public class UpdateTestScenarioTest extends BaseTest {
 
     public void updateTestScenarioApiTest() {
-        ConnectionReport testData = JsonUtils.readJson(
-                "testdata/generation/updateTestScenario.json",
-                ConnectionReport.class
+        Report testData = JsonUtils.readJson(
+                "testdata/testScenario/updateTestScenario.json",
+                Report.class
         );
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
             Map<String, Object> request = new HashMap<>();
 
             // ✅ Dynamic: Grabbing the LATEST scenario ID

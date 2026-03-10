@@ -1,10 +1,9 @@
 package tests.project;
 
-import api.project.GetLlmCredentialsApi;
+import api.modelmapping.GetLlmCredentialsApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.CredentialStore;
 import utils.JsonUtils;
@@ -19,14 +18,14 @@ public class GetLlmCredentialsTest extends BaseTest {
     public void fetchLlmCredentials() {
 
         // 🔹 Load generic test data (only for reporting)
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
-                        "testdata/project/getLlmCredentials.json",
-                        ConnectionReport.class
+                        "testdata/model/getLlmCredentials.json",
+                        Report.class
                 );
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(
+        Report.TestCase tc =
+                new Report.TestCase(
                         testData.getTestCases().get(0)
                 );
         System.out.println("getllm");

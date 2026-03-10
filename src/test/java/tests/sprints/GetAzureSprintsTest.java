@@ -3,7 +3,7 @@ package tests.sprints;
 import api.azure.GetAzureDevOpsSprintsApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -14,24 +14,28 @@ import java.util.Map;
 
 public class GetAzureSprintsTest extends BaseTest {
 
-
     public void getAzureDevOpsSprints() {
 
-        var testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/project/getAzureDevOpsSprints.json",
-                tests.connection.ConnectionReport.class
+                Report.class
         );
 
-        var tc = testData.getTestCases().get(0);
+        Report.TestCase tc = testData.getTestCases().get(0);
 
-        @SuppressWarnings("unchecked")
-        Map<String, Object> request =
-                tc.getRequest() == null
-                        ? new HashMap<>()
-                        : new HashMap<>((Map<String, Object>) tc.getRequest());
+        Map<String, Object> request;
+
+        if (tc.getRequest() != null) {
+            request = new HashMap<>((Map<String, Object>) tc.getRequest());
+        } else {
+            request = new HashMap<>();
+        }
 
         request.put("userId", String.valueOf(TokenUtil.getUserId()));
         request.put("refProjectId", ProjectStore.getSelectedProjectId());
+
+        // ✅ Store payload in report
+        tc.setRequest(request);
 
         ApiTestExecutor.execute(
                 testData.getScenario(),
@@ -72,7 +76,9 @@ public class GetAzureSprintsTest extends BaseTest {
 
                     System.out.println("========== AZURE SPRINT/ITERATION LIST ==========");
                     for (int i = 0; i < allIterations.size(); i++) {
+
                         Map<String, Object> s = allIterations.get(i);
+
                         System.out.println(
                                 "[" + i + "] name=" + s.get("name")
                                         + ", iterationPath=" + s.get("iterationPath")
@@ -91,7 +97,7 @@ public class GetAzureSprintsTest extends BaseTest {
                         String iterationPath =
                                 (String) iteration.get("iterationPath");
 
-                        // ✅ Skip ROOT node (ex: "Insurance")
+                        // Skip ROOT node
                         if (iterationPath == null ||
                                 !iterationPath.contains("\\")) {
                             continue;
@@ -122,7 +128,9 @@ public class GetAzureSprintsTest extends BaseTest {
                                     (String) allIterations.get(i).get("iterationPath");
 
                             if (path != null && path.contains("\\")) {
+
                                 selectedIteration = allIterations.get(i);
+
                                 System.out.println(
                                         "⚠️ Using latest iteration fallback: " + path
                                 );

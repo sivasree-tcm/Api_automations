@@ -1,11 +1,11 @@
 package tests.pipeline;
 
-import api.project.GetTestCaseSummaryForTSApi;
+import api.testCase.GetTestCaseSummaryForTSApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import report.ReportContext;
 import report.ReportStep;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -35,13 +35,13 @@ public class ValidateExecutionPollingTest extends BaseTest {
         System.out.println("   TS → " + testScenarioId);
         System.out.println("   TC → " + testCaseId);
 
-        ConnectionReport testData = JsonUtils.readJson(
-                "testdata/project/getTestCaseSummaryForTS.json",
-                ConnectionReport.class
+        Report testData = JsonUtils.readJson(
+                "testdata/testCase/getTestCaseSummaryForTS.json",
+                Report.class
         );
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(testData.getTestCases().get(0));
+        Report.TestCase tc =
+                new Report.TestCase(testData.getTestCases().get(0));
 
         /* ✅ Correct numeric payload */
         Map<String, Object> request = new HashMap<>();

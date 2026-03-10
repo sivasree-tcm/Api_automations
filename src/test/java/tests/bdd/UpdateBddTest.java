@@ -3,8 +3,7 @@ package tests.bdd;
 import api.bdd.UpdateBddApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.TokenUtil;
@@ -23,16 +22,16 @@ public class UpdateBddTest extends BaseTest {
         }
 
         // ✅ Read JSON Test Data
-        ConnectionReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/bdd/updateBdd.json",
-                ConnectionReport.class
+                Report.class
         );
 
         if (testData == null || testData.getTestCases() == null) {
             throw new RuntimeException("❌ updateBdd.json missing or invalid.");
         }
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             ApiTestExecutor.execute(
                     testData.getScenario(),

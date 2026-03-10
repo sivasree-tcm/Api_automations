@@ -1,24 +1,24 @@
 package tests.connection; // Ensure this file is moved to src/test/java/tests/connection/
 
-import api.connection.DbConfigApi;
+import api.configuration.DbConfigApi;
 import base.BaseTest;
-import models.connection.DbConfigReport;
-import org.testng.annotations.Test;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.TokenUtil;
 import utils.ProjectStore;
+
 import java.util.Map;
 import java.util.List;
+import java.util.HashMap;
 
 public class DbConfigTest extends BaseTest {
 
-
     public void addDbInfoTest() {
-        // Updated path to match the reference style
-        DbConfigReport testData = JsonUtils.readJson(
-                "testdata/connectionsData/dbConfig.json",
-                DbConfigReport.class
+
+        Report testData = JsonUtils.readJson(
+                "testdata/configuration/dbConfig.json",
+                Report.class
         );
 
         if (testData != null) {
@@ -26,21 +26,31 @@ public class DbConfigTest extends BaseTest {
         }
     }
 
-    private void execute(DbConfigReport testData, List<DbConfigReport.TestCase> cases) {
-        for (DbConfigReport.TestCase tc : cases) {
-            Map<String, Object> request = (Map<String, Object>) tc.getRequest();
+    private void execute(Report testData, List<Report.TestCase> cases) {
 
-            // ✅ Dynamic Injection - Logic from today's debugging
+        for (Report.TestCase tc : cases) {
+
+            Map<String, Object> request;
+
+            if (tc.getRequest() != null) {
+                request = new HashMap<>((Map<String, Object>) tc.getRequest());
+            } else {
+                request = new HashMap<>();
+            }
+
+            // ✅ Dynamic User Injection
             int actualUserId = TokenUtil.getUserId(tc.getRole());
             request.put("userId", actualUserId);
 
+            // ✅ Dynamic Project Injection
             Integer savedId = ProjectStore.getProjectId();
             if (savedId != null) {
-                request.put("projectId", savedId); // Injected Project ID: 1556
+                request.put("projectId", savedId);
             }
 
-            // ✅ Use the specific key found in your working payload
-            // This matches "environemntDetails" (with the spelling from your confirmation)
+            // ✅ Store payload back to report
+            tc.setRequest(request);
+
             ApiTestExecutor.execute(
                     testData.getScenario(),
                     tc,

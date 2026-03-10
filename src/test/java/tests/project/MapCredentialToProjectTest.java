@@ -1,9 +1,8 @@
 package tests.project;
 
-import api.project.MapCredentialToProjectApi;
+import api.modelmapping.MapCredentialToProjectApi;
 import base.BaseTest;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -15,13 +14,13 @@ public class MapCredentialToProjectTest extends BaseTest {
     public void mapCredentialToProjectApiTest() {
 
         // ✅ Reuse ConnectionReport
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
-                        "testdata/project/mapCredentialToProject.json",
-                        ConnectionReport.class
+                        "testdata/model/mapCredentialToProject.json",
+                        Report.class
                 );
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             Map<String, Object> request =
                     (Map<String, Object>) tc.getRequest();

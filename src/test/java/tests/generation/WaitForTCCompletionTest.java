@@ -3,7 +3,7 @@
 //import api.generation.GetTCGenerationStatusApi;
 //import base.BaseTest;
 //import io.restassured.response.Response;
-//import tests.connection.ConnectionReport;
+//import report.ConnectionReport;
 //import tests.user.ApiTestExecutor;
 //import utils.*;
 //

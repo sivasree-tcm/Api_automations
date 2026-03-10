@@ -1,10 +1,9 @@
 package tests.generation;
 
-import api.generation.AddTestScenarioApi;
+import api.testScenario.AddTestScenarioApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -17,10 +16,10 @@ public class AddTestScenarioTest extends BaseTest {
 
     public void addTestScenarioApiTest() {
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
-                        "testdata/generation/addTestScenario.json",
-                        ConnectionReport.class
+                        "testdata/testScenario/addTestScenario.json",
+                        Report.class
                 );
 
         if (testData == null || testData.getTestCases() == null) {
@@ -41,7 +40,7 @@ public class AddTestScenarioTest extends BaseTest {
 
         Integer brId = brIds.get(0); // pick one BR
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             Map<String, Object> request = new HashMap<>();
 

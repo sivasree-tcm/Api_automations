@@ -3,7 +3,7 @@ package tests.generation;
 import api.generation.GenerateATSApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -69,9 +69,9 @@ public class GenerateATSTest extends BaseTest {
            4️⃣ Load JSON (Reporting Only)
            =============================== */
 
-        ConnectionReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/generation/generateATS.json",
-                ConnectionReport.class
+                Report.class
         );
 
         if (testData == null || testData.getTestCases() == null) {
@@ -82,7 +82,7 @@ public class GenerateATSTest extends BaseTest {
            5️⃣ Execute ATS API
            =============================== */
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             Map<String, Object> request = new HashMap<>();
 

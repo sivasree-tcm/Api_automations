@@ -3,11 +3,10 @@ package tests.roles;
 import api.roles.GetRolesApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.ProjectStore;
-import utils.RoleStore;
 import utils.TokenUtil;
 
 import java.util.HashMap;
@@ -18,16 +17,16 @@ public class GetRolesTest extends BaseTest {
 
     public void getRolesForAllProjects() {
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/rolesData/getRoles.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
         for (Integer projectId : ProjectStore.getAllProjectIds()) {
 
-            ConnectionReport.TestCase tc =
-                    new ConnectionReport.TestCase(
+            Report.TestCase tc =
+                    new Report.TestCase(
                             testData.getTestCases().get(0)
                     );
 

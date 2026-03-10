@@ -1,9 +1,9 @@
 package tests.connection;
 
-import api.connection.ExecuteTestsApi;
+import api.pipeline.ExecuteTestsApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -20,16 +20,16 @@ public class ExecuteTestsTest extends BaseTest {
     public void executeAutomationTests() {
 
         // 1️⃣ Load JSON Data
-        ConnectionReport testData = JsonUtils.readJson(
-                "testdata/connectionsData/executeTests.json",
-                ConnectionReport.class
+        Report testData = JsonUtils.readJson(
+                "testdata/pipeline/executeTests.json",
+                Report.class
         );
 
         if (testData == null || testData.getTestCases().isEmpty()) {
             throw new RuntimeException("❌ executeTests.json missing or empty");
         }
 
-        ConnectionReport.TestCase tc = new ConnectionReport.TestCase(
+        Report.TestCase tc = new Report.TestCase(
                 testData.getTestCases().get(0)
         );
 

@@ -1,8 +1,8 @@
 package tests.connection;
+import report.Report;
 import utils.TestDataGenerator;
 import api.connection.SaveConnectionApi;
 import base.BaseTest;
-import org.testng.annotations.Test;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import java.util.Map;
@@ -13,21 +13,21 @@ public class SaveConnectionTest extends BaseTest {
 
     public void saveConnectionTest() {
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/connectionsData/saveConnection.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
         execute(testData, testData.getTestCases());
     }
 
     private void execute(
-            ConnectionReport testData,
-            List<ConnectionReport.TestCase> cases
+            Report testData,
+            List<Report.TestCase> cases
     ) {
 
-        for (ConnectionReport.TestCase tc : cases) {
+        for (Report.TestCase tc : cases) {
 
             Map<String, Object> request =
                     (Map<String, Object>) tc.getRequest();

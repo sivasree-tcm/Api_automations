@@ -2,7 +2,7 @@ package tests.project;
 
 import api.br.GetBRByProjectApi;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -32,14 +32,14 @@ public class GetBusinessRequirementTest {
             );
         }
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/br/getBRByProject.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(
+        Report.TestCase tc =
+                new Report.TestCase(
                         testData.getTestCases().get(0)
                 );
 

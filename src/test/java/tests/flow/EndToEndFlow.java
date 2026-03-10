@@ -2,7 +2,8 @@ package tests.flow;
 
 import base.BaseTest;
 import org.testng.annotations.Test;
-import tests.ats.GetAutomationVideoTest;
+import tests.br.DeleteBusinessRequirementTest;
+import tests.video.GetAutomationVideoTest;
 import tests.ats.LoadATSFilesTest;
 import tests.bdd.UpdateBddTest;
 import tests.br.CheckGcsPathForBrTest;
@@ -20,6 +21,10 @@ import tests.modelmapping.GetLlmModelsTest;
 import tests.modelmapping.MapLlmToProjectTest;
 import tests.br.UploadBusinessRequirementTest;
 import tests.project.GenerateTSTest;
+import tests.prompt.UpdatePromptTest;
+import tests.prompt.createprompt;
+import tests.prompt.mapprompt;
+import tests.roles.CheckUserRolesTest;
 import tests.sprints.GetAzureSprintsTest;
 import tests.sprints.GetUserStoriesTest;
 import tests.sprints.ImportAzureUserStoriesTest;
@@ -27,7 +32,10 @@ import tests.system.GetVersionTest;
 import tests.uploadFiles.DeleteFilesTest;
 import tests.uploadFiles.DownloadFilesTest;
 import tests.uploadFiles.UploadFilesForBRTest;
+import tests.user.AddUpdateProjecTest;
+import tests.user.RegisterUserTest;
 import tests.userManagement.GetUserManagementDetailsTest;
+import tests.video.ListVideosTest;
 import utils.*;
 
 public class EndToEndFlow extends BaseTest {
@@ -38,8 +46,28 @@ public class EndToEndFlow extends BaseTest {
     }
 
     @Test(dependsOnMethods = "getOrg")
+    public void registerUser() {
+        new RegisterUserTest().registerUserTest();
+    }
+
+    @Test(dependsOnMethods = "getOrg")
     public void getConnections() {
         new GetConnectionsTest().getConnectionsApiTest();
+    }
+
+    @Test(dependsOnMethods = "getConnections")
+    public void listVideos() {
+        new ListVideosTest().listVideosApiTest();
+    }
+
+    @Test(dependsOnMethods = "listVideos")
+    public void checkUserRoles() {
+        new CheckUserRolesTest().checkUserRoles();
+    }
+
+    @Test(dependsOnMethods = "checkUserRoles")
+    public void getMyProjects() {
+        new GetMyProjectsTest().getMyProjectsApiTest();
     }
 
     @Test(dependsOnMethods = "getOrg")
@@ -128,6 +156,11 @@ public class EndToEndFlow extends BaseTest {
     }
 
     @Test(dependsOnMethods = "step14_createPrompt")
+    public void updatePrompt() {
+        new UpdatePromptTest().updatePromptApiTest();
+    }
+
+    @Test(dependsOnMethods = "updatePrompt")
     public void step15_mapPrompt() {
         System.out.println("▶ Step 15: Map Prompt");
         new mapprompt().mapPromptApiTest();
@@ -165,7 +198,7 @@ public class EndToEndFlow extends BaseTest {
     @Test(dependsOnMethods = "step20_exportBRExcel")
     public void step21_deletebr() throws Exception {
         System.out.println("▶ Step 21: Export BR Excel");
-        new tests.br.DeleteBusinessRequirementoneTest().deleteLastBR();
+        new DeleteBusinessRequirementTest().deleteLastBR();
     }
 
     @Test(dependsOnMethods = "step21_deletebr")

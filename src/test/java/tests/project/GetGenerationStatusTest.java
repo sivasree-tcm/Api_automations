@@ -2,7 +2,7 @@ package tests.project;
 
 import api.generation.GetGenerationStatusApi;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -29,14 +29,14 @@ public class GetGenerationStatusTest {
 
         System.out.println("🧪 BRs used for generation status → " + brIds);
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/generation/getGenerationStatus.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(
+        Report.TestCase tc =
+                new Report.TestCase(
                         testData.getTestCases().get(0)
                 );
 
@@ -123,14 +123,14 @@ public class GetGenerationStatusTest {
 
         System.out.println("🧪 TS used for TC generation status → " + tsIds);
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/generation/getGenerationStatus.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(
+        Report.TestCase tc =
+                new Report.TestCase(
                         testData.getTestCases().get(0)
                 );
 
@@ -235,7 +235,7 @@ public class GetGenerationStatusTest {
             Integer projectId,
             String source,
             List<Integer> completed,
-            ConnectionReport.TestCase tc
+            Report.TestCase tc
     ) {
         Map<String, Object> finalRequest = new HashMap<>();
         finalRequest.put("projectId", projectId);

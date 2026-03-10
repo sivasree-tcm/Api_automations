@@ -2,7 +2,7 @@ package tests.generation;
 
 import api.generation.GetGenerationStatusApi;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -23,14 +23,14 @@ public class GetGenerationStatusTest {
 
         System.out.println("🧪 BRs used for generation status → " + allBrIds);
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/generation/getGenerationStatus.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(
+        Report.TestCase tc =
+                new Report.TestCase(
                         testData.getTestCases().get(0)
                 );
 

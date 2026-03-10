@@ -2,8 +2,7 @@ package tests.project;
 
 import api.project.GetProjectProviderConfigApi;
 import base.BaseTest;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.TokenUtil;
@@ -16,13 +15,13 @@ public class GetProjectProviderConfigTest extends BaseTest {
     public void getProjectProviderConfigApiTest() {
 
         // ✅ Reuse ConnectionReport
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/project/getProjectProviderConfig.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             Map<String, Object> request =
                     (Map<String, Object>) tc.getRequest();

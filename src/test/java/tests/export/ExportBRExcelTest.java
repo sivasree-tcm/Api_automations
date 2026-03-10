@@ -4,7 +4,7 @@ import api.export.ExportBRExcelApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import org.testng.Assert;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.ProjectStore;
@@ -35,13 +35,13 @@ public class ExportBRExcelTest extends BaseTest {
         // 📊 Folder size BEFORE download
         long sizeBefore = getFolderSize(downloadDir);
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/export/exportBRExcel.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        ConnectionReport.TestCase tc =
+        Report.TestCase tc =
                 testData.getTestCases().get(0);
 
         tc.setExpectedStatusCode(200); // 🔥 REQUIRED

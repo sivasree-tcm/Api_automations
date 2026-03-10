@@ -2,123 +2,37 @@ package tests.project;
 
 import api.project.ProjectApi;
 import base.BaseTest;
-import org.testng.annotations.Test;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
+import utils.ProjectStore;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class EditProjectTest extends BaseTest {
 
-    private static final String PROJECT_ID = "230";
-    private static final String USER_ID = "33";
-
-
     public void editProjectApiTest() {
 
-        EditProjectTestData testData =
-                JsonUtils.readJson(
-                        "testdata/project/EditProjectone.json",
-                        EditProjectTestData.class
-                );
+        // 1. Load the JSON template
+        Report testData = JsonUtils.readJson(
+                "testdata/project/EditProjectone.json",
+                Report.class
+        );
 
-        // Generate dynamic project name with timestamp
-        String dynamicProjectName = generateDynamicProjectName();
+        // 2. Prepare dynamic data
+        String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String nextMonth = LocalDate.now().plusMonths(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        // Replace placeholders in test data
-        replacePlaceholders(testData, dynamicProjectName);
+        // 3. Iterate through test cases and inject data from ProjectStore
+        for (Report.TestCase tc : testData.getTestCases()) {
 
-        execute(testData, testData.getTestCases());
-    }
+            Object request = tc.getRequest();
 
-    private String generateDynamicProjectName() {
-        long timestamp = System.currentTimeMillis();
-        return "AutoProject_" + timestamp;
-    }
+            // Inject values from ProjectStore into the request object
+            mapStoreToRequest(request, today, nextMonth);
 
-    private void replacePlaceholders(
-            EditProjectTestData testData,
-            String projectName
-    ) {
-        // Replace in base payload
-
-
-        // Replace in all test cases
-        if (testData.getTestCases() != null) {
-            for (EditProjectTestData.TestCase tc : testData.getTestCases()) {
-                if (tc.getRequest() != null) {
-                    replaceInRequest(tc.getRequest(), projectName);
-                }
-            }
-        }
-    }
-
-    private void replaceInRequest(Object request, String projectName) {
-        try {
-            // Use reflection to replace placeholders in request object
-            Class<?> clazz = request.getClass();
-
-            // Replace projectName
-            try {
-                var nameField = clazz.getDeclaredField("projectName");
-                nameField.setAccessible(true);
-                String currentName = (String) nameField.get(request);
-                if (currentName != null && currentName.contains("{{timestamp}}")) {
-                    nameField.set(request, currentName.replace("{{timestamp}}",
-                            String.valueOf(System.currentTimeMillis())));
-                }
-            } catch (NoSuchFieldException e) {
-                // Field might not exist in this request, ignore
-            }
-
-            // Replace projectId
-            try {
-                var idField = clazz.getDeclaredField("projectId");
-                idField.setAccessible(true);
-                String currentId = (String) idField.get(request);
-                if (currentId != null && currentId.contains("{{projectId}}")) {
-                    idField.set(request, PROJECT_ID);
-                }
-            } catch (NoSuchFieldException e) {
-                // Field might not exist in this request, ignore
-            }
-
-            // Replace userId
-            try {
-                var userIdField = clazz.getDeclaredField("userId");
-                userIdField.setAccessible(true);
-                String currentUserId = (String) userIdField.get(request);
-                if (currentUserId != null && currentUserId.contains("{{userId}}")) {
-                    userIdField.set(request, USER_ID);
-                }
-            } catch (NoSuchFieldException e) {
-                // Field might not exist in this request, ignore
-            }
-
-            // Replace projectCreatedBy
-            try {
-                var createdByField = clazz.getDeclaredField("projectCreatedBy");
-                createdByField.setAccessible(true);
-                String currentCreatedBy = (String) createdByField.get(request);
-                if (currentCreatedBy != null && currentCreatedBy.contains("{{userId}}")) {
-                    createdByField.set(request, USER_ID);
-                }
-            } catch (NoSuchFieldException e) {
-                // Field might not exist in this request, ignore
-            }
-
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException("Error replacing placeholders in request", e);
-        }
-    }
-
-    private void execute(
-            EditProjectTestData testData,
-            List<EditProjectTestData.TestCase> cases
-    ) {
-
-        for (EditProjectTestData.TestCase tc : cases) {
-
+            // 4. Execute the API
             ApiTestExecutor.execute(
                     testData.getScenario(),
                     tc,
@@ -127,6 +41,42 @@ public class EditProjectTest extends BaseTest {
                             tc.getRole()
                     )
             );
+        }
+    }
+
+    private void mapStoreToRequest(Object request, String startDate, String endDate) {
+        try {
+
+            Class<?> clazz = request.getClass();
+
+            // Mapping ProjectStore data to the Request Fields
+            setFieldValue(clazz, request, "projectId", ProjectStore.getSelectedProjectId().toString());
+            setFieldValue(clazz, request, "userId", ProjectStore.getUserId());
+            setFieldValue(clazz, request, "projectCreatedBy", ProjectStore.getUserId());
+            setFieldValue(clazz, request, "projectName", ProjectStore.getSelectedProjectName());
+            setFieldValue(clazz, request, "storageType", ProjectStore.getStorageType());
+            setFieldValue(clazz, request, "webFramework", ProjectStore.getAutomationFramework());
+
+            // Injecting Dynamic Dates
+            setFieldValue(clazz, request, "projectStartDate", startDate);
+            setFieldValue(clazz, request, "projectEndDate", endDate);
+
+        } catch (Exception e) {
+            throw new RuntimeException("❌ Failed to map ProjectStore to Request object", e);
+        }
+    }
+
+    private void setFieldValue(Class<?> clazz, Object instance, String fieldName, String value) {
+        try {
+
+            var field = clazz.getDeclaredField(fieldName);
+            field.setAccessible(true);
+            field.set(instance, value);
+
+        } catch (NoSuchFieldException e) {
+            // Field not present in this specific request variant, skip safely
+        } catch (IllegalAccessException e) {
+            System.err.println("Could not set field: " + fieldName);
         }
     }
 }

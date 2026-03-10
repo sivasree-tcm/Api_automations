@@ -3,7 +3,7 @@ package tests.userManagement;
 import api.userManagement.GetUserManagementDetailsApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.ProjectStore;
@@ -36,9 +36,9 @@ public class GetUserManagementDetailsTest extends BaseTest {
            2️⃣ Load JSON Metadata
            =============================== */
 
-        ConnectionReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/UserManagement/getUserManagementDetails.json",
-                ConnectionReport.class
+                Report.class
         );
 
         if (testData == null || testData.getTestCases() == null) {
@@ -49,7 +49,7 @@ public class GetUserManagementDetailsTest extends BaseTest {
            3️⃣ Execute API
            =============================== */
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             ApiTestExecutor.execute(
                     testData.getScenario(),

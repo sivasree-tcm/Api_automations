@@ -1,9 +1,9 @@
 package tests.generation;
 
-import api.generation.GetTSByBRApi;
+import api.testScenario.GetTSByBRApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -14,34 +14,35 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class GetTSByBRTest extends BaseTest {
 
-
     public void getTestScenariosForGeneratedBRs() {
 
-        if(!GeneratedBRStore.hasBrs() ){
+        if (!GeneratedBRStore.hasBrs()) {
             throw new RuntimeException("❌ No BRs available");
         }
 
-        var testData = JsonUtils.readJson(
-                "testdata/generation/getTSByBR.json",
-                tests.connection.ConnectionReport.class
+        Report testData = JsonUtils.readJson(
+                "testdata/testScenario/getTSByBR.json",
+                Report.class
         );
 
         for (Integer brId : GeneratedBRStore.getBrIds()) {
 
             int page = 1;
             int pageSize = 10;
-            AtomicInteger totalPages = new AtomicInteger(1); // will update after first call
+            AtomicInteger totalPages = new AtomicInteger(1);
 
             do {
+
                 Map<String, Object> request = new HashMap<>();
                 request.put("brId", brId);
                 request.put("page", page);
                 request.put("pageSize", pageSize);
                 request.put("userId", TokenUtil.getUserId());
 
-                var tc = new tests.connection.ConnectionReport.TestCase(
-                        testData.getTestCases().get(0)
-                );
+                Report.TestCase tc =
+                        new Report.TestCase(
+                                testData.getTestCases().get(0)
+                        );
 
                 tc.setRequest(request);
                 tc.setTcId("GET_TS_BR_" + brId + "_PAGE_" + page);
@@ -67,18 +68,23 @@ public class GetTSByBRTest extends BaseTest {
                                         response.jsonPath().getInt("totalCount");
 
                                 if (totalCount != null) {
-                                    totalPages.set((int) Math.ceil(
-                                            (double) totalCount / pageSize
-                                    ));
+                                    totalPages.set(
+                                            (int) Math.ceil(
+                                                    (double) totalCount / pageSize
+                                            )
+                                    );
                                 }
 
                                 List<Map<String, Object>> results =
                                         response.jsonPath().getList("results");
 
                                 if (results != null && !results.isEmpty()) {
+
                                     for (Map<String, Object> ts : results) {
+
                                         Integer tsId =
                                                 ((Number) ts.get("testScenarioId")).intValue();
+
                                         TestScenarioStore.addTs(brId, tsId);
                                     }
                                 }

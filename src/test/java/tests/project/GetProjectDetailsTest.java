@@ -3,7 +3,7 @@ package tests.project;
 import api.project.GetProjectDetailsApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -26,18 +26,18 @@ public class GetProjectDetailsTest extends BaseTest {
 
         System.out.println("✅ Selected Project ID set → " + expectedProjectId);
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/project/GetProjectDetails.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
         if (testData == null || testData.getTestCases() == null) {
             throw new RuntimeException("❌ GetProjectDetails.json missing or invalid.");
         }
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(
+        Report.TestCase tc =
+                new Report.TestCase(
                         testData.getTestCases().get(0)
                 );
 

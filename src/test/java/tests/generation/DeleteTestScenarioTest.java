@@ -1,11 +1,10 @@
 package tests.generation;
 
-import api.generation.DeleteTestScenarioApi;
-import api.generation.GetTSByBRApi;
+import api.testScenario.DeleteTestScenarioApi;
+import api.testScenario.GetTSByBRApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -17,10 +16,10 @@ public class DeleteTestScenarioTest extends BaseTest {
     public void deleteLastTestScenario() {
 
         // 1️⃣ Load test data (MANDATORY for ApiTestExecutor)
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
-                        "testdata/project/deleteTS.json",
-                        ConnectionReport.class
+                        "testdata/testScenario/deleteTS.json",
+                        Report.class
                 );
 
         if (testData == null || testData.getTestCases().isEmpty()) {
@@ -28,8 +27,8 @@ public class DeleteTestScenarioTest extends BaseTest {
         }
 
         // 2️⃣ Create TestCase object (THIS FIXES NPE)
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(testData.getTestCases().get(0));
+        Report.TestCase tc =
+                new Report.TestCase(testData.getTestCases().get(0));
 
         if (!GeneratedBRStore.hasBrs()) {
             throw new RuntimeException("❌ No BRs available");

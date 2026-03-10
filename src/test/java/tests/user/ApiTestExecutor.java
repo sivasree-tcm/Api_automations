@@ -7,7 +7,6 @@ import report.CustomReportManager;
 import report.ReportContext;
 import report.ReportStep;
 import report.ReportTest;
-import tests.project.GetMyProjectsTestData;
 import utils.JsonUtils;
 
 import java.util.List;
@@ -139,91 +138,6 @@ public class ApiTestExecutor {
         }
     }
 
-    /* ======================================================
-       GET / DELETE EXECUTOR (Also Binary Safe)
-       ====================================================== */
-    public static void execute(
-            String scenarioName,
-            GetMyProjectsTestData.TestCase tc,
-            Supplier<Response> apiCall
-    ) {
-
-        ReportTest test =
-                new ReportTest(scenarioName + " :: " + tc.getName());
-
-        ReportContext.setTest(test);
-        long start = System.currentTimeMillis();
-
-        try {
-
-            Response response = apiCall.get();
-
-            String contentType = response.getHeader("Content-Type");
-
-            if (isBinaryResponse(contentType)) {
-
-                test.addStep(new ReportStep(
-                        "Info",
-                        "Actual Response",
-                        "[Binary Response Omitted] Content-Type → " + contentType
-                ));
-
-            } else {
-
-                test.addStep(new ReportStep(
-                        "Info",
-                        "Actual Response",
-                        response.asPrettyString()
-                ));
-            }
-
-            Assert.assertEquals(
-                    response.getStatusCode(),
-                    tc.getExpectedStatusCode(),
-                    "Status code mismatch"
-            );
-
-            if (hasMethod(tc, "getMinSize") && tc.getMinSize() != null) {
-
-                List<?> list =
-                        response.jsonPath().getList(tc.getListPath());
-
-                Assert.assertNotNull(list, "List is null");
-                Assert.assertTrue(
-                        list.size() >= tc.getMinSize(),
-                        "Expected minimum size: " + tc.getMinSize()
-                );
-            }
-
-            if (tc.getRequiredField() != null) {
-                Object field =
-                        response.jsonPath().get(tc.getRequiredField());
-
-                Assert.assertNotNull(
-                        field,
-                        "Missing field: " + tc.getRequiredField()
-                );
-            }
-
-            test.markPassed(
-                    "Passed in " +
-                            (System.currentTimeMillis() - start) + " ms"
-            );
-
-        } catch (AssertionError | Exception e) {
-
-            test.addStep(new ReportStep(
-                    "Fail",
-                    "Failure",
-                    String.valueOf(e.getMessage())
-            ));
-
-            test.markFailed("Test failed");
-
-        } finally {
-            CustomReportManager.addTest(scenarioName, test);
-        }
-    }
 
     /* ======================================================
        HELPER – Binary Detection (CRITICAL)

@@ -1,0 +1,12 @@
+{
+  "scenario": "List Tutorial Videos API",
+  "testCases": [
+    {
+      "tcId": "LIST_VIDEOS_01",
+      "name": "Fetch tutorial videos",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200
+    }
+  ]
+}

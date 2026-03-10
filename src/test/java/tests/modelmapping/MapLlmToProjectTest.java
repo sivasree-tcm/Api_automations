@@ -2,21 +2,21 @@ package tests.modelmapping;
 
 import api.modelmapping.MapLlmToProjectApi;
 import base.BaseTest;
-import models.modelmapping.MapLlmReport;
-import org.testng.annotations.Test;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 
 public class MapLlmToProjectTest extends BaseTest {
 
     public void mapLlmToProjectTest() {
 
-        MapLlmReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/model/mapLlmToProject.json",
-                MapLlmReport.class
+                Report.class
         );
 
         if (testData != null) {
@@ -24,32 +24,42 @@ public class MapLlmToProjectTest extends BaseTest {
         }
     }
 
-    private void execute(MapLlmReport testData,
-                         List<MapLlmReport.TestCase> cases) {
+    private void execute(Report testData,
+                         List<Report.TestCase> cases) {
 
-        for (MapLlmReport.TestCase tc : cases) {
+        for (Report.TestCase tc : cases) {
 
-            Map<String, Object> request =
-                    (Map<String, Object>) tc.getRequest();
+            Map<String, Object> request;
 
-            // userId
+            if (tc.getRequest() != null) {
+                request = new HashMap<>((Map<String, Object>) tc.getRequest());
+            } else {
+                request = new HashMap<>();
+            }
+
+            // ✅ userId injection
             request.put("userId", TokenUtil.getUserId(tc.getRole()));
 
-            // projectId
+            // ✅ projectId injection
             request.put("projectId", ProjectStore.getProjectId());
 
-            // model selection (FIXED)
+            // ✅ model selection logic
             String modelType = tc.getModelType();
 
             if ("chat".equalsIgnoreCase(modelType)) {
                 request.put("model_id", ModelStore.getChatModelId());
-            } else if ("multimodal".equalsIgnoreCase(modelType)) {
+            }
+            else if ("multimodal".equalsIgnoreCase(modelType)) {
                 request.put("model_id", ModelStore.getMultimodalModelId());
-            } else {
+            }
+            else {
                 throw new IllegalArgumentException(
                         "Invalid modelType: " + modelType
                 );
             }
+
+            // ✅ store payload in report
+            tc.setRequest(request);
 
             ApiTestExecutor.execute(
                     testData.getScenario(),

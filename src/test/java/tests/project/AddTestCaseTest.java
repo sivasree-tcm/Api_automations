@@ -1,9 +1,8 @@
 package tests.project;
 
-import api.generation.InsertTestCaseApi;
+import api.testCase.InsertTestCaseApi;
 import base.BaseTest;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -16,10 +15,10 @@ public class AddTestCaseTest extends BaseTest {
 
     public void addTestCaseApiTest() {
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
-                        "testdata/project/addTestCase.json",
-                        ConnectionReport.class
+                        "testdata/testCase/addTestCase.json",
+                        Report.class
                 );
 
         if (testData == null || testData.getTestCases() == null) {
@@ -28,7 +27,7 @@ public class AddTestCaseTest extends BaseTest {
 
         Integer projectId = ProjectStore.getSelectedProjectId();
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             // ✅ ALWAYS clone request
             Map<String, Object> request =

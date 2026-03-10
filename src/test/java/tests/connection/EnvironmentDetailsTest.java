@@ -1,23 +1,24 @@
 package tests.connection;
 
-import api.connection.EnvironmentApi;
+import api.configuration.EnvironmentApi;
 import base.BaseTest;
-import models.connection.DbConfigReport; // Reusing your existing model structure
-import org.testng.annotations.Test;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.TokenUtil;
 import utils.ProjectStore;
+
 import java.util.Map;
 import java.util.List;
+import java.util.HashMap;
 
 public class EnvironmentDetailsTest extends BaseTest {
 
     public void fetchEnvironmentDetailsTest() {
-        // Pointing to your environment JSON data
-        DbConfigReport testData = JsonUtils.readJson(
+
+        Report testData = JsonUtils.readJson(
                 "testdata/connectionsData/getEnvironment.json",
-                DbConfigReport.class
+                Report.class
         );
 
         if (testData != null) {
@@ -25,20 +26,30 @@ public class EnvironmentDetailsTest extends BaseTest {
         }
     }
 
-    private void execute(DbConfigReport testData, List<DbConfigReport.TestCase> cases) {
-        for (DbConfigReport.TestCase tc : cases) {
-            Map<String, Object> request = (Map<String, Object>) tc.getRequest();
+    private void execute(Report testData, List<Report.TestCase> cases) {
 
-            // ✅ Dynamic Injection from ProjectStore
+        for (Report.TestCase tc : cases) {
+
+            Map<String, Object> request;
+
+            if (tc.getRequest() != null) {
+                request = new HashMap<>((Map<String, Object>) tc.getRequest());
+            } else {
+                request = new HashMap<>();
+            }
+
+            // ✅ ProjectId Injection
             Integer savedId = ProjectStore.getProjectId();
-
-            // If the store is empty, we use -1 as per your requirement
             int projectIdToUse = (savedId != null) ? savedId : -1;
+
             request.put("projectId", projectIdToUse);
 
-            // ✅ Dynamic User ID injection
+            // ✅ Dynamic User ID
             int actualUserId = TokenUtil.getUserId(tc.getRole());
             request.put("userId", String.valueOf(actualUserId));
+
+            // ✅ Store payload back to report
+            tc.setRequest(request);
 
             ApiTestExecutor.execute(
                     testData.getScenario(),

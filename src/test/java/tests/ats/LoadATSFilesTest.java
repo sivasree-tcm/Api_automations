@@ -3,7 +3,7 @@ package tests.ats;
 import api.ats.LoadATSFilesApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -32,16 +32,16 @@ public class LoadATSFilesTest extends BaseTest {
 
         System.out.println("✅ Using Automation Framework → " + framework);
 
-        ConnectionReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/ats/loadATSFiles.json",
-                ConnectionReport.class
+                Report.class
         );
 
         if (testData == null || testData.getTestCases() == null) {
             throw new RuntimeException("❌ loadATSFiles.json missing or invalid.");
         }
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             executeForType(testData, tc, projectId, userId,
                     framework, projectName, tcNumber, storageType, "TestCase");
@@ -54,8 +54,8 @@ public class LoadATSFilesTest extends BaseTest {
     /* ========================================================= */
 
     private void executeForType(
-            ConnectionReport testData,
-            ConnectionReport.TestCase tc,
+            Report testData,
+            Report.TestCase tc,
             Integer projectId,
             String userId,
             String framework,

@@ -1,9 +1,8 @@
 package tests.project;
 
-import api.project.UpdateTestCaseApi;
+import api.testCase.UpdateTestCaseApi;
 import base.BaseTest;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -21,13 +20,13 @@ public class UpdateTestCaseTest extends BaseTest {
             );
         }
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
-                        "testdata/project/updateTestCase.json",
-                        ConnectionReport.class
+                        "testdata/testCase/updateTestCase.json",
+                        Report.class
                 );
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             Map<String, Object> request = new HashMap<>();
 

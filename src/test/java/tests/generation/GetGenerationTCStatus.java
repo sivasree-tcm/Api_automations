@@ -2,7 +2,7 @@ package tests.generation;
 
 import api.generation.GetGenerationStatusApi;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.GeneratedTSStore;
 import utils.JsonUtils;
@@ -26,13 +26,13 @@ public class GetGenerationTCStatus {
 
         System.out.println("🧪 TS used for TC generation status → " + tsIds);
 
-        ConnectionReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/generation/getGenerationStatus.json",
-                ConnectionReport.class
+                Report.class
         );
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(testData.getTestCases().get(0));
+        Report.TestCase tc =
+                new Report.TestCase(testData.getTestCases().get(0));
 
         tc.setTcId("WAIT_TC_GEN_STATUS_" + projectId);
         tc.setName("Wait for TC Generation Completion | Project " + projectId);

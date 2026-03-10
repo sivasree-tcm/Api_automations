@@ -4,8 +4,7 @@ import api.queue.GetGenerationQueueApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -57,17 +56,17 @@ public class GetGenerationQueueTest extends BaseTest {
             String userName
     ) {
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/generation/getGenerationQueue.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        ConnectionReport.TestCase baseTc =
+        Report.TestCase baseTc =
                 testData.getTestCases().get(0);
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(baseTc);
+        Report.TestCase tc =
+                new Report.TestCase(baseTc);
 
         tc.setTcId("TC_GEN_QUEUE_" + projectId + "_" + userIdFromApi);
         tc.setName("Get Generation Queue | User: " + userName);
@@ -178,14 +177,14 @@ public class GetGenerationQueueTest extends BaseTest {
                 );
 
                 // ✅ Report only when queue exists
-                ConnectionReport testData =
+                Report testData =
                         JsonUtils.readJson(
                                 "testdata/queueData/getGenerationQueue.json",
-                                ConnectionReport.class
+                                Report.class
                         );
 
-                ConnectionReport.TestCase tc =
-                        new ConnectionReport.TestCase(
+                Report.TestCase tc =
+                        new Report.TestCase(
                                 testData.getTestCases().get(0)
                         );
 

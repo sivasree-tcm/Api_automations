@@ -1,20 +1,22 @@
 package tests.connection;
 
-import api.connection.ProjectConfigApi;
+import api.configuration.ProjectConfigApi;
 import base.BaseTest;
-import models.connection.DbConfigReport; // Assuming common model for test case structure
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
-import java.util.HashMap;
+
 import java.util.Map;
 import java.util.List;
+import java.util.HashMap;
 
 public class SaveProjectConfigTest extends BaseTest {
 
     public void saveConfigTest() {
-        DbConfigReport testData = JsonUtils.readJson(
-                "testdata/project/saveConfig.json",
-                DbConfigReport.class
+
+        Report testData = JsonUtils.readJson(
+                "testdata/configuration/saveConfig.json",
+                Report.class
         );
 
         if (testData != null) {
@@ -22,17 +24,25 @@ public class SaveProjectConfigTest extends BaseTest {
         }
     }
 
-    private void execute(DbConfigReport testData, List<DbConfigReport.TestCase> cases) {
-        for (DbConfigReport.TestCase tc : cases) {
-            // Start with the base map from your JSON template
-            Map<String, Object> request = (Map<String, Object>) tc.getRequest();
+    private void execute(Report testData, List<Report.TestCase> cases) {
 
-            // ✅ DYNAMIC INJECTION: User ID from TokenUtil
+        for (Report.TestCase tc : cases) {
+
+            Map<String, Object> request;
+
+            if (tc.getRequest() != null) {
+                request = new HashMap<>((Map<String, Object>) tc.getRequest());
+            } else {
+                request = new HashMap<>();
+            }
+
+            // ✅ Dynamic UserId Injection
             int actualUserId = TokenUtil.getUserId(tc.getRole());
             request.put("userId", String.valueOf(actualUserId));
 
-            // ✅ DYNAMIC INJECTION: Project ID from ProjectStore
+            // ✅ Dynamic ProjectId Injection
             Integer savedProjectId = ProjectStore.getProjectId();
+
             if (savedProjectId != null) {
                 request.put("projectId", String.valueOf(savedProjectId));
                 System.out.println("🔗 Injected Project ID: " + savedProjectId);
@@ -40,7 +50,9 @@ public class SaveProjectConfigTest extends BaseTest {
                 System.err.println("⚠️ Warning: ProjectStore is empty. Using default/JSON ID.");
             }
 
-            // Execute using your custom framework executor
+            // ✅ Store payload back to report (important for report logging)
+            tc.setRequest(request);
+
             ApiTestExecutor.execute(
                     testData.getScenario(),
                     tc,

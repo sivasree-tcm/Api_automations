@@ -3,13 +3,11 @@ package tests.br;
 import api.br.UploadBusinessRequirementApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,13 +15,13 @@ public class UploadBusinessRequirementTest extends BaseTest {
 
     public void uploadBusinessRequirementTest() {
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/br/uploadBusinessRequirement.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             Map<String, Object> request = (Map<String, Object>) tc.getRequest();
 

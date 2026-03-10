@@ -1,9 +1,8 @@
 package tests.project;
 
-import api.project.GetTestCaseWithStepsApi;
+import api.testCase.GetTestCaseWithStepsApi;
 import base.BaseTest;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -34,13 +33,13 @@ public class GetTestCaseWithStepsTest extends BaseTest {
 
         System.out.println("🧪 Using TestCaseId → " + testCaseId);
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
-                        "testdata/project/getTestCaseWithSteps.json",
-                        ConnectionReport.class
+                        "testdata/testCase/getTestCaseWithSteps.json",
+                        Report.class
                 );
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             Map<String, Object> request = new HashMap<>();
 

@@ -3,7 +3,7 @@ package tests.testCase;
 import api.testCase.AddTestCaseStepApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -36,13 +36,13 @@ public class AddTestCaseStepTest extends BaseTest {
         // ✅ CRITICAL FIX – Prevent stale Step IDs
         TestStepStore.clear();
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/testCase/addTestCaseStep.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             Map<String, Object> request = new HashMap<>();
 

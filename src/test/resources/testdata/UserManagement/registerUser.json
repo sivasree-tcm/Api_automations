@@ -1,0 +1,21 @@
+{
+  "scenario": "Register New User",
+  "testCases": [
+    {
+      "tcId": "REGISTER_USER_001",
+      "name": "Register User with Valid Data",
+      "role": "SUPER_ADMIN",
+      "authType": "NONE",
+      "expectedStatusCode": 201,
+      "request": {
+        "userFirstName": "{{firstName}}",
+        "userLastName": "{{lastName}}",
+        "userEmailId": "{{email}}",
+        "userPassword": "{{password}}",
+        "userPhoneNumber": "{{phone}}",
+        "userPhoneCountryCode": "91",
+        "organizationId": "{{orgId}}"
+      }
+    }
+  ]
+}

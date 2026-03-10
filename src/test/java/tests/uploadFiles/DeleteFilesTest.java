@@ -2,7 +2,7 @@ package tests.uploadFiles;
 
 import api.uploadFiles.DeleteFilesApi;
 import base.BaseTest;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 import java.util.HashMap;
@@ -17,9 +17,9 @@ public class DeleteFilesTest extends BaseTest {
         // Get first BR ID
         Integer brId = BusinessRequirementStore.getBrIds(projectId).get(0);
 
-        ConnectionReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/uploadFiles/uploadFilesForBR.json",
-                ConnectionReport.class
+                Report.class
         );
 
         // 🔥 FIX: Ensure the template case has a non-null Request Map before copying
@@ -28,7 +28,7 @@ public class DeleteFilesTest extends BaseTest {
         }
 
         // Now this call will not throw NullPointerException
-        ConnectionReport.TestCase tc = new ConnectionReport.TestCase(testData.getTestCases().get(0));
+        Report.TestCase tc = new Report.TestCase(testData.getTestCases().get(0));
 
         // Construct the dynamic Payload for deletion
         Map<String, Object> deletePayload = new HashMap<>();

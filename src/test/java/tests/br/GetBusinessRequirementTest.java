@@ -2,7 +2,7 @@ package tests.br;
 
 import api.br.GetBRByProjectApi;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -12,16 +12,16 @@ public class GetBusinessRequirementTest {
 
     public void fetchBRsForAllProjects() {
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/br/getBRByProject.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
         for (Integer projectId : ProjectStore.getAllProjectIds()) {
 
-            ConnectionReport.TestCase tc =
-                    new ConnectionReport.TestCase(
+            Report.TestCase tc =
+                    new Report.TestCase(
                             testData.getTestCases().get(0)
                     );
 
@@ -82,14 +82,14 @@ public class GetBusinessRequirementTest {
             throw new RuntimeException("❌ Project ID not found. Run GetProjects first.");
         }
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/br/getBRByProject.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(
+        Report.TestCase tc =
+                new Report.TestCase(
                         testData.getTestCases().get(0)
                 );
 

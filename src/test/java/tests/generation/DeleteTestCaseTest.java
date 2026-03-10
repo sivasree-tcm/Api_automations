@@ -1,11 +1,10 @@
 package tests.generation;
 
-import api.generation.DeleteTestCaseApi;
-import api.project.GetTestCaseSummaryForTSApi;
+import api.testCase.DeleteTestCaseApi;
+import api.testCase.GetTestCaseSummaryForTSApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -21,13 +20,13 @@ public class DeleteTestCaseTest extends BaseTest {
             throw new RuntimeException("❌ No TS available to fetch Test Cases");
         }
 
-        ConnectionReport testData = JsonUtils.readJson(
-                "testdata/generation/deleteTestCase.json",
-                ConnectionReport.class
+        Report testData = JsonUtils.readJson(
+                "testdata/testCase/deleteTestCase.json",
+                Report.class
         );
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(testData.getTestCases().get(0));
+        Report.TestCase tc =
+                new Report.TestCase(testData.getTestCases().get(0));
 
         int page = 1;
         int pageSize = 10;

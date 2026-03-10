@@ -5,8 +5,7 @@ import api.project.GetProjectsApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.ProjectStore;
@@ -56,17 +55,17 @@ public class GetProjectUsersTest extends BaseTest {
 
     public void getUsersForProject(Integer projectId) {
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/project/getProjectUsers.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        ConnectionReport.TestCase baseTc =
+        Report.TestCase baseTc =
                 testData.getTestCases().get(0);
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(baseTc);
+        Report.TestCase tc =
+                new Report.TestCase(baseTc);
 
         tc.setTcId("TC_GET_PROJECT_USERS_" + projectId);
         tc.setName("Get users for project " + projectId);
@@ -103,19 +102,19 @@ public class GetProjectUsersTest extends BaseTest {
 
     public void fetchProjectUsers() {
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/project/getProjectUsers.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
         for (Integer projectId : ProjectStore.getAllProjectIds()) {
 
-            ConnectionReport.TestCase baseTc =
+            Report.TestCase baseTc =
                     testData.getTestCases().get(0);
 
-            ConnectionReport.TestCase tc =
-                    new ConnectionReport.TestCase(baseTc);
+            Report.TestCase tc =
+                    new Report.TestCase(baseTc);
 
             Map<String, Object> request =
                     new HashMap<>((Map<String, Object>) tc.getRequest());

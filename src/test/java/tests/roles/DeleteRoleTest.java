@@ -3,7 +3,7 @@ package tests.roles;
 import api.roles.DeleteRoleApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -14,18 +14,18 @@ public class DeleteRoleTest extends BaseTest {
 
     public void deleteRoles() {
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/rolesData/deleteRole.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
         RoleStore.getAll().forEach((projectId, roleIds) -> {
 
             for (Integer roleId : roleIds) {
 
-                ConnectionReport.TestCase tc =
-                        new ConnectionReport.TestCase(
+                Report.TestCase tc =
+                        new Report.TestCase(
                                 testData.getTestCases().get(0)
                         );
 

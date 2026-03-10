@@ -2,16 +2,13 @@ package tests.queue;
 
 import api.queue.DeleteGenerationQueueApi;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.GenerationQueueStore;
 import utils.JsonUtils;
-import utils.ProjectStore;
 import utils.TokenUtil;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
@@ -20,10 +17,10 @@ public class DeleteGenerationQueueTest {
 
     public void deleteGenerationQueue() {
         TokenUtil.refreshToken();
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/queueData/deleteGenerationQueue.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
         GenerationQueueStore.getAll().forEach((projectId, userMap) -> {
@@ -36,8 +33,8 @@ public class DeleteGenerationQueueTest {
                     return;
                 }
 
-                ConnectionReport.TestCase tc =
-                        new ConnectionReport.TestCase(
+                Report.TestCase tc =
+                        new Report.TestCase(
                                 testData.getTestCases().get(0)
                         );
 

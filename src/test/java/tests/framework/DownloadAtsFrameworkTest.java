@@ -3,7 +3,7 @@ package tests.framework;
 import api.framework.DownloadAtsFrameworkApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -39,9 +39,9 @@ public class DownloadAtsFrameworkTest extends BaseTest {
         deleteOldFrameworkFolders(automationFramework);
 
         // ✅ STEP 3 — Load test data
-        ConnectionReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/framework/downloadAtsFramework.json",
-                ConnectionReport.class
+                Report.class
         );
 
         if (testData == null || testData.getTestCases() == null) {
@@ -49,9 +49,9 @@ public class DownloadAtsFrameworkTest extends BaseTest {
         }
 
         // ✅ STEP 4 — Execute download for each test case
-        for (ConnectionReport.TestCase baseTc : testData.getTestCases()) {
+        for (Report.TestCase baseTc : testData.getTestCases()) {
 
-            ConnectionReport.TestCase tc = new ConnectionReport.TestCase(baseTc);
+            Report.TestCase tc = new Report.TestCase(baseTc);
 
             Map<String, Object> request = new HashMap<>();
             request.put("projectId", String.valueOf(projectId));

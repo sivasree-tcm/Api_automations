@@ -2,27 +2,27 @@ package tests.user;
 
 import api.userManagement.UserManagementApi;
 import base.BaseTest;
+import report.Report;
 import utils.JsonUtils;
 
 import java.util.List;
 
 public class ToggleUserStatus extends BaseTest {
 
-
     public void toggleUserStatusApiTest() {
 
-        ToggleUserStatusTestData testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/UserManagement/toggleUserStatus.json",
-                        ToggleUserStatusTestData.class
+                        Report.class
                 );
 
         execute(testData, testData.getTestCases());
     }
 
     private void execute(
-            ToggleUserStatusTestData testData,
-            List<ToggleUserStatusTestData.TestCase> cases
+            Report testData,
+            List<Report.TestCase> cases
     ) {
 
         // ✅ CRITICAL: Prevent NullPointerException
@@ -32,7 +32,7 @@ public class ToggleUserStatus extends BaseTest {
             );
         }
 
-        for (ToggleUserStatusTestData.TestCase tc : cases) {
+        for (Report.TestCase tc : cases) {
 
             ApiTestExecutor.execute(
                     testData.getScenario(),

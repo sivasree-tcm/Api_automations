@@ -1,7 +1,7 @@
 //package tests.generation;
 //
-//import api.generation.UpdateTestCaseStepOrderApi;
-//import api.project.GetTestCaseWithStepsApi;
+//import api.testCase.UpdateTestCaseStepOrderApi;
+//import api.testCase.GetTestCaseWithStepsApi;
 //import base.BaseTest;
 //import io.restassured.response.Response;
 //import org.testng.annotations.Test;
@@ -104,11 +104,10 @@
 //}
 package tests.generation;
 
-import api.generation.UpdateTestCaseStepOrderApi;
-import api.project.GetTestCaseWithStepsApi;
+import api.testCase.UpdateTestCaseStepOrderApi;
+import api.testCase.GetTestCaseWithStepsApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
 import tests.user.ApiTestExecutor;
 import utils.TestCaseStore;
 import utils.TokenUtil;

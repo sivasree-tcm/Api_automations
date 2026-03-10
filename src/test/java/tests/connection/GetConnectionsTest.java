@@ -3,6 +3,7 @@ package tests.connection;
 import api.connection.GetConnectionsApi;
 import base.BaseTest;
 import io.restassured.response.Response;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -25,10 +26,10 @@ public class GetConnectionsTest extends BaseTest {
             throw new RuntimeException("❌ orgId is null.");
         }
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/connectionsData/getConnections.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
         if (testData == null || testData.getTestCases() == null) {
@@ -36,7 +37,7 @@ public class GetConnectionsTest extends BaseTest {
         }
 
         // ✅ Use existing testcase instead of creating new object
-        ConnectionReport.TestCase tc =
+        Report.TestCase tc =
                 testData.getTestCases().get(0);
 
         Map<String, Object> request = new HashMap<>();

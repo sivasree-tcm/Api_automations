@@ -3,7 +3,7 @@ package tests.organization;
 import api.organization.GetOrganizationsApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -14,12 +14,12 @@ public class GetOrganizationsTest extends BaseTest {
 
     public void getOrganizationsApiTest() {
 
-        ConnectionReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/organization/getOrganizations.json",
-                ConnectionReport.class
+                Report.class
         );
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             ApiTestExecutor.execute(
                     testData.getScenario(),

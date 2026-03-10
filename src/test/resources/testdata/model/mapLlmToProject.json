@@ -11,7 +11,7 @@
         "custom_max_tokens": 10000,
         "custom_top_p": null
       },
-      "expectedStatus": 200
+      "expectedStatusCode": 200
     },
     {
       "name": "Map chat model",
@@ -23,7 +23,7 @@
         "custom_max_tokens": 10000,
         "custom_top_p": 0.9
       },
-      "expectedStatus": 200
+      "expectedStatusCode": 200
     }
   ]
 }

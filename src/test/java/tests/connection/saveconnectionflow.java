@@ -1,11 +1,11 @@
 package tests.connection;
 
 import io.restassured.response.Response;
+import report.Report;
 import utils.ConnectionStore;
 import utils.TestDataGenerator;
 import api.connection.SaveConnectionApi;
 import base.BaseTest;
-import org.testng.annotations.Test;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.TokenUtil;
@@ -16,17 +16,17 @@ public class saveconnectionflow extends BaseTest {
 
 
     public void saveConnectionTest() {
-        ConnectionReport testData = JsonUtils.readJson(
-                "testdata/connectionsData/saveconnectionflow.json",
-                ConnectionReport.class
+        Report testData = JsonUtils.readJson(
+                "testdata/connectionsData/saveConnection.json",
+                Report.class
         );
 
         execute(testData, testData.getTestCases());
     }
 
-    private void execute(ConnectionReport testData, List<ConnectionReport.TestCase> cases) {
+    private void execute(Report testData, List<Report.TestCase> cases) {
 
-        for (ConnectionReport.TestCase tc : cases) {
+        for (Report.TestCase tc : cases) {
             // 1. Get the main request map
             Map<String, Object> request = (Map<String, Object>) tc.getRequest();
 

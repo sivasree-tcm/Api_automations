@@ -3,29 +3,27 @@ package tests.system;
 import api.system.GetVersionApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import org.testng.annotations.Test;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.JsonUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Test
 public class GetVersionTest extends BaseTest {
 
     public void getVersionApiTest() {
 
-        ConnectionReport testData = JsonUtils.readJson(
+        Report testData = JsonUtils.readJson(
                 "testdata/system/getVersion.json",
-                ConnectionReport.class
+                Report.class
         );
 
         if (testData == null || testData.getTestCases() == null) {
             throw new RuntimeException("❌ getVersion.json missing or invalid.");
         }
 
-        for (ConnectionReport.TestCase tc : testData.getTestCases()) {
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             Map<String, Object> request = new HashMap<>();
 

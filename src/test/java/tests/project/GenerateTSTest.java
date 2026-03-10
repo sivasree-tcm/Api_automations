@@ -3,7 +3,7 @@ package tests.project;
 import api.generation.GenerateTSApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.*;
 
@@ -61,14 +61,14 @@ public class GenerateTSTest extends BaseTest {
         );
 
         // ✅ Load test data
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
                         "testdata/generation/generateTS.json",
-                        ConnectionReport.class
+                        Report.class
                 );
 
-        ConnectionReport.TestCase tc =
-                new ConnectionReport.TestCase(
+        Report.TestCase tc =
+                new Report.TestCase(
                         testData.getTestCases().get(0)
                 );
 

@@ -1,9 +1,9 @@
 package tests.project;
 
-import api.project.GetTestCaseSummaryForTSApi;
+import api.testCase.GetTestCaseSummaryForTSApi;
 import base.BaseTest;
 import io.restassured.response.Response;
-import tests.connection.ConnectionReport;
+import report.Report;
 import tests.user.ApiTestExecutor;
 import utils.GeneratedTSStore;
 import utils.JsonUtils;
@@ -24,16 +24,16 @@ public class GetTestCaseSummaryForTSTest extends BaseTest {
             );
         }
 
-        ConnectionReport testData =
+        Report testData =
                 JsonUtils.readJson(
-                        "testdata/project/getTestCaseSummaryForTS.json",
-                        ConnectionReport.class
+                        "testdata/testCase/getTestCaseSummaryForTS.json",
+                        Report.class
                 );
 
         for (Integer tsId : GeneratedTSStore.getAll()) {
 
-            ConnectionReport.TestCase tc =
-                    new ConnectionReport.TestCase(
+            Report.TestCase tc =
+                    new Report.TestCase(
                             testData.getTestCases().get(0)
                     );
 

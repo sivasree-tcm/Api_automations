@@ -5,7 +5,7 @@ import base.BaseTest;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.GeneratedTSStore;
 import utils.JsonUtils;
 import utils.TokenUtil;

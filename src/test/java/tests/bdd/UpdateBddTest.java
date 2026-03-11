@@ -4,7 +4,7 @@ import api.bdd.UpdateBddApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.TokenUtil;
 import utils.TestCaseStore; // ✅ Import the store where ID was saved
@@ -45,11 +45,11 @@ public class UpdateBddTest extends BaseTest {
                         /* 🔗 DYNAMIC LINKING: Fetch stored TestCaseId */
                         if ("DYNAMIC_TC".equals(request.get("testCaseId"))) {
 
-                            // Get the ID that was stored in Step 22 (AddTestCaseTest)
+                            // Get the ID that was stored in Step 22 (InsertTestCaseTest)
                             Integer testCaseId = TestCaseStore.getAnyTestCaseId();
 
                             if (testCaseId == null) {
-                                throw new RuntimeException("❌ No TestCase ID found in Store! Ensure AddTestCaseTest ran first.");
+                                throw new RuntimeException("❌ No TestCase ID found in Store! Ensure InsertTestCaseTest ran first.");
                             }
 
                             request.put("testCaseId", testCaseId);

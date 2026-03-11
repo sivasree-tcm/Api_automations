@@ -1,0 +1,22 @@
+{
+  "scenario": "Edit Project dynamic update",
+  "testCases": [
+    {
+      "tcId": "EDIT_PROJ_01",
+      "name": "Update Project Dates and Sync Store",
+      "role": "SUPER_ADMIN",
+      "expectedStatusCode": 200,
+      "request": {
+        "projectId": "{{dynamic}}",
+        "userId": "{{dynamic}}",
+        "projectName": "{{dynamic}}",
+        "projectStartDate": "{{dynamic}}",
+        "projectEndDate": "{{dynamic}}",
+        "storageType": "{{dynamic}}",
+        "webFramework": "{{dynamic}}",
+        "devopsProjectName": "2702f85d-556d-4d32-a00b-87840ca2739d",
+        "teamName": "bcc44224-daec-4f79-9bdd-eb381d709b0a"
+      }
+    }
+  ]
+}

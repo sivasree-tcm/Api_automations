@@ -1,0 +1,15 @@
+{
+  "scenario": "User Logout API Validation",
+  "testCases": [
+    {
+      "tcId": "TC_LOGOUT_01",
+      "name": "Successful Logout - Super Admin",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userId": "{{userId}}"
+      }
+    }
+  ]
+}

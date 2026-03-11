@@ -4,7 +4,7 @@ import api.userManagement.GetUserManagementDetailsApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.ProjectStore;
 import utils.TokenUtil;
@@ -37,7 +37,7 @@ public class GetUserManagementDetailsTest extends BaseTest {
            =============================== */
 
         Report testData = JsonUtils.readJson(
-                "testdata/UserManagement/getUserManagementDetails.json",
+                "testdata/userManagement/getUserManagementDetails.json",
                 Report.class
         );
 

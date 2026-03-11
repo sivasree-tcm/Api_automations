@@ -1,15 +1,14 @@
 {
-  "scenario": "Update Test Case Step Order",
+  "scenario": "Dynamic Step Reorder Validation",
   "testCases": [
     {
-      "tcId": "TC_UPDATE_STEP_ORDER_01",
-      "name": "Update Test Case Step Order - Valid",
+      "tcId": "STEP_REORDER",
+      "name": "Verify successful step reorder for admin",
       "role": "SUPER_ADMIN",
       "authType": "VALID",
       "expectedStatusCode": 200,
       "request": {
-        "steps": "DYNAMIC_STEPS",
-        "userId": "DYNAMIC_USER"
+        "userId": "{{userId}}"
       }
     }
   ]

@@ -3,7 +3,7 @@ package tests.br;
 import api.br.DeleteBRApi;
 import io.restassured.response.Response;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.*;
 import java.util.*;
 

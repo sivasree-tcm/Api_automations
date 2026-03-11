@@ -4,7 +4,7 @@ import api.logs.GetLogFilesApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.*;
 
 import java.util.HashMap;

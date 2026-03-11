@@ -3,7 +3,7 @@ package tests.project;
 import api.project.GetProjectProviderConfigApi;
 import base.BaseTest;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.TokenUtil;
 

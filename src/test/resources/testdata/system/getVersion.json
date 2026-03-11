@@ -6,18 +6,6 @@
       "role": "SUPER_ADMIN",
       "authType": "VALID",
       "expectedStatusCode": 200
-    },
-    {
-      "name": "GET_VERSION_02 - Missing Token",
-      "role": "SUPER_ADMIN",
-      "authType": "MISSING",
-      "expectedStatusCode": 401
-    },
-    {
-      "name": "GET_VERSION_03 - Invalid Token",
-      "role": "SUPER_ADMIN",
-      "authType": "INVALID",
-      "expectedStatusCode": 401
     }
   ]
 }

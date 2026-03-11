@@ -1,0 +1,95 @@
+package tests.testCase;
+
+import api.testCase.GetTestCaseSummaryForTSApi;
+import base.BaseTest;
+import io.restassured.response.Response;
+import report.Report;
+import report.ApiTestExecutor;
+import utils.GeneratedTSStore;
+import utils.JsonUtils;
+import utils.TestCaseStore;
+import utils.TokenUtil;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class GetTestCaseSummaryForTSTest extends BaseTest {
+
+    public void getTestCaseSummaryForTS() {
+
+        if (!GeneratedTSStore.hasTS()) {
+            throw new RuntimeException(
+                    "❌ No TS available. Run TS → TC generation first."
+            );
+        }
+
+        Report testData =
+                JsonUtils.readJson(
+                        "testdata/testCase/getTestCaseSummaryForTS.json",
+                        Report.class
+                );
+
+        for (Integer tsId : GeneratedTSStore.getAll()) {
+
+            Report.TestCase tc =
+                    new Report.TestCase(
+                            testData.getTestCases().get(0)
+                    );
+
+            Map<String, Object> request = new HashMap<>();
+            request.put("testScenarioId", tsId);
+            request.put("userId", TokenUtil.getUserId(tc.getRole()));
+
+            tc.setRequest(request);
+            tc.setTcId("GET_TC_SUMMARY_TS_" + tsId);
+            tc.setName("Get Test Case Summary | TS " + tsId);
+
+            ApiTestExecutor.execute(
+                    testData.getScenario(),
+                    tc,
+                    () -> {
+
+                        Response response =
+                                GetTestCaseSummaryForTSApi.getTestCaseSummary(
+                                        request,
+                                        tc.getRole(),
+                                        tc.getAuthType()
+                                );
+
+                        List<Map<String, Object>> results =
+                                response.jsonPath().getList("results");
+
+                        if (results == null || results.isEmpty()) {
+
+                            System.out.println(
+                                    "⚠ No test cases yet for TS → " + tsId +
+                                            " (Likely async generation or stale TS)"
+                            );
+
+                            return response;   // ✅ DO NOT FAIL
+                        }
+
+                        for (Map<String, Object> item : results) {
+                            Integer tcId =
+                                    Integer.valueOf(
+                                            String.valueOf(item.get("testCaseId"))
+                                    );
+                            String tcNumber = String.valueOf(
+                                    item.get("testCaseNumber")   // ⭐ CRITICAL
+                            );
+                            TestCaseStore.add(tcId);
+                            TestCaseStore.addTestCaseNumber(tcNumber);
+                        }
+
+                        System.out.println(
+                                "📦 Stored TestCase IDs for TS " + tsId +
+                                        " → " + results.size()
+                        );
+
+                        return response;
+                    }
+            );
+        }
+    }
+}

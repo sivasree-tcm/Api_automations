@@ -11,7 +11,7 @@ public class ConnectionStore {
 
     // ✅ Hardcoded Connection ID
     public static Integer getConnectionId() {
-        return 33;
+        return 87;
     }
 
     // ✅ Hardcoded Platform
@@ -34,4 +34,15 @@ public class ConnectionStore {
         savedConnectionId.remove();
         savedPlatform.remove();
     }
+
+    private static Integer connectionId;
+
+    public static void setConnectId(Integer id) {
+        connectionId = id;
+    }
+
+    public static Integer getConnectId() {
+        return connectionId;
+    }
+
 }

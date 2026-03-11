@@ -4,7 +4,7 @@ import api.system.GetVersionApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.JsonUtils;
 
 import java.util.HashMap;

@@ -4,7 +4,7 @@ import api.roles.EditRoleApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.*;
 
 import java.util.HashMap;
@@ -20,21 +20,32 @@ public class EditRoleTest extends BaseTest {
                         Report.class
                 );
 
+        if (testData == null || testData.getTestCases() == null) {
+            throw new RuntimeException("❌ editRole.json missing");
+        }
+
+        System.out.println("🔎 RoleStore Data → " + RoleStore.getAll());
+
         RoleStore.getAll().forEach((projectId, roleIds) -> {
 
             for (Integer roleId : roleIds) {
 
+                Report.TestCase base =
+                        testData.getTestCases().get(0);
+
                 Report.TestCase tc =
-                        new Report.TestCase(
-                                testData.getTestCases().get(0)
-                        );
+                        new Report.TestCase(base);
+
+                /* ---------- BUILD REQUEST ---------- */
 
                 Map<String, Object> request = new HashMap<>();
+
                 request.put("roleId", roleId);
                 request.put("roleName", RoleDataGenerator.generateRoleName());
                 request.put("roleDescription", RoleDataGenerator.generateRoleDescription());
-                request.put("userId", TokenUtil.getUserId());
+                request.put("userId", TokenUtil.getUserId(tc.getRole()));
 
+                System.out.println("📦 EditRole Payload → " + request);
 
                 tc.setTcId("EDIT_ROLE_" + roleId);
                 tc.setName("Edit Role | RoleId " + roleId);
@@ -52,9 +63,8 @@ public class EditRoleTest extends BaseTest {
                                             tc.getAuthType()
                                     );
 
-                            System.out.println(
-                                    "✏️ Role updated → roleId=" + roleId
-                            );
+                            System.out.println("📡 Status → " + response.getStatusCode());
+                            System.out.println("📡 Response → " + response.getBody().asString());
 
                             return response;
                         }

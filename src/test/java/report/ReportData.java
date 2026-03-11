@@ -1,7 +1,6 @@
 package report;
 
 import java.util.List;
-import tests.user.ReportScenario;
 
 public class ReportData {
 

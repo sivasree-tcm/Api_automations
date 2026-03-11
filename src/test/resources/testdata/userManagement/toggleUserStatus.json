@@ -1,0 +1,16 @@
+{
+  "scenario": "Toggle User Status API – Full Validation",
+  "testCases": [
+    {
+      "tcId": "TC_TUS_01",
+      "name": "Toggle user to inactive",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "targetUserId": 31,
+        "isActive": 0
+      }
+    }
+  ]
+}

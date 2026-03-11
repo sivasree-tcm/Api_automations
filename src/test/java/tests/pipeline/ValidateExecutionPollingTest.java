@@ -6,7 +6,7 @@ import io.restassured.response.Response;
 import report.ReportContext;
 import report.ReportStep;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.*;
 
 import java.util.HashMap;

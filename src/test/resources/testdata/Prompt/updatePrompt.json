@@ -8,7 +8,7 @@
       "authType": "VALID",
       "expectedStatusCode": 200,
       "request": {
-        "promptText": "Understand project overview and generate test scenarios.",
+        "promptText": "placeholder",
         "promptDescription": "placeholder",
         "promptSource": "BR",
         "promptDestination": "TS",

@@ -1,82 +1,177 @@
 package tests.project;
 
-import api.project.ProjectApi;
+import api.project.EditProjectApi;
 import base.BaseTest;
+import io.restassured.response.Response;
+import report.ApiTestExecutor;
 import report.Report;
-import tests.user.ApiTestExecutor;
-import utils.JsonUtils;
-import utils.ProjectStore;
+import utils.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EditProjectTest extends BaseTest {
 
     public void editProjectApiTest() {
 
-        // 1. Load the JSON template
-        Report testData = JsonUtils.readJson(
-                "testdata/project/EditProjectone.json",
-                Report.class
-        );
+        Report testData =
+                JsonUtils.readJson(
+                        "testdata/project/editProject.json",
+                        Report.class
+                );
 
-        // 2. Prepare dynamic data
-        String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        String nextMonth = LocalDate.now().plusMonths(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        if (testData == null || testData.getTestCases() == null) {
+            throw new RuntimeException("EditProject.json missing or invalid");
+        }
 
-        // 3. Iterate through test cases and inject data from ProjectStore
+        String today =
+                LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        String nextMonth =
+                LocalDate.now().plusMonths(1)
+                        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        System.out.println("DEBUG SelectedProjectId → " + ProjectStore.getSelectedProjectId());
+        System.out.println("DEBUG ThreadProjectId → " + ProjectStore.getProjectId());
+
         for (Report.TestCase tc : testData.getTestCases()) {
 
-            Object request = tc.getRequest();
+            Map<String, Object> request =
+                    (Map<String, Object>) tc.getRequest();
 
-            // Inject values from ProjectStore into the request object
-            mapStoreToRequest(request, today, nextMonth);
+            Map<String, Object> builtRequest =
+                    buildEditProjectRequest(request, today, nextMonth);
 
-            // 4. Execute the API
+            System.out.println("FINAL REQUEST → " + builtRequest);
+
+            /* IMPORTANT: update report payload */
+            tc.setRequest(builtRequest);
+
             ApiTestExecutor.execute(
                     testData.getScenario(),
                     tc,
-                    () -> ProjectApi.editProject(
-                            tc.getRequest(),
-                            tc.getRole()
+                    () -> EditProjectApi.editProject(
+                            builtRequest,
+                            tc.getRole(),
+                            tc.getAuthType()
                     )
             );
         }
     }
 
-    private void mapStoreToRequest(Object request, String startDate, String endDate) {
-        try {
+    private Map<String, Object> buildEditProjectRequest(
+            Map<String, Object> request,
+            String startDate,
+            String endDate) {
 
-            Class<?> clazz = request.getClass();
+        Map<String, Object> map = new HashMap<>(request);
 
-            // Mapping ProjectStore data to the Request Fields
-            setFieldValue(clazz, request, "projectId", ProjectStore.getSelectedProjectId().toString());
-            setFieldValue(clazz, request, "userId", ProjectStore.getUserId());
-            setFieldValue(clazz, request, "projectCreatedBy", ProjectStore.getUserId());
-            setFieldValue(clazz, request, "projectName", ProjectStore.getSelectedProjectName());
-            setFieldValue(clazz, request, "storageType", ProjectStore.getStorageType());
-            setFieldValue(clazz, request, "webFramework", ProjectStore.getAutomationFramework());
+        /* -------- PROJECT ID -------- */
 
-            // Injecting Dynamic Dates
-            setFieldValue(clazz, request, "projectStartDate", startDate);
-            setFieldValue(clazz, request, "projectEndDate", endDate);
+        if ("{{dynamic}}".equals(map.get("projectId"))) {
 
-        } catch (Exception e) {
-            throw new RuntimeException("❌ Failed to map ProjectStore to Request object", e);
+            Integer projectId = ProjectStore.getSelectedProjectId();
+
+            if (projectId == null) {
+                projectId = ProjectStore.getProjectId();
+            }
+
+            if (projectId == null) {
+                throw new RuntimeException("Project ID missing. Ensure CreateProject step executed.");
+            }
+
+            map.put("projectId", projectId.toString());
         }
-    }
 
-    private void setFieldValue(Class<?> clazz, Object instance, String fieldName, String value) {
-        try {
+        /* -------- USER ID -------- */
 
-            var field = clazz.getDeclaredField(fieldName);
-            field.setAccessible(true);
-            field.set(instance, value);
+        if ("{{dynamic}}".equals(map.get("userId"))) {
 
-        } catch (NoSuchFieldException e) {
-            // Field not present in this specific request variant, skip safely
-        } catch (IllegalAccessException e) {
-            System.err.println("Could not set field: " + fieldName);
+            String userId = ProjectStore.getUserId();
+
+            if (userId == null) {
+
+                Integer tokenUserId = TokenUtil.getUserId();
+
+                if (tokenUserId == null) {
+                    throw new RuntimeException("User ID missing");
+                }
+
+                userId = tokenUserId.toString();
+                ProjectStore.setUserId(userId);
+            }
+
+            map.put("userId", userId);
         }
+
+        /* -------- PROJECT NAME -------- */
+
+        if ("{{dynamic}}".equals(map.get("projectName"))) {
+
+            String projectName = ProjectStore.getSelectedProjectName();
+
+            if (projectName == null) {
+                projectName = "Automation_Project";
+            }
+
+            map.put("projectName", projectName);
+        }
+
+        /* -------- DATES -------- */
+
+        if ("{{dynamic}}".equals(map.get("projectStartDate"))) {
+            map.put("projectStartDate", startDate);
+        }
+
+        if ("{{dynamic}}".equals(map.get("projectEndDate"))) {
+            map.put("projectEndDate", endDate);
+        }
+
+        /* -------- STORAGE -------- */
+
+        if ("{{dynamic}}".equals(map.get("storageType"))) {
+
+            String storageType;
+
+            try {
+                storageType = ProjectStore.getStorageType();
+            } catch (Exception e) {
+                storageType = "S3";
+            }
+
+            map.put("storageType", storageType);
+        }
+
+        /* -------- FRAMEWORK -------- */
+
+        if ("{{dynamic}}".equals(map.get("webFramework"))) {
+
+            String framework;
+
+            try {
+                framework = ProjectStore.getAutomationFramework();
+            } catch (Exception e) {
+                framework = "Playwright_Java";
+            }
+
+            map.put("webFramework", framework);
+        }
+
+        /* -------- STATIC FIELDS REQUIRED BY API -------- */
+
+        map.put("projectDescription", "automations");
+        map.put("projectDomain", "Telecommunications");
+        map.put("insightsBasedOnExistingAssets", 1);
+
+        /* -------- CONNECTION DATA -------- */
+
+        map.put("connectionId", ConnectionStore.getConnectionId());
+        map.put("platform", ConnectionStore.getPlatform());
+
+        System.out.println("Mapped Request → " + map);
+
+        return map;
     }
 }

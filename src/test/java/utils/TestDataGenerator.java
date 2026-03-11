@@ -126,4 +126,26 @@ public class TestDataGenerator {
         return DESCRIPTIONS[r.nextInt(DESCRIPTIONS.length)]
                 + " | RunId=" + System.currentTimeMillis();
     }
+
+    private static final String[] PROMPT_TEXTS = {
+
+            "Understand the project requirements and generate functional test scenarios.",
+
+            "Analyze the project overview and create detailed functional and edge case test scenarios.",
+
+            "Review the requirements and produce comprehensive test scenarios including boundary conditions.",
+
+            "Study the project description and generate end-to-end test scenarios covering major workflows.",
+
+            "Interpret the project requirements and produce positive, negative, and edge test scenarios."
+
+    };
+
+    public static String generatePromptText() {
+
+        Random r = new Random();
+
+        return PROMPT_TEXTS[r.nextInt(PROMPT_TEXTS.length)]
+                + " | RunId=" + System.currentTimeMillis();
+    }
 }

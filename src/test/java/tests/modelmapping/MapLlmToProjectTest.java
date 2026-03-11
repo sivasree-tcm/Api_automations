@@ -3,7 +3,7 @@ package tests.modelmapping;
 import api.modelmapping.MapLlmToProjectApi;
 import base.BaseTest;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.*;
 
 import java.util.List;

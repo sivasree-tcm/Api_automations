@@ -3,83 +3,33 @@ package tests.br;
 import api.br.GetBRByProjectApi;
 import io.restassured.response.Response;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.*;
 
 import java.util.*;
 
 public class GetBusinessRequirementTest {
 
-    public void fetchBRsForAllProjects() {
-
-        Report testData =
-                JsonUtils.readJson(
-                        "testdata/br/getBRByProject.json",
-                        Report.class
-                );
-
-        for (Integer projectId : ProjectStore.getAllProjectIds()) {
-
-            Report.TestCase tc =
-                    new Report.TestCase(
-                            testData.getTestCases().get(0)
-                    );
-
-            Map<String, Object> request = new HashMap<>();
-            request.put("projectId", projectId);
-            request.put("page", 1);
-            request.put("pageSize", 10);
-            request.put("userId", TokenUtil.getUserId());
-
-            tc.setTcId("GET_BR_" + projectId);
-            tc.setName("Get BR | Project " + projectId);
-            tc.setRequest(request);
-
-            ApiTestExecutor.execute(
-                    testData.getScenario(),
-                    tc,
-                    () -> {
-
-                        Response response =
-                                GetBRByProjectApi.getBRs(
-                                        request,
-                                        tc.getRole(),
-                                        tc.getAuthType()
-                                );
-
-                        List<Map<String, Object>> brList =
-                                response.jsonPath().getList("data");
-
-                        // ✅ No BR → skip
-                        if (brList == null || brList.isEmpty()) {
-                            System.out.println(
-                                    "ℹ No BR found for project " + projectId
-                            );
-                            return response;
-                        }
-
-                        List<Integer> brIds = new ArrayList<>();
-                        for (Map<String, Object> br : brList) {
-                            brIds.add((Integer) br.get("brId"));
-                        }
-
-                        BusinessRequirementStore.store(projectId, brIds);
-
-                        System.out.println(
-                                "✅ BR IDs stored → project=" + projectId +
-                                        " | brIds=" + brIds
-                        );
-
-                        return response;
-                    }
-            );
-        }
-    }
     public void fetchBRsForProject() {
 
-        Integer projectId = ProjectStore.getSelectedProjectId();
+        // ✅ SAFE project resolution (NO crash)
+        Integer projectId = ProjectStore.peekSelectedProjectId();
+
         if (projectId == null) {
-            throw new RuntimeException("❌ Project ID not found. Run GetProjects first.");
+            projectId = ProjectStore.getProjectId();
+
+            if (projectId == null) {
+                throw new RuntimeException(
+                        "❌ Project ID not available. Project creation failed."
+                );
+            }
+
+            // 🔥 IMPORTANT: mark project as selected
+            ProjectStore.setSelectedProject(projectId);
+
+            System.out.println(
+                    "⚠️ selectedProjectId was missing. Auto-set → " + projectId
+            );
         }
 
         Report testData =
@@ -101,56 +51,80 @@ public class GetBusinessRequirementTest {
                 tc,
                 () -> {
 
-                    int page = 1;
-                    List<Integer> allBrIds = new ArrayList<>();
+                    int pageSize = 10;
+                    int maxRetries = 5;
+                    int retry = 0;
+
+                    List<Integer> brIds = new ArrayList<>();
                     Response lastResponse = null;
 
-                    while (true) {
+                    while (retry < maxRetries) {
 
-                        Map<String, Object> request = new HashMap<>();
-                        request.put("projectId", projectId);
-                        request.put("page", page);
-                        request.put("pageSize", 10);
-                        request.put("userId", TokenUtil.getUserId());
+                        brIds.clear();
+                        int page = 1;
 
-                        Response response =
-                                GetBRByProjectApi.getBRs(
-                                        request,
-                                        tc.getRole(),
-                                        tc.getAuthType()
-                                );
+                        while (true) {
 
-                        lastResponse = response; // ✅ always keep latest response
+                            Map<String, Object> request = new HashMap<>();
+                            request.put("projectId", ProjectStore.getProjectId());
+                            request.put("page", page);
+                            request.put("pageSize", pageSize);
+                            request.put("userId", TokenUtil.getUserId());
 
-                        List<Map<String, Object>> brList =
-                                response.jsonPath().getList("data");
+                            Response response =
+                                    GetBRByProjectApi.getBRs(
+                                            request,
+                                            tc.getRole(),
+                                            tc.getAuthType()
+                                    );
 
-                        // ✅ Stop pagination
-                        if (brList == null || brList.isEmpty()) {
-                            System.out.println("ℹ No more BRs found. Stopping pagination.");
-                            break;
+                            lastResponse = response;
+
+                            List<Map<String, Object>> data =
+                                    response.jsonPath().getList("data");
+
+                            if (data == null || data.isEmpty()) break;
+
+                            for (Map<String, Object> br : data) {
+                                Object id = br.get("brId");
+                                if (id instanceof Number) {
+                                    brIds.add(((Number) id).intValue());
+                                }
+                            }
+
+                            page++;
                         }
 
-                        for (Map<String, Object> br : brList) {
-                            allBrIds.add((Integer) br.get("brId"));
-                        }
+                        if (!brIds.isEmpty()) break;
 
+                        retry++;
                         System.out.println(
-                                "✅ Page " + page + " fetched → BRs: " + brList.size()
+                                "⏳ BRs not ready yet for project " + ProjectStore.getProjectId() +
+                                        " → retry " + retry + "/" + maxRetries
                         );
 
-                        page++;
+                        try {
+                            Thread.sleep(10_000);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            throw new RuntimeException(e);
+                        }
                     }
 
-                    // ✅ Store only once
-                    BusinessRequirementStore.store(projectId, allBrIds);
+                    if (brIds.isEmpty()) {
+                        throw new RuntimeException(
+                                "❌ No BRs found for project " + ProjectStore.getProjectId() +
+                                        " after retries"
+                        );
+                    }
+
+                    // ✅ Store BRs for TS generation
+                    BusinessRequirementStore.store(ProjectStore.getProjectId(), brIds);
 
                     System.out.println(
-                            "✅ Total BRs stored for project " + projectId +
-                                    " = " + allBrIds.size()
+                            "✅ BR IDs stored → " + brIds
                     );
 
-                    // ✅ MUST return response (never null)
                     return lastResponse;
                 }
         );

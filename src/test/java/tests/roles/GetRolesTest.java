@@ -4,7 +4,7 @@ import api.roles.GetRolesApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.ProjectStore;
 import utils.TokenUtil;

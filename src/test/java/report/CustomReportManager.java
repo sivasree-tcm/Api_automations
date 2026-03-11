@@ -2,13 +2,11 @@ package report;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import tests.user.ReportScenario;
 
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class CustomReportManager {
     static {

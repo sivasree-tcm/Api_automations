@@ -3,7 +3,7 @@ package tests.generation;
 import api.generation.GetGenerationStatusApi;
 import io.restassured.response.Response;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.GeneratedTSStore;
 import utils.JsonUtils;
 import utils.ProjectStore;

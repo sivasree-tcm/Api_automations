@@ -1,0 +1,19 @@
+{
+  "scenario": "List Files API",
+  "testCases": [
+    {
+      "tcId": "LIST_FILES_01",
+      "name": "Validate files listed successfully from S3",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {
+        "userProjectId": "DYNAMIC_PROJECT",
+        "userBrId": "DYNAMIC_BR",
+        "userId": "DYNAMIC_USER",
+        "storageType": "DYNAMIC_STORAGE",
+        "platform": null
+      }
+    }
+  ]
+}

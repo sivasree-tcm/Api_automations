@@ -3,7 +3,7 @@ package tests.queue;
 import api.queue.DeleteGenerationQueueApi;
 import io.restassured.response.Response;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.GenerationQueueStore;
 import utils.JsonUtils;
 import utils.TokenUtil;

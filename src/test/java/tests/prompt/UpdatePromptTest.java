@@ -2,9 +2,8 @@ package tests.prompt;
 
 import api.prompt.UpdatePromptApi;
 import base.BaseTest;
-import io.restassured.response.Response;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.*;
 
 import java.util.HashMap;
@@ -47,7 +46,7 @@ public class UpdatePromptTest extends BaseTest {
             // 🔹 Inject dynamic values
             request.put("promptId", promptId);
             request.put("userId", String.valueOf(TokenUtil.getUserId()));
-
+            request.put("promptText", TestDataGenerator.generatePromptText());
             request.put(
                     "promptDescription",
                     TestDataGenerator.generateValidDescription()

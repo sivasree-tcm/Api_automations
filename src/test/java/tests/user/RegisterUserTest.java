@@ -3,12 +3,12 @@ package tests.user;
 import api.user.RegisterUserApi;
 import base.BaseTest;
 import io.restassured.response.Response;
+import report.ApiTestExecutor;
 import report.Report;
 import utils.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class RegisterUserTest extends BaseTest {
 
@@ -16,7 +16,7 @@ public class RegisterUserTest extends BaseTest {
 
         Report testData =
                 JsonUtils.readJson(
-                        "testdata/UserManagement/registerUser.json",
+                        "testdata/userManagement/registerUser.json",
                         Report.class
                 );
 

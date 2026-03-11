@@ -1,0 +1,12 @@
+{
+  "scenario": "Download FILES API",
+  "testCases": [
+    {
+      "tcId": "DOWNLOAD_FILES_01",
+      "name": "DOWLOAD image for BR",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200
+    }
+  ]
+}

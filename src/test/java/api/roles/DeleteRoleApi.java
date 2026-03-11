@@ -27,6 +27,6 @@ public class DeleteRoleApi {
 
         return req
                 .body(request)
-                .post("/api/deleteRole");
+                .post("/deleteRole");
     }
 }

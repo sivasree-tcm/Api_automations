@@ -3,8 +3,8 @@ package tests.roles;
 import api.roles.CreateRoleApi;
 import base.BaseTest;
 import io.restassured.response.Response;
+import report.ApiTestExecutor;
 import report.Report;
-import tests.user.ApiTestExecutor;
 import utils.*;
 
 import java.util.HashMap;
@@ -12,56 +12,51 @@ import java.util.Map;
 
 public class CreateRoleTest extends BaseTest {
 
-    public void createRolesForAllProjects() {
 
-        Report testData =
-                JsonUtils.readJson(
-                        "testdata/rolesData/createRole.json",
-                        Report.class
-                );
+    public void createRoleTest() {
 
-        for (Integer projectId : ProjectStore.getAllProjectIds()) {
+        Report testData = JsonUtils.readJson(
+                "testdata/rolesData/createRole.json",
+                Report.class
+        );
 
-            Report.TestCase tc =
-                    new Report.TestCase(
-                            testData.getTestCases().get(0)
-                    );
+        if (testData == null || testData.getTestCases() == null) {
+            throw new IllegalStateException("❌ Role test data is missing");
+        }
 
-            String roleName = RoleDataGenerator.generateRoleName();
-            String roleDesc = RoleDataGenerator.generateRoleDescription();
-
-            Map<String, Object> request = new HashMap<>();
-            request.put("refProjectId", projectId);
-            request.put("roleName", roleName);
-            request.put("roleDescription", roleDesc);
-            request.put("userId", TokenUtil.getUserId());
-
-            tc.setTcId("CREATE_ROLE_" + projectId);
-            tc.setName("Create Role for Project " + projectId);
-            tc.setRequest(request);
+        for (Report.TestCase tc : testData.getTestCases()) {
 
             ApiTestExecutor.execute(
                     testData.getScenario(),
                     tc,
                     () -> {
 
-                        Response response =
-                                CreateRoleApi.createRole(
-                                        request,
-                                        tc.getRole(),
-                                        tc.getAuthType()
-                                );
+                        // ✅ Build request fresh
+                        Map<String, Object> req = new HashMap<>();
 
-                        Integer roleId =
-                                response.jsonPath().getInt("roleId");
+                        req.put("refProjectId", ProjectStore.getProjectId());
+                        req.put("userId", TokenUtil.getUserId(tc.getRole()));
+                        req.put("roleName", TestDataGenerator.randomRoleName());
+                        req.put("roleDescription",
+                                TestDataGenerator.randomDescription());
 
-                        // ✅ Store role for later use
-                        RoleStore.store(projectId, roleId);
-
-                        System.out.println(
-                                "✅ Role created → project=" + projectId +
-                                        ", roleId=" + roleId
+                        // 🔥 CALL API
+                        Response response = CreateRoleApi.createRole(
+                                req,
+                                tc.getRole(),
+                                tc.getAuthType()
                         );
+
+                        // 🔥 EXTRACT & STORE roleId
+                        Integer roleId = response.jsonPath().getInt("roleId");
+
+                        if (roleId == null) {
+                            throw new IllegalStateException(
+                                    "❌ roleId not found in CreateRole response"
+                            );
+                        }
+
+                        RoleStore.setRoleId(roleId);
 
                         return response;
                     }

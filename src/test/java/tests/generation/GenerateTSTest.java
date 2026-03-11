@@ -4,19 +4,38 @@ import api.generation.GenerateTSApi;
 import base.BaseTest;
 import io.restassured.response.Response;
 import report.Report;
-import tests.user.ApiTestExecutor;
+import report.ApiTestExecutor;
 import utils.*;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GenerateTSTest extends BaseTest {
 
     public void generateTSForBR() {
 
-        // ✅ Get selected project
-        Integer projectId = ProjectStore.getSelectedProjectId();
+        // ✅ SAFE project resolution (NO exception)
+        Integer projectId = ProjectStore.peekSelectedProjectId();
 
-        // ✅ Get all BRs
+        if (projectId == null) {
+            projectId = ProjectStore.getProjectId();
+
+            if (projectId == null) {
+                throw new RuntimeException(
+                        "❌ No projectId available. Project creation step failed."
+                );
+            }
+
+            ProjectStore.setSelectedProject(projectId);
+
+            System.out.println(
+                    "⚠️ selectedProjectId was missing. Set from projectId → "
+                            + projectId
+            );
+        }
+
+        // ✅ Fetch BRs
         List<Integer> brIds =
                 BusinessRequirementStore.getBrIds(projectId);
 
@@ -25,20 +44,23 @@ public class GenerateTSTest extends BaseTest {
                     "❌ No BRs found for project " + projectId
             );
         }
-        // ✅ TAKE ONLY FIRST 10 BRs
+
+        // ✅ Select BRs (as per your logic)
         List<Integer> selectedBrs =
                 brIds.size() >= 1 ? brIds.subList(0, 1) : brIds;
+
         GeneratedBRStore.store(selectedBrs);
 
+        System.out.println(
+                "🔹 BRs selected for TS generation → " + selectedBrs
+        );
 
-        System.out.println("🔹 BRs selected for TS generation → " + selectedBrs);
-
-        // 🔥 FIX: STORE generated BRs for next step
         BusinessRequirementStore.storeGeneratedBRs(
                 projectId,
                 selectedBrs
         );
 
+        // ✅ Load test data
         Report testData =
                 JsonUtils.readJson(
                         "testdata/generation/generateTS.json",
@@ -50,6 +72,7 @@ public class GenerateTSTest extends BaseTest {
                         testData.getTestCases().get(0)
                 );
 
+        // ✅ Build request
         Map<String, Object> request = new HashMap<>();
         request.put("source", "BR");
         request.put("destination", "TS");

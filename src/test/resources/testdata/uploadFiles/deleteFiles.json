@@ -1,0 +1,12 @@
+{
+  "scenario": "DELETE Files API",
+  "testCases": [
+    {
+      "tcId": "DELETE_FILE_01",
+      "name": "Delete image for BR",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200
+    }
+  ]
+}

@@ -364,42 +364,42 @@ public class EndToEndFlow extends BaseTest {
     }
 
     @Test(dependsOnMethods = "step51_addTestCaseStep")
-    public void step52_updateTestCaseStep() {
-        System.out.println("▶ Step 52: Update Test Case Step");
-        new UpdateTestCaseStepTest().updateTestCaseStep();
-    }
-
-    @Test(dependsOnMethods = "step52_updateTestCaseStep")
-    public void step53_deleteTestCaseStep() {
-        System.out.println("▶ Step 53: Delete Test Case Step");
-        new DeleteTestCaseStepTest().deleteTestCaseStep();
-    }
-
-    @Test(dependsOnMethods = "step53_deleteTestCaseStep")
-    public void step54_updateTestCase() {
-        System.out.println("▶ Step 54: Update Test Case");
-        new UpdateTestCaseTest().updateTestCaseApiTest();
-    }
-
-    @Test(dependsOnMethods = "step54_updateTestCase")
-    public void step55_addTestCase() {
-        System.out.println("▶ Step 55: Add Test Case");
-        new InsertTestCaseTest().addTestCaseApiTest();
-    }
-
-    @Test(dependsOnMethods = "step55_addTestCase")
-    public void step56_updateBDD() {
-        System.out.println("▶ Step 56: Update BDD");
-        new UpdateBddTest().updateBdd();
-    }
-
-    @Test(dependsOnMethods = "step56_updateBDD")
-    public void step57_updateTestCaseStepOrder() {
-        System.out.println("▶ Step 57: Update Test Case Step Order");
+    public void step52_updateTestCaseStepOrder() {
+        System.out.println("▶ Step 52: Update Test Case Step Order");
         new UpdateTestCaseStepOrderTest().updateTestCaseStepOrderApiTest();
     }
 
-    @Test(dependsOnMethods = "step57_updateTestCaseStepOrder")
+    @Test(dependsOnMethods = "step52_updateTestCaseStepOrder")
+    public void step53_updateTestCaseStep() {
+        System.out.println("▶ Step 53: Update Test Case Step");
+        new UpdateTestCaseStepTest().updateTestCaseStep();
+    }
+
+    @Test(dependsOnMethods = "step53_updateTestCaseStep")
+    public void step54_deleteTestCaseStep() {
+        System.out.println("▶ Step 54: Delete Test Case Step");
+        new DeleteTestCaseStepTest().deleteTestCaseStep();
+    }
+
+    @Test(dependsOnMethods = "step54_deleteTestCaseStep")
+    public void step55_updateTestCase() {
+        System.out.println("▶ Step 55: Update Test Case");
+        new UpdateTestCaseTest().updateTestCaseApiTest();
+    }
+
+    @Test(dependsOnMethods = "step55_updateTestCase")
+    public void step56_addTestCase() {
+        System.out.println("▶ Step 56: Add Test Case");
+        new InsertTestCaseTest().addTestCaseApiTest();
+    }
+
+    @Test(dependsOnMethods = "step56_addTestCase")
+    public void step57_updateBDD() {
+        System.out.println("▶ Step 57: Update BDD");
+        new UpdateBddTest().updateBdd();
+    }
+
+    @Test(dependsOnMethods = "step57_updateBDD")
     public void step58_deleteTestCase() {
         System.out.println("▶ Step 58: Delete Test Case");
         new DeleteTestCaseTest().deleteLastTestCase();

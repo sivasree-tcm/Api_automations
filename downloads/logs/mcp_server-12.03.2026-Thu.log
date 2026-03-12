@@ -1,0 +1,1106 @@
+2026-03-12 05:31:13+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 05:31:13+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T00:01:13.961Z
+2026-03-12 05:31:13+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 05:31:13+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMDowMToxMy45NjBaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiMzFjZDc2ZTYwNmQ3YWUzNCIsImlhdCI6MTc3MzI3MzY3MywiZXhwIjoxNzczMjc0ODczfQ.PXNx8u7gvlWqdy1gokOo066FzHgCVyRd0DLpV9hXg3E
+2026-03-12 05:46:13+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 05:46:13+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T00:16:13.962Z
+2026-03-12 05:46:13+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 05:46:13+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMDoxNjoxMy45NjJaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNjU1YmJkZjRjNDViMDY2OSIsImlhdCI6MTc3MzI3NDU3MywiZXhwIjoxNzczMjc1NzczfQ.NxvAfVWWo4Zjxng6__leVQ2IVIG7ej7QrHGVcd-KJ_c
+2026-03-12 06:01:13+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 06:01:13+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T00:31:13.968Z
+2026-03-12 06:01:13+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 06:01:13+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMDozMToxMy45NjhaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiZWYxNWY2NDE1Y2Q0MjU1MyIsImlhdCI6MTc3MzI3NTQ3MywiZXhwIjoxNzczMjc2NjczfQ.kbdIpVe8QyAXjISO9oRJV6Rs_TDJrktiy21vLybwl3w
+2026-03-12 06:16:13+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 06:16:13+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T00:46:13.976Z
+2026-03-12 06:16:13+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 06:16:13+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMDo0NjoxMy45NzZaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiZjgwYjkwOWIyMzAxYWE2ZSIsImlhdCI6MTc3MzI3NjM3MywiZXhwIjoxNzczMjc3NTczfQ.Wr258xIHnScMeN885hMOs0lQ85ZsTSZE9VZ574PLYUY
+2026-03-12 06:31:13+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 06:31:13+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T01:01:13.979Z
+2026-03-12 06:31:13+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 06:31:13+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMTowMToxMy45NzlaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiZjM0NmM3NjQxYmUyMzMwYSIsImlhdCI6MTc3MzI3NzI3MywiZXhwIjoxNzczMjc4NDczfQ.R1NnxgjVoglpHomryEX4hqiMeTaAJj8XN04nS9LF3lI
+2026-03-12 06:46:13+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 06:46:13+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T01:16:13.983Z
+2026-03-12 06:46:13+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 06:46:13+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMToxNjoxMy45ODNaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiN2QwYjFkY2YzYmFmNTc1ZiIsImlhdCI6MTc3MzI3ODE3MywiZXhwIjoxNzczMjc5MzczfQ.yMXieTvjVgHsSJWFZ13pQAIdv5C9SV2w6YQ7NLNlXUY
+2026-03-12 07:01:13+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 07:01:13+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T01:31:13.987Z
+2026-03-12 07:01:13+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 07:01:13+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMTozMToxMy45ODdaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNzhkYzRlMDE0MjJjZmRiNyIsImlhdCI6MTc3MzI3OTA3MywiZXhwIjoxNzczMjgwMjczfQ.sdfLVthFmaYG1Z8zCEP5umBtcb19V7s__2yF7ppS3zE
+2026-03-12 07:16:13+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 07:16:13+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T01:46:13.992Z
+2026-03-12 07:16:13+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 07:16:13+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMTo0NjoxMy45OTJaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiMDA1YzY5MWQzYTdmNDZmMyIsImlhdCI6MTc3MzI3OTk3MywiZXhwIjoxNzczMjgxMTczfQ.M4uCWIWWKUykbh3L7SPpTfHC_beNLKT1N8WcbNp6J5o
+2026-03-12 07:31:13+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 07:31:13+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T02:01:13.997Z
+2026-03-12 07:31:13+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 07:31:13+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMjowMToxMy45OTdaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiZjg5NDQ5ZWFhZjAyYjgxMCIsImlhdCI6MTc3MzI4MDg3MywiZXhwIjoxNzczMjgyMDczfQ.bnUYcphfkHThuXjWZCwKr1q0MMGZ0XN9KWItQUSr39g
+2026-03-12 07:46:14+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 07:46:14+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T02:16:14.000Z
+2026-03-12 07:46:14+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 07:46:14+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMjoxNjoxNC4wMDBaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNmE0NzlkYjQyOTc3NDI1MCIsImlhdCI6MTc3MzI4MTc3NCwiZXhwIjoxNzczMjgyOTc0fQ.LcqIqz-FGBGGWSP6EUBRCVixNft18df8lb_lFey5lbs
+2026-03-12 08:01:14+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 08:01:14+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T02:31:14.004Z
+2026-03-12 08:01:14+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 08:01:14+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMjozMToxNC4wMDNaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiMDU0ODI1YjU0MDA2NDViYyIsImlhdCI6MTc3MzI4MjY3NCwiZXhwIjoxNzczMjgzODc0fQ.rtHdC3uLX7IR7g06y8sB60KXVqN7jyyBe5i2ZwL8MAw
+2026-03-12 08:16:14+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 08:16:14+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T02:46:14.007Z
+2026-03-12 08:16:14+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 08:16:14+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMjo0NjoxNC4wMDZaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiOTAxZWU1YzMwNDY0MWE2OSIsImlhdCI6MTc3MzI4MzU3NCwiZXhwIjoxNzczMjg0Nzc0fQ._h5q0RVav8s1PEeIvT92zr7K4P2-fVG6U4gIpripSpQ
+2026-03-12 08:31:14+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 08:31:14+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T03:01:14.009Z
+2026-03-12 08:31:14+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 08:31:14+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMzowMToxNC4wMDhaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiZDVhNWQzNzBjM2Q5Y2FmOSIsImlhdCI6MTc3MzI4NDQ3NCwiZXhwIjoxNzczMjg1Njc0fQ.Zn7FT03hDKYCBlPcwwHBHqkyh1FjaXAvdkH2bR_VIvg
+2026-03-12 08:46:14+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 08:46:14+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T03:16:14.010Z
+2026-03-12 08:46:14+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 08:46:14+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMzoxNjoxNC4wMDlaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiZTM2NjNjZjViODBiNGU0ZiIsImlhdCI6MTc3MzI4NTM3NCwiZXhwIjoxNzczMjg2NTc0fQ.X8cUAm2MdwawpeCz8r1Uki9EMDWffrvZk0fCKXaNJgo
+2026-03-12 09:01:14+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 09:01:14+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T03:31:14.010Z
+2026-03-12 09:01:14+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 09:01:14+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMzozMToxNC4wMTBaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiOWU0M2NjYjM5NWNlMDA0MyIsImlhdCI6MTc3MzI4NjI3NCwiZXhwIjoxNzczMjg3NDc0fQ.TI8coGsD1oW10kVVku7_1ycCOP3F33ED1Ye2SX3HzWU
+2026-03-12 09:16:14+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 09:16:14+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T03:46:14.018Z
+2026-03-12 09:16:14+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 09:16:14+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwMzo0NjoxNC4wMTdaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiMTY4MjE5MjBjNTA3NGIzNSIsImlhdCI6MTc3MzI4NzE3NCwiZXhwIjoxNzczMjg4Mzc0fQ.9A6WckU18iV7O864PW7WvldbwSbsrFv_6sJbQHVUDyo
+2026-03-12 09:31:14+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 09:31:14+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T04:01:14.047Z
+2026-03-12 09:31:14+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 09:31:14+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwNDowMToxNC4wNDZaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiMzc2ZWZkM2UwOGU2YzEzOCIsImlhdCI6MTc3MzI4ODA3NCwiZXhwIjoxNzczMjg5Mjc0fQ.OwALw_nOb-KDrI8DJWmj4x1CbHGnvQqn3fLJtDonrfs
+2026-03-12 09:46:14+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 09:46:14+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T04:16:14.067Z
+2026-03-12 09:46:14+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 09:46:14+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwNDoxNjoxNC4wNjdaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNzdlYWRmZWY0YzZiYzg5NSIsImlhdCI6MTc3MzI4ODk3NCwiZXhwIjoxNzczMjkwMTc0fQ.SQ1oZ1S3vAuHB18VZ1PHTELGRALSLNo_e2jjP8fjAEo
+2026-03-12 10:01:14+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 10:01:14+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T04:31:14.076Z
+2026-03-12 10:01:14+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 10:01:14+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwNDozMToxNC4wNzZaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiNTE0OTE4NzliOTM4NzIxZSIsImlhdCI6MTc3MzI4OTg3NCwiZXhwIjoxNzczMjkxMDc0fQ.KCVvWD_a7uLSG2-rM0B9eVYt2wCgFuK3tl-hVJ19-xs
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: 5cda7b09-1a2b-42ca-911d-3f23ced6637d)
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:36+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: b830cdc3-be15-43f0-a2d2-696cc9d92185)
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:08:36+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:08:36+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:08:36+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:08:36+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:08:36+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:08:36+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:08:36+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:08:36+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:08:36+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:08:36+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:08:36+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:08:36+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:08:36+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:08:36+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:08:36+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:08:36+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:08:36+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:08:37+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:08:37+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: ce12a86a-cf8f-434d-92a2-b2905469fa5a)
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:39+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: a80a13d3-82ca-4a55-8a31-80ca96079e62)
+2026-03-12 10:08:39+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:39+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:08:39+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:08:39+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:08:40+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:08:40+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:08:40+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:08:40+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:08:40+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:08:40+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:08:40+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:08:40+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:08:40+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:08:40+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:08:40+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:08:40+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:08:40+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:08:40+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:08:40+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:08:40+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:08:40+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:08:40+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:08:40+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:08:40+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:08:40+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:08:40+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:08:40+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:08:40+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:08:40+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:08:40+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:08:41+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:08:41+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: d3f98fbb-c500-40ea-bb87-14517965619b)
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:43+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: 10fa8a4c-91b6-4644-974e-cdcb851ef327)
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:08:43+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:08:43+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:08:43+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:08:43+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:08:43+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:08:43+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:08:43+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:08:43+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:08:43+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:08:43+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:08:43+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:08:43+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:08:43+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:08:43+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:08:43+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:08:43+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:08:43+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:08:49+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: 0818b0cb-95c8-41c9-8005-bbc8a57fc8e1)
+2026-03-12 10:08:49+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:49+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM policies WHERE policy_number = '<<Policy Number>>' ORDER BY RAND() LIMIT 1
+2026-03-12 10:08:49+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 0 rows
+2026-03-12 10:08:49+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: 1258dc4f-7aca-4218-bfcc-b86d59520786)
+2026-03-12 10:08:49+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:49+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM policies ORDER BY RAND() LIMIT 1
+2026-03-12 10:08:49+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 1 rows
+2026-03-12 10:08:49+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:08:49+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: a8aa0e83-e0f8-4ff8-ba84-63eab2590e0a)
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:51+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: 92243017-a2e1-4a46-930a-0dcd26902e08)
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:08:51+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:08:51+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:08:51+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:08:51+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:08:51+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:08:51+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:08:51+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:08:51+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:08:51+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:08:51+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:08:51+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:08:51+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:08:51+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:08:51+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:08:51+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:08:51+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:08:51+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:08:52+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:08:52+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: bb3d3e87-2c78-4b9e-8150-ae64e3cb3107)
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:54+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: 7d8b25a9-decb-4a8d-aca1-836b86376988)
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:08:54+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:08:54+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:08:54+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:08:54+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:08:54+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:08:54+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:08:54+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:08:54+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:08:54+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:08:54+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:08:54+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:08:54+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:08:54+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:08:54+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:08:54+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:08:54+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:08:54+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:08:55+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:08:55+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: 083f998c-1662-4636-918f-cea068c51aee)
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:57+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: a33c7f30-dbe4-4303-823c-4c1a8f7fe063)
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:08:57+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:08:57+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:08:57+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:08:57+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:08:57+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:08:57+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:08:57+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:08:57+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:08:57+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:08:57+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:08:57+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:08:57+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:08:57+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:08:57+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:08:57+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:08:57+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:08:57+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:08:58+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:08:58+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: cc519f97-c9aa-4fb4-8b63-95ca077ed2b9)
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:09:00+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: f53100fa-2047-4c2a-812f-c561d5ba9abd)
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:09:00+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:09:00+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:09:00+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:09:00+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:09:00+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:09:00+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:09:00+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:09:00+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:09:00+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:09:00+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:09:00+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:09:00+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:09:00+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:09:00+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:09:00+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:09:00+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:09:00+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:09:01+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:09:01+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: 7b277333-0a7f-47c6-92c7-216d1ed9eb56)
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:09:21+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: d08b07e5-299a-4978-8c02-dadab9f2a7f2)
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:09:21+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:09:21+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:09:21+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:09:21+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:09:21+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:09:21+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:09:21+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:09:21+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:09:21+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:09:21+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:09:21+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:09:21+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:09:21+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:09:21+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:09:21+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:09:22+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:09:22+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:09:42+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: cdd975ac-48ad-402b-ab11-2ccfd9a24f60)
+2026-03-12 10:09:42+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:09:42+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM insurance_policies ORDER BY RAND() LIMIT 1
+2026-03-12 10:09:42+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 1 rows
+2026-03-12 10:09:42+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:09:42+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: 1c53c668-05f9-46c8-a0b0-a506850f4ce6)
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:09:44+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: f91ec005-1636-445c-9759-7d6da018332f)
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:09:44+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:09:44+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:09:44+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:09:44+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:09:44+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:09:44+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:09:44+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:09:44+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:09:44+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:09:44+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:09:44+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:09:44+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:09:44+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:09:44+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:09:44+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:09:44+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:09:44+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:09:45+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:09:45+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: e31be94f-3b2c-4450-92c9-50fe59e5b609)
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:09:47+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: 362c5f69-f77e-46f2-921f-db504d5872d1)
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:09:47+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:09:47+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:09:47+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:09:47+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:09:47+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:09:47+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:09:47+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:09:47+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:09:47+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:09:47+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:09:47+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:09:47+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:09:47+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:09:47+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:09:47+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:09:47+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:09:47+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: da15d85e-d002-4c4f-87f3-46655253b1f2)
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:10:29+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: 535f3bb3-70a9-43fa-83d6-baa3b629c758)
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:10:29+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:10:29+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:10:29+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:10:29+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:10:29+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:10:29+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:10:29+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:10:29+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:10:29+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:10:29+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:10:29+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:10:29+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:10:29+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:10:29+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:10:29+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:10:29+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:10:29+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:10:30+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:10:30+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: c8debb7b-e755-48a2-8e32-9326bd84919e)
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:10:32+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: 49339d52-19d3-401b-b070-4391969bccc8)
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:10:32+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:10:32+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:10:32+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:10:32+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:10:32+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:10:32+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:10:32+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:10:32+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:10:32+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:10:32+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:10:32+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:10:32+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:10:32+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:10:32+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:10:32+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:10:32+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:10:32+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:10:41+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: fd20db68-46c0-4898-b79f-713f8d387466)
+2026-03-12 10:10:41+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:10:41+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM policies ORDER BY RAND() LIMIT 1
+2026-03-12 10:10:41+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 1 rows
+2026-03-12 10:10:41+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:10:41+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: 97e0b359-3c1b-4db3-973d-b6f2c6e2f2d5)
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:10:43+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: 1bf262ee-b18f-4cf4-93e8-d6f1e381d1f2)
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:10:43+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:10:43+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:10:43+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:10:43+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:10:43+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:10:43+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:10:43+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:10:43+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:10:43+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:10:43+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:10:43+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:10:43+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:10:43+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:10:43+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:10:43+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:10:44+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:10:44+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: 28f76cab-e03b-4894-83e9-3d3cc9aee451)
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM policies ORDER BY RAND() LIMIT 1
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 1 rows
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: 1854973f-0d02-42f0-86c8-d572c117054e)
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM loans WHERE customer_id = 6 ORDER BY RAND() LIMIT 1
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 1 rows
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: ac923f37-3383-49f3-b4d2-eb04cafaaf35)
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM transactions WHERE customer_id = 6 ORDER BY RAND() LIMIT 1
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 1 rows
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:10:50+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: 4a8eacef-d6f7-4db7-9a0b-b0158f78e82f)
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:10:52+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: 8a34c94c-6d2e-4bd2-88e5-d5a8c14965cf)
+2026-03-12 10:10:52+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:10:52+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:10:52+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:10:52+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:10:52+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:10:52+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:10:52+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:10:52+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:10:52+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:10:52+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:10:52+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:10:52+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:10:52+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:10:52+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:10:53+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:10:53+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:10:53+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:10:53+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:10:53+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:10:53+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:10:53+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:10:53+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:10:53+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:10:53+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:10:53+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:10:53+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:10:53+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:10:53+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:10:53+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:10:53+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:11:05+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: 7de97cfc-f602-498e-8456-19b557e80705)
+2026-03-12 10:11:05+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:05+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM policies ORDER BY RAND() LIMIT 1
+2026-03-12 10:11:05+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 1 rows
+2026-03-12 10:11:05+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:11:05+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: cc031844-4c0d-461a-a4c5-a76ed88c371f)
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:07+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: 6566b341-c841-4724-b4b5-e553a3161b59)
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:11:07+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:11:07+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:11:07+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:11:07+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:11:07+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:11:07+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:11:07+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:11:07+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:11:07+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:11:07+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:11:07+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:11:07+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:11:07+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:11:07+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:11:07+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:11:07+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:11:07+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:11:08+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:11:08+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: 3475dd74-75ad-4183-b148-085033bc0c6b)
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:10+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: 6aebd988-671c-4917-91f2-c7d9584e3cf9)
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:11:10+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:11:10+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:11:10+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:11:10+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:11:10+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:11:10+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:11:10+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:11:10+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:11:10+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:11:10+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:11:10+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:11:10+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:11:10+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:11:10+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:11:10+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:11:10+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:11:10+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:11:11+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:11:11+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: a13ba41c-aba8-4537-8fb0-6549bd210398)
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM policies ORDER BY RAND() LIMIT 1
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 1 rows
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: 1ed38a52-e754-4c47-839d-e09982135491)
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM loans WHERE customer_id = 3 ORDER BY RAND() LIMIT 1
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 1 rows
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: abaf30b2-1238-4d60-b700-56a98929f0e5)
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM transactions WHERE customer_id = 3 ORDER BY RAND() LIMIT 1
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 1 rows
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:11:15+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: a0811817-c3fa-452d-bbcd-e041d747a538)
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:17+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: d38bd908-ddf7-4b61-a7b1-defab5191681)
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:11:17+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:11:17+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:11:17+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:11:17+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:11:17+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:11:17+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:11:17+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:11:17+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:11:17+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:11:17+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:11:17+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:11:17+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:11:17+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:11:17+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:11:17+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:11:17+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:11:17+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:11:28+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: 738e9a4a-74b0-41bf-b9a5-8a325661492c)
+2026-03-12 10:11:28+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:28+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM policies ORDER BY RAND() LIMIT 1
+2026-03-12 10:11:28+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 1 rows
+2026-03-12 10:11:28+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:11:28+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: 71c58ba7-51dd-4f9d-8f9b-904850e9d8ce)
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:30+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: cbccddae-d736-47d5-b42c-05bf473f3d5b)
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:11:30+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:11:30+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:11:30+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:11:30+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:11:30+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:11:30+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:11:30+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:11:30+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:11:30+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:11:30+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:11:30+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:11:30+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:11:30+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:11:30+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:11:30+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:11:30+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:11:30+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:11:48+05:30 [MCP] [debug] → [DEBUG] Received: execute_query (id: f8ba3529-a53e-4958-bb5b-a8cbd9fcf4e2)
+2026-03-12 10:11:48+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:48+05:30 [MCP] [debug] → [DEBUG] Executing SQL: SELECT * FROM policies ORDER BY RAND() LIMIT 1
+2026-03-12 10:11:48+05:30 [MCP] [debug] → [DEBUG] SQL Result count: 1 rows
+2026-03-12 10:11:48+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:11:48+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: 257d0748-909e-48d2-a8a3-a004e39c038b)
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:50+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [DEBUG] Received: DBSchema (id: 0145e835-9c21-4224-b6b2-f49d1d5f1072)
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → DEBUG: DBSchema request received
+2026-03-12 10:11:50+05:30 [MCP] [debug] → DEBUG: Raw params received: {
+  "ctx": {},
+  "environmentId": 385
+}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → SUCCESS: EXTRACTED ENVIRONMENT ID FROM AGENT: 385
+2026-03-12 10:11:50+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent testcase: 385
+2026-03-12 10:11:50+05:30 [MCP] [debug] → DEBUG: Reinitializing database configuration for environment: 385
+2026-03-12 10:11:50+05:30 [MCP] [debug] → DEBUG: REINITIALIZING DB_CONFIG FOR ENVIRONMENT ID: 385
+2026-03-12 10:11:50+05:30 [MCP] [debug] → DEBUG: Environment ID received from agent: 385 (type: number)
+2026-03-12 10:11:50+05:30 [MCP] [debug] → DEBUG: Querying environmentDetails table for ID: 385
+2026-03-12 10:11:50+05:30 [MCP] [debug] → SUCCESS: Environment details found for extracted ID {"environmentId":385,"environmentDetails":{"environmentId":385,"environmentName":"Ticking","environmentUrl":"http://52.91.206.42:7777/","projectId":520,"userId":32,"db_host":"52.91.206.42","db_user":"ins_user","db_password":"66580bbceb7991ca11ee2526:9479da1d150eba0938b6057a:65db950091d57cf577a18b6cfc02e707","db_name":"insurance_db","created_at":"2026-03-12T04:33:55.000Z","port":"3306","db_engine":"mysql"}}
+2026-03-12 10:11:50+05:30 [MCP] [debug] →    - Host: 52.91.206.42
+2026-03-12 10:11:50+05:30 [MCP] [debug] →    - Port: 3306
+2026-03-12 10:11:50+05:30 [MCP] [debug] →    - User: ins_user
+2026-03-12 10:11:50+05:30 [MCP] [debug] →    - Database: insurance_db
+2026-03-12 10:11:50+05:30 [MCP] [info] → [API] DB Secret response {"data":{"key":"SECRET_KEY_DB_CONFIG","value":"a8b9598fb85110a8c3037b77783e0e9a405febace1aed553b45bf418707e050c"}}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [CRYPTO] Using algorithm {"algorithm":"aes-256-gcm"}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [CRYPTO] Encrypted text parts {"partsLength":3}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [CRYPTO] Using GCM mode
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [CRYPTO] GCM IV bytes {"ivBytes":12}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [CRYPTO] GCM CT hex length {"ctHexLength":24}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [CRYPTO] GCM TAG hex length {"tagHexLength":32}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [CRYPTO] Decipher created (GCM)
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [CRYPTO] After update() length {"decryptedLength":12}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [CRYPTO] Final plaintext length {"decryptedLength":12}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → Decrypted DB password obtained (sanitized) {"passwordLength":12,"hasPassword":true}
+2026-03-12 10:11:50+05:30 [MCP] [info] → SUCCESS: DB_CONFIG SUCCESSFULLY UPDATED FOR EXTRACTED ENVIRONMENT 385
+2026-03-12 10:11:50+05:30 [MCP] [debug] → DEBUG: NEW DB_CONFIG for environment {"environmentId":385,"host":"52.91.206.42","port":3306,"user":"ins_user","database":"insurance_db","db_engine":"mysql"}
+2026-03-12 10:11:50+05:30 [MCP] [debug] → DEBUG: Fetching database schema for environment: 385
+2026-03-12 10:11:50+05:30 [MCP] [debug] → [DEBUG] Schema loaded: addresses, collateral, customers, insurance_policies, loans, policies, transactions, v_insurance_search
+2026-03-12 10:11:50+05:30 [MCP] [debug] → SUCCESS: Schema fetched successfully for environment 385. Tables: 8
+2026-03-12 10:11:51+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:11:51+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [DEBUG] Client connected
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [DEBUG] Received: authenticate (id: 999)
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [AUTH] Authentication request received
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [AUTH] Agent ID {"agentId":"agent_int_file"}
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [AUTH] Validating static credentials...
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [AUTH] Expected Agent ID {"expectedAgentId":"agent_int_file"}
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [AUTH] Received Agent ID {"receivedAgentId":"agent_int_file"}
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [AUTH] Secret key length expected {"expectedSecretKeyLength":22}
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [AUTH] Secret key length received {"receivedSecretKeyLength":22}
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [AUTH] Static credentials valid {"isValid":true}
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [JWT] Returning persistent token to agent {"agentId":"agent_int_file"}
+2026-03-12 10:12:02+05:30 [MCP] [info] → [AUTH] Agent authenticated successfully {"agentId":"agent_int_file"}
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [DEBUG] Received: initialize (id: 1)
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:12:02+05:30 [MCP] [debug] → [PLAYWRIGHT-API] POST http://playwright-app-service/api/session/create {"body":{"ownerId":"b2e58d7c-087a-40f3-9925-d4337db30128"}}
+2026-03-12 10:12:04+05:30 [MCP] [debug] → [PLAYWRIGHT-API] Response {"result":{"sessionId":"session_1773290522864_cdiemnzco","created":"2026-03-12T04:42:04.310Z","totalSessions":1}}
+2026-03-12 10:12:04+05:30 [MCP] [info] → [PLAYWRIGHT] Created remote browser session: session_1773290522864_cdiemnzco with owner: b2e58d7c-087a-40f3-9925-d4337db30128
+2026-03-12 10:12:04+05:30 [MCP] [debug] → [DEBUG] Received: tools/call (id: 2)
+2026-03-12 10:12:04+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:12:04+05:30 [MCP] [info] → -> browser_wait_for_selector {"toolArgs":"{ selectors: [ \u001b[32m\"locator('body')\"\u001b[39m ], timeout: \u001b[33m30000\u001b[39m }"}
+2026-03-12 10:12:04+05:30 [MCP] [debug] → [PLAYWRIGHT-API] POST http://playwright-app-service/api/session/session_1773290522864_cdiemnzco/wait-for-selector {"body":{"selectors":["locator('body')"],"timeout":30000}}
+2026-03-12 10:12:04+05:30 [MCP] [debug] → [PLAYWRIGHT-API] Response {"result":{"success":true,"selector":"locator('body')","appeared":true}}
+2026-03-12 10:12:04+05:30 [MCP] [info] → [ACTION] [browser_wait_for_selector] Element appeared {"selector":"locator('body')"}
+2026-03-12 10:12:05+05:30 [MCP] [debug] → [DEBUG] Received: tools/call (id: 3)
+2026-03-12 10:12:05+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:12:05+05:30 [MCP] [info] → -> browser_get_dom_info {"toolArgs":"{}"}
+2026-03-12 10:12:05+05:30 [MCP] [debug] → [PLAYWRIGHT-API] POST http://playwright-app-service/api/session/session_1773290522864_cdiemnzco/get-elements {}
+2026-03-12 10:12:05+05:30 [MCP] [debug] → [PLAYWRIGHT-API] Response {"result":{"success":true,"elements":[],"message":"Skipped DOM extraction on initial blank page."}}
+2026-03-12 10:12:05+05:30 [MCP] [info] → [ACTION] [browser_get_dom_info] Retrieved DOM elements {"elementCount":0}
+2026-03-12 10:12:07+05:30 [MCP] [debug] → [DEBUG] Received: tools/call (id: 4)
+2026-03-12 10:12:07+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:12:07+05:30 [MCP] [info] → -> browser_navigate {"toolArgs":"{ url: \u001b[32m'http://52.91.206.42:7777/'\u001b[39m }"}
+2026-03-12 10:12:07+05:30 [MCP] [debug] → [PLAYWRIGHT-API] POST http://playwright-app-service/api/session/session_1773290522864_cdiemnzco/navigate {"body":{"url":"http://52.91.206.42:7777/"}}
+2026-03-12 10:12:07+05:30 [MCP] [debug] → [PLAYWRIGHT-API] Response {"result":{"success":true,"pageUrl":"http://52.91.206.42:7777/","pageTitle":"Portal - Sign In","httpStatus":200,"browserLogs":[{"timestamp":"2026-03-12T04:42:07.066Z","type":"CONSOLE","message":"ERROR: Failed to load resource: the server responded with a status of 404 (Not Found)"},{"timestamp":"2026-03-12T04:42:07.183Z","type":"CONSOLE","message":"ERROR: Failed to load resource: the server responded with a status of 404 (Not Found)"}]}}
+2026-03-12 10:12:07+05:30 [MCP] [info] → [ACTION] [browser_navigate] Navigated to http://52.91.206.42:7777/
+2026-03-12 10:12:07+05:30 [MCP] [debug] → [DEBUG] Received: tools/call (id: 5)
+2026-03-12 10:12:07+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:12:07+05:30 [MCP] [info] → -> browser_wait_for_selector {"toolArgs":"{ selectors: [ \u001b[32m\"locator('body')\"\u001b[39m ], timeout: \u001b[33m30000\u001b[39m }"}
+2026-03-12 10:12:07+05:30 [MCP] [debug] → [PLAYWRIGHT-API] POST http://playwright-app-service/api/session/session_1773290522864_cdiemnzco/wait-for-selector {"body":{"selectors":["locator('body')"],"timeout":30000}}
+2026-03-12 10:12:07+05:30 [MCP] [debug] → [PLAYWRIGHT-API] Response {"result":{"success":true,"selector":"locator('body')","appeared":true}}
+2026-03-12 10:12:07+05:30 [MCP] [info] → [ACTION] [browser_wait_for_selector] Element appeared {"selector":"locator('body')"}
+2026-03-12 10:12:12+05:30 [MCP] [debug] → [DEBUG] Received: tools/call (id: 6)
+2026-03-12 10:12:12+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:12:12+05:30 [MCP] [info] → -> browser_get_dom_info {"toolArgs":"{}"}
+2026-03-12 10:12:12+05:30 [MCP] [debug] → [PLAYWRIGHT-API] POST http://playwright-app-service/api/session/session_1773290522864_cdiemnzco/get-elements {}
+2026-03-12 10:12:12+05:30 [MCP] [debug] → [PLAYWRIGHT-API] Response {"result":{"success":true,"elements":[{"tagName":"div","selectors":["page.locator('.flex.flex-col.m-7.t:flex-row.max-w-5xl.wd:mt-32.t:mx-auto.t:mb-10.bg-white.rounded-lg.overflow-hidden.custom-shadow')","page.locator('div:nth-child(1)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"flex flex-col m-7 t:flex-row max-w-5xl wd:mt-32 t:mx-auto t:mb-10 bg-white rounded-lg overflow-hidden custom-shadow","selector":"page.locator('.flex.flex-col.m-7.t:flex-row.max-w-5xl.wd:mt-32.t:mx-auto.t:mb-10.bg-white.rounded-lg.overflow-hidden.custom-shadow')"},{"tagName":"div","selectors":["page.locator('.w-full.t:w-1/2.h-40.t:h-auto.min-w-half')","page.locator('div:nth-child(2)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"w-full t:w-1/2 h-40 t:h-auto min-w-half","selector":"page.locator('.w-full.t:w-1/2.h-40.t:h-auto.min-w-half')"},{"tagName":"div","selectors":["page.locator('.logo-bg')","page.locator('div:nth-child(3)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"logo-bg","selector":"page.locator('.logo-bg')"},{"tagName":"img","selectors":["page.locator('.logo')","page.locator('img:nth-child(4)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"logo","selector":"page.locator('.logo')"},{"tagName":"div","selectors":["page.locator('.min-h-150.w-full.t:w-1/2.p-7.t:p-10')","page.locator('div:nth-child(5)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"min-h-150 w-full t:w-1/2 p-7 t:p-10","selector":"page.locator('.min-h-150.w-full.t:w-1/2.p-7.t:p-10')"},{"tagName":"div","selectors":["page.locator('.h-full.flex.flex-col.grow')","page.locator('div:nth-child(6)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"h-full flex flex-col grow","selector":"page.locator('.h-full.flex.flex-col.grow')"},{"tagName":"div","selectors":["page.getByText('Sign In')","page.locator('div:nth-child(7)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"Sign In","selector":"page.getByText('Sign In')"},{"tagName":"h1","selectors":["page.locator('.heading-large.mb-7')","page.getByText('Sign In')","page.locator('h1:nth-child(8)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"heading-large mb-7","text":"Sign In","selector":"page.locator('.heading-large.mb-7')"},{"tagName":"div","selectors":["page.getByText('Please enter your details to sign in to your account.')","page.locator('div:nth-child(9)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"Please enter your details to sign in to your account.","selector":"page.getByText('Please enter your details to sign in to your account.')"},{"tagName":"p","selectors":["page.locator('.mb-7')","page.getByText('Please enter your details to sign in to your account.')","page.locator('p:nth-child(10)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"mb-7","text":"Please enter your details to sign in to your account.","selector":"page.locator('.mb-7')"},{"tagName":"form","selectors":["page.locator('.flex.flex-col.ng-pristine.ng-invalid.ng-touched')","page.getByText('Email Address * Password * 👁 Forgot Password? Sign In')","page.locator('#loginForm')","page.locator('form:nth-child(11)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"flex flex-col ng-pristine ng-invalid ng-touched","text":"Email Address\n*\nPassword\n*\n👁\n\nForgot Password?\nSign In","id":"loginForm","selector":"page.locator('.flex.flex-col.ng-pristine.ng-invalid.ng-touched')"},{"tagName":"div","selectors":["page.locator('.w-full.pb-2')","page.getByText('Email Address *')","page.locator('div:nth-child(12)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"w-full pb-2","text":"Email Address\n*","selector":"page.locator('.w-full.pb-2')"},{"tagName":"div","selectors":["page.getByText('Email Address')","page.locator('div:nth-child(13)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"Email Address","selector":"page.getByText('Email Address')"},{"tagName":"span","selectors":["page.locator('.text-error')","page.getByText('*')","page.locator('span:nth-child(14)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"text-error","text":"*","selector":"page.locator('.text-error')"},{"tagName":"div","selectors":["page.getByText('*')","page.locator('div:nth-child(15)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"*","selector":"page.getByText('*')"},{"tagName":"div","selectors":["page.locator('div:nth-child(16)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"selector":"page.locator('div:nth-child(16)')"},{"tagName":"input","selectors":["page.locator('.ng-pristine.ng-invalid.ng-touched')","page.locator('input[type=\"text\"]')","page.locator('#email')","page.getByPlaceholder('Enter your email')","page.locator('input:nth-child(17)')"],"isVisible":true,"isEnabled":true,"isEditable":true,"className":"ng-pristine ng-invalid ng-touched","type":"text","id":"email","placeholder":"Enter your email","selector":"page.locator('.ng-pristine.ng-invalid.ng-touched')"},{"tagName":"div","selectors":["page.locator('.w-full.pb-2')","page.getByText('Password *')","page.locator('div:nth-child(18)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"w-full pb-2","text":"Password\n*","selector":"page.locator('.w-full.pb-2')"},{"tagName":"div","selectors":["page.getByText('Password')","page.locator('div:nth-child(19)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"Password","selector":"page.getByText('Password')"},{"tagName":"span","selectors":["page.locator('.text-error')","page.getByText('*')","page.locator('span:nth-child(20)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"text-error","text":"*","selector":"page.locator('.text-error')"},{"tagName":"div","selectors":["page.getByText('*')","page.locator('div:nth-child(21)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"*","selector":"page.getByText('*')"},{"tagName":"div","selectors":["page.getByText('👁')","page.locator('div:nth-child(22)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"👁","selector":"page.getByText('👁')"},{"tagName":"div","selectors":["page.locator('div:nth-child(23)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"selector":"page.locator('div:nth-child(23)')"},{"tagName":"input","selectors":["page.locator('.ng-pristine.ng-invalid.ng-touched')","page.locator('input[type=\"password\"]')","page.locator('#password')","page.getByPlaceholder('Enter your password')","page.locator('input:nth-child(24)')"],"isVisible":true,"isEnabled":true,"isEditable":true,"className":"ng-pristine ng-invalid ng-touched","type":"password","id":"password","placeholder":"Enter your password","selector":"page.locator('.ng-pristine.ng-invalid.ng-touched')"},{"tagName":"div","selectors":["page.getByText('👁')","page.locator('div:nth-child(25)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"text":"👁","selector":"page.getByText('👁')"},{"tagName":"div","selectors":["page.getByText('👁')","page.locator('div:nth-child(26)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"👁","selector":"page.getByText('👁')"},{"tagName":"div","selectors":["page.locator('div:nth-child(27)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"selector":"page.locator('div:nth-child(27)')"},{"tagName":"div","selectors":["page.locator('div:nth-child(28)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"selector":"page.locator('div:nth-child(28)')"},{"tagName":"p","selectors":["page.locator('.required-error-message')","page.locator('#error-password')","page.locator('p:nth-child(29)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"className":"required-error-message","id":"error-password","selector":"page.locator('.required-error-message')"},{"tagName":"input","selectors":["page.locator('input:nth-child(30)')"],"isVisible":false,"isEnabled":true,"isEditable":true,"className":"hidden","selector":"page.locator('input:nth-child(30)')"},{"tagName":"input","selectors":["page.locator('input:nth-child(31)')"],"isVisible":false,"isEnabled":true,"isEditable":true,"className":"hidden","selector":"page.locator('input:nth-child(31)')"},{"tagName":"input","selectors":["page.locator('input:nth-child(32)')"],"isVisible":false,"isEnabled":true,"isEditable":true,"className":"hidden","selector":"page.locator('input:nth-child(32)')"},{"tagName":"div","selectors":["page.locator('.flex.justify-between.items-center.mb-7')","page.getByText('Forgot Password? Sign In')","page.locator('div:nth-child(33)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"flex justify-between items-center mb-7","text":"Forgot Password?\nSign In","selector":"page.locator('.flex.justify-between.items-center.mb-7')"},{"tagName":"div","selectors":["page.getByText('Forgot Password?')","page.locator('div:nth-child(34)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"Forgot Password?","selector":"page.getByText('Forgot Password?')"},{"tagName":"a","selectors":["page.locator('a[href=\"/Home/ForgotPassword\"]')","page.locator('a:has-text(\"Forgot Password?\")')","page.locator('a:nth-child(35)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"Forgot Password?","href":"/Home/ForgotPassword","selector":"page.locator('a[href=\"/Home/ForgotPassword\"]')"},{"tagName":"div","selectors":["page.getByText('Sign In')","page.locator('div:nth-child(36)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"Sign In","selector":"page.getByText('Sign In')"},{"tagName":"button","selectors":["page.locator('.flex.justify-center.items-center.group.primary')","page.locator('button[type=\"submit\"]')","page.locator('button:has-text(\"Sign In\")')","page.locator('button:nth-child(37)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"flex justify-center items-center group primary","type":"submit","text":"Sign In","selector":"page.locator('.flex.justify-center.items-center.group.primary')"},{"tagName":"div","selectors":["page.getByText('submit')","page.locator('div:nth-child(38)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"text":"submit","selector":"page.getByText('submit')"},{"tagName":"div","selectors":["page.locator('.bg-page-light.p-5.rounded-lg.text-center')","page.getByText('Do you need sign in help? Get help here.')","page.locator('div:nth-child(40)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"className":"bg-page-light p-5 rounded-lg text-center","text":"Do you need sign in help? Get help\nhere.","selector":"page.locator('.bg-page-light.p-5.rounded-lg.text-center')"},{"tagName":"div","selectors":["page.getByText('Do you need sign in help? Get help')","page.locator('div:nth-child(41)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"Do you need sign in help? Get help","selector":"page.getByText('Do you need sign in help? Get help')"},{"tagName":"span","selectors":["page.getByText('Do you need sign in help? Get help')","page.locator('span:nth-child(42)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"Do you need sign in help? Get help","selector":"page.getByText('Do you need sign in help? Get help')"},{"tagName":"div","selectors":["page.getByText('here.')","page.locator('div:nth-child(43)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"here.","selector":"page.getByText('here.')"},{"tagName":"a","selectors":["page.locator('a[href=\"#\"]')","page.locator('a:has-text(\"here.\")')","page.locator('a:nth-child(44)')"],"isVisible":true,"isEnabled":true,"isEditable":false,"text":"here.","href":"#","selector":"page.locator('a[href=\"#\"]')"},{"tagName":"div","selectors":["page.locator('.grow.flex.items-end.mt-20')","page.getByText('Are you new to AP Portal?   Register')","page.locator('div:nth-child(45)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"className":"grow flex items-end mt-20","text":"Are you new to AP Portal?  \nRegister","selector":"page.locator('.grow.flex.items-end.mt-20')"},{"tagName":"div","selectors":["page.getByText('Are you new to AP Portal?')","page.locator('div:nth-child(46)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"text":"Are you new to AP Portal?","selector":"page.getByText('Are you new to AP Portal?')"},{"tagName":"span","selectors":["page.getByText('Are you new to AP Portal?')","page.locator('span:nth-child(47)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"text":"Are you new to AP Portal?","selector":"page.getByText('Are you new to AP Portal?')"},{"tagName":"div","selectors":["page.getByText('Register')","page.locator('div:nth-child(48)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"text":"Register","selector":"page.getByText('Register')"},{"tagName":"section","selectors":["page.locator('.flex.flex-col.items-center.justify-center.mt-10.gap-4.text-grey-dark')","page.getByText('Need help? Contact Us ©2026 - SWBC.  All Rights Reserved. Privacy Policy')","page.locator('section:nth-child(50)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"className":"flex flex-col items-center justify-center mt-10 gap-4 text-grey-dark","text":"Need help? Contact Us\n©2026 - SWBC. \nAll Rights Reserved. Privacy Policy","selector":"page.locator('.flex.flex-col.items-center.justify-center.mt-10.gap-4.text-grey-dark')"},{"tagName":"div","selectors":["page.locator('.text-sm')","page.getByText('Need help? Contact Us')","page.locator('div:nth-child(51)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"className":"text-sm","text":"Need help? Contact Us","selector":"page.locator('.text-sm')"},{"tagName":"div","selectors":["page.getByText('Need help? Contact Us')","page.locator('div:nth-child(52)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"text":"Need help? Contact Us","selector":"page.getByText('Need help? Contact Us')"},{"tagName":"div","selectors":["page.locator('.flex.text-sm')","page.getByText('©2026 - SWBC.  All Rights Reserved. Privacy Policy')","page.locator('div:nth-child(54)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"className":"flex text-sm","text":"©2026 - SWBC. \nAll Rights Reserved. Privacy Policy","selector":"page.locator('.flex.text-sm')"},{"tagName":"div","selectors":["page.getByText('©2026 - SWBC.')","page.locator('div:nth-child(55)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"text":"©2026 - SWBC.","selector":"page.getByText('©2026 - SWBC.')"},{"tagName":"div","selectors":["page.getByText('©2026 - SWBC.')","page.locator('div:nth-child(56)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"text":"©2026 - SWBC.","selector":"page.getByText('©2026 - SWBC.')"},{"tagName":"div","selectors":["page.getByText('All Rights Reserved. Privacy Policy')","page.locator('div:nth-child(57)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"text":"All Rights Reserved. Privacy Policy","selector":"page.getByText('All Rights Reserved. Privacy Policy')"},{"tagName":"div","selectors":["page.getByText('All Rights Reserved. Privacy Policy')","page.locator('div:nth-child(58)')"],"isVisible":false,"isEnabled":true,"isEditable":false,"text":"All Rights Reserved. Privacy Policy","selector":"page.getByText('All Rights Reserved. Privacy Policy')"}]}}
+2026-03-12 10:12:12+05:30 [MCP] [info] → [ACTION] [browser_get_dom_info] Retrieved DOM elements {"elementCount":55}
+2026-03-12 10:12:16+05:30 [MCP] [debug] → [DEBUG] Received: tools/call (id: 7)
+2026-03-12 10:12:16+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:12:16+05:30 [MCP] [info] → -> browser_assert_text_visible {"toolArgs":"{\n  selectors: [ \u001b[32m\"page.getByText('TickingMinds_Test')\"\u001b[39m ],\n  text: \u001b[32m'TickingMinds_Test'\u001b[39m\n}"}
+2026-03-12 10:12:16+05:30 [MCP] [debug] → [PLAYWRIGHT-API] POST http://playwright-app-service/api/session/session_1773290522864_cdiemnzco/assert-text-visible {"body":{"selectors":["page.getByText('TickingMinds_Test')"],"text":"TickingMinds_Test"}}
+2026-03-12 10:13:16+05:30 [MCP] [error] → [PLAYWRIGHT-API] Request failed {"error":"Playwright API error: 500 - {\"error\":\"Text \\\"TickingMinds_Test\\\" not found in any of the provided selectors\"}"}
+2026-03-12 10:13:16+05:30 [MCP] [error] → Tool browser_assert_text_visible error {"error":{}}
+2026-03-12 10:13:16+05:30 [MCP] [debug] → [DEBUG] Received: tools/call (id: 8)
+2026-03-12 10:13:16+05:30 [MCP] [debug] → [JWT] Current token validated for agent {"agentId":"agent_int_file"}
+2026-03-12 10:13:16+05:30 [MCP] [info] → -> browser_get_video {"toolArgs":"{}"}
+2026-03-12 10:13:37+05:30 [MCP] [info] → [ACTION] [browser_get_video] Retrieved video (1973496 bytes)
+2026-03-12 10:13:37+05:30 [MCP] [debug] → [DEBUG] Client disconnected
+2026-03-12 10:13:37+05:30 [MCP] [debug] → [PLAYWRIGHT-API] DELETE http://playwright-app-service/api/session/session_1773290522864_cdiemnzco {"body":null}
+2026-03-12 10:13:37+05:30 [MCP] [debug] → [PLAYWRIGHT-API] Response {"result":{"success":true}}
+2026-03-12 10:13:37+05:30 [MCP] [info] → [PLAYWRIGHT] Closed remote session on disconnect: session_1773290522864_cdiemnzco
+2026-03-12 10:13:37+05:30 [MCP] [debug] → [JWT] Connection closed but persistent token remains active
+2026-03-12 10:16:14+05:30 [MCP] [info] → [JWT] Generating new JWT token (scheduled refresh)
+2026-03-12 10:16:14+05:30 [MCP] [info] → [JWT] New token generated at 2026-03-12T04:46:14.103Z
+2026-03-12 10:16:14+05:30 [MCP] [info] → [JWT] Token expires in: 20 minutes
+2026-03-12 10:16:14+05:30 [MCP] [info] → [JWT] New JWT Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2VudElkIjoiYWdlbnRfaW50X2ZpbGUiLCJzZXJ2ZXJOYW1lIjoiQ3VzdG9tUGxheXdyaWdodE1DUCIsInZlcnNpb24iOiIxLjAuMCIsImdlbmVyYXRlZEF0IjoiMjAyNi0wMy0xMlQwNDo0NjoxNC4xMDNaIiwicHVycG9zZSI6ImF1dGhlbnRpY2F0ZWRfYWdlbnRfYWNjZXNzIiwic2Vzc2lvblRva2VuIjp0cnVlLCJ0b2tlbklkIjoiYjg4OWExYmE1MGQyMTk4YiIsImlhdCI6MTc3MzI5MDc3NCwiZXhwIjoxNzczMjkxOTc0fQ.qEujQU_i9D4DtJBNKxYCn14W0OMYRyhcdKJifELQMCM

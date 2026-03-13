@@ -7,6 +7,7 @@ import report.Report;
 import report.ApiTestExecutor;
 import utils.JsonUtils;
 import utils.ProjectStore;
+import utils.RoleStore;
 import utils.TokenUtil;
 
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import java.util.Map;
 
 public class GetRolesTest extends BaseTest {
 
-    public void getRolesForAllProjects() {
+    public void getRolesForProject() {
 
         Report testData =
                 JsonUtils.readJson(
@@ -23,54 +24,73 @@ public class GetRolesTest extends BaseTest {
                         Report.class
                 );
 
-        for (Integer projectId : ProjectStore.getAllProjectIds()) {
+        if (testData == null || testData.getTestCases() == null) {
+            throw new RuntimeException("❌ getRoles.json missing");
+        }
 
-            Report.TestCase tc =
-                    new Report.TestCase(
-                            testData.getTestCases().get(0)
-                    );
+        Integer projectId = ProjectStore.getProjectId();
 
-            Map<String, Object> request = new HashMap<>();
-            request.put("refProjectId", projectId);
-            request.put("userId", TokenUtil.getUserId());
+        if (projectId == null) {
+            throw new RuntimeException("❌ ProjectId not found in ProjectStore");
+        }
 
-            tc.setTcId("GET_ROLES_" + projectId);
-            tc.setName("Get Roles | Project " + projectId);
-            tc.setRequest(request);
+        Report.TestCase tc =
+                new Report.TestCase(
+                        testData.getTestCases().get(0)
+                );
 
-            ApiTestExecutor.execute(
-                    testData.getScenario(),
-                    tc,
-                    () -> {
+        Map<String, Object> request = new HashMap<>();
 
-                        Response response =
-                                GetRolesApi.getRoles(
-                                        request,
-                                        tc.getRole(),
-                                        tc.getAuthType()
-                                );
+        request.put("refProjectId", projectId);
+        request.put("userId", TokenUtil.getUserId(tc.getRole()));
 
-                        // ✅ FIX 1: Correct way to read ROOT array
-                        List<Map<String, Object>> roles =
-                                response.jsonPath().getList("$");
+        tc.setTcId("GET_ROLES_" + projectId);
+        tc.setName("Get Roles | Project " + projectId);
+        tc.setRequest(request);
 
+        ApiTestExecutor.execute(
+                testData.getScenario(),
+                tc,
+                () -> {
 
-                        // ✅ FIX 2: Null / empty protection
-                        if (roles == null || roles.isEmpty()) {
-                            System.out.println(
-                                    "ℹ No roles found for project " + projectId
+                    Response response =
+                            GetRolesApi.getRoles(
+                                    request,
+                                    tc.getRole(),
+                                    tc.getAuthType()
                             );
-                            return response;
-                        }
 
+                    List<Map<String, Object>> roles =
+                            response.jsonPath().getList("$");
+
+                    if (roles == null || roles.isEmpty()) {
                         System.out.println(
-                                "✅ Roles fetched for project " + projectId +
-                                        " | Count = " + roles.size()
+                                "ℹ No roles found for project " + projectId
                         );
-
                         return response;
                     }
-            );
-        }
+
+                    System.out.println(
+                            "✅ Roles fetched for project " + projectId +
+                                    " | Count = " + roles.size()
+                    );
+
+                    /* Store first roleId */
+
+                    Integer roleId =
+                            (Integer) roles.get(0).get("roleId");
+
+                    if (roleId != null) {
+
+                        RoleStore.setRoleId(roleId);
+
+                        System.out.println(
+                                "📌 Stored Role ID → " + roleId
+                        );
+                    }
+
+                    return response;
+                }
+        );
     }
 }

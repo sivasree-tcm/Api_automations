@@ -7,6 +7,7 @@ import utils.TokenUtil;
 public class GetOrganizationsApi {
 
     public static Response getOrganizations(
+            Object request,
             String role,
             String authType
     ) {
@@ -14,14 +15,12 @@ public class GetOrganizationsApi {
         var req = given().contentType("application/json");
 
         if ("MISSING".equalsIgnoreCase(authType)) {
-
+            // No Authorization header
         }
         else if ("INVALID".equalsIgnoreCase(authType)) {
-
             req.header("Authorization", "Bearer invalid_token");
         }
         else {
-
             req.header(
                     "Authorization",
                     TokenUtil.getToken(
@@ -30,6 +29,8 @@ public class GetOrganizationsApi {
             );
         }
 
-        return req.get("/api/Organizations");
+        return req
+                .body(request)
+                .get("/api/Organizations");
     }
 }

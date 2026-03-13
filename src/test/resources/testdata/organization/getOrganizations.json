@@ -1,11 +1,12 @@
 {
-  "scenario": "Get Organizations API",
+  "scenario": "Get Organizations",
   "testCases": [
     {
-      "name": "TC_GET_ORG_01 - Get organizations as SUPER_ADMIN",
+      "testCaseName": "Fetch Organizations Successfully",
       "role": "SUPER_ADMIN",
       "authType": "VALID",
-      "expectedStatusCode": 200
+      "expectedStatusCode": 200,
+      "request": {}
     }
   ]
 }

@@ -11,15 +11,18 @@ import tests.connection.DeleteConnectionTest;
 import tests.connection.SaveConnectionTest;
 import tests.files.ListFilesTest;
 import tests.generation.GenerateTSTest;
+import tests.login.LogOutTest;
 import tests.modelmapping.GetLlmCredentialsTest;
 import tests.modelmapping.MapCredentialToProjectTest;
 import tests.pipeline.ExecuteTestsTest;
-import tests.roles.CreateRoleTest;
+import tests.prompt.GetAllPromptTest;
+import tests.roles.*;
 import tests.testCase.*;
 import tests.testScenario.AddTestScenarioTest;
 import tests.testScenario.DeleteTestScenarioTest;
 import tests.testScenario.GetTSByBRTest;
 import tests.testScenario.UpdateTestScenarioTest;
+import tests.userManagement.ToggleUserStatusTest;
 import tests.video.GetAutomationVideoTest;
 import tests.ats.LoadATSFilesTest;
 import tests.bdd.UpdateBddTest;
@@ -40,7 +43,6 @@ import tests.br.UploadBusinessRequirementTest;
 import tests.prompt.UpdatePromptTest;
 import tests.prompt.CreatePromptTest;
 import tests.prompt.MapPromptTest;
-import tests.roles.CheckUserRolesTest;
 import tests.azure.GetAzureSprintsTest;
 import tests.azure.GetUserStoriesTest;
 import tests.azure.ImportAzureUserStoriesTest;
@@ -189,286 +191,329 @@ public class EndToEndFlow extends BaseTest {
     }
 
     @Test(dependsOnMethods = "step22_addUser")
-    public void step23_getUserManagementDetails() {
-        System.out.println("▶ Step 23: Get User Management Details");
+    public void step23_getRoles() {
+        System.out.println("▶ Step 23: Get Roles");
+        new GetRolesTest().getRolesForProject();
+    }
+
+    @Test(dependsOnMethods = "step23_getRoles")
+    public void step24_editRoles() {
+        System.out.println("▶ Step 24: Edit Roles");
+        new EditRoleTest().editRoles();
+    }
+
+    @Test(dependsOnMethods = "step24_editRoles")
+    public void step25_toggleUser() {
+        System.out.println("▶ Step 25: Toggle User Status");
+        new ToggleUserStatusTest().toggleUserStatusApiTest();
+    }
+
+
+    @Test(dependsOnMethods = "step25_toggleUser")
+    public void step26_getUserManagementDetails() {
+        System.out.println("▶ Step 26: Get User Management Details");
         new GetUserManagementDetailsTest().getUserManagementDetails();
     }
 
-    @Test(dependsOnMethods = "step23_getUserManagementDetails")
-    public void step24_createPrompt() {
-        System.out.println("▶ Step 24: Create Prompt");
+    @Test(dependsOnMethods = "step26_getUserManagementDetails")
+    public void step27_disableUserByRole() {
+        System.out.println("▶ Step 27: Disable Users By Role");
+        new DisableUsersByRoleTest().disableUsersByRole();
+    }
+
+    @Test(dependsOnMethods = "step27_disableUserByRole")
+    public void step28_DeleteRole() {
+        System.out.println("▶ Step 28: Delete Role");
+        new DeleteRoleTest().deleteRoles();
+    }
+
+    @Test(dependsOnMethods = "step28_DeleteRole")
+    public void step29_createPrompt() {
+        System.out.println("▶ Step 29: Create Prompt");
         new CreatePromptTest().createPromptApiTest();
     }
 
-    @Test(dependsOnMethods = "step24_createPrompt")
-    public void step25_updatePrompt() {
-        System.out.println("▶ Step 25: Update Prompt");
+    @Test(dependsOnMethods = "step29_createPrompt")
+    public void step30_getPrompts() {
+        System.out.println("▶ Step 30: Get All Prompts");
+        new GetAllPromptTest().getPromptApiTest();
+    }
+
+    @Test(dependsOnMethods = "step29_createPrompt")
+    public void step30_updatePrompt() {
+        System.out.println("▶ Step 30: Update Prompt");
         new UpdatePromptTest().updatePromptApiTest();
     }
 
-    @Test(dependsOnMethods = "step25_updatePrompt")
-    public void step26_mapPrompt() {
-        System.out.println("▶ Step 26: Map Prompt");
+    @Test(dependsOnMethods = "step30_updatePrompt")
+    public void step31_mapPrompt() {
+        System.out.println("▶ Step 31: Map Prompt");
         new MapPromptTest().mapPromptApiTest();
     }
 
-    @Test(dependsOnMethods = "step26_mapPrompt")
-    public void step27_getAzureSprints() {
-        System.out.println("▶ Step 27: Get Azure Sprints");
+    @Test(dependsOnMethods = "step31_mapPrompt")
+    public void step32_getAzureSprints() {
+        System.out.println("▶ Step 32: Get Azure Sprints");
         new GetAzureSprintsTest().getAzureDevOpsSprints();
     }
 
-    @Test(dependsOnMethods = "step27_getAzureSprints")
-    public void step28_getUserStories() {
-        System.out.println("▶ Step 28: Get User Stories");
+    @Test(dependsOnMethods = "step32_getAzureSprints")
+    public void step33_getUserStories() {
+        System.out.println("▶ Step 33: Get User Stories");
         new GetUserStoriesTest().getUserStories();
     }
 
-    @Test(dependsOnMethods = "step28_getUserStories")
-    public void step29_importAzureUserStories() {
-        System.out.println("▶ Step 29: Import Azure User Stories");
+    @Test(dependsOnMethods = "step33_getUserStories")
+    public void step34_importAzureUserStories() {
+        System.out.println("▶ Step 34: Import Azure User Stories");
         new ImportAzureUserStoriesTest().importAzureUserStories();
     }
 
-    @Test(dependsOnMethods = "step29_importAzureUserStories")
-    public void step30_uploadBusinessRequirement() {
-        System.out.println("▶ Step 30: Upload Business Requirement");
+    @Test(dependsOnMethods = "step34_importAzureUserStories")
+    public void step35_uploadBusinessRequirement() {
+        System.out.println("▶ Step 35: Upload Business Requirement");
         new UploadBusinessRequirementTest().uploadBusinessRequirementTest();
     }
 
-    @Test(dependsOnMethods = "step30_uploadBusinessRequirement")
-    public void step31_exportBRExcel() throws Exception {
-        System.out.println("▶ Step 31: Export BR Excel");
+    @Test(dependsOnMethods = "step35_uploadBusinessRequirement")
+    public void step36_exportBRExcel() throws Exception {
+        System.out.println("▶ Step 36: Export BR Excel");
         new tests.export.ExportBRExcelTest().exportBRExcelAndValidate();
     }
 
-    @Test(dependsOnMethods = "step31_exportBRExcel")
-    public void step32_deleteBR() throws Exception {
-        System.out.println("▶ Step 32: Delete Business Requirement");
+    @Test(dependsOnMethods = "step36_exportBRExcel")
+    public void step37_deleteBR() throws Exception {
+        System.out.println("▶ Step 37: Delete Business Requirement");
         new DeleteBusinessRequirementTest().deleteLastBR();
     }
 
-    @Test(dependsOnMethods = "step32_deleteBR")
-    public void step33_refreshBRs() {
-        System.out.println("▶ Step 33: Refresh Business Requirements");
+    @Test(dependsOnMethods = "step37_deleteBR")
+    public void step38_refreshBRs() {
+        System.out.println("▶ Step 38: Refresh Business Requirements");
         BusinessRequirementStore.clear();
         new GetBusinessRequirementTest().fetchBRsForProject();
     }
 
-    @Test(dependsOnMethods = "step33_refreshBRs")
-    public void step34_checkGCSForBR() {
-        System.out.println("▶ Step 34: Check GCS Path For BR");
+    @Test(dependsOnMethods = "step38_refreshBRs")
+    public void step39_checkGCSForBR() {
+        System.out.println("▶ Step 39: Check GCS Path For BR");
         new CheckGcsPathForBrTest().checkGcsPathForBrApiTest();
     }
 
-    @Test(dependsOnMethods = "step34_checkGCSForBR")
-    public void step35_importImageForBR() {
-        System.out.println("▶ Step 35: Upload Image For BR");
+    @Test(dependsOnMethods = "step39_checkGCSForBR")
+    public void step40_importImageForBR() {
+        System.out.println("▶ Step 40: Upload Image For BR");
         new UploadFilesForBRTest().uploadImageForALLBRs();
     }
 
-    @Test(dependsOnMethods = "step35_importImageForBR")
-    public void step36_listFiles() {
-        System.out.println("▶ Step 36: List Files");
+    @Test(dependsOnMethods = "step40_importImageForBR")
+    public void step41_listFiles() {
+        System.out.println("▶ Step 41: List Files");
         new ListFilesTest().listFiles();
     }
 
-    @Test(dependsOnMethods = "step36_listFiles")
-    public void step37_downloadImage() {
-        System.out.println("▶ Step 37: Download Image");
+    @Test(dependsOnMethods = "step41_listFiles")
+    public void step42_downloadImage() {
+        System.out.println("▶ Step 42: Download Image");
         new DownloadFilesTest().downloadSingleImageForBR();
     }
 
-    @Test(dependsOnMethods = "step37_downloadImage")
-    public void step38_deleteImage() {
-        System.out.println("▶ Step 38: Delete Image");
+    @Test(dependsOnMethods = "step42_downloadImage")
+    public void step43_deleteImage() {
+        System.out.println("▶ Step 43: Delete Image");
         new DeleteFilesTest().deleteSingleImageForBR();
     }
 
-    @Test(dependsOnMethods = "step38_deleteImage")
-    public void step39_generateTS() {
-        System.out.println("▶ Step 39: Generate Test Scenarios");
+    @Test(dependsOnMethods = "step43_deleteImage")
+    public void step44_generateTS() {
+        System.out.println("▶ Step 44: Generate Test Scenarios");
         new GenerateTSTest().generateTSForBR();
     }
 
-    @Test(dependsOnMethods = "step39_generateTS")
-    public void step40_waitForTSGeneration() {
-        System.out.println("▶ Step 40: Wait For TS Generation");
+    @Test(dependsOnMethods = "step44_generateTS")
+    public void step45_waitForTSGeneration() {
+        System.out.println("▶ Step 45: Wait For TS Generation");
         new GetGenerationStatusTest().waitUntilAllCompleted();
     }
 
-    @Test(dependsOnMethods = "step40_waitForTSGeneration")
-    public void step41_getTSByBR() {
-        System.out.println("▶ Step 41: Get Test Scenarios By BR");
+    @Test(dependsOnMethods = "step45_waitForTSGeneration")
+    public void step46_getTSByBR() {
+        System.out.println("▶ Step 46: Get Test Scenarios By BR");
         new GetTSByBRTest().getTestScenariosForGeneratedBRs();
     }
 
-    @Test(dependsOnMethods = "step41_getTSByBR")
-    public void step42_exportTSExcel() throws Exception {
-        System.out.println("▶ Step 42: Export TS Excel");
+    @Test(dependsOnMethods = "step46_getTSByBR")
+    public void step47_exportTSExcel() throws Exception {
+        System.out.println("▶ Step 47: Export TS Excel");
         new tests.export.ExportTSExcelTest().exportTSExcelForGeneratedBRs();
     }
 
-    @Test(dependsOnMethods = "step42_exportTSExcel")
-    public void step43_deleteTestScenario() {
-        System.out.println("▶ Step 43: Delete Test Scenario");
+    @Test(dependsOnMethods = "step47_exportTSExcel")
+    public void step48_deleteTestScenario() {
+        System.out.println("▶ Step 48: Delete Test Scenario");
         new DeleteTestScenarioTest().deleteLastTestScenario();
     }
 
-    @Test(dependsOnMethods = "step43_deleteTestScenario")
-    public void step44_addTestScenario() {
-        System.out.println("▶ Step 44: Add Test Scenario");
+    @Test(dependsOnMethods = "step48_deleteTestScenario")
+    public void step49_addTestScenario() {
+        System.out.println("▶ Step 49: Add Test Scenario");
         new AddTestScenarioTest().addTestScenarioApiTest();
     }
 
-    @Test(dependsOnMethods = "step44_addTestScenario")
-    public void step45_updateTestScenario() {
-        System.out.println("▶ Step 45: Update Test Scenario");
+    @Test(dependsOnMethods = "step49_addTestScenario")
+    public void step50_updateTestScenario() {
+        System.out.println("▶ Step 50: Update Test Scenario");
         new UpdateTestScenarioTest().updateTestScenarioApiTest();
     }
 
-    @Test(dependsOnMethods = "step45_updateTestScenario")
-    public void step46_generateTC() {
-        System.out.println("▶ Step 46: Generate Test Cases");
+    @Test(dependsOnMethods = "step50_updateTestScenario")
+    public void step51_generateTC() {
+        System.out.println("▶ Step 51: Generate Test Cases");
         new GenerateTCTest().generateTCForSelectedTS();
     }
 
-    @Test(dependsOnMethods = "step46_generateTC")
-    public void step47_waitForTCCompletion() throws InterruptedException {
-        System.out.println("▶ Step 47: Wait For TC Completion");
+    @Test(dependsOnMethods = "step51_generateTC")
+    public void step52_waitForTCCompletion() throws InterruptedException {
+        System.out.println("▶ Step 52: Wait For TC Completion");
         new GetGenerationTCStatus().waitUntilAllCompletedForTC();
     }
 
-    @Test(dependsOnMethods = "step47_waitForTCCompletion")
-    public void step48_exportTC() {
-        System.out.println("▶ Step 48: Export Test Cases");
+    @Test(dependsOnMethods = "step52_waitForTCCompletion")
+    public void step53_exportTC() {
+        System.out.println("▶ Step 53: Export Test Cases");
         new ExportTCExcelTest().exportTCExcelForGeneratedTS();
     }
 
-    @Test(dependsOnMethods = "step48_exportTC")
-    public void step49_getTestCaseSummaryForTS() {
-        System.out.println("▶ Step 49: Get Test Case Summary For TS");
+    @Test(dependsOnMethods = "step53_exportTC")
+    public void step54_getTestCaseSummaryForTS() {
+        System.out.println("▶ Step 54: Get Test Case Summary For TS");
         new GetTestCaseSummaryForTSTest().getTestCaseSummaryForTS();
     }
 
-    @Test(dependsOnMethods = "step49_getTestCaseSummaryForTS")
-    public void step50_getTestCaseWithSteps() {
-        System.out.println("▶ Step 50: Get Test Case With Steps");
+    @Test(dependsOnMethods = "step54_getTestCaseSummaryForTS")
+    public void step55_getTestCaseWithSteps() {
+        System.out.println("▶ Step 55: Get Test Case With Steps");
         new GetTestCaseWithStepsTest().getTestCaseWithStepsApiTest();
     }
 
-    @Test(dependsOnMethods = "step50_getTestCaseWithSteps")
-    public void step51_addTestCaseStep() {
-        System.out.println("▶ Step 51: Add Test Case Step");
+    @Test(dependsOnMethods = "step55_getTestCaseWithSteps")
+    public void step56_addTestCaseStep() {
+        System.out.println("▶ Step 56: Add Test Case Step");
         new AddTestCaseStepTest().addTestCaseStep();
     }
 
-    @Test(dependsOnMethods = "step51_addTestCaseStep")
-    public void step52_updateTestCaseStepOrder() {
-        System.out.println("▶ Step 52: Update Test Case Step Order");
+    @Test(dependsOnMethods = "step56_addTestCaseStep")
+    public void step57_updateTestCaseStepOrder() {
+        System.out.println("▶ Step 57: Update Test Case Step Order");
         new UpdateTestCaseStepOrderTest().updateTestCaseStepOrderApiTest();
     }
 
-    @Test(dependsOnMethods = "step52_updateTestCaseStepOrder")
-    public void step53_updateTestCaseStep() {
-        System.out.println("▶ Step 53: Update Test Case Step");
+    @Test(dependsOnMethods = "step57_updateTestCaseStepOrder")
+    public void step58_updateTestCaseStep() {
+        System.out.println("▶ Step 58: Update Test Case Step");
         new UpdateTestCaseStepTest().updateTestCaseStep();
     }
 
-    @Test(dependsOnMethods = "step53_updateTestCaseStep")
-    public void step54_deleteTestCaseStep() {
-        System.out.println("▶ Step 54: Delete Test Case Step");
+    @Test(dependsOnMethods = "step58_updateTestCaseStep")
+    public void step59_deleteTestCaseStep() {
+        System.out.println("▶ Step 59: Delete Test Case Step");
         new DeleteTestCaseStepTest().deleteTestCaseStep();
     }
 
-    @Test(dependsOnMethods = "step54_deleteTestCaseStep")
-    public void step55_updateTestCase() {
-        System.out.println("▶ Step 55: Update Test Case");
+    @Test(dependsOnMethods = "step59_deleteTestCaseStep")
+    public void step60_updateTestCase() {
+        System.out.println("▶ Step 60: Update Test Case");
         new UpdateTestCaseTest().updateTestCaseApiTest();
     }
 
-    @Test(dependsOnMethods = "step55_updateTestCase")
-    public void step56_addTestCase() {
-        System.out.println("▶ Step 56: Add Test Case");
+    @Test(dependsOnMethods = "step60_updateTestCase")
+    public void step61_addTestCase() {
+        System.out.println("▶ Step 61: Add Test Case");
         new InsertTestCaseTest().addTestCaseApiTest();
     }
 
-    @Test(dependsOnMethods = "step56_addTestCase")
-    public void step57_updateBDD() {
-        System.out.println("▶ Step 57: Update BDD");
+    @Test(dependsOnMethods = "step61_addTestCase")
+    public void step62_updateBDD() {
+        System.out.println("▶ Step 62: Update BDD");
         new UpdateBddTest().updateBdd();
     }
 
-    @Test(dependsOnMethods = "step57_updateBDD")
-    public void step58_deleteTestCase() {
-        System.out.println("▶ Step 58: Delete Test Case");
+    @Test(dependsOnMethods = "step57_updateTestCaseStepOrder")
+    public void step64_deleteTestCase() {
+        System.out.println("▶ Step 64: Delete Test Case");
         new DeleteTestCaseTest().deleteLastTestCase();
     }
 
-    @Test(dependsOnMethods = "step58_deleteTestCase")
-    public void step59_generateAutomationCode() {
-        System.out.println("▶ Step 59: Generate Automation Code (ATS)");
+    @Test(dependsOnMethods = "step64_deleteTestCase")
+    public void step65_generateAutomationCode() {
+        System.out.println("▶ Step 65: Generate Automation Code (ATS)");
         new GenerateATSTest().generateAtsApiTest();
     }
 
-    @Test(dependsOnMethods = "step59_generateAutomationCode")
-    public void step60_checkATSStatus() {
-        System.out.println("▶ Step 60: Check ATS Generation Status");
+    @Test(dependsOnMethods = "step65_generateAutomationCode")
+    public void step66_checkATSStatus() {
+        System.out.println("▶ Step 66: Check ATS Generation Status");
         new ValidateATSGenerationPollingTest().validateATSGenerationWithPolling();
     }
 
-    @Test(dependsOnMethods = "step60_checkATSStatus")
-    public void step61_downloadATSFramework() {
-        System.out.println("▶ Step 61: Download ATS Framework");
+    @Test(dependsOnMethods = "step66_checkATSStatus")
+    public void step67_downloadATSFramework() {
+        System.out.println("▶ Step 67: Download ATS Framework");
         new DownloadAtsFrameworkTest().downloadAtsFramework();
     }
 
-    @Test(dependsOnMethods = "step61_downloadATSFramework")
-    public void step62_loadATSFiles() {
-        System.out.println("▶ Step 62: Load ATS Files");
+    @Test(dependsOnMethods = "step67_downloadATSFramework")
+    public void step68_loadATSFiles() {
+        System.out.println("▶ Step 68: Load ATS Files");
         new LoadATSFilesTest().loadATSFiles();
     }
 
-    @Test(dependsOnMethods = "step62_loadATSFiles")
-    public void step63_listAzurePipelines() {
-        System.out.println("▶ Step 63: List Azure Pipelines");
+    @Test(dependsOnMethods = "step68_loadATSFiles")
+    public void step69_listAzurePipelines() {
+        System.out.println("▶ Step 69: List Azure Pipelines");
         new tests.pipeline.ListAzurePipelinesTest().listAzurePipelines();
     }
 
-    @Test(dependsOnMethods = "step63_listAzurePipelines")
-    public void step64_executeAutomationTests() {
-        System.out.println("▶ Step 64: Execute Automation Tests");
+    @Test(dependsOnMethods = "step69_listAzurePipelines")
+    public void step70_executeAutomationTests() {
+        System.out.println("▶ Step 70: Execute Automation Tests");
         new ExecuteTestsTest().executeAutomationTests();
     }
 
-    @Test(dependsOnMethods = "step64_executeAutomationTests")
-    public void step65_validateExecutionState() {
-        System.out.println("▶ Step 65: Validate Execution State");
+    @Test(dependsOnMethods = "step70_executeAutomationTests")
+    public void step71_validateExecutionState() {
+        System.out.println("▶ Step 71: Validate Execution State");
         new tests.pipeline.ValidateExecutionPollingTest().validateExecutionState();
     }
 
-    @Test(dependsOnMethods = "step65_validateExecutionState")
-    public void step66_downloadATSVideo() {
-        System.out.println("▶ Step 66: Download Automation Execution Video");
+    @Test(dependsOnMethods = "step71_validateExecutionState")
+    public void step72_downloadATSVideo() {
+        System.out.println("▶ Step 72: Download Automation Execution Video");
         new GetAutomationVideoTest().getAutomationVideo();
     }
 
-    @Test(dependsOnMethods = "step66_downloadATSVideo")
-    public void step67_checkVersion() {
-        System.out.println("▶ Step 67: Check System Version");
+    @Test(dependsOnMethods = "step72_downloadATSVideo")
+    public void step73_checkVersion() {
+        System.out.println("▶ Step 73: Check System Version");
         new GetVersionTest().getVersionApiTest();
     }
 
-    @Test(dependsOnMethods = "step67_checkVersion")
-    public void step68_getLogFiles() {
-        System.out.println("▶ Step 68: Get Log Files");
+    @Test(dependsOnMethods = "step73_checkVersion")
+    public void step74_getLogFiles() {
+        System.out.println("▶ Step 74: Get Log Files");
         new GetLogFilesTest().getLogFilesApiTest();
     }
 
-    @Test(dependsOnMethods = "step68_getLogFiles")
-    public void step69_downloadLogFiles() {
-        System.out.println("▶ Step 69: Download Log Files");
+    @Test(dependsOnMethods = "step74_getLogFiles")
+    public void step75_downloadLogFiles() {
+        System.out.println("▶ Step 75: Download Log Files");
         new DownloadLogFileTest().downloadLogFileApiTest();
+    }
+
+    @Test(dependsOnMethods = "step75_downloadLogFiles")
+    public void step76_logOut() {
+        System.out.println("▶ Step 75: Log Out User");
+        new LogOutTest().logoutTest();
 
         // Cleanup Stores
         ProjectStore.clear();
@@ -479,5 +524,4 @@ public class EndToEndFlow extends BaseTest {
         BusinessRequirementStore.clear();
         LogStore.clear();
     }
-
 }

@@ -14,7 +14,7 @@ public class ExecuteTestsTest extends BaseTest {
     // ✅ Confirmed working pipeline values from UI
     private static final Integer WORKING_PIPELINE_ID   = 147;
     private static final String  WORKING_PIPELINE_NAME = "ATS_UI_Automation_Pipeline";
-    private static final Integer WORKING_CONNECTION_ID  = 33;
+    private static final Integer WORKING_CONNECTION_ID  = ConnectionStore.getConnectionId();
 
 
     public void executeAutomationTests() {

@@ -1,0 +1,13 @@
+{
+  "scenario": "Get All Prompts",
+  "testCases": [
+    {
+      "tcId": "GET_PROMPT_01",
+      "name": "Fetch all prompts for user",
+      "role": "SUPER_ADMIN",
+      "authType": "VALID",
+      "expectedStatusCode": 200,
+      "request": {}
+    }
+  ]
+}

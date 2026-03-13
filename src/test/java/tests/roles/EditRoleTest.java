@@ -24,52 +24,52 @@ public class EditRoleTest extends BaseTest {
             throw new RuntimeException("❌ editRole.json missing");
         }
 
-        System.out.println("🔎 RoleStore Data → " + RoleStore.getAll());
+        Integer roleId = RoleStore.getRoleId();
 
-        RoleStore.getAll().forEach((projectId, roleIds) -> {
+        if (roleId == null) {
+            throw new RuntimeException("❌ RoleId not found in RoleStore");
+        }
 
-            for (Integer roleId : roleIds) {
+        System.out.println("🔎 RoleStore Data → " + roleId);
 
-                Report.TestCase base =
-                        testData.getTestCases().get(0);
+        Report.TestCase base =
+                testData.getTestCases().get(0);
 
-                Report.TestCase tc =
-                        new Report.TestCase(base);
+        Report.TestCase tc =
+                new Report.TestCase(base);
 
-                /* ---------- BUILD REQUEST ---------- */
+        /* ---------- BUILD REQUEST ---------- */
 
-                Map<String, Object> request = new HashMap<>();
+        Map<String, Object> request = new HashMap<>();
 
-                request.put("roleId", roleId);
-                request.put("roleName", RoleDataGenerator.generateRoleName());
-                request.put("roleDescription", RoleDataGenerator.generateRoleDescription());
-                request.put("userId", TokenUtil.getUserId(tc.getRole()));
+        request.put("roleId", roleId);
+        request.put("roleName", RoleDataGenerator.generateRoleName());
+        request.put("roleDescription", RoleDataGenerator.generateRoleDescription());
+        request.put("userId", TokenUtil.getUserId(tc.getRole()));
 
-                System.out.println("📦 EditRole Payload → " + request);
+        System.out.println("📦 EditRole Payload → " + request);
 
-                tc.setTcId("EDIT_ROLE_" + roleId);
-                tc.setName("Edit Role | RoleId " + roleId);
-                tc.setRequest(request);
+        tc.setTcId("EDIT_ROLE_" + roleId);
+        tc.setName("Edit Role | RoleId " + roleId);
+        tc.setRequest(request);
 
-                ApiTestExecutor.execute(
-                        testData.getScenario(),
-                        tc,
-                        () -> {
+        ApiTestExecutor.execute(
+                testData.getScenario(),
+                tc,
+                () -> {
 
-                            Response response =
-                                    EditRoleApi.editRole(
-                                            request,
-                                            tc.getRole(),
-                                            tc.getAuthType()
-                                    );
+                    Response response =
+                            EditRoleApi.editRole(
+                                    request,
+                                    tc.getRole(),
+                                    tc.getAuthType()
+                            );
 
-                            System.out.println("📡 Status → " + response.getStatusCode());
-                            System.out.println("📡 Response → " + response.getBody().asString());
+                    System.out.println("📡 Status → " + response.getStatusCode());
+                    System.out.println("📡 Response → " + response.getBody().asString());
 
-                            return response;
-                        }
-                );
-            }
-        });
+                    return response;
+                }
+        );
     }
 }

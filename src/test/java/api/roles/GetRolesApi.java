@@ -27,6 +27,6 @@ public class GetRolesApi {
 
         return req
                 .body(request)
-                .post("/api/getRoles");
+                .post("/getRoles");
     }
 }

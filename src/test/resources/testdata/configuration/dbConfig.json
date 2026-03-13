@@ -13,7 +13,7 @@
         "environemntDetails": [
           {
             "environmentName": "Ticking",
-            "envirtonmentUrl": "http://52.91.206.42:7777/",
+            "environmentUrl": "http://52.91.206.42:7777/",
             "db_host": "52.91.206.42",
             "port": "3306",
             "db_name": "insurance_db",

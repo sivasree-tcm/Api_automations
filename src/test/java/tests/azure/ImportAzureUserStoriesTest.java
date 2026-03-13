@@ -18,7 +18,7 @@ public class ImportAzureUserStoriesTest extends BaseTest {
 
     public void importAzureUserStories() {
 
-        // ✅ 1. Check Store BEFORE reading JSON or building request
+        // Step 1: Check UserStoryStore before proceeding
         List<Integer> storyIds = UserStoryStore.getUserStoryIds();
 
         if (storyIds == null || storyIds.isEmpty()) {
@@ -26,7 +26,7 @@ public class ImportAzureUserStoriesTest extends BaseTest {
             return;
         }
 
-        // ✅ 2. Read JSON test data
+        // Step 2: Read JSON test data
         Report testData = JsonUtils.readJson(
                 "testdata/project/importUserStoriesAzure.json",
                 Report.class
@@ -39,17 +39,23 @@ public class ImportAzureUserStoriesTest extends BaseTest {
 
         Report.TestCase tc = testData.getTestCases().get(0);
 
-        // ✅ 3. Build request dynamically
-        Map<String, Object> request = new HashMap<>();
+        // Step 3: Load request from JSON (preserve fields like platform)
+        Map<String, Object> request =
+                (tc.getRequest() != null)
+                        ? new HashMap<>((Map<String, Object>) tc.getRequest())
+                        : new HashMap<>();
 
-        request.put("azureStoryIds", storyIds);
+        // Step 4: Inject dynamic fields
+        request.put("userStoryId", storyIds);
         request.put("refProjectId", ProjectStore.getSelectedProjectId());
         request.put("userId", TokenUtil.getUserId(tc.getRole()));
 
-        // ✅ Store payload in report
+        // Store payload for reporting
         tc.setRequest(request);
 
-        // ✅ 4. Execute API Call
+        System.out.println("FINAL REQUEST → " + request);
+
+        // Step 5: Execute API
         ApiTestExecutor.execute(
                 testData.getScenario(),
                 tc,
@@ -61,6 +67,9 @@ public class ImportAzureUserStoriesTest extends BaseTest {
                                     tc.getRole(),
                                     tc.getAuthType()
                             );
+
+                    System.out.println("STATUS → " + response.getStatusCode());
+                    System.out.println("BODY → " + response.asString());
 
                     if (response.getStatusCode() == 200 ||
                             response.getStatusCode() == 201) {

@@ -38,8 +38,8 @@ public class CreateProjectTest extends BaseTest {
 
             int userId = TokenUtil.getUserId(tc.getRole());
 
-            request.put("userId", String.valueOf(userId));
-            request.put("projectCreatedBy", String.valueOf(userId));
+            request.put("userId", userId);
+            request.put("projectCreatedBy", userId);
 
             if (request.get("projectName") != null &&
                     request.get("projectName").toString().contains("{{projectName}}")) {
@@ -52,7 +52,16 @@ public class CreateProjectTest extends BaseTest {
 
                 request.put(
                         "connectionId",
-                        String.valueOf(ConnectionStore.getConnectionId())
+                        ConnectionStore.getConnectionId()
+                );
+            }
+
+            if (request.get("refOrgId") != null &&
+                    request.get("refOrgId").toString().contains("{{refOrgId}}")) {
+
+                request.put(
+                        "refOrgId",
+                        OrganizationStore.getOrgId()
                 );
             }
 
@@ -106,6 +115,17 @@ public class CreateProjectTest extends BaseTest {
 
                                 ProjectStore.setSelectedProject(projectId);
                                 ProjectStore.setProjectId(projectId);
+                                ProjectStore.setProjectName(projectName);
+
+                                Object storageType = request.get("storageType");
+                                if (storageType != null) {
+                                    ProjectStore.setStorageType(storageType.toString());
+                                }
+
+                                Object webFramework = request.get("webFramework");
+                                if (webFramework != null) {
+                                    ProjectStore.setAutomationFramework(webFramework.toString());
+                                }
 
                                 ProjectFileLogger.logSelectedProject();
 

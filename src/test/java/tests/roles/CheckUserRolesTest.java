@@ -25,7 +25,7 @@ public class CheckUserRolesTest extends BaseTest {
             throw new RuntimeException("❌ checkUserRoles.json missing or invalid.");
         }
 
-        String userId = String.valueOf(TokenUtil.getUserId());
+        Integer userId = TokenUtil.getUserId();
 
         Report.TestCase tc =
                 testData.getTestCases().get(0);

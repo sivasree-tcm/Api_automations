@@ -60,13 +60,30 @@ public class GetRolesTest extends BaseTest {
                                     tc.getAuthType()
                             );
 
+                    System.out.println("STATUS → " + response.getStatusCode());
+                    System.out.println("BODY → " + response.asString());
+
+                    if (response.getStatusCode() != 200) {
+                        throw new RuntimeException(
+                                "❌ Get Roles API Failed → " + response.asString()
+                        );
+                    }
+
+                    if (!response.getContentType().contains("application/json")) {
+                        throw new RuntimeException(
+                                "❌ API did not return JSON → " + response.asString()
+                        );
+                    }
+
                     List<Map<String, Object>> roles =
-                            response.jsonPath().getList("$");
+                            response.jsonPath().getList("");
 
                     if (roles == null || roles.isEmpty()) {
+
                         System.out.println(
                                 "ℹ No roles found for project " + projectId
                         );
+
                         return response;
                     }
 
@@ -74,8 +91,6 @@ public class GetRolesTest extends BaseTest {
                             "✅ Roles fetched for project " + projectId +
                                     " | Count = " + roles.size()
                     );
-
-                    /* Store first roleId */
 
                     Integer roleId =
                             (Integer) roles.get(0).get("roleId");

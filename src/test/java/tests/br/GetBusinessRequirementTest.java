@@ -12,10 +12,11 @@ public class GetBusinessRequirementTest {
 
     public void fetchBRsForProject() {
 
-        // ✅ SAFE project resolution (NO crash)
+        // Safe project resolution
         Integer projectId = ProjectStore.peekSelectedProjectId();
 
         if (projectId == null) {
+
             projectId = ProjectStore.getProjectId();
 
             if (projectId == null) {
@@ -24,7 +25,6 @@ public class GetBusinessRequirementTest {
                 );
             }
 
-            // 🔥 IMPORTANT: mark project as selected
             ProjectStore.setSelectedProject(projectId);
 
             System.out.println(
@@ -32,19 +32,25 @@ public class GetBusinessRequirementTest {
             );
         }
 
+        final Integer finalProjectId = projectId;
+
         Report testData =
                 JsonUtils.readJson(
                         "testdata/br/getBRByProject.json",
                         Report.class
                 );
 
+        if (testData == null || testData.getTestCases() == null) {
+            throw new RuntimeException("❌ getBRByProject.json missing");
+        }
+
         Report.TestCase tc =
                 new Report.TestCase(
                         testData.getTestCases().get(0)
                 );
 
-        tc.setTcId("GET_BR_" + projectId);
-        tc.setName("Get BR | Project " + projectId);
+        tc.setTcId("GET_BR_" + finalProjectId);
+        tc.setName("Get BR | Project " + finalProjectId);
 
         ApiTestExecutor.execute(
                 testData.getScenario(),
@@ -65,11 +71,19 @@ public class GetBusinessRequirementTest {
 
                         while (true) {
 
-                            Map<String, Object> request = new HashMap<>();
-                            request.put("projectId", ProjectStore.getProjectId());
+                            Map<String, Object> request =
+                                    (tc.getRequest() != null)
+                                            ? new HashMap<>((Map<String, Object>) tc.getRequest())
+                                            : new HashMap<>();
+
+                            request.put("projectId", finalProjectId);
                             request.put("page", page);
                             request.put("pageSize", pageSize);
-                            request.put("userId", TokenUtil.getUserId());
+                            request.put("userId", TokenUtil.getUserId(tc.getRole()));
+
+                            tc.setRequest(request);
+
+                            System.out.println("REQUEST → " + request);
 
                             Response response =
                                     GetBRByProjectApi.getBRs(
@@ -80,13 +94,21 @@ public class GetBusinessRequirementTest {
 
                             lastResponse = response;
 
+                            if (response.getStatusCode() != 200) {
+                                throw new RuntimeException(
+                                        "❌ Get BR API failed → " + response.asString()
+                                );
+                            }
+
                             List<Map<String, Object>> data =
                                     response.jsonPath().getList("data");
 
                             if (data == null || data.isEmpty()) break;
 
                             for (Map<String, Object> br : data) {
+
                                 Object id = br.get("brId");
+
                                 if (id instanceof Number) {
                                     brIds.add(((Number) id).intValue());
                                 }
@@ -98,8 +120,9 @@ public class GetBusinessRequirementTest {
                         if (!brIds.isEmpty()) break;
 
                         retry++;
+
                         System.out.println(
-                                "⏳ BRs not ready yet for project " + ProjectStore.getProjectId() +
+                                "⏳ BRs not ready yet for project " + finalProjectId +
                                         " → retry " + retry + "/" + maxRetries
                         );
 
@@ -113,13 +136,12 @@ public class GetBusinessRequirementTest {
 
                     if (brIds.isEmpty()) {
                         throw new RuntimeException(
-                                "❌ No BRs found for project " + ProjectStore.getProjectId() +
+                                "❌ No BRs found for project " + finalProjectId +
                                         " after retries"
                         );
                     }
 
-                    // ✅ Store BRs for TS generation
-                    BusinessRequirementStore.store(ProjectStore.getProjectId(), brIds);
+                    BusinessRequirementStore.store(finalProjectId, brIds);
 
                     System.out.println(
                             "✅ BR IDs stored → " + brIds

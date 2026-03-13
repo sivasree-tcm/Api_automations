@@ -21,6 +21,10 @@ public class GetAzureSprintsTest extends BaseTest {
                 Report.class
         );
 
+        if (testData == null || testData.getTestCases() == null) {
+            throw new RuntimeException("❌ getAzureDevOpsSprints.json missing");
+        }
+
         Report.TestCase tc = testData.getTestCases().get(0);
 
         Map<String, Object> request;
@@ -31,10 +35,9 @@ public class GetAzureSprintsTest extends BaseTest {
             request = new HashMap<>();
         }
 
-        request.put("userId", String.valueOf(TokenUtil.getUserId()));
+        request.put("userId", TokenUtil.getUserId(tc.getRole()));
         request.put("refProjectId", ProjectStore.getSelectedProjectId());
 
-        // ✅ Store payload in report
         tc.setRequest(request);
 
         ApiTestExecutor.execute(
@@ -49,13 +52,9 @@ public class GetAzureSprintsTest extends BaseTest {
                                     tc.getAuthType()
                             );
 
-                    System.out.println("🔍 Azure API Response Received.");
-
                     if (response.getStatusCode() != 200) {
                         return response;
                     }
-
-                    // ================== READ BOTH SCRUM + KANBAN ==================
 
                     List<Map<String, Object>> sprintsList =
                             response.jsonPath().getList("sprints");
@@ -69,37 +68,45 @@ public class GetAzureSprintsTest extends BaseTest {
                     if (kanbanList != null) allIterations.addAll(kanbanList);
 
                     if (allIterations.isEmpty()) {
-                        throw new RuntimeException(
-                                "❌ No sprints or kanban iterations returned from Azure"
-                        );
+                        throw new RuntimeException("❌ No Azure iterations found");
                     }
 
-                    System.out.println("========== AZURE SPRINT/ITERATION LIST ==========");
+                    System.out.println("========== AZURE ITERATIONS ==========");
+
                     for (int i = 0; i < allIterations.size(); i++) {
 
                         Map<String, Object> s = allIterations.get(i);
 
                         System.out.println(
-                                "[" + i + "] name=" + s.get("name")
-                                        + ", iterationPath=" + s.get("iterationPath")
+                                "[" + i + "] "
+                                        + s.get("name")
+                                        + " | "
+                                        + s.get("iterationPath")
                         );
                     }
-
-                    // ================== SMART ITERATION SELECTION ==================
 
                     Map<String, Object> selectedIteration = null;
                     int maxStoryCount = -1;
 
-                    // -------- PHASE 1: Pick iteration that contains user stories --------
                     for (int i = allIterations.size() - 1; i >= 0; i--) {
 
                         Map<String, Object> iteration = allIterations.get(i);
+
+                        String name = (String) iteration.get("name");
                         String iterationPath =
                                 (String) iteration.get("iterationPath");
 
-                        // Skip ROOT node
-                        if (iterationPath == null ||
-                                !iterationPath.contains("\\")) {
+                        if (iterationPath == null || !iterationPath.contains("\\")) {
+                            continue;
+                        }
+
+                        // 🚫 Skip specific sprint
+                        if ("Test Sprint for ATS".equalsIgnoreCase(name)) {
+
+                            System.out.println(
+                                    "⏭️ Skipping Sprint: " + name
+                            );
+
                             continue;
                         }
 
@@ -110,38 +117,19 @@ public class GetAzureSprintsTest extends BaseTest {
 
                         System.out.println(
                                 "🔍 Path: " + iterationPath +
-                                        " | User Story Count: " + storyCount
+                                        " | Story Count: " + storyCount
                         );
 
-                        if (storyCount > 0 && storyCount > maxStoryCount) {
+                        if (storyCount > maxStoryCount) {
+
                             maxStoryCount = storyCount;
                             selectedIteration = iteration;
                         }
                     }
 
-                    // -------- PHASE 2: FALLBACK → latest valid iteration --------
-                    if (selectedIteration == null) {
-
-                        for (int i = allIterations.size() - 1; i >= 0; i--) {
-
-                            String path =
-                                    (String) allIterations.get(i).get("iterationPath");
-
-                            if (path != null && path.contains("\\")) {
-
-                                selectedIteration = allIterations.get(i);
-
-                                System.out.println(
-                                        "⚠️ Using latest iteration fallback: " + path
-                                );
-                                break;
-                            }
-                        }
-                    }
-
                     if (selectedIteration == null) {
                         throw new RuntimeException(
-                                "❌ No valid Azure iteration could be selected"
+                                "❌ No valid Azure iteration found"
                         );
                     }
 
@@ -151,7 +139,7 @@ public class GetAzureSprintsTest extends BaseTest {
                     SprintStore.setSelectedSprint(finalIterationPath);
 
                     System.out.println(
-                            "✅ FINAL SELECTED PATH: " + finalIterationPath
+                            "✅ FINAL SELECTED SPRINT: " + finalIterationPath
                     );
 
                     return response;

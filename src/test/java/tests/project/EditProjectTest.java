@@ -153,7 +153,8 @@ public class EditProjectTest extends BaseTest {
             try {
                 framework = ProjectStore.getAutomationFramework();
             } catch (Exception e) {
-                framework = "Playwright_Java";
+                Object requestedFramework = map.get("webFramework");
+                framework = requestedFramework != null ? requestedFramework.toString() : "C# + Playwright";
             }
 
             map.put("webFramework", framework);

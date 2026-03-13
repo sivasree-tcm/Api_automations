@@ -9,7 +9,6 @@ import utils.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
 
 public class DisableUsersByRoleTest extends BaseTest {
 
@@ -24,45 +23,47 @@ public class DisableUsersByRoleTest extends BaseTest {
             throw new RuntimeException("❌ disableUsersByRole.json missing or malformed");
         }
 
-        System.out.println("🔎 RoleStore Data → " + RoleStore.getAll());
+        Integer roleId = RoleStore.getRoleId();
 
-        // Get the base template from JSON
+        if (roleId == null) {
+            throw new RuntimeException("❌ RoleId not found in RoleStore");
+        }
+
+        System.out.println("🔎 RoleStore Data → " + roleId);
+
+        // Get template test case
         Report.TestCase base = testData.getTestCases().get(0);
+        Report.TestCase tc = new Report.TestCase(base);
 
-        RoleStore.getAll().forEach((projectId, roleIds) -> {
-            if (roleIds == null) return;
+        /* -------- BUILD REQUEST -------- */
 
-            for (Integer roleId : roleIds) {
-                // 🛑 CRASH POINT: Ensure base.getRequest() is not null in ConnectionReport.java
-                Report.TestCase tc = new Report.TestCase(base);
+        Map<String, Object> request = new HashMap<>();
 
-                /* -------- BUILD REQUEST -------- */
-                Map<String, Object> request = new HashMap<>();
-                request.put("roleId", roleId);
-                // Dynamically get the userId for the admin performing the action
-                request.put("userId", TokenUtil.getUserId(tc.getRole()));
+        request.put("roleId", roleId);
+        request.put("userId", TokenUtil.getUserId(tc.getRole()));
 
-                System.out.println("📦 DisableUsersByRole Payload → " + request);
+        System.out.println("📦 DisableUsersByRole Payload → " + request);
 
-                tc.setTcId("DISABLE_ROLE_" + roleId);
-                tc.setName("Disable Users By Role | RoleId " + roleId);
-                tc.setRequest(request);
+        tc.setTcId("DISABLE_ROLE_" + roleId);
+        tc.setName("Disable Users By Role | RoleId " + roleId);
+        tc.setRequest(request);
 
-                ApiTestExecutor.execute(
-                        testData.getScenario(),
-                        tc,
-                        () -> {
-                            Response response = DisableUsersByRoleApi.disableUsers(
-                                    request,
-                                    tc.getRole(),
-                                    tc.getAuthType()
-                            );
+        ApiTestExecutor.execute(
+                testData.getScenario(),
+                tc,
+                () -> {
 
-                            System.out.println("📡 Status → " + response.getStatusCode());
-                            return response;
-                        }
-                );
-            }
-        });
+                    Response response = DisableUsersByRoleApi.disableUsers(
+                            request,
+                            tc.getRole(),
+                            tc.getAuthType()
+                    );
+
+                    System.out.println("📡 Status → " + response.getStatusCode());
+                    System.out.println("📡 Response → " + response.getBody().asString());
+
+                    return response;
+                }
+        );
     }
 }

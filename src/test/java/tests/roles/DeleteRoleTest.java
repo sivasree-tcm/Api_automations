@@ -24,41 +24,53 @@ public class DeleteRoleTest extends BaseTest {
             throw new RuntimeException("❌ deleteRole.json is missing or invalid");
         }
 
+        Integer roleId = RoleStore.getRoleId();
+
+        if (roleId == null) {
+            throw new RuntimeException("❌ RoleId not found in RoleStore");
+        }
+
+        System.out.println("🔎 RoleStore Data → " + roleId);
+
         Report.TestCase baseTemplate = testData.getTestCases().get(0);
 
-        RoleStore.getAll().forEach((projectId, roleIds) -> {
+        // Copy template
+        Report.TestCase tc = new Report.TestCase(baseTemplate);
 
-            if (roleIds == null) return;
+        // Copy JSON request (contains static fields like action)
+        Map<String, Object> request =
+                (baseTemplate.getRequest() != null)
+                        ? new HashMap<>((Map<String, Object>) baseTemplate.getRequest())
+                        : new HashMap<>();
 
-            for (Integer roleId : roleIds) {
+        // Inject dynamic fields
+        request.put("roleId", roleId);
+        request.put("userId", TokenUtil.getUserId(tc.getRole()));
 
-                // Copy template
-                Report.TestCase tc = new Report.TestCase(baseTemplate);
+        // Attach request to test case
+        tc.setRequest(request);
 
-                // Copy JSON request (contains action field)
-                Map<String, Object> request =
-                        new HashMap<>((Map<String, Object>) baseTemplate.getRequest());
+        tc.setTcId("DEL_ROLE_" + roleId);
+        tc.setName("Delete Role | RoleId: " + roleId);
 
-                // Inject dynamic fields
-                request.put("roleId", roleId);
-                request.put("userId", TokenUtil.getUserId());
+        System.out.println("📦 DeleteRole Payload → " + request);
 
-                // Attach request to test case (important for report)
-                tc.setRequest(request);
+        ApiTestExecutor.execute(
+                testData.getScenario(),
+                tc,
+                () -> {
 
-                tc.setTcId("DEL_ROLE_" + roleId);
-                tc.setName("Delete Role | RoleId: " + roleId);
+                    Response response = DeleteRoleApi.deleteRole(
+                            request,
+                            tc.getRole(),
+                            tc.getAuthType()
+                    );
 
-                ApiTestExecutor.execute(
-                        testData.getScenario(),
-                        tc,
-                        () -> DeleteRoleApi.deleteRole(
-                                request,
-                                tc.getRole(),
-                                tc.getAuthType()
-                        )
-                );
-            }
-        });
+                    System.out.println("📡 Status → " + response.getStatusCode());
+                    System.out.println("📡 Response → " + response.getBody().asString());
+
+                    return response;
+                }
+        );
     }
 }

@@ -14,7 +14,7 @@
         "promptDestination": "TS",
         "userId": "{{userId}}",
         "promptId": "{{promptId}}",
-        "promptActive": true
+        "promptActive": 1
       }
     }
   ]

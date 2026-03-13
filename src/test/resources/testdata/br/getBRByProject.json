@@ -8,10 +8,8 @@
       "authType": "VALID",
       "expectedStatusCode": 200,
       "request": {
-        "projectId": 1164,
         "page": 1,
-        "pageSize": 10,
-        "userId": 32
+        "pageSize": 10
       }
     }
   ]

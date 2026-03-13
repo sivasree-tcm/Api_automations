@@ -281,12 +281,6 @@ public class EndToEndFlow extends BaseTest {
         new tests.export.ExportBRExcelTest().exportBRExcelAndValidate();
     }
 
-    @Test(dependsOnMethods = "step36_exportBRExcel")
-    public void step37_deleteBR() throws Exception {
-        System.out.println("▶ Step 37: Delete Business Requirement");
-        new DeleteBusinessRequirementTest().deleteLastBR();
-    }
-
     @Test(dependsOnMethods = "step37_deleteBR")
     public void step38_refreshBRs() {
         System.out.println("▶ Step 38: Refresh Business Requirements");
@@ -304,6 +298,12 @@ public class EndToEndFlow extends BaseTest {
     public void step40_importImageForBR() {
         System.out.println("▶ Step 40: Upload Image For BR");
         new UploadFilesForBRTest().uploadImageForALLBRs();
+    }
+
+    @Test(dependsOnMethods = "step36_exportBRExcel")
+    public void step37_deleteBR() throws Exception {
+        System.out.println("▶ Step 37: Delete Business Requirement");
+        new DeleteBusinessRequirementTest().deleteLastBR();
     }
 
     @Test(dependsOnMethods = "step40_importImageForBR")
